@@ -1,0 +1,3130 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>薬の開発史 ― 古代から現代 ―</title>
+
+<style>
+:root{color-scheme:dark;--bg:#004c4c;--bg2:#00605a;--card:#06605a;--line:rgba(140,255,220,.25);--acc:#4be8ac;--acc2:#ffb238;--new:#ff3d7a;--mute:#8fc6b8;--tx:#eafff5;
+ --nav-h:calc(56px + env(safe-area-inset-bottom,0px));}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;background:var(--bg);color:var(--tx);touch-action:manipulation;overscroll-behavior:none;
+ font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;-webkit-user-select:none;user-select:none;}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation;}
+.app{max-width:520px;margin:0 auto;min-height:100dvh;padding-bottom:calc(var(--nav-h) + 24px);}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(0,56,56,.96);backdrop-filter:blur(4px);border-bottom:1px solid var(--line);
+ padding:8px 12px 8px;}
+.era-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px;}
+.era-row::-webkit-scrollbar{display:none;}
+.chip{flex:0 0 auto;font-size:.66rem;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--mute);white-space:nowrap;}
+.chip.cur{background:var(--acc);color:#00302a;border-color:var(--acc);font-weight:900;}
+.chip.done{color:var(--acc);border-color:rgba(75,232,172,.5);}
+.res{display:flex;gap:14px;align-items:flex-end;}
+.res .r{display:flex;flex-direction:column;}
+.res b{font-size:1.15rem;color:#8dfad0;line-height:1.15;font-variant-numeric:tabular-nums;}
+.res small{font-size:.58rem;color:var(--mute);}
+.res .grow{flex:1;}
+.tapbtn{background:linear-gradient(#2fd49a,#12a874);color:#00302a;border:0;border-radius:12px;padding:8px 12px;font-weight:900;font-size:.8rem;box-shadow:0 3px 0 #0a7a58;}
+.tapbtn:active{transform:translateY(2px);box-shadow:0 1px 0 #0a7a58;}
+.flow{display:flex;justify-content:space-between;gap:2px;margin-top:7px;font-size:.55rem;color:var(--mute);text-align:center;}
+.flow span{flex:1;padding:2px 0;border-radius:6px;background:rgba(255,255,255,.05);}
+.flow i{font-style:normal;color:var(--acc);align-self:center;}
+.eraprog{margin-top:7px;background:rgba(255,255,255,.06);border-radius:10px;padding:6px 9px;font-size:.66rem;}
+.eraprog summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px;}
+.eraprog summary::-webkit-details-marker{display:none;}
+.eraprog ul{margin:6px 0 2px;padding-left:2px;list-style:none;color:var(--mute);}
+.eraprog li.ok{color:var(--acc);}
+.bar{height:5px;border-radius:5px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:4px;}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .3s;}
+main{padding:10px 12px;}
+.sec{margin:14px 0 6px;font-size:.78rem;font-weight:900;color:#8dfad0;display:flex;align-items:center;gap:6px;}
+.sec small{font-weight:400;color:var(--mute);font-size:.62rem;}
+.chain{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+.arrow{text-align:center;color:var(--acc);font-size:.8rem;line-height:1;height:14px;opacity:.7;}
+.tn{width:100%;text-align:left;display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:8px;background:var(--card);
+ border:1px solid var(--line);border-radius:12px;padding:9px 11px;}
+.tn .mk{font-size:1rem;text-align:center;}
+.tn .nm{font-weight:800;font-size:.86rem;}
+.tn .st{font-size:.68rem;color:var(--acc2);font-weight:800;white-space:nowrap;}
+.tn .sub{grid-column:2/4;font-size:.62rem;color:var(--mute);margin-top:-4px;}
+.tn.done{background:rgba(75,232,172,.14);border-color:rgba(75,232,172,.5);}
+.tn.done .st{color:var(--acc);}
+.tn.locked,.tn.eralock{opacity:.55;}
+.tn.avail.afford{border-color:var(--acc2);box-shadow:0 0 0 1px var(--acc2) inset;}
+.tn.avail:not(.afford) .st{color:var(--mute);}
+.fr{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px;}
+.fr .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.fr .nm{font-weight:900;font-size:.95rem;}
+.fr .cnt{font-size:.8rem;color:var(--acc);font-weight:800;}
+.fr .ds{font-size:.7rem;color:var(--mute);margin:2px 0 6px;line-height:1.5;}
+.fr .pr{font-size:.7rem;margin-bottom:7px;}
+.fr .btns{display:flex;gap:6px;}
+.btn{flex:1;border:0;border-radius:10px;padding:8px 6px;font-weight:900;font-size:.76rem;background:#12a874;color:#00302a;}
+.btn.sub{background:rgba(255,255,255,.12);color:var(--tx);}
+.btn.off{background:rgba(255,255,255,.1);color:#7fa89c;}
+.btn small{display:block;font-weight:700;font-size:.62rem;opacity:.85;}
+.fr.lock{opacity:.55;}
+.qty{display:flex;gap:6px;margin-bottom:8px;}
+.qty button{flex:1;border:1px solid var(--line);background:transparent;border-radius:9px;padding:6px;font-size:.74rem;color:var(--mute);}
+.qty button.on{background:var(--acc);color:#00302a;font-weight:900;border-color:var(--acc);}
+.evrow{display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:center;width:100%;text-align:left;background:var(--card);
+ border:1px solid var(--line);border-radius:12px;padding:9px 11px;margin-bottom:6px;}
+.evrow .yr{font-size:.6rem;color:var(--mute);text-align:center;line-height:1.2;}
+.evrow .tt{font-weight:800;font-size:.84rem;}
+.evrow .sb{font-size:.62rem;color:var(--mute);}
+.evrow.q{opacity:.6;}
+.evrow.q .tt{color:var(--mute);}
+.badge{background:var(--new);color:#fff;font-size:.6rem;font-weight:900;border-radius:99px;padding:1px 7px;}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(0,48,48,.97);border-top:1px solid var(--line);
+ padding-bottom:env(safe-area-inset-bottom,0px);}
+nav .in{max-width:520px;margin:0 auto;display:flex;}
+nav button{flex:1;background:none;border:0;padding:7px 0 6px;font-size:.62rem;color:var(--mute);position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;}
+nav button b{font-size:1.15rem;font-weight:400;line-height:1.1;}
+nav button.on{color:var(--acc);}
+nav button .dot{position:absolute;top:4px;right:calc(50% - 20px);width:9px;height:9px;border-radius:50%;background:var(--new);display:none;}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center;}
+.ov.show{display:flex;}
+.ov.mid{align-items:center;padding:16px;}
+.sheet{width:100%;max-width:520px;background:#073f3b;border:1px solid var(--line);border-radius:18px 18px 0 0;padding:16px 16px calc(18px + env(safe-area-inset-bottom,0px));max-height:86dvh;overflow:auto;position:relative;}
+.ov.mid .sheet{border-radius:18px;}
+.sheet h3{margin:0 0 4px;font-size:1.05rem;}
+.sheet .tag{font-size:.64rem;color:var(--acc2);font-weight:900;letter-spacing:.08em;}
+.sheet .meta{font-size:.68rem;color:var(--mute);margin-bottom:8px;}
+.sheet p{font-size:.8rem;line-height:1.75;margin:8px 0;}
+.sheet .box{background:rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;font-size:.74rem;line-height:1.6;margin:8px 0;}
+.sheet .box b{color:var(--acc);}
+.sheet .x{position:absolute;top:10px;right:12px;background:none;border:0;font-size:1.1rem;color:var(--mute);}
+.sheet ul{margin:4px 0;padding-left:2px;list-style:none;font-size:.76rem;line-height:1.7;}
+.sheet li.ok{color:var(--acc);}
+.sheet li.ng{color:#ffb7b7;}
+.big{width:100%;border:0;border-radius:12px;padding:12px;font-weight:900;font-size:.9rem;background:linear-gradient(#2fd49a,#12a874);color:#00302a;margin-top:6px;}
+.big.off{background:rgba(255,255,255,.12);color:#7fa89c;}
+.toast{position:fixed;left:50%;top:calc(76px + env(safe-area-inset-top,0px));transform:translate(-50%,-20px);z-index:60;background:#0a8a68;color:#fff;
+ border-radius:12px;padding:9px 14px;font-size:.78rem;font-weight:800;opacity:0;pointer-events:none;transition:.3s;max-width:92vw;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto;}
+.fl{position:fixed;z-index:40;pointer-events:none;font-weight:900;color:#8dfad0;text-shadow:0 1px 3px #000;animation:fl .7s ease-out forwards;}
+@keyframes fl{to{transform:translateY(-40px);opacity:0;}}
+.stat{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font-size:.84rem;}
+.stat div:nth-child(odd){color:var(--mute);}
+.note{font-size:.64rem;color:var(--mute);line-height:1.6;margin:10px 0;}
+textarea{width:100%;height:70px;background:rgba(0,0,0,.25);color:var(--tx);border:1px solid var(--line);border-radius:8px;font-size:.6rem;-webkit-user-select:text;user-select:text;}
+.era-banner{text-align:center;padding:10px 0;}
+.era-banner .t{font-size:.7rem;color:var(--acc2);font-weight:900;letter-spacing:.2em;}
+.era-banner .n{font-size:1.6rem;font-weight:900;margin:6px 0 2px;}
+.recap{display:flex;flex-direction:column;gap:3px;font-size:.78rem;margin:8px 0;}
+.recap div{display:flex;gap:8px;align-items:center;}
+.recap .c{color:var(--acc);}
+
+.subtabs{display:flex;gap:6px;margin:4px 0 6px;}
+.subtabs button{flex:1;border:1px solid var(--line);background:transparent;border-radius:10px;padding:8px 6px;font-size:.78rem;color:var(--mute);font-weight:800;position:relative;}
+.subtabs button.on{background:var(--acc);color:#00302a;border-color:var(--acc);}
+.subtabs small{font-size:.6rem;font-weight:700;opacity:.85;}
+.sdot{position:absolute;top:5px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--new);}
+.yr.pic{font-size:1.1rem;}
+.rgrow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:4px 0 8px;padding-bottom:2px;}
+.rgrow::-webkit-scrollbar{display:none;}
+.rg{flex:0 0 auto;border:1px solid var(--line);background:transparent;border-radius:99px;padding:5px 10px;font-size:.68rem;color:var(--mute);white-space:nowrap;}
+.rg small{font-size:.58rem;opacity:.8;}
+.rg.on{background:var(--acc);color:#00302a;border-color:var(--acc);font-weight:900;}
+.erah small{color:var(--mute);font-weight:700;margin-left:4px;}
+.erah{font-size:.66rem;color:var(--acc2);font-weight:900;margin:12px 2px 5px;letter-spacing:.06em;}
+.rtag{display:inline-block;font-size:.55rem;border:1px solid var(--line);border-radius:6px;padding:0 5px;margin-right:5px;color:var(--acc);}
+.howto{font-size:.72rem;line-height:1.7;}
+.howto ol{margin:4px 0;padding-left:1.3em;}
+.stages{display:flex;align-items:stretch;gap:3px;margin-bottom:10px;overflow-x:auto;}
+.stages>div{flex:1 0 62px;background:rgba(255,255,255,.06);border-radius:9px;padding:5px 4px;text-align:center;font-size:.58rem;color:var(--mute);}
+.stages>div b{display:block;font-size:.66rem;color:var(--tx);}
+.stages>div.on{background:rgba(75,232,172,.14);} .stages>div.on span{color:var(--acc);font-weight:800;}
+.stages>i{font-style:normal;color:var(--acc);align-self:center;font-size:.8rem;}
+</style>
+
+<div class="app">
+<header>
+  <div class="era-row" id="eraRow"></div>
+  <div class="res">
+    <div class="r"><b id="kpD">0</b><small>💊 知識P</small></div>
+    <div class="r"><b id="prD">0</b><small>⚡ 毎秒</small></div>
+    <div class="grow"></div>
+    <button class="tapbtn" id="tapBtn">🌿 探求する<br><small id="tapD" style="font-size:.6rem;font-weight:700">+1</small></button>
+  </div>
+  <details class="eraprog" id="eraProg"><summary><span id="epT"></span><span id="epN"></span></summary><div class="bar"><i id="epB"></i></div><ul id="epL"></ul></details>
+</header>
+<main id="main"></main>
+</div>
+<nav><div class="in">
+  <button id="nv-research" data-tab="research"><b>🔬</b>研究<i class="dot" id="dot-research"></i></button>
+  <button id="nv-facility" data-tab="facility"><b>🏛️</b>施設<i class="dot" id="dot-facility"></i></button>
+  <button id="nv-history" data-tab="history"><b>📜</b>歴史<i class="dot" id="dot-history"></i></button>
+  <button id="nv-codex" data-tab="codex"><b>📖</b>図鑑<i class="dot" id="dot-codex"></i></button>
+  <button id="nv-record" data-tab="record"><b>🏅</b>記録</button>
+</div></nav>
+<div class="ov" id="ov"><div class="sheet" id="sheet"></div></div>
+<div class="ov mid" id="ovm"><div class="sheet" id="sheetm"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ======================================================================
+ 薬の開発史 ― 古代から近世 ― （3層構造：研究 → 施設 → 歴史）
+ v3：近世編（時代6・7、1500〜1799年頃）を追加。設計は game-kinsei-design-v0.3.md
+ v14：最終確認（メルク〜シーボルト、古代〜中世の薬物図鑑）をGPTの確認結果で修正
+ v13：イベルメクチン・ホジキン・クロルプロマジン・サリドマイド・シメチジンをGPTの確認結果で修正
+ v12：現代編（時代10〜13、1900年〜現在）を追加。設計はGPTの確認結果を反映
+ v11：北里・サリチル酸・コッホ・ゼンメルワイスを資料で確認して修正
+ v10：近代編の文章を事実確認に合わせて修正
+ v9：近世編・研究・施設・その後への影響・総括文を事実確認に合わせて修正
+ v8：留守中の収入を20%・最大1時間に減らし、二重に加算されることがある不具合を修正
+ v7：近代編（時代8・9、1800〜1900年頃）を追加。設計は game-kindai-design-v0.2.md
+ v6：人物図鑑をGPTの事実確認に合わせて修正
+ v5：図鑑に人物図鑑（60人）を追加
+ v4：歴史イベントを「研究＋施設の数」で発生、留守中の収入を見直し、研究・施設の説明を拡充、歴史図鑑に地域の切り替え、「その後への影響」に統合
+ このファイルの構成：
+   1) 数値・構造データ（ERAS / TECHS / FACS / EVENTS / ERA_REQ / CLEAR）
+   2) 文章コンテンツ（CONTENT：技術・施設・歴史イベントの説明文）
+   3) ゲームロジックとUI
+ ※ ゲーム上の技術ツリーは歴史を分かりやすく整理したモデルで、現実の歴史が一本道だったわけではありません。
+ ====================================================================== */
+/* ===== 数値・構造データ ===== */
+// ゲームデータ（数値部）— シミュレーションと本体の両方で使う
+const ERAS=[
+ {id:1,name:'古代',sub:'薬草と医薬文書の時代'},
+ {id:2,name:'古代末期',sub:'知識の継承'},
+ {id:3,name:'イスラム世界',sub:'翻訳・薬局的実践・蒸留'},
+ {id:4,name:'中世ヨーロッパ',sub:'医学教育・薬房・薬局'},
+ {id:5,name:'中世末期',sub:'医薬分業と薬局方'},
+ {id:6,name:'大航海と化学',sub:'薬物の世界化と医化学'},
+ {id:7,name:'制度と観察',sub:'薬局方の整備と薬の評価'},
+ {id:8,name:'単離と実験',sub:'有効成分・麻酔・実験薬理'},
+ {id:9,name:'合成と微生物',sub:'合成医薬品・細菌学・血清療法'},
+ {id:10,name:'化学療法',sub:'化学療法・ホルモン・ビタミン・抗生物質'},
+ {id:11,name:'審査と分子',sub:'比較臨床試験・薬害と規制・分子生物学'},
+ {id:12,name:'生命工学',sub:'遺伝子組換え・抗体・バイオ医薬品'},
+ {id:13,name:'分子標的と免疫',sub:'分子標的薬・ゲノム・免疫療法・mRNA'}];
+// route: A本草 B加工 C制度 X共通
+const TECHS=[
+ {id:'record',name:'医薬文書の記録',route:'X',era:1,cost:80,prereq:[]},
+ {id:'herb_collect',name:'薬草採集',route:'A',era:1,cost:40,prereq:[]},
+ {id:'herb_class',name:'薬草分類',route:'A',era:1,cost:200,prereq:['herb_collect']},
+ {id:'honzo',name:'本草学',route:'A',era:1,cost:800,prereq:['herb_class']},
+ {id:'drug_process',name:'薬物加工',route:'B',era:1,cost:300,prereq:['herb_collect']},
+ {id:'dry_grind',name:'乾燥・粉砕',route:'B',era:1,cost:1000,prereq:['drug_process']},
+ {id:'extract',name:'抽出',route:'B',era:1,cost:3500,prereq:['dry_grind']},
+ {id:'drug_id',name:'薬物鑑定',route:'A',era:2,cost:4000,prereq:['honzo','ev:dioscorides']},
+ {id:'transmit',name:'古典の書写と保存',route:'X',era:2,cost:3000,prereq:['record','ev:galen']},
+ {id:'monastic',name:'修道院医学',route:'X',era:2,cost:8000,prereq:['transmit','herb_class']},
+ {id:'translation',name:'翻訳と注釈',route:'X',era:3,cost:20000,prereq:['transmit']},
+ {id:'distill',name:'蒸留',route:'B',era:3,cost:45000,prereq:['extract','translation']},
+ {id:'islamic_pharmacy',name:'薬局的実践',route:'C',era:3,cost:60000,prereq:['translation','drug_id']},
+ {id:'alchemy',name:'錬金術',route:'B',era:3,cost:150000,prereq:['distill','ev:jabir']},
+ {id:'medschool',name:'医学教育',route:'X',era:4,cost:200000,prereq:['translation','monastic']},
+ {id:'pharmacy_room',name:'調製・販売の分化',route:'C',era:4,cost:250000,prereq:['drug_process','islamic_pharmacy']},
+ {id:'compounding',name:'薬剤調製',route:'C',era:4,cost:500000,prereq:['pharmacy_room','extract']},
+ {id:'pharmacy',name:'薬剤調製の専門化',route:'C',era:4,cost:1200000,prereq:['compounding']},
+ {id:'profession',name:'薬剤師的専門職',route:'C',era:4,cost:3000000,prereq:['pharmacy','medschool']},
+ {id:'separation',name:'医薬分業',route:'C',era:5,cost:8000000,prereq:['profession','ev:melfi']},
+ {id:'iatro_prelude',name:'医化学への前段階',route:'B',era:5,cost:10000000,prereq:['alchemy','extract']},
+ {id:'pharmacopoeia',name:'薬局方',route:'C',era:5,cost:20000000,prereq:['separation','ev:separation_ev']},
+ // ---- 近世編（時代6・7）----  'a|b' はどちらか一方でよい／bonus は必須ではない合流（研究済みならコスト −30%）
+ {id:'exotic_survey',name:'異地の薬物調査',route:'A',era:6,cost:60000000,prereq:['drug_id','herb_class','ev:orta|ev:monardes']},
+ {id:'field_herbal',name:'実物観察の薬物誌',route:'A',era:6,cost:1200000000,prereq:['honzo','drug_id','print_drug_books']},
+ {id:'honzo_systematize',name:'本草の体系化（東アジア）',route:'A',era:6,cost:150000000,prereq:['honzo','ev:honzo_koumoku']},
+ {id:'bark_trial',name:'熱病薬としての樹皮の導入',route:'A',era:6,cost:500000000,prereq:['drug_id','ev:cinchona_arrival']},
+ {id:'botanic_garden',name:'植物園と標本',route:'A',era:7,cost:6000000000,prereq:['herb_class','field_herbal']},
+ {id:'iatrochemistry',name:'医化学',route:'B',era:6,cost:40000000,prereq:['iatro_prelude','ev:paracelsus']},
+ {id:'chem_remedies',name:'化学薬品の調製',route:'B',era:6,cost:400000000,prereq:['iatrochemistry','compounding']},
+ {id:'opium_prep',name:'アヘン製剤の整理',route:'B',era:7,cost:5000000000,prereq:['chem_remedies','drug_process']},
+ {id:'chem_analysis',name:'化学的分析と精製',route:'B',era:7,cost:10000000000,prereq:['chem_remedies']},
+ {id:'city_dispensatory',name:'都市の薬局方',route:'C',era:6,cost:80000000,prereq:['pharmacopoeia','ev:cordus']},
+ {id:'guild_apothecary',name:'薬剤師団体の独立',route:'C',era:6,cost:250000000,prereq:['separation','ev:apothecaries_1617']},
+ {id:'national_pharma',name:'都市・地域薬局方の拡大',route:'C',era:6,cost:2000000000,prereq:['city_dispensatory','ev:londinensis'],bonus:['chem_remedies']},
+ {id:'apothecary_practice',name:'診療に関わる薬剤師',route:'C',era:7,cost:15000000000,prereq:['guild_apothecary','ev:rose_case']},
+ {id:'drug_trade',name:'薬種流通の制度化',route:'C',era:7,cost:8000000000,prereq:['exotic_survey','pharmacy_room']},
+ {id:'print_drug_books',name:'印刷による薬物書の普及',route:'X',era:6,cost:300000000,prereq:['transmit','translation','exotic_survey']},
+ {id:'specimen_meeting',name:'薬品会（物産会）',route:'X',era:7,cost:20000000000,prereq:['honzo_systematize','ev:yakuhinkai']},
+ {id:'clinical_obs',name:'症例記録と臨床観察',route:'X',era:7,cost:30000000000,prereq:['ev:sydenham']},
+ {id:'clinical_dose',name:'用量・効果・副作用の検討',route:'X',era:7,cost:80000000000,prereq:['clinical_obs','ev:withering']},
+ {id:'treatment_compare',name:'治療法の比較',route:'X',era:7,cost:80000000000,prereq:['clinical_obs','ev:lind']},
+ // ---- 近代編（時代8・9）---- 前提はゲーム上の整理で、史実の直接の因果を意味しない
+ {id:'alkaloid_isolation',name:'アルカロイドの単離',route:'A',era:8,cost:40000000000,prereq:['chem_analysis', 'ev:serturner']},
+ {id:'crude_drug_quality',name:'生薬の品質と成分',route:'A',era:8,cost:300000000000,prereq:['alkaloid_isolation', 'drug_trade']},
+ {id:'plant_chem_japan',name:'和漢薬の成分研究',route:'A',era:9,cost:6000000000000,prereq:['crude_drug_quality', 'ev:nagai_ephedrine']},
+ {id:'organic_chem',name:'有機化学',route:'B',era:8,cost:80000000000,prereq:['chem_analysis']},
+ {id:'inhal_anesthesia',name:'吸入麻酔',route:'B',era:8,cost:500000000000,prereq:['chem_analysis', 'ev:ether_anesthesia']},
+ {id:'industrial_pharma',name:'医薬品の工業生産',route:'B',era:8,cost:800000000000,prereq:['alkaloid_isolation', 'ev:merck']},
+ {id:'synthetic_dyes',name:'合成染料と化学工業',route:'B',era:9,cost:3000000000000,prereq:['organic_chem', 'ev:perkin']},
+ {id:'synthetic_drugs',name:'合成医薬品',route:'B',era:9,cost:8000000000000,prereq:['organic_chem', 'industrial_pharma'],bonus:['synthetic_dyes']},
+ {id:'local_anesthesia',name:'局所麻酔',route:'B',era:9,cost:12000000000000,prereq:['alkaloid_isolation', 'inhal_anesthesia', 'ev:koller']},
+ {id:'national_pharmacopoeia',name:'全国共通の薬局方',route:'C',era:8,cost:200000000000,prereq:['national_pharma', 'ev:usp_1820']},
+ {id:'pharm_education',name:'薬学教育',route:'C',era:8,cost:300000000000,prereq:['guild_apothecary', 'ev:phila_college']},
+ {id:'pharmacy_law',name:'薬事の法制度',route:'C',era:9,cost:5000000000000,prereq:['pharm_education', 'national_pharmacopoeia', 'ev:pharmacy_act_1868']},
+ {id:'japan_pharm_admin',name:'日本の近代薬事行政',route:'C',era:9,cost:10000000000000,prereq:['pharmacy_law', 'ev:isei_1874']},
+ {id:'exp_pharmacology',name:'実験薬理学',route:'X',era:8,cost:150000000000,prereq:['clinical_dose', 'ev:magendie']},
+ {id:'injection',name:'注射による投与',route:'X',era:8,cost:1000000000000,prereq:['alkaloid_isolation', 'ev:hypodermic']},
+ {id:'epidemiology',name:'疫学的な観察',route:'X',era:8,cost:400000000000,prereq:['treatment_compare']},
+ {id:'sanitation',name:'公衆衛生の改革',route:'X',era:8,cost:1500000000000,prereq:['epidemiology', 'ev:snow']},
+ {id:'germ_theory',name:'微生物と病気',route:'X',era:9,cost:4000000000000,prereq:['organic_chem', 'ev:pasteur']},
+ {id:'antisepsis',name:'防腐法・消毒法',route:'X',era:9,cost:6000000000000,prereq:['inhal_anesthesia', 'ev:lister'],bonus:['germ_theory']},
+ {id:'bacteriology',name:'細菌学',route:'X',era:9,cost:10000000000000,prereq:['germ_theory']},
+ {id:'serum_therapy',name:'血清療法',route:'X',era:9,cost:30000000000000,prereq:['bacteriology', 'ev:behring_kitasato'],bonus:['exp_pharmacology']},
+ // ---- 現代編（時代10〜13）----
+ {id:'chemotherapy',name:'化学療法',route:'X',era:10,cost:150000000000000,prereq:['synthetic_drugs', 'bacteriology', 'ev:salvarsan']},
+ {id:'hormone',name:'ホルモンの単離と製剤化',route:'A',era:10,cost:100000000000000,prereq:['alkaloid_isolation', 'exp_pharmacology', 'ev:adrenaline']},
+ {id:'vitamin',name:'ビタミンの研究',route:'A',era:10,cost:200000000000000,prereq:['crude_drug_quality', 'ev:oryzanin']},
+ {id:'receptor',name:'受容体の考え方',route:'X',era:10,cost:120000000000000,prereq:['exp_pharmacology', 'ev:receptor_idea']},
+ {id:'sulfa',name:'サルファ剤',route:'B',era:10,cost:400000000000000,prereq:['chemotherapy', 'ev:prontosil']},
+ {id:'safety_law',name:'医薬品の安全性の法規制',route:'C',era:10,cost:500000000000000,prereq:['pharmacy_law', 'ev:elixir_sulfanilamide']},
+ {id:'antibiotics',name:'抗生物質',route:'B',era:10,cost:600000000000000,prereq:['bacteriology', 'ev:florey_chain']},
+ {id:'antibiotic_industry',name:'抗生物質の大量生産',route:'B',era:10,cost:1200000000000000,prereq:['antibiotics', 'industrial_pharma']},
+ {id:'clinical_trial',name:'比較臨床試験の方法',route:'X',era:11,cost:2000000000000000,prereq:['treatment_compare', 'ev:mrc_streptomycin']},
+ {id:'psychopharm',name:'向精神薬',route:'B',era:11,cost:3000000000000000,prereq:['exp_pharmacology', 'ev:chlorpromazine']},
+ {id:'structure_bio',name:'分子の構造の解析',route:'A',era:11,cost:2500000000000000,prereq:['organic_chem', 'ev:hodgkin']},
+ {id:'molecular_biology',name:'分子生物学',route:'A',era:11,cost:6000000000000000,prereq:['bacteriology', 'ev:dna_1953'],bonus:['structure_bio']},
+ {id:'regulation',name:'有効性と安全性の審査',route:'C',era:11,cost:8000000000000000,prereq:['safety_law', 'clinical_trial', 'ev:thalidomide']},
+ {id:'pharmacovigilance',name:'副作用の監視と安全対策',route:'C',era:11,cost:15000000000000000,prereq:['regulation', 'ev:smon']},
+ {id:'rational_design',name:'標的に合わせた創薬',route:'B',era:11,cost:10000000000000000,prereq:['receptor', 'ev:propranolol']},
+ {id:'bungyo_modern',name:'医薬分業の推進（日本）',route:'C',era:11,cost:12000000000000000,prereq:['japan_pharm_admin', 'ev:bungyo_1974']},
+ {id:'recombinant',name:'遺伝子組換え技術',route:'A',era:12,cost:30000000000000000,prereq:['molecular_biology', 'ev:cohen_boyer']},
+ {id:'biologics',name:'バイオ医薬品',route:'B',era:12,cost:80000000000000000,prereq:['recombinant', 'ev:human_insulin'],bonus:['antibiotic_industry']},
+ {id:'monoclonal',name:'抗体医薬',route:'B',era:12,cost:60000000000000000,prereq:['molecular_biology', 'ev:kohler_milstein']},
+ {id:'microbial_screening',name:'微生物由来の新薬探索',route:'A',era:12,cost:50000000000000000,prereq:['antibiotics', 'ev:endo_statin']},
+ {id:'ich',name:'承認基準の国際的な調和',route:'C',era:12,cost:100000000000000000,prereq:['regulation', 'ev:ich_1990']},
+ {id:'targeted_therapy',name:'分子標的薬',route:'B',era:13,cost:300000000000000000,prereq:['rational_design', 'molecular_biology', 'ev:imatinib']},
+ {id:'checkpoint',name:'免疫チェックポイント阻害薬',route:'X',era:13,cost:600000000000000000,prereq:['monoclonal', 'ev:pd1']},
+ {id:'genome',name:'ゲノム情報と医療',route:'A',era:13,cost:400000000000000000,prereq:['molecular_biology', 'ev:human_genome']},
+ {id:'mrna_vaccine',name:'mRNAワクチン',route:'X',era:13,cost:800000000000000000,prereq:['recombinant', 'ev:mrna_modified']},
+ {id:'pharm_edu_6yr',name:'薬剤師教育の6年制（日本）',route:'C',era:13,cost:500000000000000000,prereq:['bungyo_modern', 'ev:six_year']},
+];
+const FACS=[
+ {id:'herb_garden',name:'薬草園',tech:'herb_collect',era:1,cost:15,prod:0.3},
+ {id:'workshop',name:'薬物加工所',tech:'drug_process',era:1,cost:150,prod:2.5},
+ {id:'library',name:'本草の書庫',tech:'honzo',era:1,cost:1500,prod:20},
+ {id:'formulary',name:'製剤所',tech:'extract',era:1,cost:12000,prod:130},
+ {id:'monastery',name:'修道院薬草園',tech:'monastic',era:2,cost:60000,prod:600},
+ {id:'translation_house',name:'翻訳の館',tech:'translation',era:3,cost:250000,prod:2200},
+ {id:'distillery',name:'蒸留工房',tech:'distill',era:3,cost:900000,prod:8000},
+ {id:'bimaristan',name:'病院薬局',tech:'islamic_pharmacy',era:3,cost:2500000,prod:22000},
+ {id:'school',name:'医学校',tech:'medschool',era:4,cost:8000000,prod:70000},
+ {id:'apothecary',name:'薬房',tech:'pharmacy_room',era:4,cost:24000000,prod:200000},
+ {id:'pharmacy_shop',name:'薬局',tech:'pharmacy',era:4,cost:70000000,prod:600000},
+ {id:'pharmacopoeia_office',name:'薬局方編纂所',tech:'pharmacopoeia',era:5,cost:220000000,prod:1900000},
+ {id:'trading_post',name:'薬種の商館',tech:'exotic_survey',era:6,cost:600000000,prod:5000000},
+ {id:'printing_house',name:'印刷工房',tech:'print_drug_books',era:6,cost:1600000000,prod:13000000},
+ {id:'chem_lab',name:'化学薬品工房',tech:'chem_remedies',era:6,cost:3200000000,prod:25000000},
+ {id:'guild_hall',name:'薬剤師組合の会館',tech:'guild_apothecary',era:6,cost:6000000000,prod:46000000},
+ {id:'field_garden',name:'観察用薬草園',tech:'field_herbal',era:6,cost:12000000000,prod:90000000},
+ {id:'pharma_committee',name:'薬局方委員会',tech:'national_pharma',era:6,cost:25000000000,prod:180000000},
+ {id:'botanic_house',name:'植物園',tech:'botanic_garden',era:7,cost:60000000000,prod:400000000},
+ {id:'drug_wholesale',name:'薬種問屋',tech:'drug_trade',era:7,cost:130000000000,prod:850000000},
+ {id:'clinic_ward',name:'臨床観察の病棟',tech:'clinical_dose',era:7,cost:300000000000,prod:1900000000},
+ {id:'alkaloid_works',name:'成分抽出の工房',tech:'alkaloid_isolation',era:8,cost:700000000000,prod:4000000000},
+ {id:'chem_institute',name:'大学の化学研究室',tech:'organic_chem',era:8,cost:1500000000000,prod:8500000000},
+ {id:'pharmacology_lab',name:'薬理学の研究室',tech:'exp_pharmacology',era:8,cost:3200000000000,prod:18000000000},
+ {id:'operating_room',name:'麻酔の手術室',tech:'inhal_anesthesia',era:8,cost:6500000000000,prod:36000000000},
+ {id:'pharmacy_school',name:'薬学校',tech:'pharm_education',era:8,cost:13000000000000,prod:70000000000},
+ {id:'hygiene_board',name:'衛生局',tech:'epidemiology',era:8,cost:26000000000000,prod:140000000000},
+ {id:'pharma_factory',name:'製薬工場',tech:'industrial_pharma',era:8,cost:55000000000000,prod:290000000000},
+ {id:'dye_works',name:'化学工場',tech:'synthetic_dyes',era:9,cost:110000000000000,prod:580000000000},
+ {id:'bacteriology_lab',name:'細菌学の研究所',tech:'bacteriology',era:9,cost:230000000000000,prod:1200000000000},
+ {id:'serum_institute',name:'血清の研究所',tech:'serum_therapy',era:9,cost:480000000000000,prod:2500000000000},
+ {id:'chemo_institute',name:'化学療法の研究所',tech:'chemotherapy',era:10,cost:1000000000000000,prod:5200000000000},
+ {id:'hormone_plant',name:'ホルモン製剤の工場',tech:'hormone',era:10,cost:2100000000000000,prod:11000000000000},
+ {id:'fermentation_plant',name:'発酵タンクの工場',tech:'antibiotic_industry',era:10,cost:4400000000000000,prod:23000000000000},
+ {id:'trial_center',name:'臨床試験の実施施設',tech:'clinical_trial',era:11,cost:9500000000000000,prod:48000000000000},
+ {id:'xray_lab',name:'結晶解析の研究室',tech:'structure_bio',era:11,cost:20000000000000000,prod:100000000000000},
+ {id:'review_agency',name:'審査機関',tech:'regulation',era:11,cost:42000000000000000,prod:210000000000000},
+ {id:'design_lab',name:'創薬の研究所',tech:'rational_design',era:11,cost:90000000000000000,prod:440000000000000},
+ {id:'community_pharmacy',name:'保険薬局',tech:'bungyo_modern',era:11,cost:190000000000000000,prod:920000000000000},
+ {id:'gene_lab',name:'遺伝子工学の研究所',tech:'recombinant',era:12,cost:400000000000000000,prod:1900000000000000},
+ {id:'bio_plant',name:'バイオ医薬品の工場',tech:'biologics',era:12,cost:850000000000000000,prod:4000000000000000},
+ {id:'genome_center',name:'ゲノム解析センター',tech:'genome',era:13,cost:1800000000000000000,prod:8500000000000000},
+];
+// 歴史イベント trig:{tech:[],fac:{id:n}}（研究＋施設の数で起こる）/ rg:地域 / fx:{fac:[ids]|'all', pct}
+const EVENTS=[
+ {id:'nippur',era:1,year:-2100,trig:{tech:['record'],fac:{herb_garden:5}},rg:['オリエント'],fx:{fac:['herb_garden'],pct:25}},
+ {id:'ebers',era:1,year:-1550,trig:{tech:['drug_process'],fac:{workshop:5}},rg:['オリエント'],fx:{fac:['workshop'],pct:25}},
+ {id:'hippocrates',era:1,year:-420,trig:{tech:['herb_class'],fac:{herb_garden:10}},rg:['ヨーロッパ'],fx:{fac:'all',pct:10}},
+ {id:'dioscorides',era:1,year:60,trig:{tech:['honzo'],fac:{library:5}},rg:['ヨーロッパ'],fx:{fac:['herb_garden','library'],pct:50,cut:{route:'A',pct:20}}},
+ {id:'galen',era:1,year:165,trig:{tech:['dry_grind'],fac:{formulary:5}},rg:['ヨーロッパ'],fx:{fac:['workshop','formulary'],pct:30,cut:{route:'B',pct:15}}},
+ {id:'preservation',era:2,year:500,trig:{tech:['transmit'],fac:{library:10}},rg:['ヨーロッパ'],fx:{fac:'all',pct:10}},
+ {id:'byzantium',era:2,year:600,trig:{tech:['drug_id'],fac:{library:15}},rg:['ヨーロッパ'],fx:{fac:['library'],pct:30}},
+ {id:'monastic_med',era:2,year:545,trig:{tech:['monastic'],fac:{monastery:5}},rg:['ヨーロッパ'],fx:{fac:['monastery'],pct:50}},
+ {id:'hunayn',era:3,year:850,trig:{tech:['translation'],fac:{translation_house:5}},rg:['イスラム'],fx:{fac:['translation_house'],pct:50,cut:{route:'X',pct:20}}},
+ {id:'jabir',era:3,year:800,trig:{tech:['distill'],fac:{distillery:5}},rg:['イスラム'],fx:{fac:['distillery'],pct:50}},
+ {id:'bimaristan_ev',era:3,year:850,trig:{fac:{bimaristan:1}},rg:['イスラム'],fx:{fac:['bimaristan'],pct:30}},
+ {id:'rhazes',era:3,year:900,trig:{tech:['islamic_pharmacy'],fac:{bimaristan:5}},rg:['イスラム'],fx:{fac:['bimaristan'],pct:20}},
+ {id:'avicenna',era:3,year:1025,trig:{fac:{bimaristan:10}},rg:['イスラム'],fx:{fac:'all',pct:10}},
+ {id:'salerno',era:4,year:1100,trig:{tech:['medschool'],fac:{school:5}},rg:['ヨーロッパ'],fx:{fac:['school'],pct:50,cut:{route:'X',pct:15}}},
+ {id:'constantine',era:4,year:1075,trig:{tech:['medschool','translation'],fac:{school:10}},rg:['ヨーロッパ', 'イスラム'],fx:{fac:['school','translation_house'],pct:25}},
+ {id:'hildegard',era:4,year:1150,trig:{fac:{monastery:15}},rg:['ヨーロッパ'],fx:{fac:['monastery'],pct:50}},
+ {id:'apothecary_ev',era:4,year:1200,trig:{tech:['pharmacy_room'],fac:{apothecary:5}},rg:['ヨーロッパ'],fx:{fac:['apothecary'],pct:50}},
+ {id:'antidotarium',era:4,year:1150,trig:{tech:['compounding'],fac:{apothecary:10}},rg:['ヨーロッパ'],fx:{fac:['apothecary','pharmacy_shop'],pct:30}},
+ {id:'melfi',era:4,year:1231,trig:{tech:['profession'],fac:{pharmacy_shop:5}},rg:['ヨーロッパ'],fx:{fac:'all',pct:20,cut:{route:'C',pct:20}}},
+ {id:'lupescissa',era:5,year:1351,trig:{tech:['iatro_prelude'],fac:{distillery:10}},rg:['ヨーロッパ'],fx:{fac:['distillery','formulary'],pct:30}},
+ {id:'separation_ev',era:5,year:1250,trig:{tech:['separation'],fac:{pharmacy_shop:10}},rg:['ヨーロッパ'],fx:{fac:['apothecary','pharmacy_shop'],pct:40}},
+ {id:'ricettario',era:5,year:1498,yl:'1498/99',trig:{tech:['pharmacopoeia'],fac:{pharmacopoeia_office:5}},rg:['ヨーロッパ'],fx:{fac:'all',pct:25}},
+ // ---- 近世編 ---- yl は年表示用のラベル（year は並べ替え用の目安）。イベントは自分の時代に入ってから起こる
+ {id:'paracelsus',era:6,year:1527,yl:'1520〜30年代',trig:{tech:['iatro_prelude'],fac:{distillery:25}},rg:['ヨーロッパ'],fx:{fac:['distillery','chem_lab'],pct:30,cut:{route:'B',pct:15}}},
+ {id:'fuchs',era:6,year:1542,trig:{tech:['honzo'],fac:{printing_house:10}},rg:['ヨーロッパ'],fx:{fac:['printing_house','field_garden'],pct:30}},
+ {id:'cordus',era:6,year:1546,yl:'1546〜47',trig:{tech:['pharmacopoeia'],fac:{pharmacopoeia_office:15}},rg:['ヨーロッパ'],fx:{fac:['pharmacopoeia_office','pharma_committee'],pct:30,cut:{route:'C',pct:10}}},
+ {id:'codex_badiano',era:6,year:1552,trig:{tech:['drug_id'],fac:{trading_post:10}},rg:['新大陸'],fx:{fac:['trading_post'],pct:25}},
+ {id:'orta',era:6,year:1563,trig:{tech:['drug_id'],fac:{library:25}},rg:['南アジア'],fx:{fac:['trading_post'],pct:30,cut:{route:'A',pct:10}}},
+ {id:'german_cities',era:6,year:1564,yl:'1564〜65',trig:{tech:['city_dispensatory'],fac:{pharmacopoeia_office:25}},rg:['ヨーロッパ'],fx:{fac:['pharmacopoeia_office','pharma_committee'],pct:25}},
+ {id:'monardes',era:6,year:1565,yl:'1565〜74',trig:{tech:['drug_id'],fac:{pharmacy_shop:25}},rg:['新大陸', 'ヨーロッパ'],fx:{fac:['trading_post'],pct:30}},
+ {id:'honzo_koumoku',era:6,year:1596,trig:{tech:['honzo'],fac:{library:20}},rg:['東アジア'],fx:{fac:['library','field_garden'],pct:40,cut:{route:'A',pct:10}}},
+ {id:'honzo_japan',era:6,year:1607,trig:{tech:['honzo_systematize'],fac:{library:30}},rg:['東アジア'],fx:{fac:['library'],pct:30}},
+ {id:'apothecaries_1617',era:6,year:1617,trig:{tech:['separation'],fac:{pharmacy_shop:30}},rg:['ヨーロッパ'],fx:{fac:['guild_hall','pharmacy_shop'],pct:30}},
+ {id:'londinensis',era:6,year:1618,trig:{tech:['guild_apothecary'],fac:{guild_hall:10}},rg:['ヨーロッパ'],fx:{fac:['pharma_committee'],pct:40,cut:{route:'C',pct:10}}},
+ {id:'cinchona_arrival',era:6,year:1635,yl:'1630〜40年代頃',trig:{tech:['drug_id'],fac:{apothecary:25}},rg:['新大陸', 'ヨーロッパ'],fx:{fac:['trading_post'],pct:25}},
+ {id:'paris_codex',era:6,year:1638,trig:{tech:['national_pharma'],fac:{pharma_committee:10}},rg:['ヨーロッパ'],fx:{fac:['pharma_committee','chem_lab'],pct:25}},
+ {id:'sydenham',era:7,year:1665,yl:'1660年代',trig:{tech:['opium_prep'],fac:{chem_lab:10}},rg:['ヨーロッパ'],fx:{fac:['clinic_ward'],pct:40,cut:{route:'X',pct:10}}},
+ {id:'chelsea',era:7,year:1673,trig:{tech:['botanic_garden'],fac:{botanic_house:10}},rg:['ヨーロッパ'],fx:{fac:['botanic_house'],pct:40}},
+ {id:'koishikawa',era:7,year:1684,trig:{tech:['field_herbal'],fac:{field_garden:10}},rg:['東アジア'],fx:{fac:['botanic_house','field_garden'],pct:30}},
+ {id:'edinburgh',era:7,year:1699,trig:{tech:['national_pharma'],fac:{pharma_committee:15}},rg:['ヨーロッパ'],fx:{fac:['pharma_committee'],pct:30}},
+ {id:'rose_case',era:7,year:1704,trig:{tech:['guild_apothecary'],fac:{guild_hall:15}},rg:['ヨーロッパ'],fx:{fac:['guild_hall','pharmacy_shop'],pct:40}},
+ {id:'variolation',era:7,year:1721,yl:'1718〜21頃',trig:{tech:['exotic_survey'],fac:{trading_post:15}},rg:['イスラム', 'ヨーロッパ'],fx:{fac:'all',pct:10}},
+ {id:'doshomachi',era:7,year:1722,trig:{tech:['drug_trade'],fac:{drug_wholesale:10}},rg:['東アジア'],fx:{fac:['drug_wholesale'],pct:50}},
+ {id:'lind',era:7,year:1747,trig:{tech:['clinical_obs'],fac:{trading_post:20}},rg:['ヨーロッパ'],fx:{fac:['clinic_ward'],pct:40}},
+ {id:'yakuhinkai',era:7,year:1757,trig:{tech:['honzo_systematize'],fac:{botanic_house:15}},rg:['東アジア'],fx:{fac:['botanic_house','library'],pct:30}},
+ {id:'withering',era:7,year:1785,trig:{tech:['clinical_obs'],fac:{field_garden:20}},rg:['ヨーロッパ'],fx:{fac:'all',pct:25}},
+ // ---- 近代編 ----
+ {id:'jenner',era:8,year:1798,trig:{tech:['treatment_compare'],fac:{clinic_ward:20}},rg:['ヨーロッパ'],fx:{fac:'all',pct:10}},
+ {id:'seishu',era:8,year:1804,trig:{tech:['clinical_dose'],fac:{clinic_ward:25}},rg:['東アジア'],fx:{fac:['operating_room'],pct:30}},
+ {id:'serturner',era:8,year:1805,yl:'1805〜1817',trig:{tech:['chem_analysis'],fac:{chem_lab:30}},rg:['ヨーロッパ'],fx:{fac:['alkaloid_works'],pct:40,cut:{route:'A',pct:15}}},
+ {id:'pelletier_caventou',era:8,year:1818,yl:'1818〜1820',trig:{tech:['alkaloid_isolation'],fac:{alkaloid_works:5}},rg:['ヨーロッパ'],fx:{fac:['alkaloid_works'],pct:40}},
+ {id:'usp_1820',era:8,year:1820,trig:{tech:['national_pharma'],fac:{pharma_committee:30}},rg:['新大陸'],fx:{fac:['pharma_committee'],pct:30,cut:{route:'C',pct:10}}},
+ {id:'magendie',era:8,year:1821,yl:'1810〜20年代',trig:{tech:['chem_analysis'],fac:{chem_lab:35}},rg:['ヨーロッパ'],fx:{fac:['pharmacology_lab'],pct:40,cut:{route:'X',pct:10}}},
+ {id:'phila_college',era:8,year:1821,trig:{tech:['guild_apothecary'],fac:{guild_hall:30}},rg:['新大陸'],fx:{fac:['pharmacy_school'],pct:40}},
+ {id:'siebold',era:8,year:1823,yl:'1823〜1829',trig:{tech:['crude_drug_quality'],fac:{botanic_house:30}},rg:['東アジア'],fx:{fac:['botanic_house', 'pharmacy_school'],pct:25}},
+ {id:'merck',era:8,year:1827,trig:{tech:['alkaloid_isolation'],fac:{alkaloid_works:10}},rg:['ヨーロッパ'],fx:{fac:['pharma_factory', 'alkaloid_works'],pct:30,cut:{route:'B',pct:10}}},
+ {id:'wohler',era:8,year:1828,trig:{tech:['organic_chem'],fac:{chem_institute:5}},rg:['ヨーロッパ'],fx:{fac:['chem_institute'],pct:40}},
+ {id:'pharm_society_gb',era:8,year:1841,trig:{tech:['pharm_education'],fac:{pharmacy_school:5}},rg:['ヨーロッパ'],fx:{fac:['pharmacy_school', 'pharmacy_shop'],pct:30}},
+ {id:'ether_anesthesia',era:8,year:1846,yl:'1842〜1846',trig:{tech:['clinical_dose'],fac:{clinic_ward:30}},rg:['新大陸'],fx:{fac:['operating_room'],pct:50,cut:{route:'B',pct:10}}},
+ {id:'chloroform',era:8,year:1847,trig:{tech:['inhal_anesthesia'],fac:{operating_room:5}},rg:['ヨーロッパ'],fx:{fac:['operating_room'],pct:30}},
+ {id:'semmelweis',era:8,year:1847,trig:{tech:['epidemiology'],fac:{hygiene_board:5}},rg:['ヨーロッパ'],fx:{fac:['hygiene_board'],pct:30}},
+ {id:'buchheim',era:8,year:1849,yl:'1847〜1860',trig:{tech:['exp_pharmacology'],fac:{pharmacology_lab:5}},rg:['ヨーロッパ'],fx:{fac:['pharmacology_lab'],pct:50}},
+ {id:'jotokan',era:8,year:1849,yl:'1849〜1850',trig:{tech:['epidemiology'],fac:{hygiene_board:15}},rg:['東アジア'],fx:{fac:['hygiene_board'],pct:40}},
+ {id:'hypodermic',era:8,year:1853,yl:'1850年代',trig:{tech:['alkaloid_isolation'],fac:{alkaloid_works:15}},rg:['ヨーロッパ'],fx:{fac:['operating_room', 'alkaloid_works'],pct:25}},
+ {id:'snow',era:8,year:1854,trig:{tech:['epidemiology'],fac:{hygiene_board:10}},rg:['ヨーロッパ'],fx:{fac:['hygiene_board'],pct:50,cut:{route:'X',pct:10}}},
+ {id:'perkin',era:9,year:1856,trig:{tech:['organic_chem'],fac:{chem_institute:15}},rg:['ヨーロッパ'],fx:{fac:['dye_works', 'chem_institute'],pct:40}},
+ {id:'pasteur',era:9,year:1860,yl:'1857〜1860年代',trig:{tech:['organic_chem'],fac:{chem_institute:20}},rg:['ヨーロッパ'],fx:{fac:['bacteriology_lab', 'chem_institute'],pct:30}},
+ {id:'niemann',era:9,year:1860,trig:{tech:['alkaloid_isolation'],fac:{alkaloid_works:25}},rg:['ヨーロッパ'],fx:{fac:['alkaloid_works'],pct:30}},
+ {id:'lister',era:9,year:1867,trig:{tech:['inhal_anesthesia'],fac:{operating_room:15}},rg:['ヨーロッパ'],fx:{fac:['operating_room'],pct:50}},
+ {id:'pharmacy_act_1868',era:9,year:1868,trig:{tech:['pharm_education'],fac:{pharmacy_school:15}},rg:['ヨーロッパ'],fx:{fac:['pharmacy_school', 'pharmacy_shop'],pct:40,cut:{route:'C',pct:10}}},
+ {id:'chloral',era:9,year:1869,trig:{tech:['synthetic_drugs'],fac:{pharma_factory:10}},rg:['ヨーロッパ'],fx:{fac:['pharma_factory'],pct:30}},
+ {id:'salicylic',era:9,year:1874,yl:'1860〜70年代',trig:{tech:['synthetic_drugs'],fac:{pharma_factory:15}},rg:['ヨーロッパ'],fx:{fac:['pharma_factory', 'dye_works'],pct:30}},
+ {id:'isei_1874',era:9,year:1874,trig:{tech:['national_pharmacopoeia'],fac:{hygiene_board:20}},rg:['東アジア'],fx:{fac:['hygiene_board', 'pharmacy_shop'],pct:30}},
+ {id:'koch_tb',era:9,year:1882,trig:{tech:['bacteriology'],fac:{bacteriology_lab:10}},rg:['ヨーロッパ'],fx:{fac:['bacteriology_lab'],pct:50,cut:{route:'X',pct:10}}},
+ {id:'antipyrine',era:9,year:1883,trig:{tech:['synthetic_drugs'],fac:{dye_works:10}},rg:['ヨーロッパ'],fx:{fac:['pharma_factory', 'dye_works'],pct:30}},
+ {id:'koller',era:9,year:1884,trig:{tech:['alkaloid_isolation', 'inhal_anesthesia'],fac:{operating_room:20}},rg:['ヨーロッパ'],fx:{fac:['operating_room'],pct:40}},
+ {id:'nagai_ephedrine',era:9,year:1885,yl:'1885〜1887',trig:{tech:['crude_drug_quality'],fac:{alkaloid_works:30}},rg:['東アジア'],fx:{fac:['alkaloid_works', 'pharmacy_school'],pct:40,cut:{route:'A',pct:10}}},
+ {id:'jp_1886',era:9,year:1886,trig:{tech:['japan_pharm_admin'],fac:{pharmacy_school:25}},rg:['東アジア'],fx:{fac:['pharmacy_school', 'pharmacy_shop'],pct:40}},
+ {id:'behring_kitasato',era:9,year:1890,yl:'1889〜1890',trig:{tech:['bacteriology'],fac:{bacteriology_lab:20}},rg:['ヨーロッパ', '東アジア'],fx:{fac:['bacteriology_lab', 'serum_institute'],pct:50}},
+ {id:'aspirin',era:9,year:1899,yl:'1897〜1899',trig:{tech:['synthetic_drugs'],fac:{pharma_factory:30}},rg:['ヨーロッパ'],fx:{fac:'all',pct:25}},
+ // ---- 現代編 ----
+ {id:'adrenaline',era:10,year:1900,yl:'1900〜1901',trig:{tech:['alkaloid_isolation'],fac:{alkaloid_works:40}},rg:['東アジア', '北米'],fx:{fac:['hormone_plant', 'alkaloid_works'],pct:40,cut:{route:'A',pct:10}}},
+ {id:'receptor_idea',era:10,year:1905,yl:'1900年代',trig:{tech:['exp_pharmacology'],fac:{pharmacology_lab:30}},rg:['ヨーロッパ'],fx:{fac:['pharmacology_lab'],pct:40,cut:{route:'X',pct:10}}},
+ {id:'salvarsan',era:10,year:1910,yl:'1909〜1910',trig:{tech:['synthetic_drugs'],fac:{dye_works:30}},rg:['ヨーロッパ', '東アジア'],fx:{fac:['chemo_institute', 'dye_works'],pct:40,cut:{route:'X',pct:10}}},
+ {id:'oryzanin',era:10,year:1910,yl:'1910〜1912',trig:{tech:['crude_drug_quality'],fac:{alkaloid_works:45}},rg:['東アジア', 'ヨーロッパ'],fx:{fac:['alkaloid_works'],pct:30}},
+ {id:'insulin',era:10,year:1922,yl:'1921〜1922',trig:{tech:['hormone'],fac:{hormone_plant:5}},rg:['北米'],fx:{fac:['hormone_plant'],pct:50}},
+ {id:'yakuzaishi_1925',era:10,year:1925,trig:{tech:['japan_pharm_admin'],fac:{pharmacy_school:40}},rg:['東アジア'],fx:{fac:['pharmacy_school', 'pharmacy_shop'],pct:30,cut:{route:'C',pct:10}}},
+ {id:'fleming',era:10,year:1928,yl:'1928〜1929',trig:{tech:['bacteriology'],fac:{bacteriology_lab:30}},rg:['ヨーロッパ'],fx:{fac:['bacteriology_lab'],pct:30}},
+ {id:'prontosil',era:10,year:1935,yl:'1932〜1935',trig:{tech:['chemotherapy'],fac:{chemo_institute:5}},rg:['ヨーロッパ'],fx:{fac:['chemo_institute', 'pharma_factory'],pct:40}},
+ {id:'elixir_sulfanilamide',era:10,year:1937,trig:{tech:['sulfa'],fac:{pharma_factory:40}},rg:['北米'],fx:{fac:['pharma_factory'],pct:25,cut:{route:'C',pct:10}}},
+ {id:'florey_chain',era:10,year:1940,yl:'1940〜1941',trig:{tech:['bacteriology'],fac:{bacteriology_lab:40}},rg:['ヨーロッパ'],fx:{fac:['bacteriology_lab', 'fermentation_plant'],pct:50,cut:{route:'B',pct:10}}},
+ {id:'penicillin_mass',era:10,year:1943,yl:'1943〜1945',trig:{tech:['antibiotic_industry'],fac:{fermentation_plant:5}},rg:['北米'],fx:{fac:['fermentation_plant'],pct:50}},
+ {id:'streptomycin',era:10,year:1944,yl:'1943〜1944',trig:{tech:['antibiotics'],fac:{fermentation_plant:10}},rg:['北米'],fx:{fac:['fermentation_plant'],pct:40}},
+ {id:'hodgkin',era:11,year:1946,yl:'1946〜1956',trig:{tech:['organic_chem'],fac:{chem_institute:40}},rg:['ヨーロッパ'],fx:{fac:['xray_lab', 'chem_institute'],pct:40}},
+ {id:'mrc_streptomycin',era:11,year:1948,trig:{tech:['antibiotic_industry'],fac:{fermentation_plant:15}},rg:['ヨーロッパ'],fx:{fac:['trial_center'],pct:50,cut:{route:'X',pct:10}}},
+ {id:'chlorpromazine',era:11,year:1952,yl:'1950年代初め',trig:{tech:['exp_pharmacology'],fac:{pharmacology_lab:40}},rg:['ヨーロッパ'],fx:{fac:['pharmacology_lab'],pct:40}},
+ {id:'dna_1953',era:11,year:1953,trig:{tech:['structure_bio'],fac:{xray_lab:5}},rg:['ヨーロッパ'],fx:{fac:['xray_lab'],pct:50,cut:{route:'A',pct:10}}},
+ {id:'yakujiho_1960',era:11,year:1960,yl:'1960〜1961',trig:{tech:['safety_law'],fac:{pharmacy_school:45}},rg:['東アジア'],fx:{fac:['pharmacy_shop'],pct:30}},
+ {id:'thalidomide',era:11,year:1961,yl:'1957〜1962',trig:{tech:['clinical_trial'],fac:{trial_center:5}},rg:['ヨーロッパ', '東アジア', '北米'],fx:{fac:'all',pct:10}},
+ {id:'kefauver_harris',era:11,year:1962,trig:{tech:['regulation'],fac:{review_agency:5}},rg:['北米'],fx:{fac:['review_agency'],pct:50,cut:{route:'C',pct:10}}},
+ {id:'propranolol',era:11,year:1964,yl:'1960年代',trig:{tech:['receptor'],fac:{pharmacology_lab:45}},rg:['ヨーロッパ'],fx:{fac:['design_lab', 'pharmacology_lab'],pct:40,cut:{route:'B',pct:10}}},
+ {id:'smon',era:11,year:1970,trig:{tech:['regulation'],fac:{review_agency:10}},rg:['東アジア'],fx:{fac:['review_agency'],pct:30}},
+ {id:'bungyo_1974',era:11,year:1974,trig:{tech:['japan_pharm_admin'],fac:{pharmacy_school:50}},rg:['東アジア'],fx:{fac:['community_pharmacy', 'pharmacy_shop'],pct:40}},
+ {id:'cohen_boyer',era:12,year:1973,yl:'1970年代',trig:{tech:['molecular_biology'],fac:{xray_lab:10}},rg:['北米'],fx:{fac:['gene_lab'],pct:50,cut:{route:'A',pct:10}}},
+ {id:'kohler_milstein',era:12,year:1975,trig:{tech:['molecular_biology'],fac:{serum_institute:30}},rg:['ヨーロッパ'],fx:{fac:['bio_plant', 'serum_institute'],pct:40}},
+ {id:'endo_statin',era:12,year:1976,yl:'1973〜1976',trig:{tech:['antibiotics'],fac:{fermentation_plant:20}},rg:['東アジア'],fx:{fac:['fermentation_plant'],pct:40,cut:{route:'A',pct:10}}},
+ {id:'cimetidine',era:12,year:1976,trig:{tech:['rational_design'],fac:{design_lab:5}},rg:['ヨーロッパ'],fx:{fac:['design_lab'],pct:40}},
+ {id:'relief_1979',era:12,year:1979,yl:'1979〜1980',trig:{tech:['pharmacovigilance'],fac:{review_agency:15}},rg:['東アジア'],fx:{fac:['review_agency', 'community_pharmacy'],pct:30}},
+ {id:'ivermectin',era:12,year:1981,yl:'1981〜1987',trig:{tech:['microbial_screening'],fac:{fermentation_plant:25}},rg:['東アジア', '北米'],fx:{fac:['fermentation_plant'],pct:40}},
+ {id:'human_insulin',era:12,year:1982,trig:{tech:['recombinant'],fac:{gene_lab:5}},rg:['北米'],fx:{fac:['gene_lab', 'bio_plant'],pct:50,cut:{route:'B',pct:10}}},
+ {id:'aids_drugs',era:12,year:1987,yl:'1980年代',trig:{tech:['regulation'],fac:{review_agency:20}},rg:['北米', '東アジア'],fx:{fac:['review_agency'],pct:30}},
+ {id:'ich_1990',era:12,year:1990,trig:{tech:['regulation'],fac:{review_agency:25}},rg:['ヨーロッパ', '北米', '東アジア'],fx:{fac:['review_agency', 'trial_center'],pct:40,cut:{route:'C',pct:10}}},
+ {id:'pd1',era:13,year:2014,yl:'1992〜2014',trig:{tech:['monoclonal'],fac:{bio_plant:10}},rg:['東アジア'],fx:{fac:['bio_plant'],pct:50}},
+ {id:'imatinib',era:13,year:2001,trig:{tech:['rational_design', 'molecular_biology'],fac:{design_lab:15}},rg:['ヨーロッパ', '北米'],fx:{fac:['design_lab'],pct:50,cut:{route:'B',pct:10}}},
+ {id:'human_genome',era:13,year:2003,trig:{tech:['molecular_biology'],fac:{gene_lab:15}},rg:['北米', 'ヨーロッパ', '東アジア'],fx:{fac:['genome_center', 'gene_lab'],pct:40,cut:{route:'A',pct:10}}},
+ {id:'six_year',era:13,year:2006,trig:{tech:['bungyo_modern'],fac:{community_pharmacy:20}},rg:['東アジア'],fx:{fac:['community_pharmacy'],pct:50,cut:{route:'C',pct:10}}},
+ {id:'mrna_modified',era:13,year:2020,yl:'2005〜2020',trig:{tech:['recombinant'],fac:{gene_lab:20}},rg:['北米', 'ヨーロッパ'],fx:{fac:'all',pct:25}},
+];
+// 時代の進行条件
+const ERA_REQ={
+ 2:{tech:['honzo','dry_grind'],ev:['dioscorides','galen']},
+ 3:{tech:['transmit','drug_id'],ev:['preservation']},
+ 4:{tech:['translation','islamic_pharmacy'],ev:['hunayn','rhazes']},
+ 5:{tech:['profession'],ev:['melfi']},
+ 6:{tech:['pharmacopoeia'],ev:['ricettario']},
+ 7:{tech:['national_pharma','guild_apothecary'],ev:['londinensis','apothecaries_1617']},
+ 8:{tech:['clinical_dose','treatment_compare'],ev:['withering','lind']},
+ 9:{tech:['alkaloid_isolation','exp_pharmacology'],ev:['serturner','pelletier_caventou']},
+ 10:{tech:['serum_therapy','synthetic_drugs'],ev:['behring_kitasato','aspirin']},
+ 11:{tech:['chemotherapy','antibiotics'],ev:['salvarsan','florey_chain']},
+ 12:{tech:['regulation','molecular_biology'],ev:['thalidomide','dna_1953']},
+ 13:{tech:['recombinant','monoclonal'],ev:['cohen_boyer','kohler_milstein']},
+};
+// 古代〜中世編の区切り（＝時代6への進行条件）と、近世編のクリア条件
+// 一覧の見出しに添える年代の目安
+const ERA_SPAN={1:'〜3世紀ごろ',2:'4〜7世紀ごろ',3:'8〜11世紀ごろ',4:'11〜13世紀ごろ',5:'14〜15世紀',6:'1500〜1650年ごろ',7:'1650〜1799年ごろ',8:'1800〜1855年ごろ',9:'1856〜1900年ごろ',10:'1900〜1945年ごろ',11:'1945〜1975年ごろ',12:'1975〜2000年ごろ',13:'2000年〜現在'};
+const REGIONS=['ヨーロッパ','イスラム','オリエント','南アジア','東アジア','新大陸','北米'];
+const REGION_NAME={'ヨーロッパ':'ヨーロッパ・地中海','イスラム':'イスラム世界','オリエント':'古代オリエント','南アジア':'南アジア','東アジア':'東アジア','新大陸':'新大陸','北米':'北アメリカ'};
+const MED_CLEAR={tech:['pharmacopoeia'],ev:['ricettario']};
+const KIN_CLEAR={tech:['clinical_dose','treatment_compare'],ev:['withering','lind']}; // 近世編の区切り（＝時代8への進行条件）
+const KD_CLEAR={tech:['serum_therapy','synthetic_drugs'],ev:['behring_kitasato','aspirin']}; // 近代編の区切り（＝時代10への進行条件）
+const CLEAR={tech:['checkpoint','mrna_vaccine'],ev:['pd1','mrna_modified']}; // 現代編のクリア（ゲームの最終目標）
+// 薬物図鑑の解放条件（技術を研究した／歴史イベントが起きた）
+const DRUGS=[
+ {id:'poppy',cond:'ev:dioscorides'},{id:'willow',cond:'herb_class'},{id:'garlic',cond:'ev:ebers'},{id:'frankincense',cond:'ev:dioscorides'},
+ {id:'honey',cond:'drug_process'},{id:'aloe',cond:'ev:dioscorides'},{id:'licorice',cond:'honzo'},{id:'ginseng',cond:'honzo'},
+ {id:'rhubarb',cond:'drug_id'},{id:'cinnabar',cond:'alchemy'},{id:'theriac',cond:'ev:galen'},{id:'rosewater',cond:'distill'},
+ {id:'senna',cond:'islamic_pharmacy'},{id:'aquavitae',cond:'ev:lupescissa'},
+ // 近世編
+ {id:'cinchona',cond:'bark_trial'},{id:'foxglove',cond:'ev:withering'},{id:'antimony_wine',cond:'ev:paris_codex'},{id:'sweet_vitriol',cond:'chem_remedies'},
+ {id:'laudanum',cond:'opium_prep'},{id:'tamarind',cond:'ev:orta'},{id:'tobacco',cond:'ev:monardes'},{id:'guaiacum',cond:'ev:monardes'},
+ {id:'coca',cond:'ev:monardes'},{id:'ipecac',cond:'exotic_survey'},{id:'mercury',cond:'chem_remedies'},{id:'ginseng_jp',cond:'ev:koishikawa'},
+ // 近代編
+ {id:'cowpox_vaccine',cond:'ev:jenner'},{id:'tsusensan',cond:'ev:seishu'},{id:'morphine',cond:'ev:serturner'},{id:'strychnine',cond:'ev:pelletier_caventou'},{id:'quinine',cond:'ev:pelletier_caventou'},{id:'ether',cond:'ev:ether_anesthesia'},{id:'nitrous_oxide',cond:'ev:ether_anesthesia'},{id:'chloroform',cond:'ev:chloroform'},{id:'carbolic',cond:'ev:lister'},{id:'cocaine',cond:'ev:niemann'},{id:'chloral',cond:'ev:chloral'},{id:'salicylic',cond:'ev:salicylic'},{id:'antipyrine',cond:'ev:antipyrine'},{id:'ephedrine',cond:'ev:nagai_ephedrine'},{id:'antitoxin',cond:'ev:behring_kitasato'},{id:'aspirin',cond:'ev:aspirin'},
+ // 現代編
+ {id:'adrenaline',cond:'ev:adrenaline'},{id:'salvarsan',cond:'ev:salvarsan'},{id:'oryzanin',cond:'ev:oryzanin'},{id:'insulin',cond:'ev:insulin'},{id:'prontosil',cond:'ev:prontosil'},{id:'penicillin',cond:'ev:florey_chain'},{id:'streptomycin',cond:'ev:streptomycin'},{id:'chlorpromazine',cond:'ev:chlorpromazine'},{id:'thalidomide',cond:'ev:thalidomide'},{id:'chinoform',cond:'ev:smon'},{id:'propranolol',cond:'ev:propranolol'},{id:'cimetidine',cond:'ev:cimetidine'},{id:'compactin',cond:'ev:endo_statin'},{id:'ivermectin',cond:'ev:ivermectin'},{id:'human_insulin',cond:'ev:human_insulin'},{id:'zidovudine',cond:'ev:aids_drugs'},{id:'imatinib',cond:'ev:imatinib'},{id:'nivolumab',cond:'ev:pd1'},{id:'mrna_vaccine',cond:'ev:mrna_modified'}];
+// 「人物・文献」に数える歴史イベント
+// 人物図鑑：cond は全部そろうと登場（'ev:'歴史／研究id／'fac:施設:数'）。人物の時代に入ってから登場する
+const PEOPLE=[
+ {id:'shennong',era:1,rg:['東アジア'],cond:['honzo']},
+ {id:'imhotep',era:1,rg:['オリエント'],cond:['record', 'fac:herb_garden:10']},
+ {id:'hippocrates_p',era:1,rg:['ヨーロッパ'],cond:['ev:hippocrates']},
+ {id:'theophrastus',era:1,rg:['ヨーロッパ'],cond:['herb_class', 'fac:herb_garden:15']},
+ {id:'dioscorides_p',era:1,rg:['ヨーロッパ'],cond:['ev:dioscorides']},
+ {id:'pliny',era:1,rg:['ヨーロッパ'],cond:['fac:library:10']},
+ {id:'celsus',era:1,rg:['ヨーロッパ'],cond:['extract', 'fac:formulary:10']},
+ {id:'galen_p',era:1,rg:['ヨーロッパ'],cond:['ev:galen']},
+ {id:'zhang_zhongjing',era:1,rg:['東アジア'],cond:['dry_grind', 'fac:workshop:15']},
+ {id:'charaka',era:1,rg:['南アジア'],cond:['fac:herb_garden:20']},
+ {id:'sushruta',era:1,rg:['南アジア'],cond:['fac:workshop:20']},
+ {id:'ge_hong',era:2,rg:['東アジア'],cond:['transmit', 'fac:formulary:15']},
+ {id:'tao_hongjing',era:2,rg:['東アジア'],cond:['drug_id', 'fac:library:20']},
+ {id:'cassiodorus',era:2,rg:['ヨーロッパ'],cond:['ev:monastic_med']},
+ {id:'aetius',era:2,rg:['ヨーロッパ'],cond:['ev:byzantium']},
+ {id:'paul_aegina',era:2,rg:['ヨーロッパ'],cond:['ev:byzantium', 'fac:library:25']},
+ {id:'sun_simiao',era:2,rg:['東アジア'],cond:['drug_id', 'fac:formulary:20']},
+ {id:'su_jing',era:2,rg:['東アジア'],cond:['drug_id', 'fac:library:30']},
+ {id:'hunayn_p',era:3,rg:['イスラム'],cond:['ev:hunayn']},
+ {id:'jabir_p',era:3,rg:['イスラム'],cond:['ev:jabir']},
+ {id:'razi',era:3,rg:['イスラム'],cond:['ev:rhazes']},
+ {id:'ibn_sina',era:3,rg:['イスラム'],cond:['ev:avicenna']},
+ {id:'zahrawi',era:3,rg:['イスラム'],cond:['fac:bimaristan:15']},
+ {id:'biruni',era:3,rg:['イスラム'],cond:['fac:bimaristan:20']},
+ {id:'tamba',era:3,rg:['東アジア'],cond:['translation', 'fac:translation_house:15']},
+ {id:'constantine_p',era:4,rg:['ヨーロッパ', 'イスラム'],cond:['ev:constantine']},
+ {id:'trota',era:4,rg:['ヨーロッパ'],cond:['ev:salerno']},
+ {id:'hildegard_p',era:4,rg:['ヨーロッパ'],cond:['ev:hildegard']},
+ {id:'nicolaus',era:4,rg:['ヨーロッパ'],cond:['ev:antidotarium']},
+ {id:'frederick2',era:4,rg:['ヨーロッパ'],cond:['ev:melfi']},
+ {id:'ibn_baytar',era:4,rg:['イスラム'],cond:['pharmacy_room', 'fac:apothecary:15']},
+ {id:'rupescissa_p',era:5,rg:['ヨーロッパ'],cond:['ev:lupescissa']},
+ {id:'paracelsus_p',era:6,rg:['ヨーロッパ'],cond:['ev:paracelsus']},
+ {id:'brunfels',era:6,rg:['ヨーロッパ'],cond:['fac:printing_house:5']},
+ {id:'fuchs_p',era:6,rg:['ヨーロッパ'],cond:['ev:fuchs']},
+ {id:'cordus_p',era:6,rg:['ヨーロッパ'],cond:['ev:cordus']},
+ {id:'de_la_cruz',era:6,rg:['新大陸'],cond:['ev:codex_badiano']},
+ {id:'badiano',era:6,rg:['新大陸'],cond:['ev:codex_badiano']},
+ {id:'orta_p',era:6,rg:['南アジア'],cond:['ev:orta']},
+ {id:'monardes_p',era:6,rg:['ヨーロッパ', '新大陸'],cond:['ev:monardes']},
+ {id:'clusius',era:6,rg:['ヨーロッパ'],cond:['ev:orta', 'fac:field_garden:5']},
+ {id:'li_shizhen',era:6,rg:['東アジア'],cond:['ev:honzo_koumoku']},
+ {id:'hayashi_razan',era:6,rg:['東アジア'],cond:['ev:honzo_japan']},
+ {id:'de_laune',era:6,rg:['ヨーロッパ'],cond:['ev:apothecaries_1617']},
+ {id:'mayerne',era:6,rg:['ヨーロッパ'],cond:['ev:londinensis']},
+ {id:'van_helmont',era:6,rg:['ヨーロッパ'],cond:['iatrochemistry', 'fac:chem_lab:15']},
+ {id:'sydenham_p',era:7,rg:['ヨーロッパ'],cond:['ev:sydenham']},
+ {id:'boyle',era:7,rg:['ヨーロッパ'],cond:['chem_analysis']},
+ {id:'lemery',era:7,rg:['ヨーロッパ'],cond:['chem_analysis', 'fac:chem_lab:25']},
+ {id:'linnaeus',era:7,rg:['ヨーロッパ'],cond:['botanic_garden', 'fac:botanic_house:20']},
+ {id:'montagu',era:7,rg:['ヨーロッパ', 'イスラム'],cond:['ev:variolation']},
+ {id:'lind_p',era:7,rg:['ヨーロッパ'],cond:['ev:lind']},
+ {id:'withering_p',era:7,rg:['ヨーロッパ'],cond:['ev:withering']},
+ {id:'kaibara',era:7,rg:['東アジア'],cond:['honzo_systematize', 'fac:library:40']},
+ {id:'yoshimune',era:7,rg:['東アジア'],cond:['ev:koishikawa']},
+ {id:'ogawa_shosen',era:7,rg:['東アジア'],cond:['ev:koishikawa', 'fac:botanic_house:5']},
+ {id:'tamura_ransui',era:7,rg:['東アジア'],cond:['ev:yakuhinkai']},
+ {id:'gennai',era:7,rg:['東アジア'],cond:['ev:yakuhinkai']},
+ {id:'sugita',era:7,rg:['東アジア'],cond:['clinical_obs', 'fac:clinic_ward:5']},
+ {id:'maeno',era:7,rg:['東アジア'],cond:['clinical_obs', 'fac:clinic_ward:5']},
+ // 近代編
+ {id:'jenner_p',era:8,rg:['ヨーロッパ'],cond:['ev:jenner']},
+ {id:'hanaoka',era:8,rg:['東アジア'],cond:['ev:seishu']},
+ {id:'serturner_p',era:8,rg:['ヨーロッパ'],cond:['ev:serturner']},
+ {id:'pelletier',era:8,rg:['ヨーロッパ'],cond:['ev:pelletier_caventou']},
+ {id:'caventou',era:8,rg:['ヨーロッパ'],cond:['ev:pelletier_caventou', 'fac:alkaloid_works:10']},
+ {id:'magendie_p',era:8,rg:['ヨーロッパ'],cond:['ev:magendie']},
+ {id:'bernard',era:8,rg:['ヨーロッパ'],cond:['exp_pharmacology', 'fac:pharmacology_lab:10']},
+ {id:'wohler_p',era:8,rg:['ヨーロッパ'],cond:['ev:wohler']},
+ {id:'liebig',era:8,rg:['ヨーロッパ'],cond:['organic_chem', 'fac:chem_institute:10']},
+ {id:'siebold_p',era:8,rg:['東アジア', 'ヨーロッパ'],cond:['ev:siebold']},
+ {id:'ogata',era:8,rg:['東アジア'],cond:['ev:jotokan']},
+ {id:'long',era:8,rg:['新大陸'],cond:['ev:ether_anesthesia']},
+ {id:'wells',era:8,rg:['新大陸'],cond:['ev:ether_anesthesia', 'fac:operating_room:5']},
+ {id:'morton',era:8,rg:['新大陸'],cond:['ev:ether_anesthesia', 'fac:operating_room:10']},
+ {id:'simpson',era:8,rg:['ヨーロッパ'],cond:['ev:chloroform']},
+ {id:'semmelweis_p',era:8,rg:['ヨーロッパ'],cond:['ev:semmelweis']},
+ {id:'buchheim_p',era:8,rg:['ヨーロッパ'],cond:['ev:buchheim']},
+ {id:'snow_p',era:8,rg:['ヨーロッパ'],cond:['ev:snow']},
+ {id:'perkin_p',era:9,rg:['ヨーロッパ'],cond:['ev:perkin']},
+ {id:'pasteur_p',era:9,rg:['ヨーロッパ'],cond:['ev:pasteur']},
+ {id:'niemann_p',era:9,rg:['ヨーロッパ'],cond:['ev:niemann']},
+ {id:'lister_p',era:9,rg:['ヨーロッパ'],cond:['ev:lister']},
+ {id:'schmiedeberg',era:9,rg:['ヨーロッパ'],cond:['exp_pharmacology', 'fac:pharmacology_lab:20']},
+ {id:'kolbe',era:9,rg:['ヨーロッパ'],cond:['ev:salicylic']},
+ {id:'koch_p',era:9,rg:['ヨーロッパ'],cond:['ev:koch_tb']},
+ {id:'knorr',era:9,rg:['ヨーロッパ'],cond:['ev:antipyrine']},
+ {id:'koller_p',era:9,rg:['ヨーロッパ'],cond:['ev:koller']},
+ {id:'nagai_p',era:9,rg:['東アジア'],cond:['ev:nagai_ephedrine']},
+ {id:'behring',era:9,rg:['ヨーロッパ'],cond:['ev:behring_kitasato']},
+ {id:'kitasato',era:9,rg:['東アジア', 'ヨーロッパ'],cond:['ev:behring_kitasato']},
+ {id:'hoffmann',era:9,rg:['ヨーロッパ'],cond:['ev:aspirin']},
+ // 現代編
+ {id:'ehrlich',era:10,rg:['ヨーロッパ'],cond:['ev:salvarsan']},
+ {id:'hata',era:10,rg:['東アジア', 'ヨーロッパ'],cond:['ev:salvarsan', 'fac:chemo_institute:5']},
+ {id:'takamine',era:10,rg:['東アジア', '北米'],cond:['ev:adrenaline']},
+ {id:'uenaka',era:10,rg:['東アジア', '北米'],cond:['ev:adrenaline', 'fac:hormone_plant:5']},
+ {id:'langley',era:10,rg:['ヨーロッパ'],cond:['ev:receptor_idea']},
+ {id:'suzuki_umetaro',era:10,rg:['東アジア'],cond:['ev:oryzanin']},
+ {id:'funk',era:10,rg:['ヨーロッパ'],cond:['ev:oryzanin', 'fac:hormone_plant:10']},
+ {id:'banting',era:10,rg:['北米'],cond:['ev:insulin']},
+ {id:'best',era:10,rg:['北米'],cond:['ev:insulin', 'fac:hormone_plant:10']},
+ {id:'collip',era:10,rg:['北米'],cond:['ev:insulin', 'fac:hormone_plant:15']},
+ {id:'macleod',era:10,rg:['北米'],cond:['ev:insulin', 'fac:hormone_plant:20']},
+ {id:'fleming',era:10,rg:['ヨーロッパ'],cond:['ev:fleming']},
+ {id:'florey',era:10,rg:['ヨーロッパ'],cond:['ev:florey_chain']},
+ {id:'chain',era:10,rg:['ヨーロッパ'],cond:['ev:florey_chain', 'fac:fermentation_plant:5']},
+ {id:'heatley',era:10,rg:['ヨーロッパ'],cond:['ev:florey_chain', 'fac:fermentation_plant:10']},
+ {id:'domagk',era:10,rg:['ヨーロッパ'],cond:['ev:prontosil']},
+ {id:'waksman',era:10,rg:['北米'],cond:['ev:streptomycin']},
+ {id:'schatz',era:10,rg:['北米'],cond:['ev:streptomycin', 'fac:fermentation_plant:15']},
+ {id:'hodgkin',era:11,rg:['ヨーロッパ'],cond:['ev:hodgkin']},
+ {id:'bradford_hill',era:11,rg:['ヨーロッパ'],cond:['ev:mrc_streptomycin']},
+ {id:'franklin',era:11,rg:['ヨーロッパ'],cond:['ev:dna_1953']},
+ {id:'watson_crick',era:11,rg:['ヨーロッパ', '北米'],cond:['ev:dna_1953', 'fac:xray_lab:10']},
+ {id:'kelsey',era:11,rg:['北米'],cond:['ev:thalidomide']},
+ {id:'lenz',era:11,rg:['ヨーロッパ'],cond:['ev:thalidomide', 'fac:trial_center:10']},
+ {id:'black',era:11,rg:['ヨーロッパ'],cond:['ev:propranolol']},
+ {id:'endo',era:12,rg:['東アジア'],cond:['ev:endo_statin']},
+ {id:'omura',era:12,rg:['東アジア'],cond:['ev:ivermectin']},
+ {id:'campbell',era:12,rg:['北米'],cond:['ev:ivermectin', 'fac:fermentation_plant:30']},
+ {id:'kohler_milstein',era:12,rg:['ヨーロッパ'],cond:['ev:kohler_milstein']},
+ {id:'boyer_cohen',era:12,rg:['北米'],cond:['ev:cohen_boyer']},
+ {id:'honjo',era:13,rg:['東アジア'],cond:['ev:pd1']},
+ {id:'kariko',era:13,rg:['ヨーロッパ', '北米'],cond:['ev:mrna_modified']}];
+const RATE=1.15, UP_OWN=10, UP_MULT=2, UP_COSTX=60;
+
+/* ===== 文章コンテンツ（説明文はここだけを編集すればOK） ===== */
+const CONTENT={
+ "techDesc": {
+  "record": "薬の材料や調合法を、粘土板やパピルスに書き残す。人の記憶だけに頼っていた知識が、世代や土地を越えて受け継がれるようになる出発点。メソポタミアやエジプトには、薬の処方を記した古い文書が残っている。",
+  "herb_collect": "身近な植物の中から、痛みや熱、傷に効くものを見つけて採集する。どの草が効き、どの草が害になるかという経験の積み重ねが、薬の歴史の最も古い層をなしている。",
+  "herb_class": "集めた植物を、形・におい・味・効き目などで分け、見分けられるようにする。似た植物の取り違えは命に関わるため、名前をつけて区別することが薬の安全の第一歩になった。",
+  "honzo": "薬になる植物・動物・鉱物を体系的に整理し、書物にまとめる学問。西洋ではディオスコリデスの『薬物誌』、東洋では『神農本草経』に代表される本草学の伝統がこれにあたる。",
+  "drug_process": "薬材を洗う・煮る・焼く・刻むなどして、使いやすく効きやすくする。毒の強い薬材の毒を和らげる加工もあり、同じ材料でも加工の仕方で効き目が変わることが知られていった。",
+  "dry_grind": "薬材を乾かして長く保存し、粉にして量って使えるようにする。乾燥と粉砕によって、季節を問わず薬を備え、決まった量を処方できるようになる。",
+  "extract": "水・酒・油などに薬材の成分を溶かし出し、煎じ薬・浸剤・軟膏などをつくる。植物などを原料とし、抽出や混合によって調製するこうした製剤は、後世、ガレノスの名をとって「ガレヌス製剤」と呼ばれるようになった。",
+  "drug_id": "産地・形・色・におい・味などから、薬材の種類と品質を見分ける。高価な薬ほど偽物や混ぜ物が出回ったため、確かな薬物誌の知識に基づく鑑定が欠かせなかった。",
+  "transmit": "古典の医学書・薬物書を書き写して保存し、次の世代へ伝える。ヨーロッパでは、15世紀半ばに活版印刷が広まるまで、医学書の多くは写本によって伝えられた。",
+  "monastic": "修道院が病者を看護し、薬草園を営む。写字室での医学書の書写と、薬草の栽培・利用が一つの場所で結びつき、中世ヨーロッパの医療の担い手の一つとなった。",
+  "translation": "ギリシア語などの医学書をシリア語やアラビア語へ訳し、注釈をつけて検討する。9世紀のバグダッドでは翻訳事業が盛んになり、古代の知が新しい言葉で読み継がれた。",
+  "distill": "液体を加熱して蒸気にし、冷やして再び液体として集め、成分を分け取る。イスラム世界で器具と技術が大きく発達し、芳香水づくりや薬の精製に用いられた。",
+  "islamic_pharmacy": "病院に付属する薬局や、薬を専門に扱う人々（アラビア語でサイダラーニーなどと呼ばれた）による実践。薬の調製・保管・品質の管理が、医師の仕事とは別の専門の仕事として形づくられていった。現代の薬剤師とそのまま同じ職業ではない。",
+  "alchemy": "物質を精製・変化させる実験技術の総称。卑金属を金に変える試みは実らなかったが、蒸留・昇華・結晶化などの操作や実験器具が発達し、のちの化学の土台となった。",
+  "medschool": "医学・薬学を教え学ぶ場を設け、知識を体系的に伝える。11世紀ごろのサレルノをはじめ、やがて各地の大学でも医学が教えられるようになる。",
+  "pharmacy_room": "薬を調製して保管・提供する専用の場所が、診察の場や一般の商いから分かれていく。ヨーロッパの都市では12〜13世紀ごろから薬を扱う店が各地に現れたが、時期や形は地域によって大きく異なる。",
+  "compounding": "処方に従って薬を量り、混ぜ、整える。分量の単位と手順が処方集に書き留められることで、誰がつくっても同じ薬になるよう標準化が進んだ。",
+  "pharmacy": "薬の調製を専門に担う人々と店が現れ、調製の技が師から弟子へと受け継がれていく。都市によっては、薬を扱う人々が組合に加わり、品質や価格の取り決めが行われた。",
+  "profession": "薬を扱う人々が、医師とは別の専門の担い手として、知識と責任を持つようになっていく。その形や時期は地域によって異なり、現代の薬剤師とそのまま同じではない。",
+  "separation": "診断・処方する医師と、薬を調製する者の役割を、制度の上で区別しようとする考え方。13世紀のシチリア王国の法令は、そうした制度的な動きの一例とされる。地域によって形や時期は大きく異なり、現代の医薬分業とそのまま同じではない。",
+  "iatro_prelude": "錬金術の実験技術を医療に応用する発想が生まれる。蒸留で得たアルコールを薬とみなす考えなどが、のちの医化学への前段階となった。",
+  "pharmacopoeia": "薬の処方・品質・調製法を、公的な権威のもとで定めた規範。誰がどこで調剤しても同じ薬になることを目指したもので、15世紀末のフィレンツェの『リチェッタリオ』は、その初期の重要な例とされる。",
+  "exotic_survey": "大航海を通じて、インドや新大陸の薬物が記録され、ヨーロッパへ紹介された。ゴアのオルタやセビリアのモナルデスのように、遠い土地の薬を見聞にもとづいて書き残す医師たちが現れた。",
+  "field_herbal": "古典の記述だけでなく、実物の観察に基づいて薬草を記録する動きが広がった。印刷された挿絵が、離れた場所の人々にとっても植物を見分ける手がかりになった。",
+  "honzo_systematize": "東アジアで、薬物を分類・整理した大部の本草書がまとめられた。明の『本草綱目』はその代表で、書物とともに日本など周辺の地域へも伝わった。",
+  "bark_trial": "南米由来の樹皮（キナ皮）がヨーロッパに伝わり、熱病の薬として使われるようになった。この段階では樹皮そのものを薬として用いており、成分を取り出すのは19世紀の仕事になる。",
+  "botanic_garden": "薬草園が、薬草を育てるだけでなく、研究・教育・標本収集の場にもなっていった。ロンドンのチェルシー薬草園や江戸の小石川御薬園のように、各地で薬草園が整えられた。",
+  "iatrochemistry": "化学的な物質を医療に用いる考え方。16世紀のパラケルススが鉱物や金属の薬を説き、ガレノス流の医学との論争を呼んだ。のちの化学的な薬剤の調製につながっていく。",
+  "chem_remedies": "鉱物・金属などを用いた薬剤が調製され、一部は薬局方にも載るようになった。アンチモンや水銀の薬のように、毒性と有用性をめぐる議論が長く続いた。",
+  "opium_prep": "アヘンを含む製剤が整理され、処方に使われた。17世紀のシデナムが用いたアヘンチンキ（ラウダヌム）はその一例で、鎮痛や鎮静に用いられた。",
+  "chem_analysis": "物質の性質や反応を観察し、精製・分析する化学が進んだ。植物から作用のある部分を取り出す試みは古くからあったが、特定の有効成分を純粋な結晶として単離するのは19世紀以降のことで、ここではまだその手前の段階にあたる。",
+  "city_dispensatory": "ニュルンベルクなどの都市が、調剤書を公的な基準として用いた。都市ごとに定められた調剤書は、薬局が同じ処方で薬をつくるための拠り所となった。",
+  "guild_apothecary": "ロンドンで薬剤師が食料品商組合から分離・独立し、固有の団体を持った。団体は徒弟の育成などを通じて、薬剤師の職能を支える場となった。",
+  "national_pharma": "ロンドン、パリ、エディンバラなどで、医師団体などの関与のもとに薬局方が作られた。化学的な薬剤をどう載せるかは、薬局方の内容をめぐる論点の一つになった。",
+  "apothecary_practice": "診察・助言・処方・調剤を行う薬剤師の実務が、医師側との対立の中で形づくられていった（英国）。1704年のローズ事件の判決は、薬剤師の実務をめぐる重要な法的先例となった。",
+  "drug_trade": "輸入薬種の検査・集散が、仲間などの組織によって制度化された。大坂・道修町では、長崎から入った唐薬種が検査を経て全国へ送り出された。",
+  "print_drug_books": "印刷が、薬物書や薬局方を広い範囲に流通させた。手で写すよりはるかに多くの同じ内容の本が出回り、挿絵や処方を各地で共有できるようになった。",
+  "specimen_meeting": "各地の産物を集めて展示・鑑定する会が開かれ、本草学の裾野が広がった。江戸では平賀源内らの物産会（薬品会）が知られる。",
+  "clinical_obs": "病気の経過や薬の効き方を、症例の観察と記録で捉える見方が広がった。17世紀イングランドのシデナムは、病気をよく観察して記録することを重んじた。",
+  "clinical_dose": "症例記録をもとに、用量・効果・副作用を検討する試みが現れた。ウィザリングはジギタリスを用いた多くの症例を記録し、調製法や量を検討した。",
+  "treatment_compare": "複数の治療法を比べて検討する試みが現れた。リンドが壊血病の患者を組に分けて治療を比べた例は、その重要な一例とされる。",
+  "alkaloid_isolation": "植物から、作用の強い成分（アルカロイド）を結晶として取り出す。生薬に含まれる特定の成分を取り出し、その性質や量を個別に扱えるようになる流れの一つ。19世紀初めのモルヒネやキニーネの単離がその代表例。",
+  "crude_drug_quality": "生薬に含まれる成分の量で、品質を比べようとする考え方が広がる。産地や見た目による鑑定に、化学的な分析が加わっていく。",
+  "plant_chem_japan": "日本で、伝統的に使われてきた生薬の成分を化学的に調べる研究が進む。麻黄からのエフェドリンの単離は、その重要な成果の一つ。",
+  "organic_chem": "生き物に由来する物質の成り立ちを化学的に調べ、組み立てる学問。19世紀には大学の研究室で多くの化学者が育ち、のちの合成化学の土台となった。",
+  "inhal_anesthesia": "エーテルやクロロホルムなどを吸わせて、手術中の痛みを取り除く方法。1840年代に各地で試みられ、外科手術のあり方を大きく変えた。",
+  "industrial_pharma": "単離した成分などを、品質をそろえて製造し、販売する。薬局や化学実験室で行われていた医薬品成分の製造が、次第に工業的な規模へ広がっていく。",
+  "synthetic_dyes": "コールタールなどを原料に、染料を化学的に合成する工業が興る。有機化学の研究と、大規模な化学工業の発展を示す流れ。",
+  "synthetic_drugs": "生薬から得られる物質だけでなく、化学的に合成した物質そのものを医薬品として利用する流れ。19世紀後半には、催眠薬や解熱薬などの合成医薬品が登場した。",
+  "local_anesthesia": "体の一部だけの感覚を止めて処置を行う方法。1880年代に、コカインを目の手術に用いる方法が報告され、広まった。",
+  "national_pharmacopoeia": "都市ごとの薬局方とは別に、国全体で共通に使う薬局方を定める。19世紀には、国のレベルで薬の品質や調製の基準を定める薬局方が、各国で整備されていった。",
+  "pharm_education": "薬剤師を、徒弟制度だけでなく学校で体系的に教育する。19世紀には、各地で薬学の教育機関が設けられた。",
+  "pharmacy_law": "薬剤師・薬種商の登録や、毒物の販売などを法律で定める。薬の扱いが、法の枠組みの中に置かれていく。",
+  "japan_pharm_admin": "明治の日本で、医療・薬事を国の行政として整える取り組みが進む。医制の公布や日本薬局方の制定など、近代的な制度づくりが続いた。",
+  "exp_pharmacology": "動物実験などで、薬が体のどこにどう働くかを調べる学問。観察や経験だけでなく、実験によって薬の作用を確かめようとする方向が強まった。",
+  "injection": "薬液を一定量はかって、皮下などに投与する方法。1850年代に皮下注射の器具と方法が発展し、単離された成分の使い方を広げた。",
+  "epidemiology": "病気の起こり方を、地域や集団の記録から調べる方法。患者の分布や生活の条件を比べることで、病気の広がり方を考える。",
+  "sanitation": "上下水道の整備や住環境の改善など、地域全体で病気を防ごうとする取り組み。19世紀のヨーロッパの都市で大きく進んだ。",
+  "germ_theory": "微生物が発酵や腐敗、そして病気に関わるという考え方。19世紀後半に、多くの研究者の仕事を通じて段階的に形づくられていった。",
+  "antisepsis": "石炭酸などの薬品を用いて、傷や器具などの汚染を抑え、感染を防ごうとする方法（防腐法）。微生物を持ち込まないようにする無菌法とは区別されるが、その発展にも影響した。",
+  "bacteriology": "病気ごとに原因となる細菌を探し、培養して調べる学問。19世紀後半に、純粋培養や染色などの方法が整えられた。",
+  "serum_therapy": "免疫を得た動物の血清に含まれる抗体（抗毒素）で、細菌の出す毒素を中和しようとする治療法。細菌学、毒素の研究、免疫の研究を背景に生まれた。",
+  "chemotherapy": "病原体や病変組織などを選択的に標的として、化学物質によって病気を治療しようとする考え方。20世紀初めのエールリヒらの研究が、その代表的な例とされる。",
+  "hormone": "体内で作用するホルモンを単離・精製し、その作用を明らかにして医薬品として利用する研究。アドレナリンやインスリンなどが治療に用いられるようになった。",
+  "vitamin": "食物に含まれる微量な成分が足りないと病気が起こるという考え方と、その成分の研究。脚気や壊血病などの理解が進んだ。",
+  "receptor": "薬物などが、細胞にある特定の受容体と相互作用することで作用を示す、という考え方。20世紀初めに原型が示され、のちの薬理学の基本的な考え方の一つとなった。",
+  "sulfa": "細菌感染症に対する合成の化学療法薬。1930年代に登場し、抗生物質が広まる前の感染症治療を支えた。",
+  "safety_law": "医薬品を販売する前に、安全性や有効性を科学的なデータによって評価する規制が整備されていく。1930年代の米国では、薬害事件をきっかけに安全性の審査が求められるようになった。",
+  "antibiotics": "微生物などが産生する物質をはじめ、微生物の増殖や生存を抑える薬が発展する。1940年代のペニシリンの実用化が大きな転機となった。",
+  "antibiotic_industry": "大型タンクでの発酵（深部培養）などによって、抗生物質を工業的に大量につくる。第二次世界大戦中に大きく進んだ。",
+  "clinical_trial": "治療を無作為に割り付けて比較し、効果を評価する方法。1940年代の英国の結核の試験が、代表的な例として知られる。",
+  "psychopharm": "精神疾患の症状を改善する薬が開発され、精神科の治療に薬物療法が広く取り入れられていく。",
+  "structure_bio": "X線結晶解析などで、薬や生体分子の立体構造を調べる。構造がわかることで、分子の働きを考える手がかりが得られる。",
+  "molecular_biology": "遺伝子、DNA、RNA、たんぱく質などの生命現象を、分子のレベルで研究する分野。20世紀半ば以降に大きく発展した。",
+  "regulation": "医薬品の承認にあたり、品質・安全性・有効性を、臨床試験などのデータにもとづいて審査する制度が整備される。制度の形は国によって異なる。",
+  "pharmacovigilance": "医薬品の使用後に生じた副作用などの情報を集めて評価し、安全対策につなげる仕組み。日本では、副作用の被害を救済する制度も別に設けられた。",
+  "rational_design": "薬物の標的となる分子や作用の仕組みを考えて、目的に合った化合物を設計・選択する創薬の手法。",
+  "bungyo_modern": "医師が出した処方箋をもとに、薬局で調剤する仕組みを日本で広げていく取り組み。",
+  "recombinant": "DNAを組み換え、目的の遺伝子を別の生物の細胞の中で働かせる技術。1970年代に大きく発展した。",
+  "biologics": "生物や細胞などを利用して製造される医薬品。遺伝子組換えでつくるたんぱく質や、抗体医薬などが含まれる。",
+  "monoclonal": "特定の分子だけに結びつく抗体を、医薬品として用いる。がんや自己免疫の病気などの治療に使われている。",
+  "microbial_screening": "微生物がつくる化合物を調べ、抗菌薬以外にも有用な薬理作用を持つ物質を探す。日本の研究者による成果も多い。",
+  "ich": "日米欧などで、医薬品の承認に必要なデータの基準をそろえる取り組み。1990年に始まった。",
+  "targeted_therapy": "病気に関わる特定の分子を狙って作用する薬。2000年代以降、がんなどの治療で大きく広がった。",
+  "checkpoint": "免疫の働きにかかるブレーキ（免疫チェックポイント）を外し、がんに対する免疫の反応を高める抗体医薬。",
+  "genome": "ゲノム情報を利用して、病気の原因や、薬の効き方・副作用の個人差を調べ、治療に役立てる研究。",
+  "mrna_vaccine": "抗原の設計図となるmRNAを投与し、体内でそのたんぱく質をつくらせて免疫を得るワクチン。",
+  "pharm_edu_6yr": "医療の中で働く薬剤師の教育を強化するため、日本の薬学教育が6年制になった。"
+ },
+ "facDesc": {
+  "herb_garden": "採集した薬草を手元で育て、安定して得るための畑。必要な時に必要な薬草を用意できることが、薬づくりの第一歩になる。",
+  "workshop": "薬材を洗う・煮る・焼く・刻むなどの加工を専門に行う作業場。加工の手順をそろえることで、薬の質が安定する。",
+  "library": "本草・薬物の知識を集め、整理して収めた書庫。写本や書物を比べ読みすることで、薬の記述が確かめられていく。",
+  "formulary": "薬材の成分を水・酒・油などに溶かし出し、煎じ薬や軟膏などの薬剤に仕上げる工房。",
+  "monastery": "修道院の薬草園と診療所。写本で伝わる知識とともに薬草を育て、病者の看護にあたった。",
+  "translation_house": "医学書を訳し、注釈をつける学者たちの拠点。9世紀のバグダッドでは、こうした翻訳の工房から多くの訳書が生まれた。",
+  "distillery": "蒸留器を備えた工房。芳香水や薬を精製し、安定して生産する。",
+  "bimaristan": "病院に付属する薬局。薬を専門に扱う人々が働き、薬の調製と保管を担った。",
+  "school": "医学・薬学を教える学校。サレルノのような医学校から、知識が組織的に広がっていった。",
+  "apothecary": "薬の材料を蓄え、処方に従って調製・提供する薬房。「アポテカ」はもとは貯蔵所を意味する言葉だった。",
+  "pharmacy_shop": "薬の調製と販売を専門に行う店。都市によっては、組合が薬の品質を守るための取り決めを行った。",
+  "pharmacopoeia_office": "薬の処方と品質を定め、記録する編纂所。都市の権威のもとで、調剤の基準となる書物をまとめる。",
+  "trading_post": "遠い地域の薬物を集める商館。アジアや新大陸の産物が、こうした交易の拠点を経てヨーロッパへ運ばれた。",
+  "printing_house": "薬物書や薬局方を刷って広める工房。同じ内容の本を大量に作れることが、知識の広がり方を変えた。",
+  "chem_lab": "鉱物・金属を用いた薬剤を調製する工房。蒸留や加熱の技術を生かし、化学的な薬剤をつくる。",
+  "guild_hall": "薬剤師の組合の会館。徒弟の教育、資格、薬の品質の検査など、職能を支える活動の中心となった。",
+  "field_garden": "実物を栽培し、観察して記録するための薬草園。書物の記述と目の前の植物を見比べる場になる。",
+  "pharma_committee": "薬局方を編纂・改訂する委員会。新しい薬を載せるか、古い薬を外すかが議論された。",
+  "botanic_house": "標本の収集、栽培、教育の場となった植物園。遠い地域の植物も育てられ、研究の対象となった。",
+  "drug_wholesale": "輸入薬種を検査し、各地へ送り出す問屋。品質を確かめてから流通させる仕組みを支えた。",
+  "clinic_ward": "症例を記録し、薬の用量と効き目を検討する病棟。観察の積み重ねが、薬を評価する手がかりになる。",
+  "alkaloid_works": "植物から有効成分を取り出し、結晶として精製する工房。",
+  "chem_institute": "学生が実験を通して化学を学ぶ研究室。多くの化学者がここから育った。",
+  "pharmacology_lab": "動物実験などで、薬の作用を調べる研究室。",
+  "operating_room": "麻酔のもとで手術を行う部屋。痛みを抑えることで、時間のかかる手術も可能になった。",
+  "pharmacy_school": "薬剤師を体系的に教育する学校。",
+  "hygiene_board": "病気の発生を記録し、地域の衛生対策を考える役所（ゲーム上の施設）。19世紀の公衆衛生の行政は、国や都市によって形が大きく異なった。",
+  "pharma_factory": "品質をそろえた医薬品を、工業的な規模で製造する工場。",
+  "dye_works": "染料などを化学的に合成する工場。のちに医薬品も手がける企業が現れた。",
+  "bacteriology_lab": "原因となる細菌を培養し、顕微鏡で調べる研究所。",
+  "serum_institute": "1890年代の血清療法の研究・製造の場をまとめて表したゲーム上の施設。免疫を得た動物から血清をつくり、治療に用いる。",
+  "chemo_institute": "多数の化合物を合成し、病原体への効果を試す研究所。",
+  "hormone_plant": "動物の組織などからホルモンを抽出・精製し、医薬品として製造する。",
+  "fermentation_plant": "大型タンクで微生物を培養し、抗生物質をつくる。",
+  "trial_center": "試験の計画に沿って治療を比較し、記録する（ゲーム上の施設）。",
+  "xray_lab": "X線で分子の立体構造を調べる研究室。",
+  "review_agency": "承認申請のデータを審査する（ゲーム上の施設）。",
+  "design_lab": "標的を考えて化合物を設計・選別する研究所。",
+  "community_pharmacy": "処方箋をもとに調剤し、薬の説明を行う日本の薬局。",
+  "gene_lab": "遺伝子を組み換えて、細胞にたんぱく質をつくらせる研究所。",
+  "bio_plant": "培養した細胞などで、たんぱく質の薬を製造する工場。",
+  "genome_center": "遺伝情報を大量に読み取り、解析する施設（ゲーム上の施設）。"
+ },
+ "drugs": {
+  "poppy": {
+   "name": "ケシ（アヘン）",
+   "cat": "植物",
+   "era": "古代",
+   "use": "鎮痛・鎮静",
+   "rel": "ディオスコリデス『薬物誌』",
+   "note": "ケシの未熟な果実から得た乳液を乾かしたものがアヘンで、古代から鎮痛や催眠のために用いられた。ディオスコリデスは『薬物誌』で、その効き目とともに、多く用いる危険にも触れている。"
+  },
+  "willow": {
+   "name": "ヤナギ",
+   "cat": "植物（樹皮・葉）",
+   "era": "古代",
+   "use": "痛み・熱（古くからの民間薬）",
+   "rel": "ディオスコリデス『薬物誌』",
+   "note": "ヤナギの樹皮や葉は、古代から痛みや熱を和らげる民間薬として使われてきたとされる。のちに樹皮の成分サリシンが分離され、サリチル酸、アスピリンへとつながっていく。"
+  },
+  "garlic": {
+   "name": "ニンニク",
+   "cat": "植物（鱗茎）",
+   "era": "古代",
+   "use": "食用・薬用",
+   "rel": "エーベルス・パピルス",
+   "note": "古代エジプトの医学文書『エーベルス・パピルス』に、薬の材料として登場する。食べ物であり薬でもあるという境目の曖昧さは、古代の薬物の大きな特徴だった。"
+  },
+  "frankincense": {
+   "name": "乳香",
+   "cat": "樹脂",
+   "era": "古代",
+   "use": "薫香・薬",
+   "rel": "ディオスコリデス『薬物誌』",
+   "note": "ボスウェリア属の樹木からとれる樹脂で、香として焚かれるほか、薬としても用いられた。『薬物誌』にも項目がある。"
+  },
+  "honey": {
+   "name": "ハチミツ",
+   "cat": "食品・基剤",
+   "era": "古代",
+   "use": "薬の甘味・基剤、傷の手当て",
+   "rel": "エーベルス・パピルス",
+   "note": "薬の苦みをやわらげ、粉薬や練り薬をまとめる基剤として、古代の処方に広く登場する。"
+  },
+  "aloe": {
+   "name": "アロエ",
+   "cat": "植物",
+   "era": "古代",
+   "use": "緩下・皮膚の手当て",
+   "rel": "ディオスコリデス『薬物誌』",
+   "note": "葉から得る汁を固めたものが薬として用いられた。『薬物誌』は、通じをつける作用や、傷・皮膚の手当てなど複数の用途を記している。"
+  },
+  "licorice": {
+   "name": "甘草",
+   "cat": "植物（根）",
+   "era": "古代",
+   "use": "『神農本草経』では上薬（後世の処方では薬の調和にも）",
+   "rel": "『神農本草経』",
+   "note": "根を乾燥して用いる。『神農本草経』では上薬に分類され、寒熱や五臓六腑の病などに用いる薬物として記載されている。後世の漢方処方では、他の薬物との調和を図る目的でも広く用いられてきた。"
+  },
+  "ginseng": {
+   "name": "人参（薬用人参）",
+   "cat": "植物（根）",
+   "era": "古代",
+   "use": "滋養・強壮",
+   "rel": "『神農本草経』",
+   "note": "『神農本草経』では、長く用いて身体を養う「上薬」に分類されている。現代でも漢方薬として使われる。"
+  },
+  "rhubarb": {
+   "name": "大黄",
+   "cat": "植物（根茎）",
+   "era": "古代",
+   "use": "瀉下（便通）",
+   "rel": "『神農本草経』",
+   "note": "根茎を乾燥して用いる。『神農本草経』では下薬に分類され、強い瀉下作用をもつ薬物として扱われてきた。"
+  },
+  "cinnabar": {
+   "name": "丹砂（辰砂）",
+   "cat": "鉱物（硫化水銀）",
+   "era": "古代",
+   "use": "不老長生の薬として用いられた（毒性が大きい）",
+   "rel": "『神農本草経』、錬丹術",
+   "note": "中国では辰砂（硫化水銀）は古くから薬物として扱われ、『神農本草経』にも収載されている。後世には不老長生を目指す錬丹術でも重視された。一方、水銀化合物には毒性があることが現在では明らかになっている。"
+  },
+  "theriac": {
+   "name": "テリアカ",
+   "cat": "複合薬",
+   "era": "古代〜中世",
+   "use": "解毒薬・万能薬",
+   "rel": "ガレノス",
+   "note": "多くの成分を混ぜ合わせた複合薬で、もとは解毒薬として考案された。ガレノスはローマ皇帝のためのテリアカについて書き残している。のちのヨーロッパの都市では、その調製が公に監督されることもあった。"
+  },
+  "rosewater": {
+   "name": "バラ水",
+   "cat": "蒸留水",
+   "era": "中世（イスラム世界）",
+   "use": "香料・薬の溶媒",
+   "rel": "蒸留技術",
+   "note": "バラの花を蒸留して得る芳香水。中世のイスラム世界で蒸留の技術が発達し、芳香水は香料や薬として盛んに作られた。"
+  },
+  "senna": {
+   "name": "センナ",
+   "cat": "植物（葉・果実）",
+   "era": "中世（イスラム世界）",
+   "use": "緩下",
+   "rel": "アラビア医学",
+   "note": "アラビアの医師たちが緩下薬として用い、のちにヨーロッパへも伝わった。"
+  },
+  "aquavitae": {
+   "name": "命の水（アルコール）",
+   "cat": "蒸留酒",
+   "era": "中世末期",
+   "use": "薬用物質",
+   "rel": "ルペシッサ",
+   "note": "中世末期、ワインを蒸留して得られるアルコールは「命の水（aqua vitae）」と呼ばれ、薬用物質として注目された。14世紀の錬金術師ヨハネス・デ・ルペシッサは、蒸留によって得られるアルコールを「第五精髄（quintessence）」と関連づけ、医療に利用できる物質として論じた。"
+  },
+  "cinchona": {
+   "name": "キナ皮",
+   "cat": "植物（樹皮）",
+   "era": "近世",
+   "use": "熱病への使用",
+   "rel": "イエズス会士ほか",
+   "note": "南米の樹木の皮。1630〜40年代頃からイエズス会士などを介してヨーロッパで知られるようになり、熱病の薬として使われた。カトリック側の人々が紹介・推奨したこともあり、一部のプロテスタント圏では宗派的な反発を伴う論争も起きた。樹皮から成分（キニーネ）が単離されるのは1820年のことで、近代の話になる。"
+  },
+  "foxglove": {
+   "name": "ジギタリス",
+   "cat": "植物",
+   "era": "近世",
+   "use": "水腫（浮腫）の治療に検討",
+   "rel": "ウィザリング『An Account of the Foxglove』（1785）",
+   "note": "ウィザリングは、ジギタリスの葉を水腫の患者に用いた症例を記録し、調製法や用量を検討した。効き目と同時に、量が多すぎたときの害にも注意を向けている。"
+  },
+  "antimony_wine": {
+   "name": "アンチモン酒",
+   "cat": "鉱物製剤",
+   "era": "近世",
+   "use": "催吐",
+   "rel": "パリの医学界、1666年のパリ高等法院の決定",
+   "note": "アンチモンの化合物をワインに浸して得た、催吐のための薬。パリでは、アンチモンを薬として使うことの是非が長く争われ、1666年のパリ高等法院の決定で、アンチモンを用いた催吐剤の使用が認められた。化学的な薬剤をめぐる近世の論争を象徴する薬の一つ。"
+  },
+  "sweet_vitriol": {
+   "name": "甘い硫酸油",
+   "cat": "化学製剤",
+   "era": "近世",
+   "use": "近世の化学的な物質研究の一例（当時の用途は要確認）",
+   "rel": "ヴァレリウス・コルドゥス",
+   "note": "酒精（アルコール）を硫酸とともに蒸留して得られる液体。16世紀にコルドゥスが調製法を記したとされる（年代には諸説がある）。のちに「エーテル」と呼ばれる物質だが、近世に麻酔薬として使われたわけではない。"
+  },
+  "laudanum": {
+   "name": "アヘンチンキ（ラウダヌム）",
+   "cat": "植物製剤",
+   "era": "近世",
+   "use": "鎮痛・鎮静",
+   "rel": "シデナム（1660年代）",
+   "note": "アヘンを含む液剤。シデナムが1660年代に用いた処方が知られる。「ラウダヌム」という名はパラケルススも使っているが、同じ薬とはみなさない。"
+  },
+  "tamarind": {
+   "name": "タマリンド",
+   "cat": "植物",
+   "era": "近世",
+   "use": "緩下など",
+   "rel": "ガルシア・デ・オルタ『インド薬物誌』",
+   "note": "マメ科の樹木の果実。オルタはゴアで、インドの薬用植物の一つとして記録した。"
+  },
+  "tobacco": {
+   "name": "タバコ",
+   "cat": "植物",
+   "era": "近世",
+   "use": "当時は多くの病気に効く薬と考えられた",
+   "rel": "モナルデス",
+   "note": "新大陸からヨーロッパへ伝わった植物。セビリアの医師モナルデスは、1571年の『西インドの薬物誌』第2部で、タバコの葉の薬としての効き目を詳しく論じた。当時は多くの病気に効くと考えられていたが、それは当時の考え方であって、現代の医学で確かめられた効果ではない。"
+  },
+  "guaiacum": {
+   "name": "ユソウボク",
+   "cat": "木材",
+   "era": "近世",
+   "use": "梅毒などに用いられた薬物",
+   "rel": "モナルデス",
+   "note": "新大陸産の樹木の材。16世紀のヨーロッパで梅毒などに用いられた薬物の一つ。治療法として確立したわけではない。"
+  },
+  "coca": {
+   "name": "コカ",
+   "cat": "植物",
+   "era": "近世",
+   "use": "現地での使用",
+   "rel": "―",
+   "note": "南米アンデスの植物。現地では葉が広く用いられており、その習慣が新大陸の産物の一つとしてヨーロッパに伝えられた。モナルデスの書との関係は確認できていないため、ここでは結びつけない。"
+  },
+  "ipecac": {
+   "name": "吐根",
+   "cat": "植物（根）",
+   "era": "近世",
+   "use": "下痢・赤痢への使用",
+   "rel": "―",
+   "note": "南米産の植物の根。ヨーロッパで下痢・赤痢などに用いられるようになった。いつ、誰を通じて広まったかは資料によって説明が異なるため、ここでは特定しない。"
+  },
+  "mercury": {
+   "name": "水銀製剤",
+   "cat": "鉱物",
+   "era": "近世",
+   "use": "梅毒に用いられた薬物",
+   "rel": "医化学の流れ",
+   "note": "水銀を用いた薬剤。近世のヨーロッパで梅毒などに用いられた。強い毒性があり、治療法として確立したわけではない。"
+  },
+  "ginseng_jp": {
+   "name": "人参（朝鮮人参）の国産化",
+   "cat": "植物",
+   "era": "近世",
+   "use": "強壮",
+   "rel": "幕府の薬園",
+   "note": "高価な輸入薬だった朝鮮人参を、日本国内で栽培しようとする試み。江戸幕府の薬園でも取り組まれた。時期や経緯の細部は確認中。"
+  },
+  "cowpox_vaccine": {
+   "name": "牛痘苗",
+   "cat": "生物材料",
+   "era": "近代",
+   "use": "天然痘の予防",
+   "rel": "ジェンナー、緒方洪庵",
+   "note": "牛痘の材料を人に接種して、天然痘を予防する。1798年のジェンナーの報告以後に広まり、日本には1849年に長崎へ届いた。"
+  },
+  "tsusensan": {
+   "name": "通仙散",
+   "cat": "和漢の配合薬",
+   "era": "近代",
+   "use": "全身麻酔",
+   "rel": "華岡青洲",
+   "note": "曼陀羅華（チョウセンアサガオ）を主要な生薬の一つとして、複数の生薬を配合した麻酔薬。華岡青洲が手術に用いたとされる。"
+  },
+  "morphine": {
+   "name": "モルヒネ",
+   "cat": "アルカロイド",
+   "era": "近代",
+   "use": "鎮痛",
+   "rel": "ゼルチュルナー",
+   "note": "アヘンから単離された主成分。強い鎮痛作用を持つ。1850年代に皮下注射の方法が発展したことも、使われ方が広がった背景の一つ。依存の問題も知られるようになった。"
+  },
+  "strychnine": {
+   "name": "ストリキニーネ",
+   "cat": "アルカロイド",
+   "era": "近代",
+   "use": "少量を強壮薬・興奮薬として用いることがあった",
+   "rel": "ペルティエ、カヴァントゥ",
+   "note": "1818年に単離されたアルカロイド。19世紀には、少量を強壮薬や興奮薬として処方することがあったが、毒性が非常に強く、有効な量と中毒を起こす量の差が小さい。現在は医薬品として用いられていない。"
+  },
+  "quinine": {
+   "name": "キニーネ",
+   "cat": "アルカロイド",
+   "era": "近代",
+   "use": "マラリアなどの熱病",
+   "rel": "ペルティエ、カヴァントゥ",
+   "note": "キナ皮から1820年に単離・報告された成分。キナ皮そのものは以前から熱病の治療に使われていたが、成分を単離したことで、その成分をより明確に扱えるようになり、マラリアの治療に広く用いられた。"
+  },
+  "ether": {
+   "name": "エーテル（ジエチルエーテル）",
+   "cat": "化学製剤",
+   "era": "近代",
+   "use": "吸入麻酔",
+   "rel": "ロング、モートンほか",
+   "note": "揮発性の液体。1840年代に吸入麻酔に用いられるようになった。近世の「甘い硫酸油」と同じ物質にあたるが、麻酔に使われるようになったのは19世紀のこと。"
+  },
+  "nitrous_oxide": {
+   "name": "笑気（亜酸化窒素）",
+   "cat": "気体",
+   "era": "近代",
+   "use": "吸入麻酔（歯科など）",
+   "rel": "ホレス・ウェルズ",
+   "note": "吸うと痛みを感じにくくなる気体。1840年代にウェルズが歯科での麻酔に用いようと試みた。"
+  },
+  "chloroform": {
+   "name": "クロロホルム",
+   "cat": "化学製剤",
+   "era": "近代",
+   "use": "吸入麻酔",
+   "rel": "シンプソン",
+   "note": "1847年から麻酔に用いられ、扱いやすさから広まった。心臓などへの危険性も指摘された。"
+  },
+  "carbolic": {
+   "name": "石炭酸（フェノール）",
+   "cat": "化学製剤",
+   "era": "近代",
+   "use": "防腐・消毒",
+   "rel": "リスター",
+   "note": "コールタールから得られる物質。リスターが手術の防腐法に用いた。"
+  },
+  "cocaine": {
+   "name": "コカイン",
+   "cat": "アルカロイド",
+   "era": "近代",
+   "use": "局所麻酔",
+   "rel": "ニーマン（単離）、コラー（局所麻酔）",
+   "note": "1860年にコカの葉から単離された。1884年に目の手術の局所麻酔に用いられるようになったが、のちに依存の問題が明らかになった。"
+  },
+  "chloral": {
+   "name": "抱水クロラール",
+   "cat": "合成薬",
+   "era": "近代",
+   "use": "催眠",
+   "rel": "リービッヒ（合成）、リープライヒ（導入）",
+   "note": "クロラールは1832年に合成され、1869年に抱水クロラールが催眠薬として医療に導入された。"
+  },
+  "salicylic": {
+   "name": "サリチル酸",
+   "cat": "合成薬",
+   "era": "近代",
+   "use": "解熱・鎮痛・リウマチ",
+   "rel": "コルベほか",
+   "note": "ヤナギの成分の研究から知られた物質。1860年ごろコルベが合成法を示し、1874年からはその方法をもとに、ドイツで弟子のフォン・ハイデンによる工業的な製造が行われた。解熱やリウマチ熱の治療に用いられたが、胃への刺激が強いことが問題とされた。"
+  },
+  "antipyrine": {
+   "name": "アンチピリン",
+   "cat": "合成薬",
+   "era": "近代",
+   "use": "解熱",
+   "rel": "クノール",
+   "note": "1883年に合成された解熱薬。合成医薬品の普及の一例。"
+  },
+  "ephedrine": {
+   "name": "エフェドリン",
+   "cat": "アルカロイド",
+   "era": "近代",
+   "use": "（のちに）喘息など",
+   "rel": "長井長義",
+   "note": "麻黄から単離された成分。医薬品として喘息などの治療に広く用いられるようになったのは、1920年代以降のこと。"
+  },
+  "antitoxin": {
+   "name": "抗毒素血清",
+   "cat": "生物製剤",
+   "era": "近代",
+   "use": "ジフテリア・破傷風の治療",
+   "rel": "ベーリング、北里柴三郎",
+   "note": "免疫を得た動物の血清に含まれる抗体（抗毒素）で、細菌の出す毒素を中和する。細菌そのものを殺すものではない。1890年の研究を基礎に、ジフテリアの治療などに用いられた。"
+  },
+  "aspirin": {
+   "name": "アスピリン（アセチルサリチル酸）",
+   "cat": "合成薬",
+   "era": "近代",
+   "use": "解熱・鎮痛",
+   "rel": "バイエル社",
+   "note": "サリチル酸を化学的に変えた物質。1899年に販売された。"
+  },
+  "adrenaline": {
+   "name": "アドレナリン（エピネフリン）",
+   "cat": "ホルモン",
+   "era": "現代",
+   "use": "止血・昇圧など",
+   "rel": "高峰譲吉、上中啓三",
+   "note": "1900年、上中啓三が高峰譲吉の研究室で副腎の抽出物から結晶化した。高峰が成果を公表し、米国ではエピネフリンの名称も定着した。"
+  },
+  "salvarsan": {
+   "name": "サルバルサン",
+   "cat": "合成化学療法薬（ヒ素化合物）",
+   "era": "現代",
+   "use": "梅毒",
+   "rel": "エールリヒ、秦佐八郎",
+   "note": "ヒ素を含む化学療法薬。梅毒に有効だった一方、毒性や投与上の問題もあり、のちにペニシリンなどの抗菌薬に置き換えられた。"
+  },
+  "oryzanin": {
+   "name": "オリザニン（ビタミンB1）",
+   "cat": "ビタミン",
+   "era": "現代",
+   "use": "脚気",
+   "rel": "鈴木梅太郎",
+   "note": "鈴木梅太郎が米ぬかから見いだし、オリザニンと名づけた、脚気に関係する栄養成分。のちの研究によって、ビタミンB1（チアミン）として位置づけられた。"
+  },
+  "insulin": {
+   "name": "インスリン",
+   "cat": "ホルモン",
+   "era": "現代",
+   "use": "糖尿病",
+   "rel": "バンティング、ベスト、コリップ、マクラウド",
+   "note": "1922年から患者に用いられた。当初はウシやブタの膵臓から抽出した製剤だった。"
+  },
+  "prontosil": {
+   "name": "プロントジル／スルファニルアミド",
+   "cat": "サルファ剤",
+   "era": "現代",
+   "use": "細菌感染症",
+   "rel": "ドーマクら",
+   "note": "赤い色素プロントジルは、体内でスルファニルアミドに変わって細菌の増殖を抑える。"
+  },
+  "penicillin": {
+   "name": "ペニシリン",
+   "cat": "抗生物質",
+   "era": "現代",
+   "use": "細菌感染症",
+   "rel": "フレミング、フローリー、チェインら",
+   "note": "1928年にフレミングが報告し、1940年代にフローリーやチェインらが精製・実用化した。発見と医薬品化は別の段階の出来事。"
+  },
+  "streptomycin": {
+   "name": "ストレプトマイシン",
+   "cat": "抗生物質",
+   "era": "現代",
+   "use": "結核など",
+   "rel": "シャッツ、ワクスマン",
+   "note": "結核などに有効な抗生物質。聴覚障害などの副作用や、耐性菌の出現が問題となった。"
+  },
+  "chlorpromazine": {
+   "name": "クロルプロマジン",
+   "cat": "向精神薬",
+   "era": "現代",
+   "use": "統合失調症など",
+   "rel": "ラボリ、ドレー、ドニケルら",
+   "note": "1950年代初めにフランスで合成され、1952年に精神科での使用と効果の報告が行われた。精神疾患への薬物療法が広がるきっかけの一つとなった。"
+  },
+  "thalidomide": {
+   "name": "サリドマイド",
+   "cat": "催眠鎮静薬（のちに別の用途で再承認）",
+   "era": "現代",
+   "use": "（当時）睡眠・鎮静",
+   "rel": "レンツ、マクブライド、ケルシー",
+   "note": "妊娠中の服用で胎児に重い障害が起きた薬害の原因となった。のちに、厳しい管理のもとで、ほかの病気の治療薬として再び承認された。"
+  },
+  "chinoform": {
+   "name": "キノホルム",
+   "cat": "整腸剤",
+   "era": "現代",
+   "use": "（当時）下痢など",
+   "rel": "―",
+   "note": "日本で多発したスモンの原因と考えられ、1970年に販売が停止された。"
+  },
+  "propranolol": {
+   "name": "プロプラノロール",
+   "cat": "β遮断薬",
+   "era": "現代",
+   "use": "狭心症・高血圧など",
+   "rel": "ジェームズ・ブラックら",
+   "note": "β受容体を遮断する薬。心臓の働きを抑え、狭心症や不整脈などに用いられる。"
+  },
+  "cimetidine": {
+   "name": "シメチジン",
+   "cat": "H2受容体拮抗薬",
+   "era": "現代",
+   "use": "胃潰瘍など",
+   "rel": "ジェームズ・ブラックら",
+   "note": "ヒスタミンH2受容体を遮断して胃酸を抑える薬。"
+  },
+  "compactin": {
+   "name": "コンパクチン（スタチンの先駆）",
+   "cat": "HMG-CoA還元酵素阻害薬",
+   "era": "現代",
+   "use": "（研究段階）",
+   "rel": "遠藤章",
+   "note": "1970年代に遠藤章らが見いだしたHMG-CoA還元酵素阻害物質。スタチン系の薬の先駆となったが、最初に市販されたスタチンはロバスタチン。"
+  },
+  "ivermectin": {
+   "name": "イベルメクチン",
+   "cat": "抗寄生虫薬",
+   "era": "現代",
+   "use": "オンコセルカ症などの寄生虫病",
+   "rel": "大村智、キャンベル",
+   "note": "放線菌がつくる物質をもとに開発された。1981年に動物用、1987年に人用の薬として実用化され、オンコセルカ症やリンパ系フィラリア症などの対策に広く用いられた。"
+  },
+  "human_insulin": {
+   "name": "遺伝子組換えヒトインスリン",
+   "cat": "バイオ医薬品",
+   "era": "現代",
+   "use": "糖尿病",
+   "rel": "―",
+   "note": "1982年に米国で承認された、組換えDNA技術に由来する最初の承認医薬品とされる。"
+  },
+  "zidovudine": {
+   "name": "ジドブジン（AZT）",
+   "cat": "抗HIV薬",
+   "era": "現代",
+   "use": "HIV感染症",
+   "rel": "―",
+   "note": "1987年に米国で承認された抗HIV薬。のちに複数の薬を組み合わせる治療が広がった。"
+  },
+  "imatinib": {
+   "name": "イマチニブ",
+   "cat": "分子標的薬",
+   "era": "現代",
+   "use": "慢性骨髄性白血病など",
+   "rel": "―",
+   "note": "BCR-ABLチロシンキナーゼなどを標的とする薬。2001年に米国で承認された。"
+  },
+  "nivolumab": {
+   "name": "ニボルマブ",
+   "cat": "抗体医薬（免疫チェックポイント阻害薬）",
+   "era": "現代",
+   "use": "悪性黒色腫などのがん",
+   "rel": "本庶佑ら（PD-1の研究）",
+   "note": "PD-1を標的とする抗体医薬。2014年に承認された。"
+  },
+  "mrna_vaccine": {
+   "name": "mRNAワクチン",
+   "cat": "ワクチン",
+   "era": "現代",
+   "use": "新型コロナウイルス感染症などの予防",
+   "rel": "カリコ、ワイスマンら",
+   "note": "修飾ヌクレオシドを用いたmRNAを脂質の粒子に包んで投与し、体内で抗原をつくらせる。2020年に実用化された。"
+  }
+ },
+ "people": {
+  "shennong": {
+   "name": "神農",
+   "life": "伝説上の人物",
+   "role": "伝説の帝王",
+   "text": "中国の伝説上の帝王・文化英雄で、百草をなめて薬と毒を確かめたと伝えられる。実在の人物ではない。『神農本草経』は神農の著作と伝えられてきたが、実際には後世に成立・編集された本草書と考えられている。"
+  },
+  "imhotep": {
+   "name": "イムホテプ",
+   "life": "紀元前27世紀ごろ",
+   "role": "宰相・建築家",
+   "text": "古代エジプト第3王朝の宰相で、階段ピラミッドの設計者とされる。後の時代には医術の神として崇められたが、医師としての具体的な業績を示す同時代の史料は乏しい。"
+  },
+  "hippocrates_p": {
+   "name": "ヒポクラテス",
+   "life": "紀元前460ごろ〜前370ごろ",
+   "role": "医師",
+   "text": "エーゲ海のコス島出身の古代ギリシアの医師。その名を冠する『ヒポクラテス医学全集』は多くの著者による文書群で、本人の著作がどれかは分かっていない。病気を自然の現象として観察する医学の象徴とされる。"
+  },
+  "theophrastus": {
+   "name": "テオフラストス",
+   "life": "紀元前371ごろ〜前287ごろ",
+   "role": "哲学者・植物学者",
+   "text": "アリストテレスの後を継いだ古代ギリシアの哲学者。『植物誌』『植物原因論』で多くの植物を記述し、「植物学の祖」と呼ばれる。薬草とその採集についての記述も含まれる。"
+  },
+  "dioscorides_p": {
+   "name": "ディオスコリデス",
+   "life": "1世紀",
+   "role": "医師",
+   "text": "ローマ軍に従軍したとされるギリシア人の医師。『薬物誌（デ・マテリア・メディカ）』全5巻を著し、その書は古代から中世・近世にかけて、薬物学・本草学に大きな影響を与えた。"
+  },
+  "pliny": {
+   "name": "大プリニウス",
+   "life": "23ごろ〜79",
+   "role": "軍人・博物学者",
+   "text": "ローマの軍人・博物学者。全37巻の『博物誌』には、植物・鉱物・動物とその薬としての利用が数多く記されている。79年のヴェスヴィオ山の噴火の際に命を落とした。"
+  },
+  "celsus": {
+   "name": "ケルスス",
+   "life": "1世紀前半",
+   "role": "著述家",
+   "text": "ローマの著述家。百科全書のうち医学の部『医学について』だけが現存し、ラテン語で書かれた医学書の重要な古典となっている。多くの薬や処方も記されている。"
+  },
+  "galen_p": {
+   "name": "ガレノス",
+   "life": "129ごろ〜216ごろ",
+   "role": "医師",
+   "text": "ペルガモン出身の医師。ローマで皇帝の侍医を務め、膨大な著作で解剖学・生理学・薬物学を体系化した。その学説は中世を通じて、ヨーロッパとイスラム世界の医学の権威となった。"
+  },
+  "zhang_zhongjing": {
+   "name": "張仲景",
+   "life": "2〜3世紀",
+   "role": "医師",
+   "text": "後漢末の医師と伝えられる。『傷寒雑病論』を著したとされ、のちに再編された『傷寒論』『金匱要略』は、漢方の処方の古典として今も重んじられている。現在の形の書物は後世の編集を経ており、生涯にも不明な点が多い。"
+  },
+  "charaka": {
+   "name": "チャラカ",
+   "life": "年代不詳",
+   "role": "医師",
+   "text": "インドの伝統医学アーユルヴェーダの古典『チャラカ・サンヒター』に名を残す医師。内科を中心に多くの薬草を扱う書だが、長い時間をかけて編集・増補されたと考えられ、チャラカ本人が今の形にまとめたわけではない。成立年代にも諸説がある。"
+  },
+  "sushruta": {
+   "name": "スシュルタ",
+   "life": "年代不詳",
+   "role": "医師",
+   "text": "古代インドの外科医学を代表する人物とされ、外科を中心とするアーユルヴェーダの古典『スシュルタ・サンヒター』に名を残す。手術の方法や器具、薬を記した書だが、成立年代や人物像には諸説がある。"
+  },
+  "ge_hong": {
+   "name": "葛洪",
+   "life": "283〜343ごろ",
+   "role": "道士・医家",
+   "text": "東晋の道士・医家。仙薬づくり（錬丹）を論じた『抱朴子』と、手近な材料で急病に対処する処方を集めた『肘後備急方』を著した。"
+  },
+  "tao_hongjing": {
+   "name": "陶弘景",
+   "life": "456〜536",
+   "role": "学者・道士",
+   "text": "中国・南北朝時代の学者。『神農本草経』に注を加えて『本草経集注』をまとめ、多数の薬物を整理・分類した。のちの本草書の基礎となった。"
+  },
+  "cassiodorus": {
+   "name": "カッシオドルス",
+   "life": "485ごろ〜585ごろ",
+   "role": "政治家・学者",
+   "text": "東ゴート王国に仕えたのち、南イタリアにウィウァリウム修道院を開いた学者。写本作りを修道士の務めとし、薬草について学ぶことや、ヒポクラテス、ガレノス、ディオスコリデスの書を読むことを勧めたとされる。"
+  },
+  "aetius": {
+   "name": "アミダのアエティオス",
+   "life": "6世紀",
+   "role": "医師",
+   "text": "ビザンツ帝国の医師。古代の医学・薬物の知識を集めた全16巻の医学書を著し、失われた古い医書の内容もその中に伝えている。"
+  },
+  "paul_aegina": {
+   "name": "アイギナのパウロス",
+   "life": "7世紀",
+   "role": "医師",
+   "text": "ビザンツ世界の医師。全7巻の医学の集成を著し、とくに外科の記述で知られる。その書はのちにアラビア語にも訳された。"
+  },
+  "sun_simiao": {
+   "name": "孫思邈",
+   "life": "581ごろ〜682",
+   "role": "医師",
+   "text": "唐の医師。『千金要方』『千金翼方』という大部の医書を著した。医師の心構えを説いた「大医精誠」の一節でも知られ、後世「薬王」と尊称された。"
+  },
+  "su_jing": {
+   "name": "蘇敬",
+   "life": "7世紀",
+   "role": "官人・医家",
+   "text": "唐代の国家的な本草の編纂事業に関わり、659年に成立した『新修本草』の成立に重要な役割を果たした。この書は日本にも伝わって学ばれた。"
+  },
+  "hunayn_p": {
+   "name": "フナイン・イブン・イスハーク",
+   "life": "809〜873",
+   "role": "医師・翻訳家",
+   "text": "バグダッドで活躍したネストリウス派キリスト教徒の医師・翻訳家。ギリシア語の写本を突き合わせて本文を整え、ガレノスらの医学書を多数シリア語やアラビア語に訳した。"
+  },
+  "jabir_p": {
+   "name": "ジャービル・イブン・ハイヤーン",
+   "life": "8世紀ごろとされる（実在に議論あり）",
+   "role": "錬金術文献群に名を残す人物",
+   "text": "その名で伝えられる膨大な錬金術の文書群に関係づけられる人物。実在や生涯には議論があり、文書群は複数の著者によって長い期間に書かれたものとみられる。蒸留・結晶化などの操作が体系的に記されているが、それらを一人で考案したわけではない。"
+  },
+  "razi": {
+   "name": "ラーズィー",
+   "life": "9〜10世紀",
+   "role": "医師",
+   "text": "ペルシア出身の医師。病院の長を務めて臨床の観察を重んじ、天然痘と麻疹を区別して論じた。医学の大集成『ハーウィー』など、多くの著作を残した。"
+  },
+  "ibn_sina": {
+   "name": "イブン・スィーナー",
+   "life": "980〜1037",
+   "role": "医師・哲学者",
+   "text": "ラテン名アヴィセンナ。ペルシアの医師・哲学者。全5巻の『医学典範』でギリシアとアラビアの医学を体系化し、その書はラテン語に訳されてヨーロッパの大学でも長く教科書となった。"
+  },
+  "zahrawi": {
+   "name": "ザフラーウィー",
+   "life": "936ごろ〜1013ごろ",
+   "role": "医師・外科医",
+   "text": "イスラム支配下のイベリア半島（アンダルス）の医師。全30巻の医学書『タスリーフ』を著した。外科の巻は器具の図とともにラテン語に訳され、ヨーロッパでも長く読まれた。"
+  },
+  "biruni": {
+   "name": "ビールーニー",
+   "life": "973〜1048ごろ",
+   "role": "学者",
+   "text": "天文学・地理学など幅広い分野で業績を残した学者。薬物学書『薬学の書（キターブ・アッ＝サイダナ）』を著し、薬物の名前やその由来、各言語での呼び名を比較・整理した。"
+  },
+  "tamba": {
+   "name": "丹波康頼",
+   "life": "912〜995",
+   "role": "医師",
+   "text": "平安時代の宮廷医。984年、中国の多くの医書を引用して編んだ全30巻の『医心方』を朝廷に献上した。現存する日本最古の医書とされ、今では失われた書の内容も伝える。"
+  },
+  "constantine_p": {
+   "name": "コンスタンティヌス・アフリカヌス",
+   "life": "11世紀",
+   "role": "翻訳家・修道士",
+   "text": "北アフリカ出身で、サレルノを経てモンテ・カッシーノ修道院に入り、アラビア語の医学書をラテン語に訳した。西ヨーロッパにアラビア医学を広く紹介した。"
+  },
+  "trota": {
+   "name": "トロータ",
+   "life": "12世紀ごろ",
+   "role": "女性医療者",
+   "text": "サレルノの医学に関連づけられる女性医療者。女性の病気とその治療を扱う「トロトゥーラ」と呼ばれる文書群に名を残すが、その著者・成立事情には議論があり、どこまでが本人の著作かは分かっていない。"
+  },
+  "hildegard_p": {
+   "name": "ビンゲンのヒルデガルト",
+   "life": "1098〜1179",
+   "role": "修道院長",
+   "text": "ライン川流域のベネディクト会の女子修道院長。『フィジカ』で植物・樹木・石・動物などの薬効を記した。音楽や神学の著作でも知られる。"
+  },
+  "nicolaus": {
+   "name": "ニコラウス",
+   "life": "不詳",
+   "role": "（不詳）",
+   "text": "中世ヨーロッパで広く用いられた処方集『アンティドタリウム・ニコライ』に名を残す人物。処方集はサレルノに関係づけられるが、ニコラウスという著者の人物像や、著者が誰かについては不確かな点が多い。"
+  },
+  "frederick2": {
+   "name": "フリードリヒ2世",
+   "life": "1194〜1250",
+   "role": "神聖ローマ皇帝・シチリア王",
+   "text": "シチリア王を兼ねた神聖ローマ皇帝。1231年のメルフィ憲章などで、医師の資格制度や、薬剤師・薬局に対する規制を整えた。"
+  },
+  "ibn_baytar": {
+   "name": "イブン・アル＝バイタール",
+   "life": "1197ごろ〜1248",
+   "role": "薬物学者",
+   "text": "アンダルス出身の薬物学者。北アフリカや東地中海の各地を巡って植物を調べ、約1,400項目（数え方には諸説ある）の薬物・食品を収めた集成を著した。のちにカイロで薬物学者の長を務めた。"
+  },
+  "rupescissa_p": {
+   "name": "ヨハネス・デ・ルペシッサ",
+   "life": "14世紀",
+   "role": "錬金術師・修道士",
+   "text": "フランスのフランシスコ会士。ワインを繰り返し蒸留して得たアルコールを「第五元素（第五精髄）」とみなし、その医療への利用を説いた。蒸留したアルコールそのものは、彼以前から知られていた。"
+  },
+  "paracelsus_p": {
+   "name": "パラケルスス",
+   "life": "1493〜1541",
+   "role": "医師",
+   "text": "スイス生まれの医師。ガレノス流の医学を批判し、鉱物や金属など化学的な物質を治療に用いることを説いた。用量と毒性の関係を論じたことから、後世「毒性学の先駆」とも評される。"
+  },
+  "brunfels": {
+   "name": "オットー・ブルンフェルス",
+   "life": "1488ごろ〜1534",
+   "role": "植物学者・神学者",
+   "text": "ドイツの神学者・植物学者。1530年から刊行された植物図譜では、実物を写生した木版の挿絵が用いられ、写実的な植物図の早い例として知られる。"
+  },
+  "fuchs_p": {
+   "name": "レオンハルト・フックス",
+   "life": "1501〜1566",
+   "role": "医師・植物学者",
+   "text": "ドイツの医師。1542年、実物観察を重視した挿絵入りの植物誌『De historia stirpium』を刊行した。植物の「フクシア」は彼にちなんで名づけられた。"
+  },
+  "cordus_p": {
+   "name": "ヴァレリウス・コルドゥス",
+   "life": "1515〜1544",
+   "role": "薬剤師・植物学者",
+   "text": "ドイツの薬剤師・植物学者。彼がまとめた調剤書は没後にニュルンベルクで刊行され、市の公的な基準として用いられた。29歳の若さで亡くなった。"
+  },
+  "de_la_cruz": {
+   "name": "マルティン・デ・ラ・クルス",
+   "life": "16世紀",
+   "role": "先住民の医師",
+   "text": "メキシコの先住民の医師。メキシコ先住民の薬用植物・医療の知識を記録した1552年の薬草書（バディアーノ写本）の内容を、編纂・記録した人物とされる。生涯について分かっていることは多くない。"
+  },
+  "badiano": {
+   "name": "フアン・バディアーノ",
+   "life": "16世紀",
+   "role": "先住民の学者・翻訳者",
+   "text": "メキシコの先住民の出身で、ラテン語を学んだ学者。デ・ラ・クルスがまとめた薬草書をラテン語に翻訳したとされ、写本は彼の名で呼ばれる。内容の編纂・記録はデ・ラ・クルス、ラテン語訳はバディアーノという分担だったと考えられている。"
+  },
+  "orta_p": {
+   "name": "ガルシア・デ・オルタ",
+   "life": "1501ごろ〜1568",
+   "role": "医師",
+   "text": "ポルトガル出身の医師。インドのゴアに移り住み、1563年に対話形式の『インド薬物誌』を刊行した。現地での観察にもとづき、インドの薬用植物を記録した。"
+  },
+  "monardes_p": {
+   "name": "ニコラス・モナルデス",
+   "life": "1493〜1588",
+   "role": "医師",
+   "text": "スペイン・セビリアの医師。自らは新大陸へ渡らなかったが、港に届く産物を調べ、新大陸由来の薬物を記録した書を著した。"
+  },
+  "clusius": {
+   "name": "カロルス・クルシウス",
+   "life": "1526〜1609",
+   "role": "植物学者",
+   "text": "フランドル出身の植物学者。オルタの『インド薬物誌』を要約し注釈を加えたラテン語版を出版して、ヨーロッパでの普及に関わった。晩年はライデン大学の植物園に関わり、チューリップの栽培でも知られる。"
+  },
+  "li_shizhen": {
+   "name": "李時珍",
+   "life": "1518〜1593",
+   "role": "医師・本草学者",
+   "text": "明の医師・本草学者。長年にわたって各地の薬物を調べ、『本草綱目』をまとめた。刊行は没後の1596年である。"
+  },
+  "hayashi_razan": {
+   "name": "林羅山",
+   "life": "1583〜1657",
+   "role": "儒学者",
+   "text": "江戸初期の儒学者で、徳川家康以後の将軍に仕えた。『本草綱目』の日本への伝来・普及に関わったとされ、1607年に長崎で入手して家康に献上したと伝えられる。"
+  },
+  "de_laune": {
+   "name": "ギデオン・ド・ローン",
+   "life": "1565ごろ〜1659",
+   "role": "薬剤師",
+   "text": "フランスから逃れたプロテスタント（ユグノー）の家に生まれ、ロンドンで活躍した薬剤師。ジェームズ1世の王妃アンの薬剤師を務め、食料品商組合からの分離を求める薬剤師たちを率いて、1617年のロンドン薬剤師協会の設立に関わった。"
+  },
+  "mayerne": {
+   "name": "テオドール・ド・マイエルヌ",
+   "life": "1573〜1655",
+   "role": "医師",
+   "text": "ジュネーヴ出身の医師で、イングランド王の侍医を務めた。化学的な薬剤の使用を支持し、1618年の『ロンドン薬局方』の編纂に関わって、巻末に化学的な薬剤の項を加えたとされる。"
+  },
+  "van_helmont": {
+   "name": "ファン・ヘルモント",
+   "life": "1580〜1644",
+   "role": "医師・化学者",
+   "text": "フランドルの医師・化学者。パラケルススの影響を受けた医化学者の一人で、「ガス」という言葉をつくったことでも知られる。"
+  },
+  "sydenham_p": {
+   "name": "トーマス・シデナム",
+   "life": "1624〜1689",
+   "role": "医師",
+   "text": "イングランドの医師。書物の理論よりも、病気の経過を注意深く観察して記録することを重んじた。のちに「イギリスのヒポクラテス」と呼ばれた。"
+  },
+  "boyle": {
+   "name": "ロバート・ボイル",
+   "life": "1627〜1691",
+   "role": "自然哲学者・化学者",
+   "text": "アイルランド出身の自然哲学者。1661年の『懐疑的化学者』で、実験にもとづいて物質を考える姿勢を示し、化学を実験的・定量的に扱う方向に影響を与えた。気体の圧力と体積の関係（ボイルの法則）でも知られる。"
+  },
+  "lemery": {
+   "name": "ニコラ・レムリ",
+   "life": "1645〜1715",
+   "role": "薬剤師・化学者",
+   "text": "フランスの薬剤師・化学者。1675年の『化学教程』は版を重ね、各国語に訳されて広く読まれた。"
+  },
+  "linnaeus": {
+   "name": "カール・リンネ",
+   "life": "1707〜1778",
+   "role": "植物学者・医師",
+   "text": "スウェーデンの植物学者・医師。1753年の『植物の種』で、属名と種小名の二語による植物の命名（二名法）を体系的に用いた。薬用植物を含む植物の名前を世界共通で呼べる、近代的な分類学の土台を整えた。"
+  },
+  "montagu": {
+   "name": "メアリー・ウォートリー・モンタギュー",
+   "life": "1689〜1762",
+   "role": "著述家",
+   "text": "イギリスの貴族の女性。大使の妻としてオスマン帝国に滞在した際、現地で以前から行われていた人痘接種を知った。帰国後、イギリスでの人痘接種の紹介と普及を促した。人痘接種は、のちのジェンナーの牛痘接種とは別の方法である。"
+  },
+  "lind_p": {
+   "name": "ジェームズ・リンド",
+   "life": "1716〜1794",
+   "role": "海軍軍医",
+   "text": "スコットランド出身の海軍軍医。1747年、壊血病の患者を複数の治療の組に分けて比べ、治療の効果を検討した。1753年に『壊血病論』を出版した。"
+  },
+  "withering_p": {
+   "name": "ウィリアム・ウィザリング",
+   "life": "1741〜1799",
+   "role": "医師・植物学者",
+   "text": "イングランドの医師・植物学者。1785年、ジギタリスを用いた治療の経験を整理し、適応・調製法・用量などを記録した報告を著した。ジギタリスの有効成分を取り出したわけではない。"
+  },
+  "kaibara": {
+   "name": "貝原益軒",
+   "life": "1630〜1714",
+   "role": "儒学者・本草学者",
+   "text": "江戸時代の儒学者・本草学者。1709年に『大和本草』を刊行し、薬用植物を含む多くの動植物や産物を、『本草綱目』の分類に独自の工夫を加えて記載した。健康の心得を説いた『養生訓』でも知られる。"
+  },
+  "yoshimune": {
+   "name": "徳川吉宗",
+   "life": "1684〜1751",
+   "role": "江戸幕府8代将軍",
+   "text": "享保の改革を進めた将軍。医療や本草学の振興を進め、1722年には小石川御薬園の中に養生所を設けた。薬用植物の栽培や調査も奨励した。"
+  },
+  "ogawa_shosen": {
+   "name": "小川笙船",
+   "life": "1672〜1760",
+   "role": "町医者",
+   "text": "江戸の町医者。貧しい病人のための施療所の設置を求めて、目安箱に意見を出したとされる。小石川養生所の設置につながった人物として知られる。"
+  },
+  "tamura_ransui": {
+   "name": "田村藍水",
+   "life": "1718〜1776",
+   "role": "本草学者・医師",
+   "text": "江戸の本草学者・医師。朝鮮人参の国産化をめざして栽培の研究を進めた。平賀源内の師で、1757年には源内の提唱により江戸・湯島で薬品会を開き、その後も会主として続けた。"
+  },
+  "gennai": {
+   "name": "平賀源内",
+   "life": "1728〜1780",
+   "role": "本草学者・発明家",
+   "text": "讃岐出身の本草学者で、田村藍水の門人。1757年、師の藍水に提唱して薬品会（物産会）を開かせ、1762年には自ら会主となって開いた。翌1763年、それまでの会の出品物から選んだものを『物類品隲』にまとめた。エレキテルの復元など、本草学以外でも幅広く活動した。"
+  },
+  "sugita": {
+   "name": "杉田玄白",
+   "life": "1733〜1817",
+   "role": "蘭方医",
+   "text": "江戸の蘭方医。前野良沢らとともにオランダ語の解剖書を訳し、1774年に『解体新書』として刊行した。観察にもとづく西洋医学が日本に広がるきっかけの一つとなった。"
+  },
+  "maeno": {
+   "name": "前野良沢",
+   "life": "1723〜1803",
+   "role": "蘭方医",
+   "text": "中津藩の医師。オランダ語の学習に打ち込み、杉田玄白らとの共同の翻訳作業で中心的な役割を担い、『解体新書』の刊行につながった。"
+  },
+  "jenner_p": {
+   "name": "エドワード・ジェンナー",
+   "life": "1749〜1823",
+   "role": "医師",
+   "text": "イングランドの医師。牛痘の材料を用いた接種を1796年に行い、1798年にその結果を報告した。この方法はのちに各地へ広がった。"
+  },
+  "hanaoka": {
+   "name": "華岡青洲",
+   "life": "1760〜1835",
+   "role": "外科医",
+   "text": "紀伊の外科医。曼陀羅華を主とする麻酔薬「通仙散」を工夫し、1804年に全身麻酔のもとで乳がんの手術を行ったとされる。多くの門人を育てた。"
+  },
+  "serturner_p": {
+   "name": "フリードリヒ・ゼルチュルナー",
+   "life": "1783〜1841",
+   "role": "薬剤師",
+   "text": "ドイツの薬剤師。アヘンから主成分を単離し、1817年の論文で「モルフィウム」として発表した。植物の有効成分の単離研究の重要な出発点の一つとされる。"
+  },
+  "pelletier": {
+   "name": "ピエール＝ジョゼフ・ペルティエ",
+   "life": "1788〜1842",
+   "role": "薬剤師・化学者",
+   "text": "フランスの薬剤師。カヴァントゥとともに、ストリキニーネやキニーネなど、植物のアルカロイドを単離した。"
+  },
+  "caventou": {
+   "name": "ジョゼフ・ビヤンネメ・カヴァントゥ",
+   "life": "1795〜1877",
+   "role": "薬剤師・化学者",
+   "text": "フランスの薬剤師。ペルティエとの共同研究で、キニーネなどのアルカロイドの単離を報告した。"
+  },
+  "magendie_p": {
+   "name": "フランソワ・マジャンディ",
+   "life": "1783〜1855",
+   "role": "生理学者",
+   "text": "フランスの生理学者。動物実験によって生体の働きや薬物の作用を調べ、実験生理学・実験薬理学の発展に重要な役割を果たした。"
+  },
+  "bernard": {
+   "name": "クロード・ベルナール",
+   "life": "1813〜1878",
+   "role": "生理学者",
+   "text": "マジャンディの弟子のフランスの生理学者。矢毒クラーレが、神経を刺激しても筋肉が収縮しなくなる作用を実験的に研究するなど、薬物を用いた生理学の研究で知られる。"
+  },
+  "wohler_p": {
+   "name": "フリードリヒ・ヴェーラー",
+   "life": "1800〜1882",
+   "role": "化学者",
+   "text": "ドイツの化学者。1828年に無機の塩から尿素を合成した。リービッヒとの共同研究や、アルミニウムの研究でも知られる。"
+  },
+  "liebig": {
+   "name": "ユストゥス・フォン・リービッヒ",
+   "life": "1803〜1873",
+   "role": "化学者",
+   "text": "ドイツの化学者。ギーセン大学の研究室で、学生に実験を通して化学を教え、多くの化学者を育てた。有機化合物の分析法の改良や、1832年のクロラールの合成でも知られる。"
+  },
+  "siebold_p": {
+   "name": "フィリップ・フランツ・フォン・シーボルト",
+   "life": "1796〜1866",
+   "role": "医師・博物学者",
+   "text": "ドイツ出身の医師。オランダ商館の医師として1823年に来日し、長崎の鳴滝塾で西洋医学を教えた。日本の植物や産物の研究も行った。"
+  },
+  "ogata": {
+   "name": "緒方洪庵",
+   "life": "1810〜1863",
+   "role": "蘭方医",
+   "text": "大坂の蘭方医。適塾を開いて多くの門人を育て、1849年に大坂除痘館を開いて牛痘種痘の普及に取り組んだ。"
+  },
+  "long": {
+   "name": "クロフォード・ロング",
+   "life": "1815〜1878",
+   "role": "医師",
+   "text": "アメリカ・ジョージア州の医師。1842年にエーテルを用いて手術を行ったが、報告したのは数年後だった。"
+  },
+  "wells": {
+   "name": "ホレス・ウェルズ",
+   "life": "1815〜1848",
+   "role": "歯科医",
+   "text": "アメリカの歯科医。笑気（亜酸化窒素）を用いた歯科での麻酔を試みた。"
+  },
+  "morton": {
+   "name": "ウィリアム・モートン",
+   "life": "1819〜1868",
+   "role": "歯科医",
+   "text": "アメリカの歯科医。1846年10月16日、ボストンでエーテル麻酔の公開実演を行い、麻酔が広く知られるきっかけとなった。"
+  },
+  "simpson": {
+   "name": "ジェームズ・ヤング・シンプソン",
+   "life": "1811〜1870",
+   "role": "産科医",
+   "text": "エディンバラの産科医。1847年にクロロホルムを麻酔に用い、その臨床での使用を広めた。"
+  },
+  "semmelweis_p": {
+   "name": "ゼンメルワイス・イグナーツ",
+   "life": "1818〜1865",
+   "role": "産科医",
+   "text": "ハンガリー出身の医師。ウィーンの産科で、さらし粉から作った塩素系の消毒液による手洗いによって、産褥熱の死亡率が低下することを示した。"
+  },
+  "buchheim_p": {
+   "name": "ルドルフ・ブッフハイム",
+   "life": "1820〜1879",
+   "role": "薬理学者",
+   "text": "ドイツ出身の薬理学者。ドルパト大学で、自宅の地下に設けた研究室で実験薬理学の研究と教育を始め、それはのちに大学の研究施設として整備された。"
+  },
+  "snow_p": {
+   "name": "ジョン・スノウ",
+   "life": "1813〜1858",
+   "role": "医師",
+   "text": "ロンドンの医師。1854年のコレラ流行で患者の分布と水源の関係を調べた。エーテルやクロロホルムによる麻酔の研究でも知られる。"
+  },
+  "perkin_p": {
+   "name": "ウィリアム・ヘンリー・パーキン",
+   "life": "1838〜1907",
+   "role": "化学者",
+   "text": "イギリスの化学者。1856年に紫色の合成染料モーブを得て、工業化した。"
+  },
+  "pasteur_p": {
+   "name": "ルイ・パスツール",
+   "life": "1822〜1895",
+   "role": "化学者・微生物学者",
+   "text": "フランスの化学者。発酵や腐敗に微生物が関わることを示し、のちに狂犬病などのワクチンの研究も行った。"
+  },
+  "niemann_p": {
+   "name": "アルベルト・ニーマン",
+   "life": "1834〜1861",
+   "role": "化学者",
+   "text": "ドイツの薬剤師・化学者。ゲッティンゲン大学でヴェーラーの講義を受け、のちにその助手となった。ヴェーラーの指導・助言のもとでコカの葉の研究を行い、1860年に純粋なコカインを単離して「コカイン」と名づけた。"
+  },
+  "lister_p": {
+   "name": "ジョゼフ・リスター",
+   "life": "1827〜1912",
+   "role": "外科医",
+   "text": "イギリスの外科医。石炭酸などを用いて手術後の感染を防ごうとする防腐法を報告し、外科に広めた。"
+  },
+  "schmiedeberg": {
+   "name": "オスヴァルト・シュミーデベルク",
+   "life": "1838〜1921",
+   "role": "薬理学者",
+   "text": "ブッフハイムのもとで学んだ薬理学者。シュトラスブルク大学で長く薬理学を教え、各国から集まった研究者に指導を行った。"
+  },
+  "kolbe": {
+   "name": "ヘルマン・コルベ",
+   "life": "1818〜1884",
+   "role": "化学者",
+   "text": "ドイツの化学者。1860年ごろサリチル酸の合成法を示し、のちに改良した。工業的な製造は、その方法をもとに弟子のフォン・ハイデンが1874年に始めた。"
+  },
+  "koch_p": {
+   "name": "ロベルト・コッホ",
+   "life": "1843〜1910",
+   "role": "医師・細菌学者",
+   "text": "ドイツの医師。炭疽菌の研究、1882年の結核菌の報告、1883〜1884年のエジプトとインドでのコレラの調査とコレラ菌の同定などで知られ、細菌を純粋に培養して調べる方法の整備に大きく寄与した。"
+  },
+  "knorr": {
+   "name": "ルートヴィヒ・クノール",
+   "life": "1859〜1921",
+   "role": "化学者",
+   "text": "ドイツの化学者。1883年にアンチピリンを合成した。"
+  },
+  "koller_p": {
+   "name": "カール・コラー",
+   "life": "1857〜1944",
+   "role": "眼科医",
+   "text": "ウィーンの眼科医。1884年にコカインを目の手術の局所麻酔に用いることを報告した。のちにアメリカで活動した。"
+  },
+  "nagai_p": {
+   "name": "長井長義",
+   "life": "1845〜1929",
+   "role": "薬学者・化学者",
+   "text": "ドイツで化学を学んだ薬学者。麻黄の研究を進め、1887年に純粋な結晶として得た成分をエフェドリンと名づけた。日本薬学会の初代会頭を務め、1880年の創立から1929年まで学会の発展に尽力した。"
+  },
+  "behring": {
+   "name": "エミール・フォン・ベーリング",
+   "life": "1854〜1917",
+   "role": "医師・細菌学者",
+   "text": "ドイツの医師。北里柴三郎らとともに抗毒素の研究を進め、ジフテリアの血清療法の研究で知られる。1901年に第1回ノーベル生理学・医学賞を受けた。"
+  },
+  "kitasato": {
+   "name": "北里柴三郎",
+   "life": "1853〜1931",
+   "role": "医師・細菌学者",
+   "text": "肥後出身の医師。ベルリンのコッホの研究所で、1889年に破傷風菌の純粋培養に成功し、1890年にベーリングとともに抗毒素の研究を発表した。1892年に帰国し、同年に設けられた大日本私立衛生会附属伝染病研究所の所長となった。"
+  },
+  "hoffmann": {
+   "name": "フェリックス・ホフマン",
+   "life": "1868〜1946",
+   "role": "化学者",
+   "text": "バイエル社の化学者。1897年にアセチルサリチル酸の医薬品化につながる合成に関わった。社内の他の人物の役割をめぐっては議論がある。"
+  },
+  "ehrlich": {
+   "name": "パウル・エールリヒ",
+   "life": "1854〜1915",
+   "role": "医師・化学療法の研究者",
+   "text": "ドイツの医師。化学物質で病原体を選択的に狙う化学療法の考えを進め、秦佐八郎らとともにサルバルサンを見いだした。免疫の研究で1908年にノーベル生理学・医学賞を受けた。"
+  },
+  "hata": {
+   "name": "秦佐八郎",
+   "life": "1873〜1938",
+   "role": "細菌学者",
+   "text": "島根出身の細菌学者。エールリヒの研究所で、多数の化合物の効果を動物実験で調べ、梅毒に有効な606号化合物の発見に重要な役割を果たした。"
+  },
+  "takamine": {
+   "name": "高峰譲吉",
+   "life": "1854〜1922",
+   "role": "化学者・実業家",
+   "text": "アメリカで活動した化学者。上中啓三との共同研究でアドレナリンの結晶化を進め、その成果を公表した。消化酵素剤タカジアスターゼでも知られる。"
+  },
+  "uenaka": {
+   "name": "上中啓三",
+   "life": "1876〜1960",
+   "role": "化学者",
+   "text": "高峰譲吉の研究室の化学者。1900年、副腎の抽出物からアドレナリンを結晶として取り出す実験を担った。"
+  },
+  "langley": {
+   "name": "ジョン・ニューポート・ラングレー",
+   "life": "1852〜1925",
+   "role": "生理学者",
+   "text": "イギリスの生理学者。神経の刺激や薬物を受け取る「受容物質」を想定し、受容体の考え方の源流の一つを示した。"
+  },
+  "suzuki_umetaro": {
+   "name": "鈴木梅太郎",
+   "life": "1874〜1943",
+   "role": "農芸化学者",
+   "text": "静岡出身の農芸化学者。米ぬかから脚気に関係する成分を研究し、1910年にオリザニンとして報告した。"
+  },
+  "funk": {
+   "name": "カシミール・フンク",
+   "life": "1884〜1967",
+   "role": "生化学者",
+   "text": "ポーランド出身の生化学者。1912年に「vitamine（ヴァイタミン）」という名称を提唱した。"
+  },
+  "banting": {
+   "name": "フレデリック・バンティング",
+   "life": "1891〜1941",
+   "role": "医師",
+   "text": "カナダの医師。トロント大学で膵臓の抽出物を用いたインスリンの研究を進めた。1923年にマクラウドとともにノーベル生理学・医学賞を受けた。"
+  },
+  "best": {
+   "name": "チャールズ・ベスト",
+   "life": "1899〜1978",
+   "role": "医学研究者",
+   "text": "トロント大学の学生として、バンティングとともにインスリンの研究を進めた。"
+  },
+  "collip": {
+   "name": "ジェームズ・コリップ",
+   "life": "1892〜1965",
+   "role": "生化学者",
+   "text": "カナダの生化学者。膵臓の抽出物を、患者に用いることのできる程度に精製する仕事に取り組んだ。"
+  },
+  "macleod": {
+   "name": "ジョン・マクラウド",
+   "life": "1876〜1935",
+   "role": "生理学者",
+   "text": "トロント大学の生理学の教授。研究の場を提供し、実験の計画にも関わった。1923年にバンティングとともにノーベル賞を受けた。"
+  },
+  "fleming": {
+   "name": "アレクサンダー・フレミング",
+   "life": "1881〜1955",
+   "role": "細菌学者",
+   "text": "スコットランド出身の細菌学者。1928年にアオカビの物質が細菌の生育を妨げることに気づき、ペニシリンと名づけて報告した。"
+  },
+  "florey": {
+   "name": "ハワード・フローリー",
+   "life": "1898〜1968",
+   "role": "病理学者",
+   "text": "オーストラリア出身の病理学者。オックスフォード大学で、ペニシリンを治療薬として実用化する研究を率いた。"
+  },
+  "chain": {
+   "name": "エルンスト・チェイン",
+   "life": "1906〜1979",
+   "role": "生化学者",
+   "text": "ドイツ出身の生化学者。オックスフォード大学で、ペニシリンの精製と性質の研究を進めた。1945年、フレミング、フローリーとともにノーベル賞を受けた。"
+  },
+  "heatley": {
+   "name": "ノーマン・ヒートリー",
+   "life": "1911〜2004",
+   "role": "生化学者",
+   "text": "オックスフォード大学の生化学者。ペニシリンを抽出し、生産する方法の工夫に重要な役割を果たした。"
+  },
+  "domagk": {
+   "name": "ゲルハルト・ドーマク",
+   "life": "1895〜1964",
+   "role": "病理学者",
+   "text": "ドイツの病理学者。プロントジルが細菌感染症に効くことを示した。1939年のノーベル生理学・医学賞の受賞者に選ばれた。"
+  },
+  "waksman": {
+   "name": "セルマン・ワクスマン",
+   "life": "1888〜1973",
+   "role": "微生物学者",
+   "text": "アメリカの微生物学者。土壌の微生物から抗生物質を探す研究を組織的に進め、ストレプトマイシンの研究を指導した。"
+  },
+  "schatz": {
+   "name": "アルバート・シャッツ",
+   "life": "1920〜2005",
+   "role": "微生物学者",
+   "text": "ワクスマンの研究室の大学院生として、土壌の放線菌からストレプトマイシンを分離した。"
+  },
+  "hodgkin": {
+   "name": "ドロシー・ホジキン",
+   "life": "1910〜1994",
+   "role": "化学者",
+   "text": "イギリスの化学者。X線結晶解析によって、ペニシリンやビタミンB12などの立体構造を明らかにした。1964年にノーベル化学賞を受けた。"
+  },
+  "bradford_hill": {
+   "name": "オースティン・ブラッドフォード・ヒル",
+   "life": "1897〜1991",
+   "role": "統計学者・疫学者",
+   "text": "イギリスの統計学者。MRCのストレプトマイシンの試験で、統計の方法と無作為の割り付けに重要な役割を果たした。"
+  },
+  "franklin": {
+   "name": "ロザリンド・フランクリン",
+   "life": "1920〜1958",
+   "role": "化学者",
+   "text": "イギリスの化学者。X線回折によるDNAの研究を行い、その結果は二重らせんモデルの重要な資料となった。"
+  },
+  "watson_crick": {
+   "name": "ジェームズ・ワトソンとフランシス・クリック",
+   "life": "1928〜2025／1916〜2004",
+   "role": "分子生物学者",
+   "text": "ワトソンとクリックは、1953年にDNAの二重らせんモデルを発表した。フランクリン、ウィルキンスらのX線回折の研究などが重要な資料となった。"
+  },
+  "kelsey": {
+   "name": "フランシス・ケルシー",
+   "life": "1914〜2015",
+   "role": "薬理学者・審査官",
+   "text": "カナダ出身の薬理学者。米国FDAの審査官として、サリドマイドの承認申請に対し、安全性のデータが不十分だとして承認を保留した。"
+  },
+  "lenz": {
+   "name": "ヴィドゥキント・レンツ",
+   "life": "1919〜1995",
+   "role": "小児科医・遺伝学者",
+   "text": "ドイツの医師。1961年、サリドマイドと胎児の障害との関係を指摘した。"
+  },
+  "black": {
+   "name": "ジェームズ・ブラック",
+   "life": "1924〜2010",
+   "role": "薬理学者",
+   "text": "スコットランド出身の薬理学者。受容体の考え方を背景に、プロプラノロールやシメチジンの開発を主導した。1988年にノーベル生理学・医学賞を受けた。"
+  },
+  "endo": {
+   "name": "遠藤章",
+   "life": "1933〜2024",
+   "role": "生化学者",
+   "text": "秋田出身の生化学者。三共の研究者として、カビからコレステロールの合成を妨げる物質ML-236B（コンパクチン）を見いだした。"
+  },
+  "omura": {
+   "name": "大村智",
+   "life": "1935〜",
+   "role": "化学者",
+   "text": "山梨出身の化学者。土壌の微生物から有用な物質を探す研究を進め、イベルメクチンのもとになった放線菌を分離した。2015年にノーベル生理学・医学賞を受けた。"
+  },
+  "campbell": {
+   "name": "ウィリアム・キャンベル",
+   "life": "1930〜",
+   "role": "寄生虫学者",
+   "text": "アイルランド出身の寄生虫学者。メルク社でイベルメクチンの開発を進めた。2015年に大村智とともにノーベル賞を受けた。"
+  },
+  "kohler_milstein": {
+   "name": "ケーラーとミルスタイン",
+   "life": "1946〜1995／1927〜2002",
+   "role": "免疫学者",
+   "text": "ドイツ出身のケーラーとアルゼンチン出身のミルスタインは、1975年にハイブリドーマ法を報告した。1984年にノーベル生理学・医学賞を受けた。"
+  },
+  "boyer_cohen": {
+   "name": "ボイヤーとコーエン",
+   "life": "1936〜／1935〜",
+   "role": "生化学者・遺伝学者",
+   "text": "スタンリー・コーエンとハーバート・ボイヤーらは、1970年代に組換えDNA技術の発展に重要な役割を果たした。"
+  },
+  "honjo": {
+   "name": "本庶佑",
+   "life": "1942〜",
+   "role": "免疫学者",
+   "text": "京都出身の免疫学者。研究室で石田康彦らがPD-1遺伝子を同定し、その後、本庶らがPD-1の機能と免疫の制御に関する研究を進めた。2018年にノーベル生理学・医学賞を受けた。"
+  },
+  "kariko": {
+   "name": "カタリン・カリコ",
+   "life": "1955〜",
+   "role": "生化学者",
+   "text": "ハンガリー出身の生化学者。ドリュー・ワイスマンとの共同研究で、修飾ヌクレオシドを用いたmRNAが炎症反応を起こしにくくなることを示した。2023年にワイスマンとともにノーベル生理学・医学賞を受けた。"
+  }
+ },
+ "events": {
+  "nippur": {
+   "title": "ニップルの医薬粘土板",
+   "who": "メソポタミア",
+   "when": "紀元前2100年ごろ",
+   "text": "紀元前2100年ごろのシュメールの都市ニップルから出た粘土板は、現存する最古級の医療・薬学文書の一つとされる。楔形文字で薬材とその調合法が記され、植物・鉱物・動物由来の素材が並ぶ。この板には呪文の記載がなく、経験にもとづく薬の記録として知られる。",
+   "why": "薬の調合を文字で残せると分かり、記録を重ねる文化が育つ。"
+  },
+  "ebers": {
+   "title": "エーベルス・パピルス",
+   "who": "古代エジプト",
+   "when": "紀元前16世紀ごろ",
+   "text": "紀元前1550年ごろに成立したとされる全長約20メートルの医学パピルスで、約700の薬や処方を収める。呪文と処方が並び、動植物や鉱物を材料とした内科・外科・皮膚・眼の治療を扱う。心臓から血管が全身へ出ているという記述もある。1873年にエジプト学者エーベルスがルクソールで入手し、現在はライプツィヒ大学図書館が所蔵する。",
+   "why": "薬材を加工して使う知識が文書にまとめられ、加工の技術が体系化へ向かう。"
+  },
+  "hippocrates": {
+   "title": "ギリシア医学とヒポクラテス医学全集",
+   "who": "古代ギリシア",
+   "when": "紀元前5〜4世紀",
+   "text": "紀元前5〜4世紀ごろに成立した約60編の文書群で、ヒポクラテス本人の著作かは分かっていない。『神聖病について』はてんかんを神の仕業とする説を退け、『空気、水、場所について』は気候や土地と病気の関係を論じる。観察と記録を重んじる姿勢が、のちの西洋医学の基礎となった。",
+   "why": "病気を観察し記録する姿勢が、医学の中で受け継がれていく。"
+  },
+  "dioscorides": {
+   "title": "ディオスコリデス『薬物誌』",
+   "who": "ローマ帝国",
+   "when": "1世紀",
+   "text": "1世紀、ローマ皇帝ネロの時代にギリシア人の軍医ディオスコリデスが著した全5巻の薬物書『デ・マテリア・メディカ』。数百種の植物をはじめ多数の薬物について、産地・見分け方・調製法・効能を記し、後世の薬物学・本草学に非常に大きな影響を与えた。長く薬草学の標準書として使われ、512年ごろの豪華写本「ウィーン・ディオスコリデス」は今も伝わる。",
+   "why": "薬物の記述がまとめられ、産地や品質を見分けるための拠り所の一つとなる。"
+  },
+  "galen": {
+   "title": "ガレノスと薬物調合",
+   "who": "ローマ帝国",
+   "when": "2世紀",
+   "text": "2世紀、ペルガモン出身のガレノス（129ごろ〜216ごろ）は剣闘士の医師を経てローマで皇帝の侍医となり、薬物の調合と抽出の方法を体系化した。植物などを原料とする製剤は今も「ガレヌス製剤」と呼ばれ、製剤学にその名を残す。水・蝋・オリーブ油から作る冷膏（コールドクリームの原型）も彼の考案とされる。",
+   "why": "製剤の理論が整い、その知識を後の世へ残す「書写と保存」が重要になる。"
+  },
+  "preservation": {
+   "title": "古典医学知識の継承",
+   "who": "ビザンツ・西ヨーロッパ",
+   "when": "5〜8世紀ごろ",
+   "text": "西ローマ帝国が衰えたのち、古代の医学書は一つの道だけでなく、ギリシア語圏のビザンツ世界、修道院での書写、のちにはアラビア語への翻訳など、複数の経路で受け継がれた。書物を守り、写し、読み続ける人々がいたことで、古代の薬物の知識は次の時代へ届いた。",
+   "why": "保存された知識を別の言語に訳して発展させる、翻訳の時代へ向かう。"
+  },
+  "byzantium": {
+   "title": "ビザンツ世界の医学",
+   "who": "ビザンツ帝国",
+   "when": "6〜7世紀",
+   "text": "ビザンツ帝国ではギリシア語の医学の伝統が続き、6世紀のアエティオスや7世紀のアイギナのパウロスらが、古代の医学・薬物の知識を集成した大部の著作をまとめた。こうした集成書は、のちにアラビア語世界でも参照された。",
+   "why": "薬物の記述が集められて、鑑定の基準が広く共有される。"
+  },
+  "monastic_med": {
+   "title": "修道院での医学知識の保存・利用",
+   "who": "西ヨーロッパの修道院",
+   "when": "6世紀〜",
+   "text": "印刷術が現れる15世紀なかばまで、書物は人の手で書き写すほかなかった。修道院の写字室では、修道士が聖書だけでなく古代の医学書・薬草書も書写して後世に伝えた。6世紀の学者カッシオドルスは、南イタリアに開いた修道院で写本作りを修道士の務めとし、ヒポクラテスやガレノス、ディオスコリデスの書を読むよう勧めたとされる。古代の医学・薬学知識はイスラム圏やビザンツ圏の学者たちにも受け継がれたが、修道院での写本づくりもその継承を支えた一つの流れだった。",
+   "why": "修道院が、医学の知識を保存し、利用する場の一つとなる。"
+  },
+  "hunayn": {
+   "title": "フナイン・イブン・イスハークと翻訳事業",
+   "who": "バグダッド",
+   "when": "9世紀",
+   "text": "フナイン・イブン・イスハーク（809〜873）は、ネストリウス派キリスト教徒としてバグダッドで活躍した医師・翻訳家。ギリシア語の写本を各地で探し求め、複数の写本を突き合わせて本文を整えたうえで、ガレノスらの医学書を多数シリア語やアラビア語に訳した。専門用語の訳語も整え、息子や弟子とともに翻訳の工房を築いた。自著に眼科の『眼についての十の論文』がある。知恵の館の翻訳事業にも関わったと伝えられ、ギリシアの知がイスラム世界へ移る道を開いた。",
+   "why": "ギリシアの医学・自然学の書がアラビア語で読めるようになり、イスラム世界での学問の発展を支える。"
+  },
+  "jabir": {
+   "title": "ジャービル文書群と錬金術",
+   "who": "イスラム世界",
+   "when": "8〜9世紀ごろ",
+   "text": "8世紀後半、イスラム世界で活動したとされる錬金術師・化学者。実在や生涯の詳細には議論があり、彼の名を冠する膨大な著作群（ジャービル文書群）は複数の著者によるものとみられる。硫黄と水銀による金属構成論を説き、蒸留・結晶化・ろ過など実験室での操作を体系的に記録した先駆者として、後世「化学の父」とも呼ばれる。",
+   "why": "蒸留・昇華などの操作が記録され、錬金術の実験が体系化していく。"
+  },
+  "bimaristan_ev": {
+   "title": "バイマーリスタン（病院）と薬局",
+   "who": "バグダッドほか",
+   "when": "9世紀〜",
+   "text": "バイマーリスタンはペルシア語で「病人の家」を意味する。バグダッドでは8世紀末から9世紀初め、アッバース朝のハールーン・アッ＝ラシード（在位786〜809）の時代に病院が築かれたと伝わり、病室と薬局を備え、医師が治療と教育にあたった。薬を扱う薬剤師（サイダラーニー）も、9世紀ごろから独立した職業として確立していったとされる。",
+   "why": "病院に薬局が備わり、薬を扱う専門の職業が育っていく。"
+  },
+  "rhazes": {
+   "title": "ラーズィー『天然痘と麻疹について』",
+   "who": "イスラム世界",
+   "when": "9〜10世紀",
+   "text": "ラーズィーが著した小論で、天然痘と麻疹を症状の違いから区別して論じた最初期の記録の一つ。発疹の出方や熱の経過を比べ、看病の方法や食事、薬を述べる。のちにラテン語や近代ヨーロッパの言語に訳され、英訳は1848年に出た。感染症を臨床の観察でとらえた古典とされる。",
+   "why": "臨床の観察にもとづく医学が発達し、薬の調製も専門化していく。"
+  },
+  "avicenna": {
+   "title": "イブン・スィーナー『医学典範』",
+   "who": "ペルシア",
+   "when": "11世紀",
+   "text": "イブン・スィーナー（ラテン名アヴィセンナ、980〜1037）が1025年ごろに完成させた五巻の医学書。第2巻は約760の単純薬を扱い、第5巻は複合薬の処方にあてられる。ギリシア医学とアラビア医学を体系化した。12世紀にクレモナのゲラルドがラテン語に訳し、ヨーロッパの大学で17世紀に至るまで教科書として用いられた。",
+   "why": "ラテン語に訳され、中世後期以降のヨーロッパの大学医学でも読まれるようになる。"
+  },
+  "salerno": {
+   "title": "サレルノ医学校",
+   "who": "南イタリア",
+   "when": "11〜12世紀",
+   "text": "南イタリアのサレルノは、ギリシア・ラテン・アラビア・ユダヤの文化が交わる港町で、11世紀ごろに医学の中心として名声を得た。女性の医師も活動していたとされる。アラビア医学の翻訳が進み、ヨーロッパの医学教育の先がけの一つとなった。",
+   "why": "医学を教える場が整い、薬の知識を扱う人々の専門化が進む。"
+  },
+  "constantine": {
+   "title": "コンスタンティヌス・アフリカヌスの翻訳事業",
+   "who": "サレルノ・モンテ・カッシーノ",
+   "when": "11世紀後半",
+   "text": "11世紀後半、北アフリカ出身のコンスタンティヌス・アフリカヌスは、サレルノを経てモンテ・カッシーノ修道院に入り、アラビア語の医学書をラテン語に訳した。『パンテグニ』はアラビア医学の大著の翻訳で、イサク・イスラエリの著作なども訳出。原著者名を伏せた翻案だとして批判も受けたが、西欧にアラビア医学を広く紹介した功績は大きい。",
+   "why": "アラビア医学がラテン語で読めるようになり、薬の理論が広まる。"
+  },
+  "hildegard": {
+   "title": "ヒルデガルト『フィジカ』",
+   "who": "ライン川流域の修道院",
+   "when": "12世紀半ば",
+   "text": "ビンゲンのヒルデガルト（1098〜1179）はベネディクト会の女子修道院長。12世紀半ばの『フィジカ』は全9巻で、植物の巻だけで約230項目、ほかに元素・樹木・石・魚・鳥・獣・爬虫類・金属を扱う。薬効を温・冷・湿・乾の性質で説明し、ドイツ語の植物名も記す。ただし現在「ヒルデガルト療法」と呼ばれるものには後世の付加が多い。",
+   "why": "薬草の知識が修道院の外へも広がり、薬を扱う人々の関心を集める。"
+  },
+  "apothecary_ev": {
+   "title": "中世の薬房",
+   "who": "ヨーロッパの都市",
+   "when": "12〜13世紀ごろ",
+   "text": "12〜13世紀ごろから、ヨーロッパの都市では薬の調製と販売を専門に行う店が各地に現れた。薬の材料を蓄え、処方に従って調製する場所は、医師の診察の場とは別の専門の仕事場として知られるようになっていく。「アポテカ（apotheca）」はもともと貯蔵所を意味するラテン語で、のちに薬を扱う店を指す語になった。",
+   "why": "調製の手順を共有するための処方集が求められる。"
+  },
+  "antidotarium": {
+   "title": "『アンティドタリウム・ニコライ』",
+   "who": "サレルノ",
+   "when": "12世紀ごろ",
+   "text": "12世紀ごろにサレルノで編まれた処方集。約140の処方を薬名のアルファベット順に並べ、材料の分量や調製法を記す。中世ヨーロッパの薬局で広く使われ、15世紀後半には印刷本も出た。分量の単位や調剤の作法は、のちの薬局方（ファルマコペア）の原型となった。",
+   "why": "処方と分量の標準が整い、薬局が安定して薬をつくれるようになる。"
+  },
+  "melfi": {
+   "title": "メルフィ憲章",
+   "who": "シチリア王国",
+   "when": "1231年（1240年ごろの法令とする説もある）",
+   "text": "シチリア王でもあった神聖ローマ皇帝フリードリヒ2世は、1231年のメルフィ憲章などで、医師の開業に試験と免許を課し、薬剤師の職務と監督についても定めた。シチリア王国で医師と薬剤師の役割を制度的に区別する重要な規定が整えられたもので、医師と薬を扱う者の役割を制度の上で区別しようとした動きの、重要な一例とされる。",
+   "why": "医師と、薬を扱う専門職の役割を区別する、制度的な動きの一例となる。"
+  },
+  "lupescissa": {
+   "title": "ルペシッサと「第五元素」",
+   "who": "フランス",
+   "when": "1351年ごろ",
+   "text": "1351年ごろ、フランスの錬金術師ヨハネス・デ・ルペシッサが著した書。ワインを繰り返し蒸留して得られるアルコール（命の水）を、天と地を構成する四元素とは別の「第五精髄（第五元素）」と関連づけ、医療に利用できる物質として論じた。",
+   "why": "蒸留した物質を医療に使おうとする考えの一例として、のちの医化学の文脈にもつながる。"
+  },
+  "separation_ev": {
+   "title": "薬剤師の組合と職能の広がり",
+   "who": "ヨーロッパの都市",
+   "when": "13世紀以降",
+   "text": "メルフィ憲章の前後から、ヨーロッパの都市では薬剤師の組合が、薬の品質や価格、調剤の方法を定める規則を整えていった。医師が診断と処方を、薬剤師が調剤を担うという役割の分け方は、地域によって形も時期も異なりながら、少しずつ広がっていった。",
+   "why": "都市の行政、医師、薬剤師の組合などがかかわりながら、薬の処方と品質を定める規範が求められていく。"
+  },
+  "ricettario": {
+   "title": "フィレンツェ『リチェッタリオ』",
+   "who": "フィレンツェ",
+   "when": "1498年（1499年とする資料もある）",
+   "text": "フィレンツェの医師・薬剤師の組合が発行した処方集（『新リチェッタリオ・フィオレンティーノ』）。発行は1498年（フィレンツェの暦による。現在の暦に直して1499年とする資料もある）。公的な権威のもとで薬の処方と調製法を定めた、初期の重要な例とされる。以後、他の都市でも独自の薬局方が編まれていった。",
+   "why": "公的な権威のもとで薬の調製の基準を定める、薬局方の重要な初期例となる。"
+  },
+  "paracelsus": {
+   "title": "パラケルススの医化学",
+   "who": "パラケルスス（スイス・バーゼルほか）",
+   "when": "1520〜30年代",
+   "text": "スイス生まれの医師パラケルスス（1493〜1541）は、1527年にバーゼルの市医となった。ガレノス流の医学を批判し、鉱物や金属など化学的な物質を治療に用いることを説いた。薬の用量と毒性の関係を論じたことから、毒性学の先駆とも評される。",
+   "why": "化学的な物質を薬として使う「医化学」の考え方が広がる。"
+  },
+  "fuchs": {
+   "title": "植物誌の刊行",
+   "who": "レオンハルト・フックス『De historia stirpium』",
+   "when": "1542年",
+   "text": "1542年、ドイツの医師レオンハルト・フックスの『De historia stirpium（植物誌）』が刊行された。実物観察を重視した挿絵入りの植物誌で、古典の記述だけに頼らず、目の前の植物を見て薬草を見分けようとする動きを示す一例となった。",
+   "why": "印刷された挿絵が、離れた場所の人々にとっても、植物を見分ける手がかりの一つになる。"
+  },
+  "cordus": {
+   "title": "ニュルンベルクの調剤書",
+   "who": "ヴァレリウス・コルドゥス（1515〜1544）",
+   "when": "1546〜47年",
+   "text": "コルドゥスの調剤書は1543年頃に作成されたとされ、1546年に出版、1547年にはニュルンベルク市で使用が義務づけられた（資料により年代の記述が異なる）。ドイツ語圏の都市薬局方の早い例の一つ。",
+   "why": "都市が調剤書を公的な基準として用いる流れが広がる。"
+  },
+  "codex_badiano": {
+   "title": "メキシコ先住民の薬草書",
+   "who": "マルティン・デ・ラ・クルス、フアン・バディアーノ",
+   "when": "1552年",
+   "text": "1552年に作られたラテン語の写本。ナワトル語圏（現在のメキシコ）の薬用植物の知識が、植物の図とともにラテン語に訳されて記録された。成立の事情や内容の細部には、なお議論がある。",
+   "why": "新大陸の先住民の薬物知識が、ヨーロッパの言葉で書き留められる。"
+  },
+  "orta": {
+   "title": "インド薬物誌",
+   "who": "ガルシア・デ・オルタ（ゴア）",
+   "when": "1563年",
+   "text": "ポルトガル出身の医師オルタ（1501頃〜1568）がゴアで刊行した対話形式の書。インドの薬用植物を観察に基づいて記述し、古典の記述と異なる点も示した。1567年にはクルシウスがラテン語に訳した。",
+   "why": "遠い土地の薬物を、実際の見聞から記録する動きが進む。"
+  },
+  "german_cities": {
+   "title": "アウクスブルク・ケルンの薬局方",
+   "who": "ドイツ語圏の都市",
+   "when": "1564〜65年",
+   "text": "ニュルンベルクに続いて、ほかの都市も独自の薬局方を作った。アウクスブルクの薬局方は、ニュルンベルクの処方から61を取り入れている。",
+   "why": "都市ごとの薬局方が増え、基準づくりが各地へ広がる。"
+  },
+  "monardes": {
+   "title": "西インドの薬物誌",
+   "who": "ニコラス・モナルデス（セビリア）",
+   "when": "1565〜74年",
+   "text": "スペイン・セビリアの医師モナルデス（1493〜1588）が、新大陸からもたらされた薬物を記録した書。1565年から1574年にかけて刊行され、1577年には英訳も出た。",
+   "why": "新大陸の産物を薬として用いることへの、ヨーロッパでの関心の高まりを示す。"
+  },
+  "honzo_koumoku": {
+   "title": "本草綱目",
+   "who": "李時珍（明）",
+   "when": "1578年頃脱稿・1596年刊",
+   "text": "明の李時珍がまとめた本草書。1578年頃に脱稿し、1596年に刊行された。52巻に約1,900種（数え方には諸説ある）の薬物を収め、16部60類に分けて整理した。",
+   "why": "それまでの本草学を集大成した大部の本草書として、東アジアで広く読まれる。"
+  },
+  "honzo_japan": {
+   "title": "本草綱目が日本へ",
+   "who": "林羅山、徳川家康",
+   "when": "1607年",
+   "text": "1607年、林羅山が長崎で『本草綱目』を入手し、徳川家康に献上したと伝えられる。日本への最初の到来とは限らないが、重要な伝来・紹介の一例。",
+   "why": "日本における本草学の展開にも影響を与える。"
+  },
+  "apothecaries_1617": {
+   "title": "ロンドン薬剤師協会",
+   "who": "ジェームズ1世、ギデオン・ド・ローン",
+   "when": "1617年",
+   "text": "1617年12月6日、国王ジェームズ1世の特許状により、ロンドンの薬剤師たちは食料品商組合（Grocers' Company）から分離・独立し、固有の団体（薬剤師協会）を持った。王妃付きの薬剤師ギデオン・ド・ローンらが、分離を求める動きを率いた。",
+   "why": "ロンドンで薬剤師が独自の団体を持ち、職能としての歩みを進めていく。"
+  },
+  "londinensis": {
+   "title": "ロンドン薬局方",
+   "who": "王立内科医協会、テオドール・ド・マイエルヌ",
+   "when": "1618年",
+   "text": "1618年、王立内科医協会による『ロンドン薬局方』が出された。国王の布告で、薬局方に載らない薬の調製・販売が制限され、薬剤師の活動を規制する基準として機能した。前年の薬剤師団体の独立で弱まった医師団体の規制力を取り戻す意図もあったとされる。マイエルヌ（1573〜1655）が編纂に関わり、化学的な薬剤の項を加えた。",
+   "why": "首都の医師団体が定めた薬局方として、薬の調製の基準となる。"
+  },
+  "cinchona_arrival": {
+   "title": "キナ皮のヨーロッパ到来",
+   "who": "イエズス会士ほか",
+   "when": "1630〜40年代頃",
+   "text": "南米の樹皮が、イエズス会士などを介して1630〜40年代頃からヨーロッパで知られるようになり、熱病の薬として使われた。イエズス会などカトリック側の人々によって紹介・推奨されたこともあり、一部のプロテスタント圏では、宗派的な反発を伴う論争も起きた。",
+   "why": "遠い土地の植物が、ヨーロッパでの熱病の治療に取り入れられていく。"
+  },
+  "paris_codex": {
+   "title": "パリ薬局方",
+   "who": "パリ大学医学部",
+   "when": "1638年",
+   "text": "パリ大学医学部による薬局方（コデックス）は、1598年に作成が始まったとされ、1638年に刊行された。同じ時期のパリでは、アンチモンを薬として使うことの是非をめぐる論争が続いており、1666年にはパリ高等法院の決定で、アンチモンを用いた催吐剤（アンチモン酒）の使用が認められた。",
+   "why": "化学的な薬剤をどう扱うかが、医学界と薬局方の論点の一つになる。"
+  },
+  "sydenham": {
+   "title": "シデナムの臨床観察とラウダヌム",
+   "who": "トーマス・シデナム（イングランド）",
+   "when": "1660年代",
+   "text": "イングランドの医師トーマス・シデナムは、病気の経過を注意深く観察し記録することを重んじた。1660年代には、アヘンを含む液剤「ラウダヌム」の処方を用いた。パラケルススが用いた同名の薬とは同一視しない。",
+   "why": "病気と薬の効き方を、症例の観察で捉えようとする見方の一例となる。"
+  },
+  "chelsea": {
+   "title": "チェルシー薬草園",
+   "who": "ロンドン薬剤師協会",
+   "when": "1673年",
+   "text": "1673年、ロンドンの薬剤師協会がチェルシーに薬草園を設けた。薬剤師が薬草を学び、見分けるための場となった。",
+   "why": "薬草園が、研究と教育の場として整えられていく。"
+  },
+  "koishikawa": {
+   "title": "小石川御薬園へ",
+   "who": "江戸幕府",
+   "when": "1684年",
+   "text": "江戸の薬園は1638年に南麻布などに設けられた。1684年、麻布の薬園が白山御殿内の小石川へ移され、小石川御薬園となった。1722年には園内に養生所が設けられた。",
+   "why": "幕府の薬園で、薬草の栽培・収集・利用に関する活動が続けられる。"
+  },
+  "edinburgh": {
+   "title": "エディンバラ薬局方",
+   "who": "スコットランド・エディンバラ",
+   "when": "1699年",
+   "text": "1699年、エディンバラで薬局方が刊行された。ロンドンやパリと同じく、薬の処方と調製法を定める規範が各地で作られていった流れの中の一例。",
+   "why": "地域ごとの薬局方が、さらに広がっていく。"
+  },
+  "rose_case": {
+   "title": "ローズ事件",
+   "who": "ウィリアム・ローズ、薬剤師協会、内科医協会",
+   "when": "1704年",
+   "text": "ウィリアム・ローズの訪問診療・助言・処方・調剤をめぐる訴訟で、1704年の上訴審が薬剤師側に有利な判断を示した。薬剤師が調剤だけでなく、患者への助言や処方を行う実務をめぐる、重要な法的先例となった。",
+   "why": "診療に関わる薬剤師の実務をめぐる、重要な法的先例となる。"
+  },
+  "variolation": {
+   "title": "人痘接種のイギリス紹介",
+   "who": "レディ・メアリー・ウォートリー・モンタギューほか",
+   "when": "1718〜21年頃",
+   "text": "天然痘の人痘接種は、アジア・アフリカなど複数の地域で行われていた。オスマン帝国などで行われていた方法が、モンタギューらを通じて18世紀初頭のイギリスで紹介された。1796年のジェンナーによる牛痘接種とは別の方法である。",
+   "why": "アジア・アフリカなどで行われていた予防の方法が、複数の人々を通じてヨーロッパにも伝えられていく。"
+  },
+  "doshomachi": {
+   "title": "道修町の薬種仲間",
+   "who": "大坂・道修町の薬種屋",
+   "when": "1722年",
+   "text": "長崎貿易で輸入された唐薬種は大坂で荷受けされ、品質・容量が検査されて全国へ流通した。1658年に33軒が連印状を出し、1722年には124軒で薬種仲間が成立した。",
+   "why": "薬種の検査と流通が、組織によって支えられるようになる。"
+  },
+  "lind": {
+   "title": "リンドの壊血病の比較",
+   "who": "ジェームズ・リンド",
+   "when": "1747年",
+   "text": "英国海軍の軍医ジェームズ・リンドは、壊血病の患者を組に分けて異なる治療を試み、その結果を比べた。「世界初の臨床試験」とは断定せず、治療法を比較して検討した近世の重要な事例として扱う。",
+   "why": "治療法を比べて、どれが効くかを確かめようとする試みの、重要な例の一つとなる。"
+  },
+  "yakuhinkai": {
+   "title": "薬品会",
+   "who": "平賀源内、田村藍水",
+   "when": "1757年",
+   "text": "1757年、平賀源内の発案で、各地の薬物・産物を持ち寄って展示・鑑定する物産会（薬品会）が江戸で開かれた。1762年には第5回が開かれ、翌1763年、源内はその成果を『物類品隲』にまとめた。",
+   "why": "各地の産物を持ち寄って見比べる会を通じて、本草学に関心を持つ人々が増えていく。"
+  },
+  "withering": {
+   "title": "ジギタリスの報告",
+   "who": "ウィリアム・ウィザリング",
+   "when": "1785年",
+   "text": "ウィザリングは『An Account of the Foxglove』で、約10年間にわたって集めた156例の私的な診療例と、バーミンガムの病院での7例を記録し、ジギタリスの調製法・用量・適応などを検討した。民間療法を伝えた「ハットン婆さん」の物語は、ウィザリング自身の著作には登場せず、1920年代の広告によって広まった伝説とされる。",
+   "why": "症例をもとに、薬の用量・効果・副作用を検討する姿勢が示される。"
+  },
+  "jenner": {
+   "title": "ジェンナーの牛痘接種の報告",
+   "who": "エドワード・ジェンナー（イングランド）",
+   "when": "1798年",
+   "text": "イングランドの医師ジェンナーは、1796年に牛痘の材料を用いた接種を行い、その結果を1798年に報告した。近世に広まった人痘接種とは別の方法で、牛を意味するラテン語（vacca）に由来する「ワクチン（vaccination）」という語のもとにもなった。近世から近代への橋渡しとなる出来事。",
+   "why": "病気を予防するための接種が、各地へ広がっていく。"
+  },
+  "seishu": {
+   "title": "華岡青洲の全身麻酔",
+   "who": "華岡青洲（紀伊）",
+   "when": "1804年",
+   "text": "紀伊の医師・華岡青洲は、曼陀羅華（チョウセンアサガオ）を主要な生薬の一つとして、複数の生薬を配合した麻酔薬「通仙散」を用い、1804年に乳がんの手術を行ったとされる。欧米の吸入麻酔とは別に、日本で行われた全身麻酔の重要な事例として知られる。",
+   "why": "痛みを抑えて手術を行う試みが、各地で進められていく。"
+  },
+  "serturner": {
+   "title": "モルヒネの単離",
+   "who": "フリードリヒ・ゼルチュルナー（ドイツ）",
+   "when": "1805〜1817年",
+   "text": "ドイツの薬剤師ゼルチュルナーは、1805年ごろアヘンから眠りを誘う主成分を取り出したと報告し、1817年の論文で「モルフィウム」として改めて発表した。植物から作用の強い成分を単離する研究の、重要な出発点の一つとされる。",
+   "why": "植物から有効成分を取り出す研究が、各地で進められる流れの一つとなる。"
+  },
+  "pelletier_caventou": {
+   "title": "ペルティエとカヴァントゥ",
+   "who": "ペルティエ、カヴァントゥ（フランス）",
+   "when": "1818〜1820年",
+   "text": "フランスの薬剤師ペルティエとカヴァントゥは、植物からのアルカロイドの単離を進め、1818年にストリキニーネ、1820年にキニーネを報告した。キナ皮そのものは以前から熱病に使われていたが、成分が単離されたことで、その成分をより明確に扱えるようになった。",
+   "why": "成分を単離した薬を、量を確かめて使おうとする流れが広がる。"
+  },
+  "usp_1820": {
+   "title": "アメリカ合衆国薬局方",
+   "who": "アメリカ合衆国",
+   "when": "1820年",
+   "text": "1820年、医師たちの会議を経て、アメリカ合衆国薬局方（USP）の初版が成立した。国全体で共通に使う薬局方の一例。",
+   "why": "国全体で共通の基準のもとに、薬を扱う流れが進む。"
+  },
+  "magendie": {
+   "title": "マジャンディと実験薬理",
+   "who": "フランソワ・マジャンディ（フランス）",
+   "when": "1810〜1820年代",
+   "text": "フランスの生理学者マジャンディは、動物実験によって生体の働きや薬物の作用を調べた。1821年には、新しく単離された成分の調製と使い方をまとめた処方集も出している。実験によって薬の作用を確かめる方向を強めた人物の一人。",
+   "why": "薬の作用を実験で調べる「実験薬理学」の流れが育つ。"
+  },
+  "phila_college": {
+   "title": "フィラデルフィア薬科大学",
+   "who": "フィラデルフィアの薬剤師たち",
+   "when": "1821年",
+   "text": "1821年、フィラデルフィアの薬剤師たちによって、北米で最初期の薬学教育機関の一つが設立された。",
+   "why": "薬剤師を学校で教育する流れが広がる。"
+  },
+  "siebold": {
+   "title": "シーボルトと鳴滝塾",
+   "who": "フィリップ・フランツ・フォン・シーボルト（長崎）",
+   "when": "1823〜1829年",
+   "text": "オランダ商館の医師として1823年に来日したシーボルトは、長崎の鳴滝塾で日本の医師たちに西洋医学を教え、日本の植物や産物も調べた。西洋の医学・薬学の知識を日本に伝えた人物の一人。",
+   "why": "西洋の医学・薬学が、日本でも学ばれるようになる。"
+  },
+  "merck": {
+   "title": "メルクのアルカロイド製造",
+   "who": "ハインリヒ・エマヌエル・メルク（ダルムシュタット）",
+   "when": "1827年",
+   "text": "ダルムシュタットで薬局を営むメルクは、アルカロイドの単離と精製に取り組み、1827年にはモルヒネなどのアルカロイドを製造し、薬剤師や医師に向けて販売していた。薬局で行われていたアルカロイドの研究と製造が、のちの大規模な医薬品製造へと発展していく一例。",
+   "why": "品質をそろえた成分を、工業的な規模で製造する道が開ける。"
+  },
+  "wohler": {
+   "title": "尿素の合成",
+   "who": "フリードリヒ・ヴェーラー（ドイツ）",
+   "when": "1828年",
+   "text": "1828年、ヴェーラーは無機の塩（シアン酸アンモニウム）から、生き物の体でつくられる物質である尿素を合成した。有機化学史上の重要な出来事とされる。ただし「これで生命力説が否定された」という説明は、後世の単純化とされる。",
+   "why": "生き物に由来する物質も、化学の方法で扱えるという見通しが広がる。"
+  },
+  "pharm_society_gb": {
+   "title": "英国薬学会",
+   "who": "イギリスの薬剤師たち",
+   "when": "1841年",
+   "text": "1841年、イギリスで薬剤師の団体である英国薬学会（Pharmaceutical Society of Great Britain）が設立された。薬剤師の教育や試験に関わり、英国の薬学の発展に重要な役割を果たした。",
+   "why": "薬剤師の教育と資格が、団体を中心に整えられていく。"
+  },
+  "ether_anesthesia": {
+   "title": "エーテル麻酔",
+   "who": "ロング、ウェルズ、モートンほか（アメリカ）",
+   "when": "1842〜1846年",
+   "text": "アメリカでは、1842年にロングがエーテルを用いた手術を行っていたが、報告は遅れた。ウェルズは笑気（亜酸化窒素）を用いた歯科での麻酔を試みた。1846年10月16日、ボストンでモートンがエーテル麻酔の公開実演を行い、広く知られるようになった。麻酔を「発明した」人物を一人に決めることはできない。",
+   "why": "吸入による麻酔が、手術に広く用いられるようになる。"
+  },
+  "chloroform": {
+   "title": "クロロホルム麻酔",
+   "who": "ジェームズ・ヤング・シンプソンほか（エディンバラ）",
+   "when": "1847年",
+   "text": "1847年、エディンバラの産科医シンプソンらが、クロロホルムを麻酔に用い、臨床での使用を報告した。扱いやすさから広まったが、危険性も指摘された。",
+   "why": "麻酔の薬が増え、その安全性も問われるようになる。"
+  },
+  "semmelweis": {
+   "title": "ゼンメルワイスの手洗い",
+   "who": "ゼンメルワイス・イグナーツ（ウィーン）",
+   "when": "1847年",
+   "text": "ウィーンの産科で、ゼンメルワイスは医師がさらし粉（塩素化石灰）から作った塩素系の消毒液で手を洗うことによって、産褥熱による死亡率が低下することを示した。当時の医学界には広く受け入れられなかった。",
+   "why": "感染を防ぐための手順が、医療の中で問われ始める。"
+  },
+  "buchheim": {
+   "title": "ブッフハイムの薬理学研究室",
+   "who": "ルドルフ・ブッフハイム（ドルパト）",
+   "when": "1847〜1860年",
+   "text": "ブッフハイムは1847年にドルパト大学（現エストニアのタルトゥ大学）の員外教授として着任し、自宅の地下に実験薬理学の研究室を設けた。1849年に正教授となり、1860年には大学の研究施設として整備された。近代の実験薬理学の初期の研究室として知られる。",
+   "why": "薬理学が、独立した学問として教えられるようになる。"
+  },
+  "jotokan": {
+   "title": "牛痘苗の伝来と大坂除痘館",
+   "who": "緒方洪庵ほか（大坂）",
+   "when": "1849〜1850年",
+   "text": "1849年、牛痘苗が長崎に届き、各地の蘭方医の手で広まっていった。大坂では同じ年に緒方洪庵らが除痘館を開き、ジェンナー式の牛痘種痘の事業を始めた。",
+   "why": "種痘による予防が、日本の各地に広がっていく。"
+  },
+  "hypodermic": {
+   "title": "皮下注射の発展",
+   "who": "アレクサンダー・ウッド、シャルル・プラヴァーズほか",
+   "when": "1850年代",
+   "text": "1850年代、エディンバラのウッドやフランスのプラヴァーズらによって、注射器を用いて薬を皮下に入れる方法が発展した。先行する試みもあり、近代的な皮下注射法の発展に大きく寄与した人物たちとされる。",
+   "why": "単離した成分を、決まった量だけ体内に入れられるようになる。"
+  },
+  "snow": {
+   "title": "スノウとコレラ",
+   "who": "ジョン・スノウ（ロンドン）",
+   "when": "1854年",
+   "text": "1854年、ロンドンのブロード・ストリート周辺でコレラが流行した。医師スノウは患者の分布と水源との関係を分析し、この地域の井戸水が感染源である可能性を示した。疫学の歴史でよく知られる調査。",
+   "why": "病気の広がりを記録から調べ、地域ぐるみで防ごうとする考え方が強まる。"
+  },
+  "perkin": {
+   "title": "合成染料モーブ",
+   "who": "ウィリアム・ヘンリー・パーキン（ロンドン）",
+   "when": "1856年",
+   "text": "1856年、18歳のパーキンはキニーネの合成を試みる中で紫色の染料を得て、「モーブ」として工業化した。有機化学、合成染料、化学工業の発展を示す重要な出来事。ただし、モーブが直接合成医薬品を生んだわけではない。",
+   "why": "化学的に物質を合成する工業が育つ流れの一つとなる。"
+  },
+  "pasteur": {
+   "title": "パスツールと微生物",
+   "who": "ルイ・パスツール（フランス）",
+   "when": "1857〜1860年代",
+   "text": "フランスの化学者パスツールは、1857〜1862年ごろの研究で、発酵や腐敗に微生物が関わることを示した。ワインの腐敗を防ぐ低温での加熱法も考案した。こうした研究は、のちの感染症の研究へとつながっていった。",
+   "why": "微生物と病気の関係が、研究の対象となる背景の一つとなる。"
+  },
+  "niemann": {
+   "title": "コカインの単離",
+   "who": "アルベルト・ニーマン（ゲッティンゲン）",
+   "when": "1860年",
+   "text": "1860年、ゲッティンゲン大学でヴェーラーの助手を務めていた化学者ニーマンが、コカの葉から純粋な成分を単離し、コカインと名づけた。",
+   "why": "植物の成分が、新しい医療の用途で試されていく。"
+  },
+  "lister": {
+   "title": "リスターの防腐法",
+   "who": "ジョゼフ・リスター（グラスゴー）",
+   "when": "1867年",
+   "text": "1867年、外科医リスターは、石炭酸（フェノール）などの薬品を用いて、傷や包帯、器具などの汚染を抑え、手術後の感染を防ごうとする方法を報告した。発酵や腐敗に微生物が関わるとしたパスツールの研究から、影響を受けている。",
+   "why": "手術の後の感染を防ぐ工夫が、外科に広がっていく。"
+  },
+  "pharmacy_act_1868": {
+   "title": "英国の薬事法",
+   "who": "イギリス議会",
+   "when": "1868年",
+   "text": "1868年の英国の薬事法（Pharmacy Act）は、薬剤師・薬種商の登録制度や、毒物の販売に関する規制などを定めた、薬事制度上の重要な法律。",
+   "why": "薬の扱いが、法律の枠組みの中で整えられていく。"
+  },
+  "chloral": {
+   "title": "抱水クロラールの導入",
+   "who": "オスカー・リープライヒ（ベルリン）",
+   "when": "1869年",
+   "text": "クロラールは1832年にリービッヒが合成していた。1869年、ベルリンのリープライヒが、抱水クロラールを催眠薬として医療に導入した。化学的に合成された物質が薬として使われた、早い時期の例の一つ。",
+   "why": "合成した物質を薬として使う試みが広がる。"
+  },
+  "salicylic": {
+   "title": "サリチル酸の合成と工業生産",
+   "who": "ヘルマン・コルベほか（ドイツ）",
+   "when": "1860〜1870年代",
+   "text": "ヤナギの樹皮などに由来する成分の研究から、サリチル酸が知られていた。化学者コルベは1860年ごろサリチル酸の合成法を示し、のちに改良した。1874年には、コルベの方法をもとに、弟子のフォン・ハイデンがドレスデンで工業的な製造を始めた。1870年代後半からは、解熱やリウマチ熱の治療に用いられるようになった。",
+   "why": "合成した薬を、工業的に安く大量につくる流れが進む。"
+  },
+  "isei_1874": {
+   "title": "医制",
+   "who": "明治政府",
+   "when": "1874年",
+   "text": "1874年、医制が公布され、近代的な医療・薬事行政の制度化が進められた。医師と薬舗の役割を分ける考え方も示されたが、日本で医薬分業が実際に定着するまでには長い時間がかかった。",
+   "why": "日本で、医療と薬事を国の制度として整える取り組みが進む。"
+  },
+  "koch_tb": {
+   "title": "コッホと結核菌",
+   "who": "ロベルト・コッホ（ドイツ）",
+   "when": "1882年",
+   "text": "ドイツの医師コッホは、炭疽菌の研究（1870年代）に続いて、1882年に結核の原因となる細菌を報告した。1883年にはエジプトで、1883年末からはインドのカルカッタでコレラを調査し、1884年の初めにコレラの原因となる細菌を同定したと報告した（それ以前の1854年に、イタリアのパチーニも顕微鏡でこの菌を観察していた）。細菌を純粋に培養して調べる方法の整備にも大きく寄与した。",
+   "why": "病気ごとに原因となる細菌を突き止める研究が広がる。"
+  },
+  "antipyrine": {
+   "title": "アンチピリンの合成",
+   "who": "ルートヴィヒ・クノール（ドイツ）",
+   "when": "1883年",
+   "text": "1883年、ドイツの化学者クノールがアンチピリンを合成した。解熱薬として用いられ、合成医薬品の普及の一例となった。",
+   "why": "化学工業が、医薬品の製造にも乗り出していく。"
+  },
+  "koller": {
+   "title": "コカインによる局所麻酔",
+   "who": "カール・コラー（ウィーン）",
+   "when": "1884年",
+   "text": "1884年、ウィーンの眼科医コラーが、コカインを目の手術の局所麻酔に用いることを報告した。コカインそのものは1860年に単離されていた。のちに依存などの問題も明らかになった。",
+   "why": "体の一部だけを麻酔する方法が広がる。"
+  },
+  "nagai_ephedrine": {
+   "title": "長井長義とエフェドリン",
+   "who": "長井長義",
+   "when": "1885〜1887年",
+   "text": "ドイツで化学を学んで帰国した長井長義は、漢方で用いられてきた麻黄の研究を進めた。1885年には麻黄にアルカロイドが含まれることが報告され、1887年には純粋な結晶として得られた成分をエフェドリンと名づけた。日本薬学会は1887年を、長井によるエフェドリン単離の年としている。医薬品として喘息の治療などに広く用いられるようになったのは、1920年代以降のこと。",
+   "why": "日本で、伝統的な生薬を化学的に調べる研究が進む。"
+  },
+  "jp_1886": {
+   "title": "日本薬局方 初版",
+   "who": "明治政府",
+   "when": "1886年",
+   "text": "1886年、日本薬局方の初版が公布・刊行され、翌1887年に施行された。",
+   "why": "日本でも、国全体で共通の基準のもとに薬を扱う仕組みが整う。"
+  },
+  "behring_kitasato": {
+   "title": "抗毒素と血清療法",
+   "who": "エミール・フォン・ベーリング、北里柴三郎ほか（ベルリン）",
+   "when": "1889〜1890年",
+   "text": "北里柴三郎は1889年、ベルリンのコッホの研究所で破傷風菌の純粋培養に成功した。翌1890年には、ベーリングと北里が、動物に毒素に対する免疫を生じさせ、その血清で毒素を中和できることを報告し、同じ時期にベーリングはジフテリアの抗毒素の研究も進めた。これらは血清療法の基礎となる研究とされる。",
+   "why": "血清を用いて病気の毒素に対抗する治療が、実用化へ向かう流れの一つとなる。"
+  },
+  "aspirin": {
+   "title": "アスピリン",
+   "who": "バイエル社（ドイツ）",
+   "when": "1897〜1899年",
+   "text": "1897年、ドイツのバイエル社でアセチルサリチル酸の医薬品化につながる研究が進み、1899年に「アスピリン」の名で販売された。社内のホフマンらが関わったが、アイヒェングリュンらの役割をめぐって歴史的な議論があり、一人の「発明者」に決めることはできない。",
+   "why": "合成医薬品が広く使われていく時代の、代表的な例の一つとなる。"
+  },
+  "adrenaline": {
+   "title": "アドレナリンの結晶化",
+   "who": "高峰譲吉、上中啓三（ニューヨーク）",
+   "when": "1900〜1901年",
+   "text": "1900年、上中啓三が高峰譲吉の研究室で、副腎の抽出物からアドレナリンの結晶化に成功し、高峰らが成果を公表した。同じころアメリカのエイベルも副腎の有効成分を研究しており、米国ではエピネフリンという名称も使われるようになった。",
+   "why": "体内で働く物質を取り出し、薬として使う研究が広がる流れの一つとなる。"
+  },
+  "receptor_idea": {
+   "title": "受容体の考え方",
+   "who": "エールリヒ、ラングレー",
+   "when": "1900年代",
+   "text": "エールリヒは、細胞の「側鎖」に物質が結びつくという考えを示した。ラングレーは1905年ごろ、神経の刺激や薬物を受け取る「受容物質」を想定した。薬が体の特定の部分に結びついて働くという考え方の、重要な源流の一つとされる。",
+   "why": "薬の作用を、結びつく相手から考える研究の背景の一つとなる。"
+  },
+  "salvarsan": {
+   "title": "サルバルサン",
+   "who": "パウル・エールリヒ、秦佐八郎ら（フランクフルト）",
+   "when": "1909〜1910年",
+   "text": "エールリヒと秦佐八郎らは、多数のヒ素化合物を試験し、梅毒に有効な606号化合物を見いだした。606号はサルバルサンとして、1910年に医療に導入された。",
+   "why": "化学物質で病原体を狙う「化学療法」の考え方が広がる流れの一つとなる。"
+  },
+  "oryzanin": {
+   "title": "オリザニンとビタミン",
+   "who": "鈴木梅太郎、カシミール・フンク",
+   "when": "1910〜1912年",
+   "text": "鈴木梅太郎は米ぬかから脚気に関係する成分を研究し、1910年にオリザニンとして報告した。1912年には、フンクが「vitamine（ヴァイタミン）」という名称を提唱した。",
+   "why": "食物中の微量な成分と病気の関係を調べる研究が進む背景の一つとなる。"
+  },
+  "insulin": {
+   "title": "インスリン",
+   "who": "バンティング、ベスト、コリップ、マクラウドら（トロント）",
+   "when": "1921〜1922年",
+   "text": "トロント大学で、バンティングとベストが膵臓の抽出物を用いた研究を進め、コリップが抽出物の精製に取り組み、マクラウドが研究室を率いた。1922年には糖尿病の患者への投与が行われた。1923年のノーベル賞はバンティングとマクラウドに贈られたが、功績の帰属には議論がある。",
+   "why": "ホルモンを製剤として治療に使う道が広がる。"
+  },
+  "yakuzaishi_1925": {
+   "title": "薬剤師法（日本）",
+   "who": "日本",
+   "when": "1925年",
+   "text": "1925年、薬剤師の身分や資格などを定める薬剤師法が公布された。",
+   "why": "日本で、薬剤師の資格と業務が独立した法律で定められる。"
+  },
+  "fleming": {
+   "title": "フレミングとペニシリン",
+   "who": "アレクサンダー・フレミング（ロンドン）",
+   "when": "1928〜1929年",
+   "text": "1928年、ロンドンのフレミングは、培養皿に生えたアオカビの周りで細菌が育たないことに気づき、そのカビがつくる物質をペニシリンと名づけて1929年に報告した。この段階では、物質を取り出して治療に使うまでには至らなかった。",
+   "why": "微生物がつくる物質で細菌を抑えるという可能性が示される。"
+  },
+  "prontosil": {
+   "title": "プロントジル",
+   "who": "ゲルハルト・ドーマクら（バイエル社）",
+   "when": "1932〜1935年",
+   "text": "ドーマクらは、赤い色素プロントジルが動物の細菌感染症に効くことを示し、1935年に報告した。のちに、体内でスルファニルアミドに変わって働くことが、フランスの研究者らによって明らかにされた。",
+   "why": "合成した化学物質で細菌感染症を治療する薬が広がる。"
+  },
+  "elixir_sulfanilamide": {
+   "title": "スルファニルアミドのエリキシル事件",
+   "who": "アメリカ合衆国",
+   "when": "1937〜1938年",
+   "text": "1937年、溶剤にジエチレングリコールを用いたスルファニルアミドの液剤により、107人が死亡した。この事件を受けて、1938年に米国で連邦食品・医薬品・化粧品法が成立し、販売前に安全性を示すことが求められるようになった。",
+   "why": "販売前に医薬品の安全性を確かめる規制が整えられていく。"
+  },
+  "florey_chain": {
+   "title": "フローリーとチェインのペニシリン",
+   "who": "フローリー、チェイン、ヒートリーら（オックスフォード）",
+   "when": "1940〜1941年",
+   "text": "オックスフォード大学のフローリー、チェイン、ヒートリーらは、ペニシリンを取り出して精製する方法を工夫し、1940年に動物で、1941年に患者で効果を示した。",
+   "why": "ペニシリンが治療薬として実用化へ向かう。"
+  },
+  "penicillin_mass": {
+   "title": "ペニシリンの大量生産",
+   "who": "アメリカの政府・大学・企業",
+   "when": "1943〜1945年",
+   "text": "第二次世界大戦中のアメリカでは、政府・大学・企業が協力して、大型タンクでカビを培養する深部培養などの方法で、ペニシリンの大量生産を進めた。",
+   "why": "抗生物質を工業的に大量につくる流れが広がる。"
+  },
+  "streptomycin": {
+   "title": "ストレプトマイシン",
+   "who": "ワクスマンの研究室、アルバート・シャッツら（ラトガース大学）",
+   "when": "1943〜1944年",
+   "text": "ワクスマンの研究室で、アルバート・シャッツらが土壌の放線菌からストレプトマイシンを分離し、結核などへの有効性が示された。発見者・功績の帰属をめぐっては、のちに論争が起きた。",
+   "why": "結核にも効く抗生物質が現れ、土壌の微生物から薬を探す研究が広がる。"
+  },
+  "hodgkin": {
+   "title": "結晶解析と薬の構造",
+   "who": "ドロシー・ホジキンら（オックスフォード）",
+   "when": "1946〜1956年",
+   "text": "ホジキンらは、X線結晶解析を用いて、1946年にペニシリン、1956年にビタミンB12の立体構造を明らかにした。1964年にノーベル化学賞を受けた。",
+   "why": "薬や生体分子の立体構造を調べる方法が、研究に広く用いられていく。"
+  },
+  "mrc_streptomycin": {
+   "title": "ストレプトマイシンの比較試験",
+   "who": "英国医学研究会議（MRC）",
+   "when": "1948年",
+   "text": "英国医学研究会議（MRC）は、肺結核の患者を無作為に割り付けて、ストレプトマイシンを使う群と使わない群を比べた試験の結果を1948年に報告した。統計学者ブラッドフォード・ヒルが設計に重要な役割を果たした。「世界初のランダム化比較試験」とは断定しないが、その方法を示した代表的な例とされる。",
+   "why": "治療を無作為に割り付けて比べる方法が、薬の評価に広く用いられていく。"
+  },
+  "chlorpromazine": {
+   "title": "クロルプロマジン",
+   "who": "ラボリ、ドレー、ドニケルら（フランス）",
+   "when": "1950年代初め",
+   "text": "1950年代初め、フランスの製薬会社でクロルプロマジンが合成された。外科医ラボリが麻酔やショック対策に用い、その鎮静作用に注目した。1952年には、ドレー、ドニケルら精神科医が精神疾患の患者に使用し、その効果を報告した。",
+   "why": "精神疾患の治療に、薬物療法が広く取り入れられていく。"
+  },
+  "dna_1953": {
+   "title": "DNAの二重らせん",
+   "who": "ワトソン、クリック、フランクリン、ウィルキンスら（英国）",
+   "when": "1953年",
+   "text": "1953年、ワトソンとクリックがDNAの二重らせん構造のモデルを発表した。フランクリン、ウィルキンスらのX線回折の研究などが重要な資料となった。",
+   "why": "遺伝の仕組みを分子のレベルで調べる研究が、大きく進む背景の一つとなる。"
+  },
+  "yakujiho_1960": {
+   "title": "薬事法（日本）",
+   "who": "日本",
+   "when": "1960〜1961年",
+   "text": "1960年、旧薬事法を全面的に改めた薬事法が公布され、1961年に施行された。医薬品などの品質・安全性などに関する規制が整備された。",
+   "why": "医薬品の品質・安全性を定める日本の法の枠組みが整えられる。"
+  },
+  "thalidomide": {
+   "title": "サリドマイド",
+   "who": "各国（ドイツ、日本、米国など）",
+   "when": "1957〜1962年",
+   "text": "サリドマイドは1950年代後半から催眠鎮静薬などとして販売され、妊娠中の服用による胎児の障害が各国で問題となった。1961年、ドイツのレンツとオーストラリアのマクブライドが、それぞれ独立して薬との関係を指摘した。米国ではフランシス・ケルシーが承認を保留した。日本では1962年9月に販売停止・回収が始まった。",
+   "why": "医薬品の安全性と有効性を、承認の前に厳しく審査する制度づくりが各国で進む、大きな契機の一つとなる。"
+  },
+  "kefauver_harris": {
+   "title": "キーフォーヴァー・ハリス修正法",
+   "who": "アメリカ合衆国",
+   "when": "1962年",
+   "text": "1962年、米国で連邦食品・医薬品・化粧品法が改正され（キーフォーヴァー・ハリス修正法）、承認の際に、適切に管理された試験による有効性の証明が求められるようになった。",
+   "why": "有効性と安全性の両方をデータで審査する考え方が広がる。"
+  },
+  "propranolol": {
+   "title": "プロプラノロール",
+   "who": "ジェームズ・ブラックら（英国）",
+   "when": "1960年代",
+   "text": "ジェームズ・ブラックらは、受容体の研究を背景に、β受容体を遮断する薬の開発を進め、1960年代にプロプラノロールが実用化された。",
+   "why": "受容体などの標的から薬を考える創薬の、代表的な例の一つとなる。"
+  },
+  "smon": {
+   "title": "スモンとキノホルム",
+   "who": "日本",
+   "when": "1970年",
+   "text": "1950年代後半から日本で多発した神経障害（スモン）について、整腸剤キノホルムが原因と考えられ、1970年に販売が停止された。多くの被害者が出た薬害として知られる。",
+   "why": "販売後の副作用を集めて監視し、被害を救済する仕組みが求められていく。"
+  },
+  "bungyo_1974": {
+   "title": "医薬分業の推進（日本）",
+   "who": "日本",
+   "when": "1974年",
+   "text": "1974年の診療報酬の改定で処方箋料が大幅に引き上げられ、医薬分業が進み始めた。この年は「医薬分業元年」と呼ばれることがある。",
+   "why": "処方箋にもとづいて薬局で調剤する仕組みが、日本で広がっていく。"
+  },
+  "cohen_boyer": {
+   "title": "遺伝子組換え技術",
+   "who": "ポール・バーグ、スタンリー・コーエン、ハーバート・ボイヤーら",
+   "when": "1970年代",
+   "text": "1970年代、ポール・バーグらの研究や、コーエンとボイヤーらの研究によって、異なる生物に由来するDNAを組み換え、細菌の中で増やして働かせる技術が発展した。",
+   "why": "生物に目的のたんぱく質をつくらせる技術が育つ。"
+  },
+  "kohler_milstein": {
+   "title": "モノクローナル抗体",
+   "who": "ジョルジュ・ケーラー、セーサル・ミルスタイン（ケンブリッジ）",
+   "when": "1975年",
+   "text": "1975年、ケンブリッジのケーラーとミルスタインは、抗体をつくる細胞とがん細胞を融合させたハイブリドーマを用いて、単一の種類の抗体（モノクローナル抗体）をつくり続ける方法を報告した。",
+   "why": "特定の分子だけに結びつく抗体を、研究や医薬品に使う道が開ける。"
+  },
+  "endo_statin": {
+   "title": "遠藤章とスタチン",
+   "who": "遠藤章（三共）",
+   "when": "1970年代",
+   "text": "遠藤章は1970年代、カビの一種（Penicillium citrinum）から、コレステロールの合成に関わる酵素（HMG-CoA還元酵素）を阻害する物質ML-236B（コンパクチン）を見いだした。",
+   "why": "微生物がつくる物質から、抗菌薬以外の薬を探す研究が広がる流れの一つとなる。"
+  },
+  "cimetidine": {
+   "title": "シメチジン",
+   "who": "ジェームズ・ブラックら（英国）",
+   "when": "1976年",
+   "text": "ジェームズ・ブラックらは、胃酸の分泌に関わるヒスタミンH2受容体を標的として研究を進め、胃酸を抑えるシメチジンが、1976年に英国で臨床に導入された（米国での承認は1977年）。",
+   "why": "標的を定めて化合物を選ぶ創薬が、さらに広がる。"
+  },
+  "relief_1979": {
+   "title": "医薬品副作用被害救済制度（日本）",
+   "who": "日本",
+   "when": "1979〜1980年",
+   "text": "1979年に医薬品副作用被害救済基金が設立され、1980年から、医薬品の副作用による健康被害の救済業務が始まった。",
+   "why": "副作用の被害を救済する仕組みが、日本の薬事制度に加わる。"
+  },
+  "ivermectin": {
+   "title": "イベルメクチン",
+   "who": "大村智、ウィリアム・キャンベルら",
+   "when": "1970〜1980年代（動物用1981年、人用1987年）",
+   "text": "大村智らが静岡県の土壌から分離した放線菌がつくる物質をもとに、キャンベルらメルク社の研究者がイベルメクチンを開発した。1981年に動物用の薬として実用化され、1987年にはフランスで人用の薬（メクチザン）として登録された。のちに、オンコセルカ症（河川盲目症）などの寄生虫病の対策に広く用いられた。2015年、二人はノーベル生理学・医学賞を受けた。",
+   "why": "微生物がつくる物質が、寄生虫病の対策にも役立てられる。"
+  },
+  "human_insulin": {
+   "title": "遺伝子組換えヒトインスリン",
+   "who": "アメリカ合衆国",
+   "when": "1982年",
+   "text": "遺伝子組換え技術で大腸菌につくらせたヒトインスリンが、1982年に米国で承認された。組換えDNA技術に由来する医薬品として、最初に承認されたものとされる。",
+   "why": "遺伝子組換えでたんぱく質の薬をつくる、バイオ医薬品が広がる。"
+  },
+  "aids_drugs": {
+   "title": "抗HIV薬と薬害エイズ",
+   "who": "米国、日本",
+   "when": "1980年代",
+   "text": "1987年、ジドブジン（AZT）が、米国で最初に承認された抗HIV薬となった。一方、日本では1980年代に、非加熱の血液凝固因子製剤によるHIV感染の被害が起きた（薬害エイズ）。",
+   "why": "新しい治療薬の開発とともに、血液製剤の安全性を確保する対策が求められる。"
+  },
+  "ich_1990": {
+   "title": "ICH",
+   "who": "日米欧の規制当局と製薬業界",
+   "when": "1990年",
+   "text": "1990年、日米欧の規制当局と製薬業界が、医薬品の承認に必要なデータの基準をそろえるための会議（ICH）を始めた。",
+   "why": "承認に必要な試験の基準が、国際的にそろえられていく。"
+  },
+  "pd1": {
+   "title": "PD-1と免疫チェックポイント阻害薬",
+   "who": "本庶佑、石田康彦ら（京都大学）",
+   "when": "1992〜2014年",
+   "text": "1992年、本庶佑の研究室で石田康彦らがPD-1遺伝子を報告した。その後、PD-1の働きの研究が進み、2014年にPD-1を標的とする抗体医薬ニボルマブが承認された。2018年、本庶佑はジェームズ・アリソンとともにノーベル生理学・医学賞を受けた。",
+   "why": "免疫の働きを利用してがんを治療する薬が広がる。"
+  },
+  "imatinib": {
+   "title": "イマチニブ",
+   "who": "スイス・米国の研究者ら",
+   "when": "2001年",
+   "text": "イマチニブは、BCR-ABLチロシンキナーゼなどを標的とする分子標的薬で、慢性骨髄性白血病などの治療薬として2001年に米国で承認された。",
+   "why": "病気に関わる特定の分子を狙う薬の開発が、広く進められていく。"
+  },
+  "human_genome": {
+   "title": "ヒトゲノム計画",
+   "who": "国際ヒトゲノム計画",
+   "when": "2003年",
+   "text": "2003年、国際ヒトゲノム計画の主要な目標の達成・完了が発表された。その後も残された領域の解析は続き、2022年には残る領域を埋めた配列が報告された。",
+   "why": "遺伝情報をもとに、病気や薬の効き方の個人差を調べる研究が進む。"
+  },
+  "six_year": {
+   "title": "薬学教育6年制（日本）",
+   "who": "日本",
+   "when": "2006年",
+   "text": "2006年から、薬剤師になるための薬学教育が6年制になり、医療の現場での実務実習などが拡充された。",
+   "why": "医療の中で働く薬剤師の教育が強化される。"
+  },
+  "mrna_modified": {
+   "title": "修飾mRNAとmRNAワクチン",
+   "who": "カタリン・カリコ、ドリュー・ワイスマンら",
+   "when": "2005〜2020年",
+   "text": "2005年、カリコとワイスマンらは、修飾ヌクレオシドを含むmRNAが炎症反応を起こしにくくなることを報告した。その後の研究を経て、2020年に新型コロナウイルス感染症に対するmRNAワクチンが実用化された。2023年、二人はノーベル生理学・医学賞を受けた。",
+   "why": "設計したmRNAで体内に抗原をつくらせるワクチンが、感染症の対策に用いられる。"
+  }
+ }
+};
+(function(){
+'use strict';
+const SAVE_KEY='pharma-3layer-v2', SAVE_VERSION=5; // v2以降のセーブをそのまま引き継ぐ
+const $=id=>document.getElementById(id);
+const TECH=Object.fromEntries(TECHS.map(t=>[t.id,t]));
+const FAC=Object.fromEntries(FACS.map(f=>[f.id,f]));
+const EV=Object.fromEntries(EVENTS.map(e=>[e.id,e]));
+const PER=Object.fromEntries(PEOPLE.map(x=>[x.id,x]));
+const DRG=Object.fromEntries(DRUGS.map(x=>[x.id,x]));
+const ROUTES=[['A','本草・薬草ルート','薬草 → 本草学 → 薬物鑑定 → 異地の薬物・植物園'],['B','加工・化学ルート','加工 → 抽出 → 蒸留 → 錬金術 → 医化学'],['C','制度・薬局ルート','薬房 → 薬局 → 医薬分業 → 薬局方 → 職能団体・流通'],['X','知識・評価の土台','記録・継承・翻訳・教育 → 印刷 → 臨床での評価']];
+const safe=(f,d)=>{try{return f();}catch(e){return d;}};
+
+/* ---------- 状態 ---------- */
+function newState(){return {saveVersion:SAVE_VERSION,lastSeen:0,met:{},seenP:{},seenD:{},kp:0,kpTotal:0,era:1,tech:{},own:{},up:{},ev:{},seen:{},order:0,cleared:false,clearShown:false,medShown:false,kinShown:false,kdShown:false,eraShown:1,playSec:0,tapCount:0,techSpent:0};}
+let S=newState();
+let tab='research', qty=1, tapMode=true, regionF='all', codexSub='drug', peopleF='all';
+function load(){
+  const raw=safe(()=>localStorage.getItem(SAVE_KEY),null); if(!raw) return;
+  let o; try{o=JSON.parse(raw);}catch(e){return;}
+  if(!o||typeof o!=='object') return;
+  const n=newState();
+  S=Object.assign(n,{
+    kp:+o.kp||0, kpTotal:+o.kpTotal||0, era:Math.min(ERAS.length,Math.max(1,+o.era||1)),
+    tech:pick(o.tech,TECH), own:pickNum(o.own,FAC), up:pick(o.up,FAC), ev:pick(o.ev,EV), seen:pick(o.seen,EV),
+    order:+o.order||0, cleared:!!o.cleared, clearShown:!!o.clearShown, medShown:!!o.medShown, kinShown:!!o.kinShown, kdShown:!!o.kdShown, eraShown:+o.eraShown||1, playSec:+o.playSec||0, tapCount:+o.tapCount||0});
+  // v2（古代〜中世のみ）のセーブ：当時の「クリア」は中世編のクリアなので、近世編のクリアとしては扱わない
+  if((+o.saveVersion||0)<3){ S.medShown=!!o.clearShown; S.cleared=false; S.clearShown=false; }
+  else if((+o.saveVersion||0)<4){ S.kinShown=!!o.clearShown; S.cleared=false; S.clearShown=false; } // v6までの「クリア」は近世編のクリア
+  else if((+o.saveVersion||0)<5){ S.kdShown=!!o.clearShown; S.cleared=false; S.clearShown=false; } // v11までの「クリア」は近代編のクリア
+  S.lastSeen=+o.lastSeen||0; S.met=pick(o.met,PER); S.seenP=pick(o.seenP,PER); S.seenD=pick(o.seenD,DRG);
+  S.techSpent=(o.techSpent!==undefined)?(+o.techSpent||0):TECHS.filter(t=>S.tech[t.id]).reduce((a,t)=>a+t.cost,0);
+}
+function pick(src,dict){const r={}; if(src&&typeof src==='object') for(const k in src) if(dict[k]) r[k]=src[k]; return r;}
+function pickNum(src,dict){const r={}; if(src&&typeof src==='object') for(const k in src) if(dict[k]) r[k]=Math.max(0,Math.floor(+src[k]||0)); return r;}
+function save(){ S.lastSeen=document.hidden?activeAt:Date.now(); const o=Object.assign({},S); o.saveVersion=SAVE_VERSION; safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); setSavedLabel(); }
+function setSavedLabel(){const e=$('savedAt'); if(e){const d=new Date(); e.textContent='💾 '+d.toTimeString().slice(0,8)+' 保存';}}
+function exportCode(){ return btoa(unescape(encodeURIComponent(JSON.stringify(S)))); }
+function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s.trim())))); safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); S=newState(); load(); recalc(); progress(true); renderAll(); save(); return true;}catch(e){return false;} }
+
+/* ---------- 計算 ---------- */
+const own=id=>S.own[id]||0;
+let PROD=0, MULT={};
+function recalc(){
+  MULT={};
+  FACS.forEach(f=>{let m=1; EVENTS.forEach(e=>{ if(S.ev[e.id]&&(e.fx.fac==='all'||e.fx.fac.includes(f.id))) m+=e.fx.pct/100; }); if(S.up[f.id]) m*=UP_MULT; MULT[f.id]=m;});
+  PROD=FACS.reduce((a,f)=>a+own(f.id)*f.prod*MULT[f.id],0);
+}
+const costOf=(f,n)=>f.cost*Math.pow(RATE,own(f.id)+n);
+function bulk(f,q){ let s=0,n=0; if(q==='max'){ let kp=S.kp; while(n<500){const c=costOf(f,n); if(kp<c) break; kp-=c; s+=c; n++;} if(n===0) return {n:1,c:costOf(f,0)}; return {n,c:s}; }
+  for(let i=0;i<q;i++) s+=costOf(f,i); return {n:q,c:s}; }
+const upCost=f=>f.cost*UP_COSTX;
+const cutOf=r=>{let c=0; EVENTS.forEach(e=>{ if(S.ev[e.id]&&e.fx.cut&&e.fx.cut.route===r) c+=e.fx.cut.pct; }); return Math.min(c,50);};
+const BONUS_CUT=30; // 合流ボーナス：必須ではない関連研究が済んでいればコスト −30%
+const bonusOn=t=>!!(t.bonus&&t.bonus.every(x=>S.tech[x]));
+const techCost=t=>Math.max(1,Math.round(t.cost*(1-cutOf(t.route)/100)*(bonusOn(t)?1-BONUS_CUT/100:1)));
+const tapGain=()=>Math.max(1,PROD*0.01);
+const OFF_EFF=0.2, OFF_MAX=3600, OFF_MIN=60; // 留守中の収入：生産量の20%、最大1時間、1分未満は数えない
+function fmt(n){ if(!isFinite(n)) return '∞'; if(n<1000) return n<10?n.toFixed(n<1?2:1).replace(/\.0+$/,''):Math.floor(n).toString();
+  const u=['K','M','B','T','Qa','Qi','Sx','Sp','Oc','No','Dc']; let i=-1; while(n>=1000&&i<u.length-1){n/=1000;i++;} return (n<10?n.toFixed(2):n<100?n.toFixed(1):Math.floor(n))+u[i]; }
+const fmtYear=y=>y<0?'前'+(-y):y+'年';
+const yearLabel=e=>e.yl||fmtYear(e.year);
+const refText=t=>t;
+
+const met1=r=>r.indexOf('ev:')===0?!!S.ev[r.slice(3)]:!!S.tech[r];
+const metP=r=>r.split('|').some(met1); // 'a|b' はどちらか一方でよい
+const refs=t=>t.prereq.join('|').split('|'); // 前提に出てくる項目の一覧
+function techState(t){ if(S.tech[t.id]) return 'done'; if(t.era>S.era) return 'eralock'; return t.prereq.every(metP)?'avail':'locked'; }
+const facUnlocked=f=>!!S.tech[f.tech];
+function prName1(r){ return r.indexOf('ev:')===0?'歴史：'+CONTENT.events[r.slice(3)].title:'研究：'+TECH[r].name; }
+function prName(r){ return r.split('|').map(prName1).join(' または '); }
+
+/* ---------- 進行判定（イベント・時代・クリア） ---------- */
+const queue=[]; // 表示待ちの演出
+function progress(silent){
+  let ch=true, newEv=[], eraUp=[];
+  while(ch){ ch=false;
+    EVENTS.forEach(e=>{ if(S.ev[e.id]||e.era>S.era) return; const t=e.trig; // 出来事は自分の時代に入ってから起こる
+      if((t.tech||[]).every(x=>S.tech[x]) && Object.entries(t.fac||{}).every(([k,n])=>own(k)>=n)){ S.ev[e.id]=++S.order; newEv.push(e.id); ch=true; } });
+    const rq=ERA_REQ[S.era+1]; if(rq&&rq.tech.every(x=>S.tech[x])&&rq.ev.every(x=>S.ev[x])){ S.era++; eraUp.push(S.era); ch=true; }
+  }
+  const condOk=c=>c.every(r=>r.indexOf('fac:')===0?own(r.split(':')[1])>=+r.split(':')[2]:met1(r));
+  const newP=[]; PEOPLE.forEach(x=>{ if(!S.met[x.id]&&x.era<=S.era&&condOk(x.cond)){ S.met[x.id]=++S.order; newP.push(x.id); } });
+  if(newP.length&&!newEv.length&&!silent) toast('👤 人物図鑑に登場：'+CONTENT.people[newP[0]].name+(newP.length>1?' ほか':''),()=>{codexSub='person';setTab('codex');});
+  if(newP.length&&!newEv.length) renderNav();
+  if(newEv.length){ recalc(); if(!silent) toast('📜 歴史が動いた：'+CONTENT.events[newEv[0]].title+(newEv.length>1?' ほか':'')+(newP.length?'／👤 '+CONTENT.people[newP[0]].name+'が登場':''),()=>setTab('history')); }
+  if(eraUp.length&&!silent) eraUp.forEach(e=>{ if(e===6&&!S.medShown) queue.push({k:'med'}); if(e===8&&!S.kinShown) queue.push({k:'kin'}); if(e===10&&!S.kdShown) queue.push({k:'kd'}); queue.push({k:'era',era:e}); });
+  if(!S.cleared&&CLEAR.tech.every(x=>S.tech[x])&&CLEAR.ev.every(x=>S.ev[x])){ S.cleared=true; if(!silent) queue.push({k:'clear'}); }
+  if(newEv.length||eraUp.length) renderAll();
+  runQueue();
+}
+function runQueue(){ if($('ovm').classList.contains('show')||!queue.length) return; const q=queue.shift(); if(q.k==='era') showEra(q.era); else if(q.k==='med') showMed(); else if(q.k==='kin') showKinsei(); else if(q.k==='kd') showKindai(); else if(q.k==='clear') showClear(); }
+
+/* ---------- 研究 / 建設 / 改良 ---------- */
+function research(id){ const t=TECH[id]; if(!t||techState(t)!=='avail'||S.kp<techCost(t)) return false;
+  S.kp-=techCost(t); S.techSpent+=techCost(t); S.tech[id]=++S.order; recalc(); progress(); renderAll(); save(); return true; }
+function buy(id){ const f=FAC[id]; if(!f||!facUnlocked(f)) return false; const b=bulk(f,qty); if(S.kp<b.c) return false;
+  S.kp-=b.c; S.own[id]=own(id)+b.n; recalc(); progress(); renderAll(); return true; }
+function buyUp(id){ const f=FAC[id]; if(S.up[id]||own(id)<UP_OWN||S.kp<upCost(f)) return false; S.kp-=upCost(f); S.up[id]=1; recalc(); renderAll(); return true; }
+
+/* ---------- 画面 ---------- */
+function markCodexSeen(){ if(codexSub==='person') PEOPLE.forEach(x=>{ if(S.met[x.id]&&!S.seenP[x.id]) S.seenP[x.id]=2; }); else DRUGS.forEach(d=>{ if(drugOn(d)&&!S.seenD[d.id]) S.seenD[d.id]=2; }); }
+function leaveCodex(){ for(const k in S.seenP) if(S.seenP[k]===2) S.seenP[k]=1; for(const k in S.seenD) if(S.seenD[k]===2) S.seenD[k]=1; }
+function setTab(t){ if(tab==='codex'&&t!=='codex') leaveCodex(); tab=t; if(t==='codex') markCodexSeen(); if(t==='history'){ EVENTS.forEach(e=>{ if(S.ev[e.id]) S.seen[e.id]=S.seen[e.id]||1; }); } renderAll(); window.scrollTo(0,0); }
+function renderAll(){ renderHeader(); renderMain(); renderNav(); }
+function renderHeader(){
+  $('eraRow').innerHTML=ERAS.map(e=>'<span class="chip '+(e.id===S.era?'cur':e.id<S.era?'done':'')+'">'+(e.id<S.era?'✓ ':'')+e.name+'</span>').join('');
+  const nx=ERA_REQ[S.era+1];
+  if(!nx){ $('epT').textContent=S.cleared?'🏅 現代編クリア（全時代クリア）':'🎯 最終目標：免疫チェックポイントとmRNAワクチン';
+    const items=CLEAR.tech.map(x=>['研究：'+TECH[x].name,!!S.tech[x]]).concat(CLEAR.ev.map(x=>['歴史：'+CONTENT.events[x].title,!!S.ev[x]])); setProg(items);
+  } else { $('epT').textContent='次の時代へ：'+ERAS[S.era].name; const items=nx.tech.map(x=>['研究：'+TECH[x].name,!!S.tech[x]]).concat(nx.ev.map(x=>['歴史：'+CONTENT.events[x].title,!!S.ev[x]])); setProg(items); }
+}
+function setProg(items){ const d=items.filter(i=>i[1]).length; $('epN').textContent=d+' / '+items.length; $('epB').style.width=(100*d/items.length)+'%';
+  $('epL').innerHTML=items.map(i=>'<li class="'+(i[1]?'ok':'')+'">'+(i[1]?'✓ ':'・')+i[0]+'</li>').join(''); }
+function renderNav(){
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
+  $('dot-codex').style.display=(PEOPLE.some(x=>S.met[x.id]&&!S.seenP[x.id])||DRUGS.some(d=>drugOn(d)&&!S.seenD[d.id]))?'block':'none';
+  $('dot-history').style.display=EVENTS.some(e=>S.ev[e.id]&&!S.seen[e.id])?'block':'none';
+  $('dot-research').style.display=(tab!=='research'&&TECHS.some(t=>techState(t)==='avail'&&S.kp>=techCost(t)))?'block':'none';
+  $('dot-facility').style.display=(tab!=='facility'&&FACS.some(f=>facUnlocked(f)&&S.kp>=bulk(f,1).c&&own(f.id)===0))?'block':'none';
+}
+function renderMain(){
+  const m=$('main'); const sc=window.scrollY;
+  if(tab==='research') m.innerHTML=viewResearch(); else if(tab==='facility') m.innerHTML=viewFacility(); else if(tab==='history') m.innerHTML=viewHistory(); else if(tab==='codex'){ markCodexSeen(); m.innerHTML=viewCodex(); } else m.innerHTML=viewRecord();
+  updateAfford(); window.scrollTo(0,sc);
+}
+function techNode(t){ const st=techState(t); let mk='🔬',s='',sub='';
+  if(st==='done'){mk='✓';s='研究済み';}
+  else if(st==='eralock'){mk='🔒';s=ERAS[t.era-1].name+'で解禁';}
+  else if(st==='locked'){mk='🔒';s='前提あり';sub='前提：'+t.prereq.filter(r=>!metP(r)).map(prName).join('、');}
+  else {s='研究 '+fmt(techCost(t));}
+  const fac=FACS.filter(f=>f.tech===t.id).map(f=>f.name);
+  return '<button class="tn '+st+'" data-tech="'+t.id+'" data-cost="'+(st==='avail'?techCost(t):'')+'"><span class="mk">'+mk+'</span><span class="nm">'+t.name+'</span><span class="st">'+s+'</span>'+(sub?'<span class="sub">'+sub+'</span>':fac.length&&st!=='done'?'<span class="sub">→ 建設可能：'+fac.join('・')+'</span>':'')+'</button>'; }
+function viewResearch(){
+  let h='<div class="note">研究に知識Pを使うと、新しい施設の建設や歴史イベントが可能になります。ルートは複数あり、どれを先に伸ばすかは自由です。</div>';
+  ROUTES.forEach(([r,name,sub])=>{ const ts=TECHS.filter(t=>t.route===r); h+='<div class="sec">'+name+' <small>'+sub+'</small></div><div class="chain">'+ts.map((t,i)=>(i?'<div class="arrow">↓</div>':'')+techNode(t)).join('')+'</div>'; });
+  h+='<div class="note">※ 研究ツリーのつながりは、歴史上の直接的な因果関係を再現したものではなく、薬学史の流れをゲームとして整理したものです。</div>'; return h; }
+const STAGES=[['原料',['herb_garden','monastery','trading_post','field_garden','botanic_house','fermentation_plant']],['加工',['workshop','distillery','chem_lab','dye_works','hormone_plant','bio_plant']],['抽出・調製',['formulary','apothecary','alkaloid_works','pharma_factory','chemo_institute','gene_lab']],['薬剤',['bimaristan','pharmacy_shop','drug_wholesale','serum_institute','community_pharmacy']],['知識・制度',['library','translation_house','school','pharmacopoeia_office','printing_house','guild_hall','pharma_committee','clinic_ward','chem_institute','pharmacology_lab','operating_room','pharmacy_school','hygiene_board','bacteriology_lab','trial_center','xray_lab','review_agency','design_lab','genome_center']]];
+function stageStrip(){ return '<div class="stages">'+STAGES.map(([n,ids])=>{ const v=ids.reduce((a,i)=>a+own(i)*FAC[i].prod*MULT[i],0), c=ids.reduce((a,i)=>a+own(i),0);
+  return '<div class="'+(c?'on':'')+'"><b>'+n+'</b><span>'+(c?'+'+fmt(v)+'/秒':'―')+'</span></div>'; }).join('<i>›</i>')+'</div>'; }
+function viewFacility(){
+  let h=stageStrip()+'<div class="qty">'+[[1,'×1'],[10,'×10'],['max','最大']].map(([q,l])=>'<button data-qty="'+q+'" class="'+(qty===q?'on':'')+'">'+l+'</button>').join('')+'</div>';
+  FACS.forEach(f=>{
+    if(!facUnlocked(f)){ h+='<div class="fr lock"><div class="top"><span class="nm">🔒 '+f.name+'</span></div><div class="ds">研究「'+TECH[f.tech].name+'」で建設できるようになります。</div></div>'; return; }
+    const b=bulk(f,qty), one=f.prod*MULT[f.id];
+    h+='<div class="fr" data-f="'+f.id+'"><div class="top"><span class="nm">'+f.name+'</span><span class="cnt">所有 '+own(f.id)+'</span></div><div class="ds">'+CONTENT.facDesc[f.id]+'</div>'+
+     '<div class="pr">1基あたり <b>+'+fmt(one)+'/秒</b>　合計 <b>+'+fmt(one*own(f.id))+'/秒</b></div><div class="btns">'+
+     '<button class="btn" data-buy="'+f.id+'" data-cost="'+b.c+'">建設 ×'+b.n+'<small>'+fmt(b.c)+'</small></button>'+
+     (S.up[f.id]?'<button class="btn sub off" disabled>改良済み<small>生産 ×'+UP_MULT+'</small></button>':own(f.id)>=UP_OWN?'<button class="btn sub" data-up="'+f.id+'" data-cost="'+upCost(f)+'">改良<small>'+fmt(upCost(f))+'（×'+UP_MULT+'）</small></button>':'<button class="btn sub off" disabled>改良<small>'+UP_OWN+'基で解禁</small></button>')+
+     '</div></div>'; });
+  return h; }
+function hint(e){ const t=e.trig, a=[]; (t.tech||[]).forEach(x=>a.push('研究「'+TECH[x].name+'」')); Object.entries(t.fac||{}).forEach(([k,n])=>a.push('「'+FAC[k].name+'」を'+n+'基')); return a.join('＋'); }
+function viewHistory(){
+  const inR=e=>regionF==='all'||e.rg.includes(regionF);
+  const list=EVENTS.filter(inR).sort((a,b)=>a.year-b.year), n=EVENTS.filter(e=>S.ev[e.id]).length;
+  let h='<div class="sec">歴史図鑑 <small>'+n+' / '+EVENTS.length+'</small></div><div class="note">研究を済ませ、関連する施設を一定数建てると、歴史上の出来事が起こります。出来事は生産を高め、次の研究へつながります。</div>';
+  h+='<div class="rgrow">'+[['all','すべて']].concat(REGIONS.map(r=>[r,REGION_NAME[r]])).map(([k,l])=>{ const es=EVENTS.filter(e=>k==='all'||e.rg.includes(k));
+    return '<button class="rg'+(regionF===k?' on':'')+'" data-region="'+k+'">'+l+' <small>'+es.filter(e=>S.ev[e.id]).length+'/'+es.length+'</small></button>'; }).join('')+'</div>';
+  let lastEra=0;
+  const tag=e=>e.rg.map(r=>'<span class="rtag">'+REGION_NAME[r]+'</span>').join('');
+  list.forEach(e=>{ const c=CONTENT.events[e.id];
+    if(e.era!==lastEra){ lastEra=e.era; h+='<div class="erah">'+ERAS[e.era-1].name+'の時代 <small>'+ERA_SPAN[e.era]+'</small></div>'; }
+    if(S.ev[e.id]) h+='<button class="evrow" data-ev="'+e.id+'"><span class="yr">'+yearLabel(e)+'</span><span><div class="tt">✓ '+c.title+'</div><div class="sb">'+tag(e)+c.who+'</div></span><span></span></button>';
+    else h+='<div class="evrow q"><span class="yr">？</span><span><div class="tt">？？？</div><div class="sb">'+tag(e)+'きっかけ：'+hint(e)+'</div></span><span></span></div>'; });
+  if(!list.length) h+='<div class="note">この地域の出来事はまだありません。</div>';
+  return h; }
+const drugOn=d=>d.cond.indexOf('ev:')===0?!!S.ev[d.cond.slice(3)]:!!S.tech[d.cond];
+const drugHint=d=>d.cond.indexOf('ev:')===0?'歴史「'+CONTENT.events[d.cond.slice(3)].title+'」':'研究「'+TECH[d.cond].name+'」';
+function viewCodex(){
+  const nD=DRUGS.filter(drugOn).length, nP=PEOPLE.filter(x=>S.met[x.id]).length;
+  const newD=DRUGS.some(d=>drugOn(d)&&!S.seenD[d.id]), newPp=PEOPLE.some(x=>S.met[x.id]&&!S.seenP[x.id]);
+  let h='<div class="subtabs"><button data-sub="drug" class="'+(codexSub==='drug'?'on':'')+'">💊 薬物 <small>'+nD+'/'+DRUGS.length+'</small>'+(newD&&codexSub!=='drug'?'<i class="sdot"></i>':'')+'</button><button data-sub="person" class="'+(codexSub==='person'?'on':'')+'">👤 人物 <small>'+nP+'/'+PEOPLE.length+'</small>'+(newPp&&codexSub!=='person'?'<i class="sdot"></i>':'')+'</button></div>';
+  if(codexSub==='person') return h+viewPeople();
+  const isNew=d=>drugOn(d)&&S.seenD[d.id]===2;
+  h+='<div class="note">研究や歴史イベントで、古代から近世に使われた薬物が記録されます。</div>';
+  DRUGS.forEach(d=>{ const c=CONTENT.drugs[d.id];
+    if(drugOn(d)) h+='<button class="evrow" data-drug="'+d.id+'"><span class="yr">'+c.cat.slice(0,2)+'</span><span><div class="tt">'+c.name+(isNew(d)?' <span class="badge">NEW</span>':'')+'</div><div class="sb">'+c.era+'・'+c.use+'</div></span><span></span></button>';
+    else h+='<div class="evrow q"><span class="yr">？</span><span><div class="tt">？？？</div><div class="sb">きっかけ：'+drugHint(d)+'</div></span><span></span></div>'; });
+  return h; }
+function condText(c){ return c.map(r=>{ if(r.indexOf('fac:')===0){ const a=r.split(':'); return '「'+FAC[a[1]].name+'」'+a[2]+'基'; } return r.indexOf('ev:')===0?'歴史「'+CONTENT.events[r.slice(3)].title+'」':'研究「'+TECH[r].name+'」'; }).join('＋'); }
+function viewPeople(){
+  const inR=x=>peopleF==='all'||x.rg.includes(peopleF);
+  let h='<div class="note">研究・施設・歴史の出来事をきっかけに、薬の歴史に関わった人物が登場します。</div>';
+  h+='<div class="rgrow">'+[['all','すべて']].concat(REGIONS.map(r=>[r,REGION_NAME[r]])).map(([k,l])=>{ const xs=PEOPLE.filter(x=>k==='all'||x.rg.includes(k));
+    return xs.length?'<button class="rg'+(peopleF===k?' on':'')+'" data-pregion="'+k+'">'+l+' <small>'+xs.filter(x=>S.met[x.id]).length+'/'+xs.length+'</small></button>':''; }).join('')+'</div>';
+  const tag=x=>x.rg.map(r=>'<span class="rtag">'+REGION_NAME[r]+'</span>').join('');
+  let lastEra=0;
+  PEOPLE.filter(inR).forEach(x=>{ const c=CONTENT.people[x.id];
+    if(x.era!==lastEra){ lastEra=x.era; h+='<div class="erah">'+ERAS[x.era-1].name+'の時代 <small>'+ERA_SPAN[x.era]+'</small></div>'; }
+    if(S.met[x.id]) h+='<button class="evrow" data-person="'+x.id+'"><span class="yr pic">👤</span><span><div class="tt">'+c.name+(S.seenP[x.id]===2?' <span class="badge">NEW</span>':'')+'</div><div class="sb">'+tag(x)+c.life+'・'+c.role+'</div></span><span></span></button>';
+    else h+='<div class="evrow q"><span class="yr pic">？</span><span><div class="tt">？？？</div><div class="sb">'+tag(x)+'きっかけ：'+condText(x.cond)+(x.era>S.era?'（'+ERAS[x.era-1].name+'）':'')+'</div></span><span></span></div>'; });
+  return h; }
+function personSheet(id){ const x=PER[id], c=CONTENT.people[id];
+  const rel=x.cond.filter(r=>r.indexOf('ev:')===0).map(r=>'<li>📜 '+CONTENT.events[r.slice(3)].title+'</li>').join('');
+  openSheet('<div class="tag">人物図鑑・'+ERAS[x.era-1].name+'</div><h3>'+c.name+'</h3><div class="meta">'+c.life+'　'+c.role+'　'+x.rg.map(r=>REGION_NAME[r]).join('・')+'</div><p>'+c.text+'</p>'+(rel?'<div class="box"><b>関連する歴史の出来事</b><ul>'+rel+'</ul></div>':'')+'<div class="box"><b>登場のきっかけ</b>　'+condText(x.cond)+'</div>'); }
+function drugSheet(id){ const c=CONTENT.drugs[id];
+  openSheet('<div class="tag">薬物図鑑・'+c.era+'</div><h3>'+c.name+'</h3><div class="meta">分類：'+c.cat+'</div><p>'+c.note+'</p><div class="box"><b>用途</b>　'+c.use+'</div><div class="box"><b>関連する人物・文献</b>　'+c.rel+'</div>'); }
+function viewRecord(){
+  const t=TECHS.filter(x=>S.tech[x.id]).length, f=FACS.filter(x=>own(x.id)>0).length, e=EVENTS.filter(x=>S.ev[x.id]).length;
+  const mm=Math.floor(S.playSec/60), ss=Math.floor(S.playSec%60);
+  let h='<div class="sec">遊び方</div><div class="howto"><ol><li>知識Pを貯める（「探求する」をタップ、施設の生産）</li><li>知識Pで<b>研究</b>する → 新しい<b>施設</b>が建てられる</li><li>研究を済ませ、関連する施設を一定数建てると<b>歴史</b>が動く（生産アップ）</li><li>歴史の出来事をきっかけに、次の研究が開く</li><li>条件をそろえると次の<b>時代</b>へ</li></ol><div class="note">留守にしている間も、生産量の'+Math.round(OFF_EFF*100)+'%の知識Pが貯まります（最大'+(OFF_MAX/3600)+'時間分）。</div></div>';
+  h+='<div class="sec">コンプリート状況</div><div class="stat"><div>研究</div><div>'+t+' / '+TECHS.length+'</div><div>施設（1基以上）</div><div>'+f+' / '+FACS.length+'</div><div>歴史</div><div>'+e+' / '+EVENTS.length+'</div><div>薬物図鑑</div><div>'+DRUGS.filter(drugOn).length+' / '+DRUGS.length+'</div><div>人物図鑑</div><div>'+PEOPLE.filter(x=>S.met[x.id]).length+' / '+PEOPLE.length+'</div><div>総研究ポイント</div><div>'+fmt(S.techSpent)+'</div><div>総生産量</div><div>'+fmt(S.kpTotal)+'</div><div>時代</div><div>'+S.era+' / '+ERAS.length+'</div><div>プレイ時間</div><div>'+mm+'分'+ss+'秒</div></div>';
+  if(S.era>=6) h+='<button class="big" id="medBtn">🏅「中世薬学の成立」を見る</button>';
+  if(S.era>=8) h+='<button class="big" id="kinBtn">🏅「近世薬学の歩み」を見る</button>';
+  if(S.era>=10) h+='<button class="big" id="kdBtn">🏅「近代薬学の成り立ち」を見る</button>';
+  if(S.cleared) h+='<button class="big" id="recapBtn">🏅「薬学の歩み」を見る</button>';
+  h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">この版のセーブは3層版（古代〜中世）の続きとして引き継がれます。v33など他のバージョンとは別に保存されます。</div>';
+  return h; }
+
+/* 購入可否の見た目だけ更新（タップ中に再描画しない） */
+function updateAfford(){
+  document.querySelectorAll('[data-cost]').forEach(el=>{ const c=+el.dataset.cost; if(!c) return; const ok=S.kp>=c;
+    if(el.classList.contains('tn')) el.classList.toggle('afford',ok); else if(el.classList.contains('btn')) el.classList.toggle('off',!ok); });
+}
+function updateNums(){
+  $('kpD').textContent=fmt(S.kp); $('prD').textContent='+'+fmt(PROD); $('tapD').textContent='+'+fmt(tapGain());
+  if(tab==='facility'){ document.querySelectorAll('[data-buy]').forEach(el=>{ const f=FAC[el.dataset.buy]; const b=bulk(f,qty); el.dataset.cost=b.c; el.innerHTML='建設 ×'+b.n+'<small>'+fmt(b.c)+'</small>'; }); }
+  updateAfford();
+}
+
+/* ---------- 詳細シート・モーダル ---------- */
+function openSheet(html){ $('sheet').innerHTML='<button class="x" data-close>✕</button>'+html; $('ov').classList.add('show'); }
+function closeSheet(){ $('ov').classList.remove('show'); }
+function openMid(html){ $('sheetm').innerHTML=html; $('ovm').classList.add('show'); }
+function closeMid(){ $('ovm').classList.remove('show'); setTimeout(runQueue,50); }
+function effText(e){ const a=[]; if(e.fx.pct) a.push((e.fx.fac==='all'?'全施設':e.fx.fac.map(x=>FAC[x].name).join('・'))+'の生産 +'+e.fx.pct+'%');
+  if(e.fx.cut) a.push(ROUTES.find(r=>r[0]===e.fx.cut.route)[1].replace('ルート','')+'の研究コスト −'+e.fx.cut.pct+'%'); return a.join('　／　'); }
+function techSheet(id){ const t=TECH[id], st=techState(t);
+  const unl=FACS.filter(f=>f.tech===id).map(f=>'🏛️ 施設「'+f.name+'」を建設できる');
+  const evs=EVENTS.filter(e=>(e.trig.tech||[]).includes(id)); evs.forEach(e=>{ const fc=Object.entries(e.trig.fac||{}).map(([k,n])=>'「'+FAC[k].name+'」'+n+'基').join('・');
+    unl.push(S.ev[e.id]?'📜 歴史「'+CONTENT.events[e.id].title+'」':'📜 歴史イベントが起こる（未発見）'+(fc?'：あわせて'+fc+'が必要':'')); });
+  const nxt=TECHS.filter(x=>refs(x).includes(id)).map(x=>x.name);
+  const bon=TECHS.filter(x=>(x.bonus||[]).includes(id)).map(x=>x.name);
+  let pre=t.prereq.length?'<ul>'+t.prereq.map(r=>'<li class="'+(metP(r)?'ok':'ng')+'">'+(metP(r)?'✓ ':'✗ ')+prName(r)+'</li>').join('')+'</ul>':'<div class="meta">前提なし</div>';
+  let btn=st==='done'?'<button class="big off">研究済み</button>':st==='avail'?'<button class="big'+(S.kp>=techCost(t)?'':' off')+'" data-do="research" data-id="'+id+'">研究する（'+fmt(techCost(t))+'）</button>':'<button class="big off">'+(st==='eralock'?ERAS[t.era-1].name+'で解禁':'前提が足りません')+'</button>';
+  openSheet('<div class="tag">研究・'+ROUTES.find(r=>r[0]===t.route)[1]+'</div><h3>'+t.name+'</h3><div class="meta">'+ERAS[t.era-1].name+'・コスト '+fmt(techCost(t))+'</div><p>'+CONTENT.techDesc[id]+'</p><div class="box"><b>前提</b>'+pre+'</div>'+
+    (unl.length?'<div class="box"><b>研究すると</b><ul>'+unl.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>':'')+(nxt.length?'<div class="box"><b>つながる研究</b>：'+nxt.join('、')+'</div>':'')+
+    (t.bonus?'<div class="box"><b>合流（必須ではない）</b>　'+t.bonus.map(x=>'<span style="color:'+(S.tech[x]?'var(--acc)':'var(--mute)')+'">'+(S.tech[x]?'✓ ':'・')+'研究「'+TECH[x].name+'」</span>').join('、')+'が済んでいると、研究コスト −'+BONUS_CUT+'%</div>':'')+
+    (bon.length?'<div class="box"><b>合流先（必須ではない）</b>：'+bon.join('、')+'の研究コストが軽くなる</div>':'')+btn); }
+function evSheet(id){ const e=EV[id], c=CONTENT.events[id];
+  openSheet('<div class="tag">歴史イベント・'+ERAS[e.era-1].name+'・'+c.when+'</div><h3>'+c.title+'</h3><div class="meta">'+e.rg.map(r=>REGION_NAME[r]).join('・')+'　'+c.who+'</div><p>'+refText(c.text)+'</p><div class="box"><b>その後への影響</b><div>'+c.why+'</div>'+evUnlock(id)+'</div><div class="box"><b>ゲーム上の効果</b>　'+effText(e)+'</div>'); }
+function evUnlock(id){ const ts=TECHS.filter(t=>refs(t).includes('ev:'+id)); if(!ts.length) return '';
+  return '<ul>'+ts.map(t=>'<li class="'+(S.tech[t.id]?'ok':'')+'">→ ゲーム上の解禁：研究「'+t.name+'」'+(S.tech[t.id]?'（研究済み）':'')+'</li>').join('')+'</ul>'; }
+function showEra(n){ const e=ERAS[n-1], newT=TECHS.filter(t=>t.era===n).length, newF=FACS.filter(f=>f.era===n).length;
+  openMid('<div class="era-banner"><div class="t">NEW ERA</div><div class="n">新しい時代が始まりました</div><div style="font-size:1.1rem;font-weight:900;color:var(--acc)">'+e.name+'</div><div class="meta" style="margin-top:6px">'+e.sub+'</div></div><div class="box">この時代に解禁：研究 '+newT+' 件、施設 '+newF+' 種</div><button class="big" data-close-mid>はじめる</button>'); S.eraShown=n; }
+function showMed(){ const done=r=>r.every(met1);
+  const steps=[['薬物の利用',['herb_collect','ev:nippur']],['文書化',['record','ev:ebers']],['保存・翻訳',['transmit','translation','ev:hunayn']],['加工',['drug_process','extract','distill']],['専門職の形成',['pharmacy','profession','ev:melfi']],['標準化（15世紀末）',['pharmacopoeia','ev:ricettario']]];
+  const evs=EVENTS.filter(e=>S.ev[e.id]&&e.era<=5), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
+  const nf=FACS.filter(f=>own(f.id)>0&&f.era<=5).length, nb=FACS.filter(f=>f.era<=5).reduce((a,f)=>a+own(f.id),0);
+  openMid('<div class="era-banner"><div class="t">古代〜中世編 CLEAR</div><div class="n">中世薬学の成立</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+   '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.filter(e=>e.era<=5).length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]&&t.era<=5).length+' / '+TECHS.filter(t=>t.era<=5).length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.filter(f=>f.era<=5).length+' 種（計'+nb+'基）</div></div>'+
+   '<p style="font-size:.76rem">野山で採る草は、書き残される知識になり、保存と翻訳、加工の技術、薬を扱う専門の担い手といった、いくつもの流れの中で受け継がれていった。中世の終わりには、薬の処方や調製法を公的に定める動きも現れる。ここから先は近世。世界中から薬が集まり、化学と制度と観察が、薬学を大きく変えていく。</p><div class="note">※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。</div><button class="big" data-close-mid>近世へ進む</button>'); S.medShown=true; }
+function showKinsei(){ const done=r=>r.every(met1);
+  const steps=[['薬物の世界化',['exotic_survey','ev:orta']],['印刷と実物の観察',['print_drug_books','field_herbal']],['医化学と化学的な薬剤',['iatrochemistry','chem_remedies']],['薬局方の広がり',['national_pharma','ev:londinensis']],['職能団体と薬種の流通',['guild_apothecary','drug_trade']],['症例・用量・治療法の比較',['clinical_dose','treatment_compare']]];
+  const evs=EVENTS.filter(e=>S.ev[e.id]&&e.era<=7), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
+  const nf=FACS.filter(f=>own(f.id)>0&&f.era<=7).length, nb=FACS.filter(f=>f.era<=7).reduce((a,f)=>a+own(f.id),0);
+  openMid('<div class="era-banner"><div class="t">近世編 CLEAR</div><div class="n">近世薬学の歩み</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+   '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.filter(e=>e.era<=7).length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]&&t.era<=7).length+' / '+TECHS.filter(t=>t.era<=7).length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.filter(f=>f.era<=7).length+' 種（計'+nb+'基）</div></div>'+
+   '<p style="font-size:.76rem">薬は、世界中から集められ、書物と薬局方で記録され、職能団体と流通の仕組みの中で扱われるようになりました。やがて人々は、経験や古典の権威に加えて、症例と用量、そして治療法の比較を通しても、薬を評価しようとし始めます。ゲームはここから、薬の働きを担う物質を取り出す研究が進む、近代へと進みます。</p><div class="note">※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。いくつもの流れが並行して進み、19世紀の有効成分の単離へと合流していきます。</div><button class="big" data-close-mid>近代へ進む</button>'); S.kinShown=true; }
+function showKindai(){ const done=r=>r.every(met1);
+  const steps=[['有効成分の単離',['alkaloid_isolation','ev:serturner']],['実験による薬理学',['exp_pharmacology','ev:buchheim']],['麻酔と注射',['inhal_anesthesia','injection']],['化学工業と合成医薬品',['organic_chem','synthetic_drugs']],['薬局方・薬学教育・薬事制度',['national_pharmacopoeia','pharm_education','pharmacy_law']],['衛生と細菌学',['sanitation','bacteriology']],['血清療法とアスピリン',['serum_therapy','ev:aspirin']]];
+  const evs=EVENTS.filter(e=>S.ev[e.id]&&e.era<=9), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
+  const nf=FACS.filter(f=>own(f.id)>0&&f.era<=9).length, nb=FACS.filter(f=>f.era<=9).reduce((a,f)=>a+own(f.id),0);
+  openMid('<div class="era-banner"><div class="t">近代編 CLEAR</div><div class="n">近代薬学の成り立ち</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+   '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.filter(e=>e.era<=9).length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]&&t.era<=9).length+' / '+TECHS.filter(t=>t.era<=9).length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.filter(f=>f.era<=9).length+' 種（計'+nb+'基）</div></div>'+
+   '<p style="font-size:.76rem">19世紀、植物から取り出された「成分」が量って使われるようになり、実験によって薬の作用が調べられるようになりました。化学工業は、天然に見られる物質も新しい物質も合成し、薬として製造し始めます。微生物の研究は、衛生や消毒、ワクチン、血清療法など、さまざまな分野の発展と結びついていきました。ここから先は、化学療法と抗生物質の20世紀、現代薬学の時代です。</p><div class="note">※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。単離・合成・微生物学・制度といった流れは、互いに影響し合いながら並行して進みました。</div><button class="big" data-close-mid>現代へ進む</button>'); S.kdShown=true; }
+function showClear(){ const done=r=>r.every(met1);
+  const steps=[['化学療法と抗生物質',['chemotherapy','antibiotics']],['比較臨床試験と審査',['clinical_trial','regulation']],['薬害と安全対策',['pharmacovigilance','ev:thalidomide']],['分子生物学と創薬',['molecular_biology','rational_design']],['遺伝子組換えと抗体医薬',['recombinant','monoclonal']],['分子標的と免疫',['targeted_therapy','checkpoint']],['mRNAワクチン',['mrna_vaccine','ev:mrna_modified']]];
+  const evs=EVENTS.filter(e=>S.ev[e.id]), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
+  const nf=FACS.filter(f=>own(f.id)>0).length, nb=FACS.reduce((a,f)=>a+own(f.id),0);
+  openMid('<div class="era-banner"><div class="t">現代編 CLEAR　全時代クリア</div><div class="n">薬学の歩み</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+   '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]).length+' / '+TECHS.length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.length+' 種（計'+nb+'基）</div><div>発見した薬物</div><div>'+DRUGS.filter(drugOn).length+' / '+DRUGS.length+'</div><div>人物図鑑</div><div>'+PEOPLE.filter(x=>S.met[x.id]).length+' / '+PEOPLE.length+'</div><div>総研究ポイント</div><div>'+fmt(S.techSpent)+'</div><div>総生産量</div><div>'+fmt(S.kpTotal)+'</div></div>'+
+   '<p style="font-size:.76rem">20世紀、化学療法と抗生物質は感染症の治療を大きく変え、薬は比較臨床試験と審査の仕組みの中で評価されるようになりました。その一方で、薬害の経験は、安全性を確かめ、被害を救済する制度づくりを促す重要な契機の一つとなりました。分子生物学と生命工学は、抗体医薬や分子標的薬、mRNAワクチンといった新しい薬をもたらしています。野山の薬草から始まった薬の歴史は、いまも続いています。</p><div class="note">取り残した研究や歴史、薬物は、続けて遊んでコンプリートできます。<br>※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。薬の歴史は一本道ではなく、多くの人々と地域の、いくつもの流れが重なり合って進んできました。</div><button class="big" data-close-mid>続けて遊ぶ</button>'); S.clearShown=true; }
+let toastT=0, toastCb=null;
+function toast(msg,cb){ const t=$('toast'); t.textContent=msg; toastCb=cb||null; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),3500); }
+
+/* ---------- イベント ---------- */
+document.addEventListener('click',e=>{
+  const g=s=>e.target.closest(s);
+  if(g('#tapBtn')){ const gn=tapGain(); S.kp+=gn; S.kpTotal+=gn; S.tapCount++; const r=$('tapBtn').getBoundingClientRect(); const d=document.createElement('div'); d.className='fl'; d.textContent='+'+fmt(gn); d.style.left=(r.left+r.width/2-10)+'px'; d.style.top=(r.top)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),700); updateNums(); renderNav(); return; }
+  if(g('#toast')&&toastCb){ const cb=toastCb; toastCb=null; $('toast').classList.remove('show'); cb(); return; }
+  let el;
+  if(g('[data-close]')||(e.target===$('ov'))){ closeSheet(); return; }
+  if(g('[data-close-mid]')){ closeMid(); return; }
+  if((el=g('nav button'))){ setTab(el.dataset.tab); return; }
+  if((el=g('[data-tech]'))){ techSheet(el.dataset.tech); return; }
+  if((el=g('[data-ev]'))){ evSheet(el.dataset.ev); return; }
+  if((el=g('[data-drug]'))){ drugSheet(el.dataset.drug); return; }
+  if((el=g('[data-do="research"]'))){ const id=el.dataset.id; if(research(id)) techSheet(id); else toast('知識Pが足りません'); return; }
+  if((el=g('[data-sub]'))){ leaveCodex(); codexSub=el.dataset.sub; markCodexSeen(); renderAll(); return; }
+  if((el=g('[data-pregion]'))){ peopleF=el.dataset.pregion; renderAll(); return; }
+  if((el=g('[data-person]'))){ personSheet(el.dataset.person); return; }
+  if((el=g('[data-region]'))){ regionF=el.dataset.region; renderAll(); return; }
+  if((el=g('[data-qty]'))){ qty=el.dataset.qty==='max'?'max':+el.dataset.qty; renderAll(); return; }
+  if((el=g('[data-buy]'))){ if(!buy(el.dataset.buy)) toast('知識Pが足りません'); return; }
+  if((el=g('[data-up]'))){ if(!buyUp(el.dataset.up)) toast('知識Pが足りません'); return; }
+  if(g('#recapBtn')){ showClear(); return; }
+  if(g('#medBtn')){ showMed(); return; }
+  if(g('#kinBtn')){ showKinsei(); return; }
+  if(g('#kdBtn')){ showKindai(); return; }
+  if(g('#expBtn')){ $('code').value=exportCode(); $('code').select(); return; }
+  if(g('#impBtn')){ if(!importCode($('code').value)) toast('コードを読み込めませんでした'); else toast('読み込みました'); return; }
+  if(g('#resetBtn')){ openMid('<h3>セーブデータをリセット</h3><p>進行状況をすべて消して最初からやり直します。よろしいですか？</p><div style="display:flex;gap:8px"><button class="big off" data-close-mid>やめる</button><button class="big" id="resetYes" style="background:#ff6b8a">リセットする</button></div>'); return; }
+  if(g('#resetYes')){ safe(()=>localStorage.removeItem(SAVE_KEY)); S=newState(); queue.length=0; recalc(); closeMid(); renderAll(); toast('リセットしました'); return; }
+});
+
+/* ---------- ループ ---------- */
+let last=performance.now(), acc=0, lastRenderKey='', hiddenAt=0;
+function grantOffline(sec){ if(!(sec>=OFF_MIN)||PROD<=0) return; const t=Math.min(sec,OFF_MAX), g=PROD*t*OFF_EFF; S.kp+=g; S.kpTotal+=g;
+  const h=Math.floor(sec/3600), mi=Math.floor(sec%3600/60);
+  toast('おかえりなさい。留守の'+(h?h+'時間':'')+mi+'分で '+fmt(g)+' の知識Pを得ました（生産量の'+Math.round(OFF_EFF*100)+'%'+(sec>OFF_MAX?'・最大'+(OFF_MAX/3600)+'時間分':'')+'）'); }
+// 留守の時間は「最後に画面を見ていた時刻」から一度だけ数える（復帰の経路が重なっても二重に加算しない）
+let activeAt=Date.now();
+function claimAway(){ const now=Date.now(), sec=(now-activeAt)/1000; activeAt=now; grantOffline(sec); }
+function tick(){ const now=performance.now(); let dt=(now-last)/1000; last=now; if(dt<0) dt=0;
+  if(document.hidden) return; // 画面を離れている間は数えず、戻ったときにまとめて計算する
+  if(Date.now()-activeAt>5000){ claimAway(); dt=0; } // スリープ等で止まっていた場合
+  activeAt=Date.now();
+  S.kp+=PROD*dt; S.kpTotal+=PROD*dt; S.playSec+=dt; acc+=dt;
+  updateNums(); if(acc>=1){ acc=0; renderNav(); } }
+setInterval(tick,100);
+setInterval(save,5000);
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) save(); else { claimAway(); last=performance.now(); } });
+window.addEventListener('pagehide',save);
+document.addEventListener('dblclick',e=>e.preventDefault());
+
+load(); recalc(); progress(true);
+if(S.lastSeen){ activeAt=S.lastSeen; claimAway(); }
+if(S.era>=6&&!S.medShown) queue.push({k:'med'});
+if(S.era>=8&&!S.kinShown) queue.push({k:'kin'});
+if(S.era>=10&&!S.kdShown) queue.push({k:'kd'});
+if(S.eraShown<S.era) queue.push({k:'era',era:S.era});
+if(S.cleared&&!S.clearShown) queue.push({k:'clear'});
+renderAll(); runQueue();
+window.__game={DRUGS,PEOPLE,techCost,S:()=>S,research,buy,buyUp,progress,recalc,renderAll,tick,setTab,TECHS,FACS,EVENTS,setQty:q=>{qty=q;},giveKp:n=>{S.kp+=n;},get PROD(){return PROD;},reset:()=>{safe(()=>localStorage.removeItem(SAVE_KEY));}};
+})();
+</script>
+
+</body></html>
