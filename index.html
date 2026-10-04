@@ -1,5 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>薬の開発史 ― 古代から現代 ―</title>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="「植物を試す」からmRNAワクチンまで、薬の歴史をたどるインクリメンタルゲーム">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>薬歴</title>
+</head>
+<body>
 
 <style>
 :root{color-scheme:dark;--bg:#004c4c;--bg2:#00605a;--card:#06605a;--line:rgba(140,255,220,.25);--acc:#4be8ac;--acc2:#ffb238;--new:#ff3d7a;--mute:#8fc6b8;--tx:#eafff5;
@@ -132,7 +140,91 @@ textarea{width:100%;height:70px;background:rgba(0,0,0,.25);color:var(--tx);borde
 .stages>div{flex:1 0 62px;background:rgba(255,255,255,.06);border-radius:9px;padding:5px 4px;text-align:center;font-size:.58rem;color:var(--mute);}
 .stages>div b{display:block;font-size:.66rem;color:var(--tx);}
 .stages>div.on{background:rgba(75,232,172,.14);} .stages>div.on span{color:var(--acc);font-weight:800;}
+.fh{font-size:.68rem;color:var(--acc2);margin:-2px 0 7px;}
+.fh b{color:var(--tx);}
+.tn.unk{cursor:default;}
+.tn.unk .nm{color:var(--mute);letter-spacing:.2em;}
+.tn.unk .st{color:var(--mute);font-weight:700;}
 .stages>i{font-style:normal;color:var(--acc);align-self:center;font-size:.8rem;}
+/* ===== プロローグ（経験のはじまり）：本編と同じ深緑を一段暗くし、情報を最小限に ===== */
+.pro{position:fixed;inset:0;z-index:70;overflow:auto;color:var(--tx);
+ background:radial-gradient(120% 75% at 50% 108%,#00524b 0%,#002b29 48%,#001414 100%);
+ padding:calc(28px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px));transition:opacity .9s ease;}
+.pro.out{opacity:0;pointer-events:none;}
+.pro-in{max-width:440px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;}
+.pro-tag{font-size:.66rem;letter-spacing:.42em;color:var(--acc2);font-weight:900;text-align:center;margin-top:4vh;}
+.pro h1{font-size:1.9rem;font-weight:900;text-align:center;margin:10px 0 4px;letter-spacing:.08em;}
+.pro-when{text-align:center;color:var(--acc);font-weight:800;font-size:.9rem;margin-bottom:14px;}
+.pro-lead{font-size:.82rem;line-height:2;text-align:center;color:var(--mute);margin:0 0 18px;}
+.pro-stage{flex:1;display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity .5s;}
+.pro-kp{display:flex;flex-direction:column;align-items:center;animation:proIn .5s ease;}
+.pro-kp b{font-size:2rem;color:#8dfad0;font-variant-numeric:tabular-nums;line-height:1;}
+.pro-kp small{font-size:.66rem;color:var(--mute);margin-top:2px;}
+.pro-btn{width:190px;height:190px;border-radius:50%;border:0;font-weight:900;font-size:1.15rem;color:#00302a;
+ background:radial-gradient(circle at 40% 32%,#8dfad0,#2fd49a 50%,#12a874);box-shadow:0 0 0 10px rgba(75,232,172,.08),0 0 40px rgba(75,232,172,.25),0 6px 0 #0a7a58;
+ animation:proGlow 2.4s ease-in-out infinite;}
+.pro-btn:active{transform:translateY(4px);box-shadow:0 0 0 10px rgba(75,232,172,.08),0 2px 0 #0a7a58;}
+.pro-btn:disabled{opacity:.4;animation:none;}
+.pro-dots{display:flex;gap:8px;}
+.pro-dots i{width:9px;height:9px;border-radius:50%;background:rgba(140,255,220,.18);transition:background .3s;}
+.pro-dots i.on{background:var(--acc);}
+.pro-log{min-height:5.4em;width:100%;text-align:center;font-size:.84rem;line-height:1.8;}
+.pro-log div{animation:proIn .6s ease;color:#5f978a;}
+.pro-log div:last-child{color:var(--tx);}
+.pro-def{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:.78rem;line-height:1.7;animation:proIn .6s ease;}
+.pro-def b{color:var(--acc);}
+.pro-card{background:#073f3b;border:1px solid rgba(75,232,172,.5);border-radius:18px;padding:20px 18px;margin-top:6px;
+ box-shadow:0 10px 40px rgba(0,0,0,.45);animation:proCard .8s cubic-bezier(.2,.8,.2,1);}
+.pro-card .t{font-size:.62rem;letter-spacing:.2em;color:var(--acc2);font-weight:900;}
+.pro-card h2{margin:6px 0 2px;font-size:1.45rem;}
+.pro-card h4{margin:0 0 4px;font-size:.84rem;color:var(--acc);}
+.pro-card .meta{font-size:.66rem;color:var(--mute);margin-bottom:6px;}
+.pro-card p{font-size:.8rem;line-height:1.9;margin:8px 0;}
+.pro-card .box{background:rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;font-size:.74rem;line-height:1.6;margin:10px 0;}
+.pro-card .box b{color:var(--acc);}
+.pro-close{text-align:center;font-weight:900;font-size:.9rem;margin:14px 0 4px;color:#8dfad0;line-height:1.7;}
+.pro-go{width:100%;border:0;border-radius:12px;padding:14px;font-weight:900;font-size:1rem;color:#00302a;margin-top:8px;
+ background:linear-gradient(#2fd49a,#12a874);box-shadow:0 4px 0 #0a7a58;}
+.pro-go:active{transform:translateY(2px);box-shadow:0 2px 0 #0a7a58;}
+.pro-skip{background:none;border:0;color:#4f8478;font-size:.66rem;margin:16px auto 0;padding:6px 12px;text-decoration:underline;}
+.fl.pro-fl{z-index:80;color:#8dfad0;font-size:1rem;}
+.toast small{display:block;font-weight:700;font-size:.68rem;opacity:.9;margin-top:2px;}
+.fl.say{left:auto;font-size:.68rem;font-weight:700;color:#bfeedd;white-space:nowrap;background:rgba(0,48,48,.85);border:1px solid var(--line);
+ border-radius:8px;padding:3px 8px;text-shadow:none;animation:say 2.4s ease-out forwards;}
+@keyframes say{0%{opacity:0;transform:translateY(-4px);}12%{opacity:1;transform:none;}75%{opacity:1;}100%{opacity:0;transform:translateY(6px);}}
+/* 動きを減らす設定：装飾的な動きは止め、操作の反応は小さく残す */
+@media (prefers-reduced-motion: reduce){
+ .pro-btn{animation:none;}
+ .tut-hi{animation:none;box-shadow:0 0 0 2px #ffb238;}
+ .pro-kp,.pro-log div,.pro-def,.pro-card,.coach{animation:none;}
+ .pro{transition:opacity .25s ease;}
+ .pro-stage{transition:none;}
+ .toast{transition:opacity .15s;transform:translate(-50%,0);}
+ .bar i{transition:width .1s;}
+ .fl{animation:flr .7s ease-out forwards;}
+ .fl.say{animation:sayr 2.4s linear forwards;}
+}
+@keyframes flr{to{transform:translateY(-12px);opacity:0;}}
+@keyframes sayr{0%,85%{opacity:1;}100%{opacity:0;}}
+@keyframes proIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+@keyframes proCard{from{opacity:0;transform:translateY(24px) scale(.97);}to{opacity:1;transform:none;}}
+@keyframes proGlow{50%{box-shadow:0 0 0 18px rgba(75,232,172,.04),0 0 60px rgba(75,232,172,.38),0 6px 0 #0a7a58;}}
+/* 薬の理解の歩み（経験 → … → 遺伝子・免疫） */
+.flowband{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 2px;margin:8px 0 10px;font-size:.6rem;}
+.flowband span{padding:2px 7px;border-radius:99px;border:1px solid var(--line);color:var(--mute);}
+.flowband span.on{background:rgba(75,232,172,.16);border-color:rgba(75,232,172,.6);color:var(--acc);font-weight:800;}
+.flowband span.now{background:var(--acc);color:#00302a;border-color:var(--acc);font-weight:900;}
+.flowband i{font-style:normal;color:var(--acc);opacity:.6;}
+/* ===== 段階チュートリアル（コーチ） ===== */
+.coach{position:fixed;left:12px;right:12px;margin:0 auto;bottom:calc(var(--nav-h) + 10px);z-index:35;max-width:496px;
+ background:#0b7a5c;border:1px solid #4be8ac;border-radius:14px;padding:10px 36px 10px 12px;font-size:.74rem;line-height:1.6;box-shadow:0 6px 20px rgba(0,0,0,.4);animation:proIn .4s ease;}
+.coach b{color:#c8ffe9;}
+.coach small{color:#bfeedd;font-size:.64rem;}
+.coach .cx{position:absolute;top:6px;right:8px;background:none;border:0;color:#bfeedd;font-size:.95rem;}
+.tut-hi{animation:tutHi 1.4s ease-in-out infinite;position:relative;z-index:1;}
+@keyframes tutHi{50%{box-shadow:0 0 0 3px #ffb238,0 0 18px rgba(255,178,56,.7);}}
+nav button.tut-hi{border-radius:12px;}
+.app{transition:opacity .2s;}
 </style>
 
 <div class="app">
@@ -158,11 +250,31 @@ textarea{width:100%;height:70px;background:rgba(0,0,0,.25);color:var(--tx);borde
 <div class="ov" id="ov"><div class="sheet" id="sheet"></div></div>
 <div class="ov mid" id="ovm"><div class="sheet" id="sheetm"></div></div>
 <div class="toast" id="toast"></div>
+<div class="coach" id="coach" hidden><div id="coachT"></div><button class="cx" data-coach-x aria-label="閉じる">✕</button></div>
+<div class="pro" id="pro" hidden><div class="pro-in">
+  <div class="pro-tag">PROLOGUE</div>
+  <h1>経験のはじまり</h1>
+  <div class="pro-when">約5万年前――</div>
+  <p class="pro-lead">文字も、薬局も、医学書も存在しない時代。<br>それでも人類は、自然の中にあるものを口にし、<br>その作用を経験していた。<br>その小さな経験の積み重ねから、薬の長い歴史が始まる。</p>
+  <div class="pro-stage" id="proStage">
+    <div class="pro-kp" id="proKp" hidden><b id="proKpN">0</b><small>💊 知識P</small></div>
+    <button class="pro-btn" id="proTap">🌿 植物を試す</button>
+    <div class="pro-dots" id="proDots"></div>
+    <div class="pro-log" id="proLog"></div>
+    <div class="pro-def" id="proDef" hidden><b>💊 知識P</b><br>人類が薬について蓄積してきた「経験と知識」を表します。<br>試すたびに経験が積み重なり、知識Pが増えていきます。</div>
+  </div>
+  <div id="proCard" hidden></div>
+  <button class="pro-skip" id="proSkip">スキップ</button>
+</div></div>
 
 <script>
 /* ======================================================================
+ 薬歴 v1.0（2026-10-04 公開。内部の改修履歴では v21 にあたる）
  薬の開発史 ― 古代から近世 ― （3層構造：研究 → 施設 → 歴史）
  v3：近世編（時代6・7、1500〜1799年頃）を追加。設計は game-kinsei-design-v0.3.md
+ v21：情報開示の整理（現在の時代＋次の1段階だけを見せる。未来の研究・施設・未発生の歴史は非表示、図鑑の未発見は「？？？」のみ）。数値データは変更なし
+ v20：通知キュー（モーダル中は保留・集約）、「薬の理解の歩み」を順番どおりに進め「化学」→「成分」、段階到達の通知、時代別の探求の一文、STEP6、STEP5の自動消去、動きを減らす設定への対応、史実文章の修正。数値データは変更なし
+ v19：プロローグ「経験のはじまり」（スキップ時0P）、段階チュートリアル（STEP1〜5）、冒頭とエンディングの結び文、「薬の理解の歩み」の帯を追加。数値データ（TECHS/FACS/EVENTS/ERA_REQ/CLEAR ほか）は変更なし
  v18：Balance v3（歴史イベントの施設数条件をすべて5の倍数にし、時代ごとの進行時間を5〜15分に調整）
  v17：Balance v2（歴史イベントの施設数条件30件・ERA_REQ[3]・CLEARを調整。研究コスト・施設・その他の数値は変更なし）
  v16：Balance v1（研究コスト83件・歴史イベントの施設要求数4件を調整。施設・生産・その他の数値は変更なし）
@@ -902,9 +1014,9 @@ const CONTENT={
    "name": "甘い硫酸油",
    "cat": "化学製剤",
    "era": "近世",
-   "use": "近世の化学的な物質研究の一例（当時の用途は要確認）",
+   "use": "化学的な調製の一例（のちのエーテル）",
    "rel": "ヴァレリウス・コルドゥス",
-   "note": "酒精（アルコール）を硫酸とともに蒸留して得られる液体。16世紀にコルドゥスが調製法を記したとされる（年代には諸説がある）。のちに「エーテル」と呼ばれる物質だが、近世に麻酔薬として使われたわけではない。"
+   "note": "酒精（アルコール）を硫酸とともに蒸留して得られる液体。16世紀にコルドゥスが調製法を記したとされる（年代には諸説がある）。のちに「エーテル」と呼ばれる物質で、吸入麻酔に用いられるようになるのは19世紀のこと。近世の段階では、化学的な調製の一例として扱う。"
   },
   "laudanum": {
    "name": "アヘンチンキ（ラウダヌム）",
@@ -968,7 +1080,7 @@ const CONTENT={
    "era": "近世",
    "use": "強壮",
    "rel": "幕府の薬園",
-   "note": "高価な輸入薬だった朝鮮人参を、日本国内で栽培しようとする試み。江戸幕府の薬園でも取り組まれた。時期や経緯の細部は確認中。"
+   "note": "高価な輸入薬だった朝鮮人参を、日本国内で栽培しようとする試み。江戸幕府は18世紀前半、輸入に頼っていた朝鮮人参の国産化を進めた。享保年間には日光などで栽培の試みが進められ、その後、田村藍水らも栽培研究に関わった。"
   },
   "cowpox_vaccine": {
    "name": "牛痘苗",
@@ -2804,8 +2916,29 @@ const DRG=Object.fromEntries(DRUGS.map(x=>[x.id,x]));
 const ROUTES=[['A','本草・薬草ルート','薬草 → 本草学 → 薬物鑑定 → 異地の薬物・植物園'],['B','加工・化学ルート','加工 → 抽出 → 蒸留 → 錬金術 → 医化学'],['C','制度・薬局ルート','薬房 → 薬局 → 医薬分業 → 薬局方 → 職能団体・流通'],['X','知識・評価の土台','記録・継承・翻訳・教育 → 印刷 → 臨床での評価']];
 const safe=(f,d)=>{try{return f();}catch(e){return d;}};
 
+/* ---------- チュートリアルの段階（STEP1はプロローグ内） ---------- */
+const TUT=[
+ {id:'tap'}, // STEP1：タップで知識P（プロローグで体験）
+ {id:'research',when:()=>true,done:()=>!!S.tech.herb_collect,
+  text:()=>'<b>STEP 2　知識Pで研究する</b><br>経験を整理し、体系にしていくのが「研究」です。最初の研究「薬草採集」をタップしましょう。'+(S.kp<TECH.herb_collect.cost?'<br><small>知識Pが足りないときは、上の「🌿 探求する」で貯められます。</small>':''),
+  target:()=>tab!=='research'?'#nv-research':(S.kp<TECH.herb_collect.cost?'#tapBtn':'[data-tech="herb_collect"]')},
+ {id:'facility',when:()=>!!S.tech.herb_collect,done:()=>own('herb_garden')>0,
+  text:()=>'<b>STEP 3　研究で施設が解禁される</b><br>「薬草採集」で、薬草を育てる「薬草園」を建てられるようになりました。施設タブで建設しましょう。',
+  target:()=>tab!=='facility'?'#nv-facility':'[data-buy="herb_garden"]'},
+ {id:'prod',when:()=>own('herb_garden')>0,skippable:true,auto:14000,
+  text:()=>'<b>STEP 4　施設は自動で知識Pを生む</b><br>施設は毎秒、知識Pを生産します（上の「⚡ 毎秒」）。施設を増やし、次の研究へ進みましょう。',
+  target:()=>'#prD'},
+ {id:'event',when:()=>EVENTS.some(e=>S.ev[e.id]),done:()=>tab==='history',auto:15000,
+  text:()=>'<b>STEP 5　研究と施設で歴史が動く</b><br>研究を済ませ、関連する施設を一定数建てると、歴史上の出来事が起こります。出来事は生産を高め、次の研究を開きます。',
+  target:()=>'#nv-history'},
+ {id:'era',when:()=>{ const rq=ERA_REQ[2]; return S.era===1&&(rq.tech.some(x=>S.tech[x])||rq.ev.some(x=>S.ev[x])); },done:()=>S.era>=2,
+  text:()=>'<b>STEP 6　次の時代へ</b><br>上のパネルには次の時代への条件が表示されています。すべて満たすと、新しい時代が始まります。',
+  target:()=>'#eraProg'},
+];
+const TUT_ID=Object.fromEntries(TUT.map(t=>[t.id,t]));
+
 /* ---------- 状態 ---------- */
-function newState(){return {saveVersion:SAVE_VERSION,lastSeen:0,met:{},seenP:{},seenD:{},kp:0,kpTotal:0,era:1,tech:{},own:{},up:{},ev:{},seen:{},order:0,cleared:false,clearShown:false,medShown:false,kinShown:false,kdShown:false,eraShown:1,playSec:0,tapCount:0,techSpent:0};}
+function newState(){return {saveVersion:SAVE_VERSION,lastSeen:0,met:{},seenP:{},seenD:{},kp:0,kpTotal:0,era:1,tech:{},own:{},up:{},ev:{},seen:{},order:0,cleared:false,clearShown:false,medShown:false,kinShown:false,kdShown:false,eraShown:1,playSec:0,tapCount:0,techSpent:0,prologueDone:false,tut:{},flowSeen:{}};}
 let S=newState();
 let tab='research', qty=1, tapMode=true, regionF='all', codexSub='drug', peopleF='all';
 function load(){
@@ -2822,6 +2955,16 @@ function load(){
   else if((+o.saveVersion||0)<4){ S.kinShown=!!o.clearShown; S.cleared=false; S.clearShown=false; } // v6までの「クリア」は近世編のクリア
   else if((+o.saveVersion||0)<5){ S.kdShown=!!o.clearShown; S.cleared=false; S.clearShown=false; } // v11までの「クリア」は近代編のクリア
   S.lastSeen=+o.lastSeen||0; S.met=pick(o.met,PER); S.seenP=pick(o.seenP,PER); S.seenD=pick(o.seenD,DRG);
+  // v19：プロローグ導入前のセーブは、すでに遊んでいるのでプロローグとチュートリアルを済んだものとして扱う
+  const played=(+o.kpTotal||0)>0||Object.keys(S.tech).length>0;
+  S.prologueDone=(o.prologueDone!==undefined)?!!o.prologueDone:played;
+  S.tut=(o.tut&&typeof o.tut==='object')?pick(o.tut,TUT_ID):(S.prologueDone?Object.fromEntries(TUT.map(t=>[t.id,1])):{});
+  // v20：STEP6の記録がないv19のセーブは、STEP5まで済んでいれば表示済みとする（スキップした人と区別できないため、再表示しない側に倒す）
+  if(o.tut&&typeof o.tut==='object'&&!('era' in o.tut)&&S.tut.event) S.tut.era=1;
+  if(S.era>=2) S.tut.era=1;
+  // v20：理解段階の通知記録がないセーブは、読み込み時点で到達済みの段階をすべて通知済みにする（まとめて通知しない）
+  if(o.flowSeen&&typeof o.flowSeen==='object') S.flowSeen=pick(o.flowSeen,FLOW_BY);
+  else { S.flowSeen={}; for(let i=0;i<flowLevel();i++) S.flowSeen[FLOW[i].id]=1; }
   S.techSpent=(o.techSpent!==undefined)?(+o.techSpent||0):TECHS.filter(t=>S.tech[t.id]).reduce((a,t)=>a+t.cost,0);
 }
 function pick(src,dict){const r={}; if(src&&typeof src==='object') for(const k in src) if(dict[k]) r[k]=src[k]; return r;}
@@ -2829,7 +2972,7 @@ function pickNum(src,dict){const r={}; if(src&&typeof src==='object') for(const 
 function save(){ S.lastSeen=document.hidden?activeAt:Date.now(); const o=Object.assign({},S); o.saveVersion=SAVE_VERSION; safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); setSavedLabel(); }
 function setSavedLabel(){const e=$('savedAt'); if(e){const d=new Date(); e.textContent='💾 '+d.toTimeString().slice(0,8)+' 保存';}}
 function exportCode(){ return btoa(unescape(encodeURIComponent(JSON.stringify(S)))); }
-function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s.trim())))); safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); S=newState(); load(); recalc(); progress(true); renderAll(); save(); return true;}catch(e){return false;} }
+function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s.trim())))); safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); S=newState(); load(); recalc(); progress(true); renderAll(); save(); if(!S.prologueDone) showPrologue(); return true;}catch(e){return false;} }
 
 /* ---------- 計算 ---------- */
 const own=id=>S.own[id]||0;
@@ -2858,6 +3001,16 @@ const refText=t=>t;
 const met1=r=>r.indexOf('ev:')===0?!!S.ev[r.slice(3)]:!!S.tech[r];
 const metP=r=>r.split('|').some(met1); // 'a|b' はどちらか一方でよい
 const refs=t=>t.prereq.join('|').split('|'); // 前提に出てくる項目の一覧
+/* ---------- 情報開示（v21）----------
+ LEVEL0 非表示：次の時代以降の研究／未解禁の施設／未発生の歴史
+ LEVEL1 ？？？：研究の直後1段階／図鑑の未発見枠（到達済みの時代のみ）
+ LEVEL2 解禁：研究可能な研究／解禁済みの施設
+ LEVEL3 達成：研究済み／発生済みの歴史／発見済みの人物・薬物 */
+function techVis(t){ const st=techState(t); if(st==='done'||st==='avail') return st; if(st==='eralock') return 'hidden';
+  // 直後1段階：前提に含まれる研究のうち、研究済みか研究可能なものが1つでもあれば「？？？」として見せる（前提が複数でも、1つでも手前に届いていれば）
+  return refs(t).some(r=>r.indexOf('ev:')!==0&&TECH[r]&&['done','avail'].includes(techState(TECH[r])))?'next':'hidden'; }
+const techKnown=t=>['done','avail'].includes(techVis(t));
+const facName=id=>facUnlocked(FAC[id])?FAC[id].name:'まだ知らない施設';
 function techState(t){ if(S.tech[t.id]) return 'done'; if(t.era>S.era) return 'eralock'; return t.prereq.every(metP)?'avail':'locked'; }
 const facUnlocked=f=>!!S.tech[f.tech];
 function prName1(r){ return r.indexOf('ev:')===0?'歴史：'+CONTENT.events[r.slice(3)].title:'研究：'+TECH[r].name; }
@@ -2874,10 +3027,11 @@ function progress(silent){
   }
   const condOk=c=>c.every(r=>r.indexOf('fac:')===0?own(r.split(':')[1])>=+r.split(':')[2]:met1(r));
   const newP=[]; PEOPLE.forEach(x=>{ if(!S.met[x.id]&&x.era<=S.era&&condOk(x.cond)){ S.met[x.id]=++S.order; newP.push(x.id); } });
-  if(newP.length&&!newEv.length&&!silent) toast('👤 人物図鑑に登場：'+CONTENT.people[newP[0]].name+(newP.length>1?' ほか':''),()=>{codexSub='person';setTab('codex');});
+  if(newP.length&&!silent) notify({k:'per',t:newP.map(id=>CONTENT.people[id].name)});
   if(newP.length&&!newEv.length) renderNav();
-  if(newEv.length){ recalc(); if(!silent) toast('📜 歴史が動いた：'+CONTENT.events[newEv[0]].title+(newEv.length>1?' ほか':'')+(newP.length?'／👤 '+CONTENT.people[newP[0]].name+'が登場':''),()=>setTab('history')); }
+  if(newEv.length){ recalc(); if(!silent) notify({k:'ev',t:newEv.map(id=>CONTENT.events[id].title)}); }
   if(eraUp.length&&!silent) eraUp.forEach(e=>{ if(e===6&&!S.medShown) queue.push({k:'med'}); if(e===8&&!S.kinShown) queue.push({k:'kin'}); if(e===10&&!S.kdShown) queue.push({k:'kd'}); queue.push({k:'era',era:e}); });
+  checkFlow(silent);
   if(!S.cleared&&CLEAR.tech.every(x=>S.tech[x])&&CLEAR.ev.every(x=>S.ev[x])){ S.cleared=true; if(!silent) queue.push({k:'clear'}); }
   if(newEv.length||eraUp.length) renderAll();
   runQueue();
@@ -2895,9 +3049,99 @@ function buyUp(id){ const f=FAC[id]; if(S.up[id]||own(id)<UP_OWN||S.kp<upCost(f)
 function markCodexSeen(){ if(codexSub==='person') PEOPLE.forEach(x=>{ if(S.met[x.id]&&!S.seenP[x.id]) S.seenP[x.id]=2; }); else DRUGS.forEach(d=>{ if(drugOn(d)&&!S.seenD[d.id]) S.seenD[d.id]=2; }); }
 function leaveCodex(){ for(const k in S.seenP) if(S.seenP[k]===2) S.seenP[k]=1; for(const k in S.seenD) if(S.seenD[k]===2) S.seenD[k]=1; }
 function setTab(t){ if(tab==='codex'&&t!=='codex') leaveCodex(); tab=t; if(t==='codex') markCodexSeen(); if(t==='history'){ EVENTS.forEach(e=>{ if(S.ev[e.id]) S.seen[e.id]=S.seen[e.id]||1; }); } renderAll(); window.scrollTo(0,0); }
-function renderAll(){ renderHeader(); renderMain(); renderNav(); }
+function renderAll(){ renderHeader(); renderMain(); renderNav(); coachUpdate(); }
+
+/* ---------- プロローグ「経験のはじまり」（本編前。時代0ではない／数値データには関与しない） ---------- */
+const PRO_TAPS=5, PRO_DEF_AT=3;
+// 「🌿 探求する」をタップしたとき、ときどき（8〜15回に1回）時代に合わせた一文を出す。演出のみで、タップ収入には関与しない
+const TAP_SAY=[
+ ['薬草の効き目を書き留める','身近な植物の性質を確かめる','薬として使われる植物を記録する'],
+ ['古い写本を書き写す','過去の薬の知識を読み継ぐ','医薬の記録を次代へ残す'],
+ ['古代の医学書を訳す','薬物の記述を読み比べる','蒸留によって物質を取り出す'],
+ ['処方に従って薬を調製する','医学校で薬の知識を学ぶ','薬房で薬を量り分ける'],
+ ['処方集の内容を見比べる','薬の調製法を整理する','薬の分量と調製法を定める'],
+ ['遠い土地の薬物を記録する','新しい薬物の性質を確かめる','化学的な調製法を試す'],
+ ['症例を書き留める','薬の効果を観察する','治療結果を比べる'],
+ ['植物から成分を取り出す','薬の作用を実験で確かめる','有効成分の性質を調べる'],
+ ['顕微鏡で微生物を調べる','新しい化合物を合成する','病気と微生物の関係を探る'],
+ ['多くの化合物を試す','病原体に作用する物質を探す','新しい薬の候補を選び出す'],
+ ['薬の効果と安全性を比べる','分子の構造を調べる','副作用の情報を集める'],
+ ['遺伝子を組み換える','微生物から新しい薬を探す','抗体をつくる細胞を培養する'],
+ ['標的となる分子を探す','免疫の仕組みを利用する','ゲノム情報から治療を考える']];
+const sayGap=()=>8+Math.floor(Math.random()*8); let sayLeft=sayGap(); // セーブしない
+function tapSay(){ if(--sayLeft>0) return; sayLeft=sayGap();
+  const list=TAP_SAY[S.era-1]||TAP_SAY[0], r=$('tapBtn').getBoundingClientRect(), d=document.createElement('div');
+  d.className='fl say'; d.textContent=list[Math.floor(Math.random()*list.length)];
+  d.style.right=Math.max(8,innerWidth-r.right)+'px'; d.style.top=(r.bottom+6)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),2400); }
+const PRO_LINES=['強い苦味のある植物を口にした。','香りの強い草を見つけた。','身体に、何かが起きるのを感じた。','仲間が同じ草を選ぶ様子を見た。','その経験が、記憶として残った。'];
+const PRO_EVENT={title:'経験から薬へ',sub:'文字以前の植物利用',when:'約5万年前',who:'スペイン北部・エル・シドロン遺跡のネアンデルタール人',
+ text:'スペイン北部のエル・シドロン遺跡で見つかった、約5万年前のネアンデルタール人の歯石から、ノコギリソウやカモミールに由来すると考えられる成分が検出されている。これらは苦味をもつ植物で、研究者は食料以外の目的で摂取された可能性も論じている。一方で、香味付けなど別の解釈もあり、意図的な治療目的だったかは分かっていない。それでもこの発見は、文字による医薬の記録よりはるか以前から、人類がさまざまな植物を利用していた可能性を示している。',
+ why:'経験はやがて言葉で伝えられ、役に立つ植物は意識して集められるようになっていく。',
+ note:'※ ネアンデルタール人が植物を薬として使っていたと確定しているわけではありません。ここでは、人類が試行錯誤によって自然物の性質を経験していく過程をゲームとして表しています。'};
+// 冒頭と最後をつなぐ一文（最後の一文は showClear の結びにある）
+const PRO_CLOSE='人類は、自然の中にあるものを<br>試すことから始めた。';
+// 薬に対する理解の歩み：ゲーム全体を一本の流れとして見せる（判定は既存の研究を見るだけで、数値には関与しない）
+const FLOW=[
+ {id:'exp',name:'経験',text:'自然物の作用を経験する',ok:()=>S.prologueDone},
+ {id:'collect',name:'収集',text:'役立つ植物を選び、集める',ok:()=>!!S.tech.herb_collect},
+ {id:'record',name:'記録',text:'経験を文字として残す',ok:()=>!!S.tech.record},
+ {id:'system',name:'体系化',text:'薬の知識を整理する',ok:()=>!!S.tech.honzo},
+ {id:'component',name:'成分',text:'薬を成分として捉える',ok:()=>!!S.tech.alkaloid_isolation},
+ {id:'experiment',name:'実験',text:'作用を実験で確かめる',ok:()=>!!S.tech.exp_pharmacology},
+ {id:'microbe',name:'微生物',text:'病原体を標的として捉える',ok:()=>!!S.tech.bacteriology},
+ {id:'molecule',name:'分子',text:'生命現象を分子から理解する',ok:()=>!!S.tech.molecular_biology},
+ {id:'gene',name:'遺伝子・免疫',text:'生命の仕組みを利用して薬をつくる',ok:()=>!!(S.tech.recombinant&&S.tech.checkpoint)}];
+const FLOW_BY=Object.fromEntries(FLOW.map(f=>[f.id,f]));
+// 段階は概念上の順番にしか進まない：前の段階に届いていなければ、条件を満たしていても到達としない
+function flowLevel(){ let k=0; while(k<FLOW.length&&FLOW[k].ok()) k++; return k; }
+function flowBand(first){ const k=first?1:flowLevel();
+  return '<div class="flowband">'+FLOW.map((f,i)=>'<span class="'+(i===k-1?'now':i<k?'on':'')+'">'+f.name+'</span>').join('<i>›</i>')+'</div>'; }
+// 新しく到達した段階を、順番に一度だけ通知する（「経験」はプロローグ自体が演出なので通知しない）
+function checkFlow(silent){ const k=flowLevel();
+  for(let i=0;i<k;i++){ const f=FLOW[i]; if(S.flowSeen[f.id]) continue; S.flowSeen[f.id]=1; if(i>0&&!silent) notify({k:'flow',id:f.id}); } }
+let proN=0, proReplay=false;
+function showPrologue(replay){ proReplay=!!replay; proN=0;
+  $('proStage').hidden=false; $('proStage').style.opacity=1; $('proCard').hidden=true; $('proKp').hidden=true; $('proDef').hidden=true; $('proLog').innerHTML=''; $('proTap').disabled=false;
+  $('proDots').innerHTML=Array.from({length:PRO_TAPS},()=>'<i></i>').join('');
+  const p=$('pro'); p.hidden=false; p.classList.remove('out'); p.scrollTop=0; $('coach').hidden=true; holdToast(); $('proSkip').textContent=proReplay?'閉じる':'スキップ'; }
+function proTap(){ if(proN>=PRO_TAPS) return; proN++;
+  if(!proReplay){ S.kp+=1; S.kpTotal+=1; S.tapCount++; }
+  $('proKp').hidden=false; $('proKpN').textContent=proN;
+  const r=$('proTap').getBoundingClientRect(), d=document.createElement('div'); d.className='fl pro-fl'; d.textContent='+1 知識P';
+  d.style.left=(r.left+r.width/2-34)+'px'; d.style.top=(r.top+r.height*0.22)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),700);
+  $('proDots').children[proN-1].classList.add('on');
+  const log=$('proLog'); log.insertAdjacentHTML('beforeend','<div>'+PRO_LINES[proN-1]+'</div>'); while(log.children.length>3) log.firstChild.remove();
+  if(proN===PRO_DEF_AT) $('proDef').hidden=false;
+  if(proN>=PRO_TAPS){ $('proTap').disabled=true; setTimeout(proEventCard,900); } }
+function proEventCard(){ $('proStage').style.opacity=0;
+  setTimeout(()=>{ $('proStage').hidden=true; const c=$('proCard'); const e=PRO_EVENT;
+    c.innerHTML='<div class="pro-card"><div class="t">PROLOGUE EVENT・'+e.when+'</div><h2>'+e.title+'</h2><h4>'+e.sub+'</h4><div class="meta">'+e.who+'</div><p>'+e.text+'</p><div class="box"><b>その後への影響</b><br>'+e.why+'</div><div class="note">'+e.note+'</div>'+flowBand(1)+'<div class="pro-close">'+PRO_CLOSE+'</div><button class="pro-go" id="proGo">経験を記憶する</button></div>';
+    c.hidden=false; },500); }
+function finishPrologue(skip){ const p=$('pro'); p.classList.add('out'); setTimeout(()=>{ p.hidden=true; pumpN(); },900);
+  if(proReplay){ coachUpdate(); return; }
+  if(skip){ S.kp-=proN; S.kpTotal-=proN; S.tapCount-=proN; TUT.forEach(t=>{ S.tut[t.id]=1; }); } // スキップ：知識Pは0P、案内もすべて省略
+  S.prologueDone=true; S.tut.tap=1; checkFlow(true); tab='research'; renderAll(); save();
+  setTimeout(()=>openMid('<div class="era-banner"><div class="t">ERA I</div><div class="n">古代</div><div class="meta" style="font-size:.8rem">薬草と医薬文書の時代</div></div><p style="text-align:center">経験されてきた植物の性質は、やがて集められ、<br>記録され、知識として残されていく。</p><button class="big" data-close-mid>はじめる</button>'),450); }
+function proSheet(){ const e=PRO_EVENT;
+  openSheet('<div class="tag">プロローグ・先史時代・'+e.when+'</div><h3>'+e.title+'</h3><div class="meta">'+e.sub+'　'+e.who+'</div><p>'+e.text+'</p><div class="box"><b>その後への影響</b><div>'+e.why+'</div></div><div class="note">'+e.note+'</div><button class="big" data-pro-replay>プロローグ「経験のはじまり」をもう一度見る</button>'); }
+
+/* ---------- 段階チュートリアル：初めてその仕組みに触れた瞬間だけ、短く案内する ---------- */
+function coachUpdate(){
+  document.querySelectorAll('.tut-hi').forEach(el=>el.classList.remove('tut-hi'));
+  const box=$('coach'); if(!S.prologueDone||!$('pro').hidden||$('ovm').classList.contains('show')){ box.hidden=true; return; }
+  let cur=null;
+  for(let i=0;i<TUT.length;i++){ const t=TUT[i]; if(S.tut[t.id]) continue;
+    if(t.done&&t.done()){ S.tut[t.id]=1; continue; }
+    if(t.when&&!t.when()) break;
+    const nx=TUT[i+1]; if(t.skippable&&nx&&!S.tut[nx.id]&&nx.when()){ S.tut[t.id]=1; continue; } // 次の段階が来たら、読み流せる案内は自動で閉じる
+    cur=t; break; }
+  if(!cur){ box.hidden=true; return; }
+  $('coachT').innerHTML=cur.text(); box.dataset.id=cur.id; box.hidden=false;
+  const sel=cur.target&&cur.target(); if(sel){ const el=document.querySelector(sel); if(el) el.classList.add('tut-hi'); }
+  if(cur.auto&&!cur._t){ cur._t=setTimeout(()=>{ S.tut[cur.id]=1; coachUpdate(); },cur.auto); } }
 function renderHeader(){
-  $('eraRow').innerHTML=ERAS.map(e=>'<span class="chip '+(e.id===S.era?'cur':e.id<S.era?'done':'')+'">'+(e.id<S.era?'✓ ':'')+e.name+'</span>').join('');
+  const rest=ERAS.length-S.era-1; // 次の時代より先は名前を出さず、残りの数だけ示す
+  $('eraRow').innerHTML=ERAS.filter(e=>e.id<=S.era+1).map(e=>'<span class="chip '+(e.id===S.era?'cur':e.id<S.era?'done':'')+'">'+(e.id<S.era?'✓ ':'')+e.name+'</span>').join('')+(rest>0?'<span class="chip">… あと'+rest+'時代</span>':'');
   const nx=ERA_REQ[S.era+1];
   if(!nx){ $('epT').textContent=S.cleared?'🏅 現代編クリア（全時代クリア）':'🎯 最終目標：免疫チェックポイントとmRNAワクチン';
     const items=CLEAR.tech.map(x=>['研究：'+TECH[x].name,!!S.tech[x]]).concat(CLEAR.ev.map(x=>['歴史：'+CONTENT.events[x].title,!!S.ev[x]])); setProg(items);
@@ -2917,16 +3161,18 @@ function renderMain(){
   if(tab==='research') m.innerHTML=viewResearch(); else if(tab==='facility') m.innerHTML=viewFacility(); else if(tab==='history') m.innerHTML=viewHistory(); else if(tab==='codex'){ markCodexSeen(); m.innerHTML=viewCodex(); } else m.innerHTML=viewRecord();
   updateAfford(); window.scrollTo(0,sc);
 }
-function techNode(t){ const st=techState(t); let mk='🔬',s='',sub='';
+function techNode(t){ const st=techState(t), v=techVis(t);
+  if(v==='next') return '<div class="tn locked unk"><span class="mk">🔒</span><span class="nm">？？？</span><span class="st">未知の研究</span></div>'; // 名前・コスト・説明は出さない
+  let mk='🔬',s='',sub='';
   if(st==='done'){mk='✓';s='研究済み';}
-  else if(st==='eralock'){mk='🔒';s=ERAS[t.era-1].name+'で解禁';}
-  else if(st==='locked'){mk='🔒';s='前提あり';sub='前提：'+t.prereq.filter(r=>!metP(r)).map(prName).join('、');}
   else {s='研究 '+fmt(techCost(t));}
-  const fac=FACS.filter(f=>f.tech===t.id).map(f=>f.name);
-  return '<button class="tn '+st+'" data-tech="'+t.id+'" data-cost="'+(st==='avail'?techCost(t):'')+'"><span class="mk">'+mk+'</span><span class="nm">'+t.name+'</span><span class="st">'+s+'</span>'+(sub?'<span class="sub">'+sub+'</span>':fac.length&&st!=='done'?'<span class="sub">→ 建設可能：'+fac.join('・')+'</span>':'')+'</button>'; }
+  const fac=FACS.some(f=>f.tech===t.id);
+  return '<button class="tn '+st+'" data-tech="'+t.id+'" data-cost="'+(st==='avail'?techCost(t):'')+'"><span class="mk">'+mk+'</span><span class="nm">'+t.name+'</span><span class="st">'+s+'</span>'+(fac&&st!=='done'?'<span class="sub">→ 新しい施設が建てられるようになる</span>':'')+'</button>'; }
 function viewResearch(){
-  let h='<div class="note">研究に知識Pを使うと、新しい施設の建設や歴史イベントが可能になります。ルートは複数あり、どれを先に伸ばすかは自由です。</div>';
-  ROUTES.forEach(([r,name,sub])=>{ const ts=TECHS.filter(t=>t.route===r); h+='<div class="sec">'+name+' <small>'+sub+'</small></div><div class="chain">'+ts.map((t,i)=>(i?'<div class="arrow">↓</div>':'')+techNode(t)).join('')+'</div>'; });
+  let h='<div class="note">研究に知識Pを使うと、新しい施設の建設や歴史イベントが可能になります。研究を進めると、その先の研究が見えてきます。</div>';
+  ROUTES.forEach(([r,name,sub])=>{ const ts=TECHS.filter(t=>t.route===r&&techVis(t)!=='hidden'); if(!ts.length) return;
+    h+='<div class="sec">'+name+'</div><div class="chain">'+ts.map((t,i)=>(i?'<div class="arrow">↓</div>':'')+techNode(t)).join('')+'</div>'; });
+  if(ERA_REQ[S.era+1]) h+='<div class="note">新しい時代に進むと、その時代の研究が現れます。</div>';
   h+='<div class="note">※ 研究ツリーのつながりは、歴史上の直接的な因果関係を再現したものではなく、薬学史の流れをゲームとして整理したものです。</div>'; return h; }
 const STAGES=[['原料',['herb_garden','monastery','trading_post','field_garden','botanic_house','fermentation_plant']],['加工',['workshop','distillery','chem_lab','dye_works','hormone_plant','bio_plant']],['抽出・調製',['formulary','apothecary','alkaloid_works','pharma_factory','chemo_institute','gene_lab']],['薬剤',['bimaristan','pharmacy_shop','drug_wholesale','serum_institute','community_pharmacy']],['知識・制度',['library','translation_house','school','pharmacopoeia_office','printing_house','guild_hall','pharma_committee','clinic_ward','chem_institute','pharmacology_lab','operating_room','pharmacy_school','hygiene_board','bacteriology_lab','trial_center','xray_lab','review_agency','design_lab','genome_center']]];
 function stageStrip(){ return '<div class="stages">'+STAGES.map(([n,ids])=>{ const v=ids.reduce((a,i)=>a+own(i)*FAC[i].prod*MULT[i],0), c=ids.reduce((a,i)=>a+own(i),0);
@@ -2934,55 +3180,64 @@ function stageStrip(){ return '<div class="stages">'+STAGES.map(([n,ids])=>{ con
 function viewFacility(){
   let h=stageStrip()+'<div class="qty">'+[[1,'×1'],[10,'×10'],['max','最大']].map(([q,l])=>'<button data-qty="'+q+'" class="'+(qty===q?'on':'')+'">'+l+'</button>').join('')+'</div>';
   FACS.forEach(f=>{
-    if(!facUnlocked(f)){ h+='<div class="fr lock"><div class="top"><span class="nm">🔒 '+f.name+'</span></div><div class="ds">研究「'+TECH[f.tech].name+'」で建設できるようになります。</div></div>'; return; }
-    const b=bulk(f,qty), one=f.prod*MULT[f.id];
-    h+='<div class="fr" data-f="'+f.id+'"><div class="top"><span class="nm">'+f.name+'</span><span class="cnt">所有 '+own(f.id)+'</span></div><div class="ds">'+CONTENT.facDesc[f.id]+'</div>'+
+    if(!facUnlocked(f)) return; // 解禁されるまで存在そのものを見せない
+    const b=bulk(f,qty), one=f.prod*MULT[f.id], fh=facHint(f);
+    h+='<div class="fr" data-f="'+f.id+'"><div class="top"><span class="nm">'+f.name+(own(f.id)===0?' <span class="badge">NEW</span>':'')+'</span><span class="cnt">所有 '+own(f.id)+'</span></div><div class="ds">'+CONTENT.facDesc[f.id]+'</div>'+
+     (fh?'<div class="fh">'+fh+'</div>':'')+
      '<div class="pr">1基あたり <b>+'+fmt(one)+'/秒</b>　合計 <b>+'+fmt(one*own(f.id))+'/秒</b></div><div class="btns">'+
      '<button class="btn" data-buy="'+f.id+'" data-cost="'+b.c+'">建設 ×'+b.n+'<small>'+fmt(b.c)+'</small></button>'+
      (S.up[f.id]?'<button class="btn sub off" disabled>改良済み<small>生産 ×'+UP_MULT+'</small></button>':own(f.id)>=UP_OWN?'<button class="btn sub" data-up="'+f.id+'" data-cost="'+upCost(f)+'">改良<small>'+fmt(upCost(f))+'（×'+UP_MULT+'）</small></button>':'<button class="btn sub off" disabled>改良<small>'+UP_OWN+'基で解禁</small></button>')+
      '</div></div>'; });
   return h; }
+// この施設の数が条件になっている、いま起こりうる歴史（時代に到達済み・必要な研究も済み）のうち、いちばん近いもの。名前は出さない
+function facHint(f){ const ns=EVENTS.filter(e=>!S.ev[e.id]&&e.era<=S.era&&e.trig.fac&&e.trig.fac[f.id]>own(f.id)&&(e.trig.tech||[]).every(x=>S.tech[x])).map(e=>e.trig.fac[f.id]);
+  if(!ns.length) return ''; const n=Math.min.apply(null,ns); return '📜 '+n+'基で何かが起こりそう……　<b>あと'+(n-own(f.id))+'基</b>'; }
 function hint(e){ const t=e.trig, a=[]; (t.tech||[]).forEach(x=>a.push('研究「'+TECH[x].name+'」')); Object.entries(t.fac||{}).forEach(([k,n])=>a.push('「'+FAC[k].name+'」を'+n+'基')); return a.join('＋'); }
 function viewHistory(){
-  const inR=e=>regionF==='all'||e.rg.includes(regionF);
-  const list=EVENTS.filter(inR).sort((a,b)=>a.year-b.year), n=EVENTS.filter(e=>S.ev[e.id]).length;
-  let h='<div class="sec">歴史図鑑 <small>'+n+' / '+EVENTS.length+'</small></div><div class="note">研究を済ませ、関連する施設を一定数建てると、歴史上の出来事が起こります。出来事は生産を高め、次の研究へつながります。</div>';
-  h+='<div class="rgrow">'+[['all','すべて']].concat(REGIONS.map(r=>[r,REGION_NAME[r]])).map(([k,l])=>{ const es=EVENTS.filter(e=>k==='all'||e.rg.includes(k));
-    return '<button class="rg'+(regionF===k?' on':'')+'" data-region="'+k+'">'+l+' <small>'+es.filter(e=>S.ev[e.id]).length+'/'+es.length+'</small></button>'; }).join('')+'</div>';
-  let lastEra=0;
+  const inR=e=>regionF==='all'||e.rg.includes(regionF), reached=e=>e.era<=S.era; // 未到達の時代の歴史は件数にも入れない
+  const pool=EVENTS.filter(reached), n=pool.filter(e=>S.ev[e.id]).length;
+  let h='<div class="sec">歴史図鑑 <small>'+n+' / '+pool.length+'</small></div><div class="note">研究を済ませ、関連する施設を一定数建てると、歴史上の出来事が起こります。出来事は生産を高め、次の研究へつながります。</div>';
+  h+='<div class="rgrow">'+[['all','すべて']].concat(REGIONS.map(r=>[r,REGION_NAME[r]])).map(([k,l])=>{ const es=pool.filter(e=>k==='all'||e.rg.includes(k));
+    return es.length?'<button class="rg'+(regionF===k?' on':'')+'" data-region="'+k+'">'+l+' <small>'+es.filter(e=>S.ev[e.id]).length+'/'+es.length+'</small></button>':''; }).join('')+'</div>';
   const tag=e=>e.rg.map(r=>'<span class="rtag">'+REGION_NAME[r]+'</span>').join('');
-  list.forEach(e=>{ const c=CONTENT.events[e.id];
-    if(e.era!==lastEra){ lastEra=e.era; h+='<div class="erah">'+ERAS[e.era-1].name+'の時代 <small>'+ERA_SPAN[e.era]+'</small></div>'; }
-    if(S.ev[e.id]) h+='<button class="evrow" data-ev="'+e.id+'"><span class="yr">'+yearLabel(e)+'</span><span><div class="tt">✓ '+c.title+'</div><div class="sb">'+tag(e)+c.who+'</div></span><span></span></button>';
-    else h+='<div class="evrow q"><span class="yr">？</span><span><div class="tt">？？？</div><div class="sb">'+tag(e)+'きっかけ：'+hint(e)+'</div></span><span></span></div>'; });
-  if(!list.length) h+='<div class="note">この地域の出来事はまだありません。</div>';
+  if(S.prologueDone&&(regionF==='all'||regionF==='ヨーロッパ')) h+='<div class="erah">プロローグ <small>先史時代</small></div><button class="evrow" data-pro><span class="yr">約5万<br>年前</span><span><div class="tt">🌿 '+PRO_EVENT.title+'</div><div class="sb"><span class="rtag">'+REGION_NAME['ヨーロッパ']+'</span>'+PRO_EVENT.sub+'</div></span><span></span></button>';
+  for(let era=1;era<=S.era;era++){ const es=pool.filter(e=>e.era===era&&inR(e)).sort((a,b)=>a.year-b.year); if(!es.length) continue;
+    const got=es.filter(e=>S.ev[e.id]);
+    h+='<div class="erah">'+ERAS[era-1].name+'の時代 <small>'+ERA_SPAN[era]+'　発見した歴史 '+got.length+' / '+es.length+'</small></div>';
+    got.forEach(e=>{ const c=CONTENT.events[e.id];
+      h+='<button class="evrow" data-ev="'+e.id+'"><span class="yr">'+yearLabel(e)+'</span><span><div class="tt">✓ '+c.title+'</div><div class="sb">'+tag(e)+c.who+'</div></span><span></span></button>'; });
+    if(!got.length) h+='<div class="note" style="margin:2px 4px 8px">この時代の歴史は、まだ動いていません。</div>'; }
+  if(ERA_REQ[S.era+1]) h+='<div class="note">新しい時代に進むと、その時代の歴史が加わります。</div>';
   return h; }
 const drugOn=d=>d.cond.indexOf('ev:')===0?!!S.ev[d.cond.slice(3)]:!!S.tech[d.cond];
-const drugHint=d=>d.cond.indexOf('ev:')===0?'歴史「'+CONTENT.events[d.cond.slice(3)].title+'」':'研究「'+TECH[d.cond].name+'」';
+const drugEra=d=>d.cond.indexOf('ev:')===0?EV[d.cond.slice(3)].era:TECH[d.cond].era;
+const unkRow=pic=>'<div class="evrow q"><span class="yr'+(pic?' pic':'')+'">？</span><span><div class="tt">？？？</div><div class="sb">未発見</div></span><span></span></div>';
+const restNote=(n,unit)=>n?'<div class="note">この先の時代に、まだ'+n+unit+'。</div>':'';
 function viewCodex(){
   const nD=DRUGS.filter(drugOn).length, nP=PEOPLE.filter(x=>S.met[x.id]).length;
   const newD=DRUGS.some(d=>drugOn(d)&&!S.seenD[d.id]), newPp=PEOPLE.some(x=>S.met[x.id]&&!S.seenP[x.id]);
   let h='<div class="subtabs"><button data-sub="drug" class="'+(codexSub==='drug'?'on':'')+'">💊 薬物 <small>'+nD+'/'+DRUGS.length+'</small>'+(newD&&codexSub!=='drug'?'<i class="sdot"></i>':'')+'</button><button data-sub="person" class="'+(codexSub==='person'?'on':'')+'">👤 人物 <small>'+nP+'/'+PEOPLE.length+'</small>'+(newPp&&codexSub!=='person'?'<i class="sdot"></i>':'')+'</button></div>';
   if(codexSub==='person') return h+viewPeople();
   const isNew=d=>drugOn(d)&&S.seenD[d.id]===2;
-  h+='<div class="note">研究や歴史イベントで、古代から近世に使われた薬物が記録されます。</div>';
+  h+='<div class="note">研究や歴史イベントで、古代から現代までの薬物が記録されます。</div>';
   DRUGS.forEach(d=>{ const c=CONTENT.drugs[d.id];
     if(drugOn(d)) h+='<button class="evrow" data-drug="'+d.id+'"><span class="yr">'+c.cat.slice(0,2)+'</span><span><div class="tt">'+c.name+(isNew(d)?' <span class="badge">NEW</span>':'')+'</div><div class="sb">'+c.era+'・'+c.use+'</div></span><span></span></button>';
-    else h+='<div class="evrow q"><span class="yr">？</span><span><div class="tt">？？？</div><div class="sb">きっかけ：'+drugHint(d)+'</div></span><span></span></div>'; });
-  return h; }
+    else if(drugEra(d)<=S.era) h+=unkRow(); });
+  return h+restNote(DRUGS.filter(d=>!drugOn(d)&&drugEra(d)>S.era).length,'種の薬物が待っています'); }
 function condText(c){ return c.map(r=>{ if(r.indexOf('fac:')===0){ const a=r.split(':'); return '「'+FAC[a[1]].name+'」'+a[2]+'基'; } return r.indexOf('ev:')===0?'歴史「'+CONTENT.events[r.slice(3)].title+'」':'研究「'+TECH[r].name+'」'; }).join('＋'); }
 function viewPeople(){
   const inR=x=>peopleF==='all'||x.rg.includes(peopleF);
   let h='<div class="note">研究・施設・歴史の出来事をきっかけに、薬の歴史に関わった人物が登場します。</div>';
   h+='<div class="rgrow">'+[['all','すべて']].concat(REGIONS.map(r=>[r,REGION_NAME[r]])).map(([k,l])=>{ const xs=PEOPLE.filter(x=>k==='all'||x.rg.includes(k));
     return xs.length?'<button class="rg'+(peopleF===k?' on':'')+'" data-pregion="'+k+'">'+l+' <small>'+xs.filter(x=>S.met[x.id]).length+'/'+xs.length+'</small></button>':''; }).join('')+'</div>';
+  const later=PEOPLE.filter(x=>inR(x)&&!S.met[x.id]&&x.era>S.era).length;
   const tag=x=>x.rg.map(r=>'<span class="rtag">'+REGION_NAME[r]+'</span>').join('');
   let lastEra=0;
-  PEOPLE.filter(inR).forEach(x=>{ const c=CONTENT.people[x.id];
+  PEOPLE.filter(x=>inR(x)&&(S.met[x.id]||x.era<=S.era)).forEach(x=>{ const c=CONTENT.people[x.id];
     if(x.era!==lastEra){ lastEra=x.era; h+='<div class="erah">'+ERAS[x.era-1].name+'の時代 <small>'+ERA_SPAN[x.era]+'</small></div>'; }
     if(S.met[x.id]) h+='<button class="evrow" data-person="'+x.id+'"><span class="yr pic">👤</span><span><div class="tt">'+c.name+(S.seenP[x.id]===2?' <span class="badge">NEW</span>':'')+'</div><div class="sb">'+tag(x)+c.life+'・'+c.role+'</div></span><span></span></button>';
-    else h+='<div class="evrow q"><span class="yr pic">？</span><span><div class="tt">？？？</div><div class="sb">'+tag(x)+'きっかけ：'+condText(x.cond)+(x.era>S.era?'（'+ERAS[x.era-1].name+'）':'')+'</div></span><span></span></div>'; });
-  return h; }
+    else h+=unkRow(true); });
+  return h+restNote(later,'人の人物が待っています'); }
 function personSheet(id){ const x=PER[id], c=CONTENT.people[id];
   const rel=x.cond.filter(r=>r.indexOf('ev:')===0).map(r=>'<li>📜 '+CONTENT.events[r.slice(3)].title+'</li>').join('');
   openSheet('<div class="tag">人物図鑑・'+ERAS[x.era-1].name+'</div><h3>'+c.name+'</h3><div class="meta">'+c.life+'　'+c.role+'　'+x.rg.map(r=>REGION_NAME[r]).join('・')+'</div><p>'+c.text+'</p>'+(rel?'<div class="box"><b>関連する歴史の出来事</b><ul>'+rel+'</ul></div>':'')+'<div class="box"><b>登場のきっかけ</b>　'+condText(x.cond)+'</div>'); }
@@ -2992,13 +3247,14 @@ function viewRecord(){
   const t=TECHS.filter(x=>S.tech[x.id]).length, f=FACS.filter(x=>own(x.id)>0).length, e=EVENTS.filter(x=>S.ev[x.id]).length;
   const mm=Math.floor(S.playSec/60), ss=Math.floor(S.playSec%60);
   let h='<div class="sec">遊び方</div><div class="howto"><ol><li>知識Pを貯める（「探求する」をタップ、施設の生産）</li><li>知識Pで<b>研究</b>する → 新しい<b>施設</b>が建てられる</li><li>研究を済ませ、関連する施設を一定数建てると<b>歴史</b>が動く（生産アップ）</li><li>歴史の出来事をきっかけに、次の研究が開く</li><li>条件をそろえると次の<b>時代</b>へ</li></ol><div class="note">留守にしている間も、生産量の'+Math.round(OFF_EFF*100)+'%の知識Pが貯まります（最大'+(OFF_MAX/3600)+'時間分）。</div></div>';
+  h+='<div class="sec">薬の理解の歩み</div>'+flowBand();
   h+='<div class="sec">コンプリート状況</div><div class="stat"><div>研究</div><div>'+t+' / '+TECHS.length+'</div><div>施設（1基以上）</div><div>'+f+' / '+FACS.length+'</div><div>歴史</div><div>'+e+' / '+EVENTS.length+'</div><div>薬物図鑑</div><div>'+DRUGS.filter(drugOn).length+' / '+DRUGS.length+'</div><div>人物図鑑</div><div>'+PEOPLE.filter(x=>S.met[x.id]).length+' / '+PEOPLE.length+'</div><div>総研究ポイント</div><div>'+fmt(S.techSpent)+'</div><div>総生産量</div><div>'+fmt(S.kpTotal)+'</div><div>時代</div><div>'+S.era+' / '+ERAS.length+'</div><div>プレイ時間</div><div>'+mm+'分'+ss+'秒</div></div>';
   if(S.era>=6) h+='<button class="big" id="medBtn">🏅「中世薬学の成立」を見る</button>';
   if(S.era>=8) h+='<button class="big" id="kinBtn">🏅「近世薬学の歩み」を見る</button>';
   if(S.era>=10) h+='<button class="big" id="kdBtn">🏅「近代薬学の成り立ち」を見る</button>';
   if(S.cleared) h+='<button class="big" id="recapBtn">🏅「薬学の歩み」を見る</button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
-   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">この版のセーブは3層版（古代〜中世）の続きとして引き継がれます。v33など他のバージョンとは別に保存されます。</div>';
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">薬歴 v1.0</div>';
   return h; }
 
 /* 購入可否の見た目だけ更新（タップ中に再描画しない） */
@@ -3015,63 +3271,93 @@ function updateNums(){
 /* ---------- 詳細シート・モーダル ---------- */
 function openSheet(html){ $('sheet').innerHTML='<button class="x" data-close>✕</button>'+html; $('ov').classList.add('show'); }
 function closeSheet(){ $('ov').classList.remove('show'); }
-function openMid(html){ $('sheetm').innerHTML=html; $('ovm').classList.add('show'); }
-function closeMid(){ $('ovm').classList.remove('show'); setTimeout(runQueue,50); }
-function effText(e){ const a=[]; if(e.fx.pct) a.push((e.fx.fac==='all'?'全施設':e.fx.fac.map(x=>FAC[x].name).join('・'))+'の生産 +'+e.fx.pct+'%');
+function openMid(html){ $('sheetm').innerHTML=html; $('ovm').classList.add('show'); $('coach').hidden=true; holdToast(); }
+function holdToast(){ const t=$('toast'); if(!t.classList.contains('show')) return; clearTimeout(toastT); t.classList.remove('show'); if(toastCur) nq.unshift(toastCur); toastCur=null; }
+function closeMid(){ $('ovm').classList.remove('show'); setTimeout(()=>{ runQueue(); coachUpdate(); pumpN(); },50); }
+function effText(e){ const a=[]; if(e.fx.pct) a.push((e.fx.fac==='all'?'全施設':[...new Set(e.fx.fac.map(facName))].join('・'))+'の生産 +'+e.fx.pct+'%');
   if(e.fx.cut) a.push(ROUTES.find(r=>r[0]===e.fx.cut.route)[1].replace('ルート','')+'の研究コスト −'+e.fx.cut.pct+'%'); return a.join('　／　'); }
 function techSheet(id){ const t=TECH[id], st=techState(t);
-  const unl=FACS.filter(f=>f.tech===id).map(f=>'🏛️ 施設「'+f.name+'」を建設できる');
-  const evs=EVENTS.filter(e=>(e.trig.tech||[]).includes(id)); evs.forEach(e=>{ const fc=Object.entries(e.trig.fac||{}).map(([k,n])=>'「'+FAC[k].name+'」'+n+'基').join('・');
-    unl.push(S.ev[e.id]?'📜 歴史「'+CONTENT.events[e.id].title+'」':'📜 歴史イベントが起こる（未発見）'+(fc?'：あわせて'+fc+'が必要':'')); });
-  const nxt=TECHS.filter(x=>refs(x).includes(id)).map(x=>x.name);
-  const bon=TECHS.filter(x=>(x.bonus||[]).includes(id)).map(x=>x.name);
+  const unl=FACS.filter(f=>f.tech===id).map(f=>st==='done'?'🏛️ 施設「'+f.name+'」を建設できる':'🏛️ 新しい施設が建てられるようになる');
+  const evs=EVENTS.filter(e=>(e.trig.tech||[]).includes(id)&&e.era<=S.era); evs.forEach(e=>{ const fc=Object.entries(e.trig.fac||{}).map(([k,n])=>'「'+facName(k)+'」'+n+'基').join('・');
+    unl.push(S.ev[e.id]?'📜 歴史「'+CONTENT.events[e.id].title+'」':'📜 何かが起こりそう……'+(fc?'（あわせて'+fc+'が必要）':'')); });
+  const nx=TECHS.filter(x=>refs(x).includes(id)), nxt=nx.filter(techKnown).map(x=>x.name), nxU=nx.some(x=>techVis(x)==='next');
+  const nxtTxt=nxt.concat(nxU?['？？？']:[]);
+  const bonName=x=>techKnown(TECH[x])?'研究「'+TECH[x].name+'」':'？？？';
+  const bon=TECHS.filter(x=>(x.bonus||[]).includes(id)&&x.era<=S.era).map(x=>techKnown(x)?x.name:'？？？');
   let pre=t.prereq.length?'<ul>'+t.prereq.map(r=>'<li class="'+(metP(r)?'ok':'ng')+'">'+(metP(r)?'✓ ':'✗ ')+prName(r)+'</li>').join('')+'</ul>':'<div class="meta">前提なし</div>';
-  let btn=st==='done'?'<button class="big off">研究済み</button>':st==='avail'?'<button class="big'+(S.kp>=techCost(t)?'':' off')+'" data-do="research" data-id="'+id+'">研究する（'+fmt(techCost(t))+'）</button>':'<button class="big off">'+(st==='eralock'?ERAS[t.era-1].name+'で解禁':'前提が足りません')+'</button>';
+  let btn=st==='done'?'<button class="big off">研究済み</button>':st==='avail'?'<button class="big'+(S.kp>=techCost(t)?'':' off')+'" data-do="research" data-id="'+id+'">研究する（'+fmt(techCost(t))+'）</button>':'<button class="big off">前提が足りません</button>';
   openSheet('<div class="tag">研究・'+ROUTES.find(r=>r[0]===t.route)[1]+'</div><h3>'+t.name+'</h3><div class="meta">'+ERAS[t.era-1].name+'・コスト '+fmt(techCost(t))+'</div><p>'+CONTENT.techDesc[id]+'</p><div class="box"><b>前提</b>'+pre+'</div>'+
-    (unl.length?'<div class="box"><b>研究すると</b><ul>'+unl.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>':'')+(nxt.length?'<div class="box"><b>つながる研究</b>：'+nxt.join('、')+'</div>':'')+
-    (t.bonus?'<div class="box"><b>合流（必須ではない）</b>　'+t.bonus.map(x=>'<span style="color:'+(S.tech[x]?'var(--acc)':'var(--mute)')+'">'+(S.tech[x]?'✓ ':'・')+'研究「'+TECH[x].name+'」</span>').join('、')+'が済んでいると、研究コスト −'+BONUS_CUT+'%</div>':'')+
+    (unl.length?'<div class="box"><b>研究すると</b><ul>'+unl.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>':'')+(nxtTxt.length?'<div class="box"><b>つながる研究</b>：'+nxtTxt.join('、')+'</div>':'')+
+    (t.bonus?'<div class="box"><b>合流（必須ではない）</b>　'+t.bonus.map(x=>'<span style="color:'+(S.tech[x]?'var(--acc)':'var(--mute)')+'">'+(S.tech[x]?'✓ ':'・')+bonName(x)+'</span>').join('、')+'が済んでいると、研究コスト −'+BONUS_CUT+'%</div>':'')+
     (bon.length?'<div class="box"><b>合流先（必須ではない）</b>：'+bon.join('、')+'の研究コストが軽くなる</div>':'')+btn); }
 function evSheet(id){ const e=EV[id], c=CONTENT.events[id];
   openSheet('<div class="tag">歴史イベント・'+ERAS[e.era-1].name+'・'+c.when+'</div><h3>'+c.title+'</h3><div class="meta">'+e.rg.map(r=>REGION_NAME[r]).join('・')+'　'+c.who+'</div><p>'+refText(c.text)+'</p><div class="box"><b>その後への影響</b><div>'+c.why+'</div>'+evUnlock(id)+'</div><div class="box"><b>ゲーム上の効果</b>　'+effText(e)+'</div>'); }
 function evUnlock(id){ const ts=TECHS.filter(t=>refs(t).includes('ev:'+id)); if(!ts.length) return '';
-  return '<ul>'+ts.map(t=>'<li class="'+(S.tech[t.id]?'ok':'')+'">→ ゲーム上の解禁：研究「'+t.name+'」'+(S.tech[t.id]?'（研究済み）':'')+'</li>').join('')+'</ul>'; }
+  const known=ts.filter(techKnown), unk=ts.filter(t=>techVis(t)==='next').length, later=ts.filter(t=>techVis(t)==='hidden').length;
+  return '<ul>'+known.map(t=>'<li class="'+(S.tech[t.id]?'ok':'')+'">→ ゲーム上の解禁：研究「'+t.name+'」'+(S.tech[t.id]?'（研究済み）':'')+'</li>').join('')+
+    (unk?'<li>→ ゲーム上の解禁：研究「？？？」</li>':'')+(later?'<li>→ この先の時代の研究にもつながる</li>':'')+'</ul>'; }
 function showEra(n){ const e=ERAS[n-1], newT=TECHS.filter(t=>t.era===n).length, newF=FACS.filter(f=>f.era===n).length;
   openMid('<div class="era-banner"><div class="t">NEW ERA</div><div class="n">新しい時代が始まりました</div><div style="font-size:1.1rem;font-weight:900;color:var(--acc)">'+e.name+'</div><div class="meta" style="margin-top:6px">'+e.sub+'</div></div><div class="box">この時代に解禁：研究 '+newT+' 件、施設 '+newF+' 種</div><button class="big" data-close-mid>はじめる</button>'); S.eraShown=n; }
 function showMed(){ const done=r=>r.every(met1);
   const steps=[['薬物の利用',['herb_collect','ev:nippur']],['文書化',['record','ev:ebers']],['保存・翻訳',['transmit','translation','ev:hunayn']],['加工',['drug_process','extract','distill']],['専門職の形成',['pharmacy','profession','ev:melfi']],['標準化（15世紀末）',['pharmacopoeia','ev:ricettario']]];
   const evs=EVENTS.filter(e=>S.ev[e.id]&&e.era<=5), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0&&f.era<=5).length, nb=FACS.filter(f=>f.era<=5).reduce((a,f)=>a+own(f.id),0);
-  openMid('<div class="era-banner"><div class="t">古代〜中世編 CLEAR</div><div class="n">中世薬学の成立</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+  openMid('<div class="era-banner"><div class="t">古代〜中世編 CLEAR</div><div class="n">中世薬学の成立</div><div class="meta">あなたの薬学史</div></div>'+flowBand()+'<div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
    '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.filter(e=>e.era<=5).length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]&&t.era<=5).length+' / '+TECHS.filter(t=>t.era<=5).length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.filter(f=>f.era<=5).length+' 種（計'+nb+'基）</div></div>'+
    '<p style="font-size:.76rem">野山で採る草は、書き残される知識になり、保存と翻訳、加工の技術、薬を扱う専門の担い手といった、いくつもの流れの中で受け継がれていった。中世の終わりには、薬の処方や調製法を公的に定める動きも現れる。ここから先は近世。世界中から薬が集まり、化学と制度と観察が、薬学を大きく変えていく。</p><div class="note">※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。</div><button class="big" data-close-mid>近世へ進む</button>'); S.medShown=true; }
 function showKinsei(){ const done=r=>r.every(met1);
   const steps=[['薬物の世界化',['exotic_survey','ev:orta']],['印刷と実物の観察',['print_drug_books','field_herbal']],['医化学と化学的な薬剤',['iatrochemistry','chem_remedies']],['薬局方の広がり',['national_pharma','ev:londinensis']],['職能団体と薬種の流通',['guild_apothecary','drug_trade']],['症例・用量・治療法の比較',['clinical_dose','treatment_compare']]];
   const evs=EVENTS.filter(e=>S.ev[e.id]&&e.era<=7), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0&&f.era<=7).length, nb=FACS.filter(f=>f.era<=7).reduce((a,f)=>a+own(f.id),0);
-  openMid('<div class="era-banner"><div class="t">近世編 CLEAR</div><div class="n">近世薬学の歩み</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+  openMid('<div class="era-banner"><div class="t">近世編 CLEAR</div><div class="n">近世薬学の歩み</div><div class="meta">あなたの薬学史</div></div>'+flowBand()+'<div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
    '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.filter(e=>e.era<=7).length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]&&t.era<=7).length+' / '+TECHS.filter(t=>t.era<=7).length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.filter(f=>f.era<=7).length+' 種（計'+nb+'基）</div></div>'+
    '<p style="font-size:.76rem">薬は、世界中から集められ、書物と薬局方で記録され、職能団体と流通の仕組みの中で扱われるようになりました。やがて人々は、経験や古典の権威に加えて、症例と用量、そして治療法の比較を通しても、薬を評価しようとし始めます。ゲームはここから、薬の働きを担う物質を取り出す研究が進む、近代へと進みます。</p><div class="note">※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。いくつもの流れが並行して進み、19世紀の有効成分の単離へと合流していきます。</div><button class="big" data-close-mid>近代へ進む</button>'); S.kinShown=true; }
 function showKindai(){ const done=r=>r.every(met1);
   const steps=[['有効成分の単離',['alkaloid_isolation','ev:serturner']],['実験による薬理学',['exp_pharmacology','ev:buchheim']],['麻酔と注射',['inhal_anesthesia','injection']],['化学工業と合成医薬品',['organic_chem','synthetic_drugs']],['薬局方・薬学教育・薬事制度',['national_pharmacopoeia','pharm_education','pharmacy_law']],['衛生と細菌学',['sanitation','bacteriology']],['血清療法とアスピリン',['serum_therapy','ev:aspirin']]];
   const evs=EVENTS.filter(e=>S.ev[e.id]&&e.era<=9), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0&&f.era<=9).length, nb=FACS.filter(f=>f.era<=9).reduce((a,f)=>a+own(f.id),0);
-  openMid('<div class="era-banner"><div class="t">近代編 CLEAR</div><div class="n">近代薬学の成り立ち</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+  openMid('<div class="era-banner"><div class="t">近代編 CLEAR</div><div class="n">近代薬学の成り立ち</div><div class="meta">あなたの薬学史</div></div>'+flowBand()+'<div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
    '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.filter(e=>e.era<=9).length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]&&t.era<=9).length+' / '+TECHS.filter(t=>t.era<=9).length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.filter(f=>f.era<=9).length+' 種（計'+nb+'基）</div></div>'+
    '<p style="font-size:.76rem">19世紀、植物から取り出された「成分」が量って使われるようになり、実験によって薬の作用が調べられるようになりました。化学工業は、天然に見られる物質も新しい物質も合成し、薬として製造し始めます。微生物の研究は、衛生や消毒、ワクチン、血清療法など、さまざまな分野の発展と結びついていきました。ここから先は、化学療法と抗生物質の20世紀、現代薬学の時代です。</p><div class="note">※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。単離・合成・微生物学・制度といった流れは、互いに影響し合いながら並行して進みました。</div><button class="big" data-close-mid>現代へ進む</button>'); S.kdShown=true; }
 function showClear(){ const done=r=>r.every(met1);
-  const steps=[['化学療法と抗生物質',['chemotherapy','antibiotics']],['比較臨床試験と審査',['clinical_trial','regulation']],['薬害と安全対策',['pharmacovigilance','ev:thalidomide']],['分子生物学と創薬',['molecular_biology','rational_design']],['遺伝子組換えと抗体医薬',['recombinant','monoclonal']],['分子標的と免疫',['targeted_therapy','checkpoint']],['mRNAワクチン',['mrna_vaccine','ev:mrna_modified']]];
+  const steps=[['経験（植物を試す）',[]],['化学療法と抗生物質',['chemotherapy','antibiotics']],['比較臨床試験と審査',['clinical_trial','regulation']],['薬害と安全対策',['pharmacovigilance','ev:thalidomide']],['分子生物学と創薬',['molecular_biology','rational_design']],['遺伝子組換えと抗体医薬',['recombinant','monoclonal']],['分子標的と免疫',['targeted_therapy','checkpoint']],['mRNAワクチン',['mrna_vaccine','ev:mrna_modified']]];
   const evs=EVENTS.filter(e=>S.ev[e.id]), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0).length, nb=FACS.reduce((a,f)=>a+own(f.id),0);
-  openMid('<div class="era-banner"><div class="t">現代編 CLEAR　全時代クリア</div><div class="n">薬学の歩み</div><div class="meta">あなたの薬学史</div></div><div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
+  openMid('<div class="era-banner"><div class="t">現代編 CLEAR　全時代クリア</div><div class="n">薬学の歩み</div><div class="meta">あなたの薬学史</div></div>'+flowBand()+'<div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
    '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]).length+' / '+TECHS.length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.length+' 種（計'+nb+'基）</div><div>発見した薬物</div><div>'+DRUGS.filter(drugOn).length+' / '+DRUGS.length+'</div><div>人物図鑑</div><div>'+PEOPLE.filter(x=>S.met[x.id]).length+' / '+PEOPLE.length+'</div><div>総研究ポイント</div><div>'+fmt(S.techSpent)+'</div><div>総生産量</div><div>'+fmt(S.kpTotal)+'</div></div>'+
-   '<p style="font-size:.76rem">20世紀、化学療法と抗生物質は感染症の治療を大きく変え、薬は比較臨床試験と審査の仕組みの中で評価されるようになりました。その一方で、薬害の経験は、安全性を確かめ、被害を救済する制度づくりを促す重要な契機の一つとなりました。分子生物学と生命工学は、抗体医薬や分子標的薬、mRNAワクチンといった新しい薬をもたらしています。野山の薬草から始まった薬の歴史は、いまも続いています。</p><div class="note">取り残した研究や歴史、薬物は、続けて遊んでコンプリートできます。<br>※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。薬の歴史は一本道ではなく、多くの人々と地域の、いくつもの流れが重なり合って進んできました。</div><button class="big" data-close-mid>続けて遊ぶ</button>'); S.clearShown=true; }
+   '<p style="font-size:.76rem">20世紀、化学療法と抗生物質は感染症の治療を大きく変え、薬は比較臨床試験と審査の仕組みの中で評価されるようになりました。その一方で、薬害の経験は、安全性を確かめ、被害を救済する制度づくりを促す重要な契機の一つとなりました。分子生物学と生命工学は、抗体医薬や分子標的薬、mRNAワクチンといった新しい薬をもたらしています。文字すらなかった時代の小さな経験から始まった薬の歴史は、分子を理解し、設計し、生命の仕組みそのものを利用する時代へ到達しました。そして、その歩みはいまも続いています。</p><div class="note">取り残した研究や歴史、薬物は、続けて遊んでコンプリートできます。<br>※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。薬の歴史は一本道ではなく、多くの人々と地域の、いくつもの流れが重なり合って進んできました。</div><button class="big" data-close-mid>続けて遊ぶ</button>'); S.clearShown=true; }
 let toastT=0, toastCb=null;
-function toast(msg,cb){ const t=$('toast'); t.textContent=msg; toastCb=cb||null; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),3500); }
+let toastCur=null; // 表示中のキュー由来の通知（モーダルが開いたら、閉じたあとに出し直す）
+function toastRaw(html,cb,dur,item){ const t=$('toast'); t.innerHTML=html; toastCb=cb||null; toastCur=item||null; t.classList.add('show'); clearTimeout(toastT);
+  toastT=setTimeout(()=>{ t.classList.remove('show'); setTimeout(pumpN,NQ_GAP); },dur||3500); }
+// 操作の反応（知識Pが足りません 等）：キューに入れず即時に表示する
+function toast(msg,cb){ toastRaw(String(msg).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])),cb); }
+/* 通知キュー：歴史・人物・理解段階・おかえりなさい。モーダル（時代開始・クリア等）やプロローグの表示中は保留し、
+   閉じてから「理解段階（1件ずつ）→ 歴史（集約）→ 人物（集約）→ おかえりなさい」の順に出す */
+const NQ_GAP=600; let nq=[];
+const nHeld=()=>$('ovm').classList.contains('show')||!$('pro').hidden;
+function notify(item){ nq.push(item); setTimeout(pumpN,0); } // 同じ処理の中で開くモーダルを待ってから判定する
+function pumpN(){ if(!nq.length||nHeld()||$('toast').classList.contains('show')) return;
+  // 後ろに通知が控えているときは表示を少し短くして、待ち時間を減らす
+  const show=(html,cb,dur)=>toastRaw(html,cb,dur||(nq.length?2600:3500),{k:'again',html,cb,dur});
+  const ai=nq.findIndex(x=>x.k==='again'); if(ai>=0){ const x=nq.splice(ai,1)[0]; show(x.html,x.cb,x.dur); return; }
+  const take=k=>{ const xs=nq.filter(x=>x.k===k); nq=nq.filter(x=>x.k!==k); return xs; };
+  const fi=nq.findIndex(x=>x.k==='flow');
+  if(fi>=0){ const f=FLOW_BY[nq.splice(fi,1)[0].id]; show('🧭 薬の理解が〈'+f.name+'〉の段階へ<small>'+f.text+'</small>',()=>setTab('record')); return; }
+  if(nq.some(x=>x.k==='ev')){ const t=[].concat(...take('ev').map(x=>x.t)); show(t.length===1?'📜 歴史が動いた：'+t[0]:'📜 歴史が'+t.length+'件動きました',()=>setTab('history')); return; }
+  if(nq.some(x=>x.k==='per')){ const t=[].concat(...take('per').map(x=>x.t)); show(t.length===1?'👤 人物図鑑に登場：'+t[0]:'👤 人物図鑑に'+t.length+'人登場しました',()=>{codexSub='person';setTab('codex');}); return; }
+  const w=take('w'); if(w.length) show(w[w.length-1].msg,null,4500); }
 
 /* ---------- イベント ---------- */
 document.addEventListener('click',e=>{
   const g=s=>e.target.closest(s);
-  if(g('#tapBtn')){ const gn=tapGain(); S.kp+=gn; S.kpTotal+=gn; S.tapCount++; const r=$('tapBtn').getBoundingClientRect(); const d=document.createElement('div'); d.className='fl'; d.textContent='+'+fmt(gn); d.style.left=(r.left+r.width/2-10)+'px'; d.style.top=(r.top)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),700); updateNums(); renderNav(); return; }
+  if(g('#proTap')){ proTap(); return; }
+  if(g('#proGo')){ finishPrologue(); return; }
+  if(g('#proSkip')){ finishPrologue(true); return; }
+  if(g('[data-coach-x]')){ const id=$('coach').dataset.id; if(id){ S.tut[id]=1; save(); } coachUpdate(); return; }
+  if(g('[data-pro-replay]')){ closeSheet(); showPrologue(true); return; }
+  if(g('[data-pro]')){ proSheet(); return; }
+  if(g('#tapBtn')){ const gn=tapGain(); S.kp+=gn; S.kpTotal+=gn; S.tapCount++; const r=$('tapBtn').getBoundingClientRect(); const d=document.createElement('div'); d.className='fl'; d.textContent='+'+fmt(gn); d.style.left=(r.left+r.width/2-10)+'px'; d.style.top=(r.top)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),700); tapSay(); updateNums(); renderNav(); if(!S.tut.research) coachUpdate(); return; }
   if(g('#toast')&&toastCb){ const cb=toastCb; toastCb=null; $('toast').classList.remove('show'); cb(); return; }
   let el;
   if(g('[data-close]')||(e.target===$('ov'))){ closeSheet(); return; }
@@ -3095,14 +3381,14 @@ document.addEventListener('click',e=>{
   if(g('#expBtn')){ $('code').value=exportCode(); $('code').select(); return; }
   if(g('#impBtn')){ if(!importCode($('code').value)) toast('コードを読み込めませんでした'); else toast('読み込みました'); return; }
   if(g('#resetBtn')){ openMid('<h3>セーブデータをリセット</h3><p>進行状況をすべて消して最初からやり直します。よろしいですか？</p><div style="display:flex;gap:8px"><button class="big off" data-close-mid>やめる</button><button class="big" id="resetYes" style="background:#ff6b8a">リセットする</button></div>'); return; }
-  if(g('#resetYes')){ safe(()=>localStorage.removeItem(SAVE_KEY)); S=newState(); queue.length=0; recalc(); closeMid(); renderAll(); toast('リセットしました'); return; }
+  if(g('#resetYes')){ safe(()=>localStorage.removeItem(SAVE_KEY)); S=newState(); queue.length=0; recalc(); closeMid(); renderAll(); showPrologue(); return; }
 });
 
 /* ---------- ループ ---------- */
 let last=performance.now(), acc=0, lastRenderKey='', hiddenAt=0;
 function grantOffline(sec){ if(!(sec>=OFF_MIN)||PROD<=0) return; const t=Math.min(sec,OFF_MAX), g=PROD*t*OFF_EFF; S.kp+=g; S.kpTotal+=g;
   const h=Math.floor(sec/3600), mi=Math.floor(sec%3600/60);
-  toast('おかえりなさい。留守の'+(h?h+'時間':'')+mi+'分で '+fmt(g)+' の知識Pを得ました（生産量の'+Math.round(OFF_EFF*100)+'%'+(sec>OFF_MAX?'・最大'+(OFF_MAX/3600)+'時間分':'')+'）'); }
+  notify({k:'w',msg:'おかえりなさい。留守の'+(h?h+'時間':'')+mi+'分で '+fmt(g)+' の知識Pを得ました（生産量の'+Math.round(OFF_EFF*100)+'%'+(sec>OFF_MAX?'・最大'+(OFF_MAX/3600)+'時間分':'')+'）'}); }
 // 留守の時間は「最後に画面を見ていた時刻」から一度だけ数える（復帰の経路が重なっても二重に加算しない）
 let activeAt=Date.now();
 function claimAway(){ const now=Date.now(), sec=(now-activeAt)/1000; activeAt=now; grantOffline(sec); }
@@ -3126,8 +3412,9 @@ if(S.era>=10&&!S.kdShown) queue.push({k:'kd'});
 if(S.eraShown<S.era) queue.push({k:'era',era:S.era});
 if(S.cleared&&!S.clearShown) queue.push({k:'clear'});
 renderAll(); runQueue();
+if(!S.prologueDone) showPrologue();
 window.__game={DRUGS,PEOPLE,techCost,S:()=>S,research,buy,buyUp,progress,recalc,renderAll,tick,setTab,TECHS,FACS,EVENTS,setQty:q=>{qty=q;},giveKp:n=>{S.kp+=n;},get PROD(){return PROD;},reset:()=>{safe(()=>localStorage.removeItem(SAVE_KEY));}};
 })();
 </script>
-
-</body></html>
+</body>
+</html>
