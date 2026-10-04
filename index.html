@@ -189,9 +189,6 @@ textarea{width:100%;height:70px;background:rgba(0,0,0,.25);color:var(--tx);borde
 .pro-skip{background:none;border:0;color:#4f8478;font-size:.66rem;margin:16px auto 0;padding:6px 12px;text-decoration:underline;}
 .fl.pro-fl{z-index:80;color:#8dfad0;font-size:1rem;}
 .toast small{display:block;font-weight:700;font-size:.68rem;opacity:.9;margin-top:2px;}
-.fl.say{left:auto;font-size:.68rem;font-weight:700;color:#bfeedd;white-space:nowrap;background:rgba(0,48,48,.85);border:1px solid var(--line);
- border-radius:8px;padding:3px 8px;text-shadow:none;animation:say 2.4s ease-out forwards;}
-@keyframes say{0%{opacity:0;transform:translateY(-4px);}12%{opacity:1;transform:none;}75%{opacity:1;}100%{opacity:0;transform:translateY(6px);}}
 /* 動きを減らす設定：装飾的な動きは止め、操作の反応は小さく残す */
 @media (prefers-reduced-motion: reduce){
  .pro-btn{animation:none;}
@@ -202,10 +199,8 @@ textarea{width:100%;height:70px;background:rgba(0,0,0,.25);color:var(--tx);borde
  .toast{transition:opacity .15s;transform:translate(-50%,0);}
  .bar i{transition:width .1s;}
  .fl{animation:flr .7s ease-out forwards;}
- .fl.say{animation:sayr 2.4s linear forwards;}
 }
 @keyframes flr{to{transform:translateY(-12px);opacity:0;}}
-@keyframes sayr{0%,85%{opacity:1;}100%{opacity:0;}}
 @keyframes proIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
 @keyframes proCard{from{opacity:0;transform:translateY(24px) scale(.97);}to{opacity:1;transform:none;}}
 @keyframes proGlow{50%{box-shadow:0 0 0 18px rgba(75,232,172,.04),0 0 60px rgba(75,232,172,.38),0 6px 0 #0a7a58;}}
@@ -269,6 +264,7 @@ nav button.tut-hi{border-radius:12px;}
 
 <script>
 /* ======================================================================
+ 薬歴 v1.0.1（2026-10-05）：「探求する」の時代別の一文を廃止
  薬歴 v1.0（2026-10-04 公開。内部の改修履歴では v21 にあたる）
  薬の開発史 ― 古代から近世 ― （3層構造：研究 → 施設 → 歴史）
  v3：近世編（時代6・7、1500〜1799年頃）を追加。設計は game-kinsei-design-v0.3.md
@@ -3053,26 +3049,6 @@ function renderAll(){ renderHeader(); renderMain(); renderNav(); coachUpdate(); 
 
 /* ---------- プロローグ「経験のはじまり」（本編前。時代0ではない／数値データには関与しない） ---------- */
 const PRO_TAPS=5, PRO_DEF_AT=3;
-// 「🌿 探求する」をタップしたとき、ときどき（8〜15回に1回）時代に合わせた一文を出す。演出のみで、タップ収入には関与しない
-const TAP_SAY=[
- ['薬草の効き目を書き留める','身近な植物の性質を確かめる','薬として使われる植物を記録する'],
- ['古い写本を書き写す','過去の薬の知識を読み継ぐ','医薬の記録を次代へ残す'],
- ['古代の医学書を訳す','薬物の記述を読み比べる','蒸留によって物質を取り出す'],
- ['処方に従って薬を調製する','医学校で薬の知識を学ぶ','薬房で薬を量り分ける'],
- ['処方集の内容を見比べる','薬の調製法を整理する','薬の分量と調製法を定める'],
- ['遠い土地の薬物を記録する','新しい薬物の性質を確かめる','化学的な調製法を試す'],
- ['症例を書き留める','薬の効果を観察する','治療結果を比べる'],
- ['植物から成分を取り出す','薬の作用を実験で確かめる','有効成分の性質を調べる'],
- ['顕微鏡で微生物を調べる','新しい化合物を合成する','病気と微生物の関係を探る'],
- ['多くの化合物を試す','病原体に作用する物質を探す','新しい薬の候補を選び出す'],
- ['薬の効果と安全性を比べる','分子の構造を調べる','副作用の情報を集める'],
- ['遺伝子を組み換える','微生物から新しい薬を探す','抗体をつくる細胞を培養する'],
- ['標的となる分子を探す','免疫の仕組みを利用する','ゲノム情報から治療を考える']];
-const sayGap=()=>8+Math.floor(Math.random()*8); let sayLeft=sayGap(); // セーブしない
-function tapSay(){ if(--sayLeft>0) return; sayLeft=sayGap();
-  const list=TAP_SAY[S.era-1]||TAP_SAY[0], r=$('tapBtn').getBoundingClientRect(), d=document.createElement('div');
-  d.className='fl say'; d.textContent=list[Math.floor(Math.random()*list.length)];
-  d.style.right=Math.max(8,innerWidth-r.right)+'px'; d.style.top=(r.bottom+6)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),2400); }
 const PRO_LINES=['強い苦味のある植物を口にした。','香りの強い草を見つけた。','身体に、何かが起きるのを感じた。','仲間が同じ草を選ぶ様子を見た。','その経験が、記憶として残った。'];
 const PRO_EVENT={title:'経験から薬へ',sub:'文字以前の植物利用',when:'約5万年前',who:'スペイン北部・エル・シドロン遺跡のネアンデルタール人',
  text:'スペイン北部のエル・シドロン遺跡で見つかった、約5万年前のネアンデルタール人の歯石から、ノコギリソウやカモミールに由来すると考えられる成分が検出されている。これらは苦味をもつ植物で、研究者は食料以外の目的で摂取された可能性も論じている。一方で、香味付けなど別の解釈もあり、意図的な治療目的だったかは分かっていない。それでもこの発見は、文字による医薬の記録よりはるか以前から、人類がさまざまな植物を利用していた可能性を示している。',
@@ -3254,7 +3230,7 @@ function viewRecord(){
   if(S.era>=10) h+='<button class="big" id="kdBtn">🏅「近代薬学の成り立ち」を見る</button>';
   if(S.cleared) h+='<button class="big" id="recapBtn">🏅「薬学の歩み」を見る</button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
-   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">薬歴 v1.0</div>';
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">薬歴 v1.0.1</div>';
   return h; }
 
 /* 購入可否の見た目だけ更新（タップ中に再描画しない） */
@@ -3357,7 +3333,7 @@ document.addEventListener('click',e=>{
   if(g('[data-coach-x]')){ const id=$('coach').dataset.id; if(id){ S.tut[id]=1; save(); } coachUpdate(); return; }
   if(g('[data-pro-replay]')){ closeSheet(); showPrologue(true); return; }
   if(g('[data-pro]')){ proSheet(); return; }
-  if(g('#tapBtn')){ const gn=tapGain(); S.kp+=gn; S.kpTotal+=gn; S.tapCount++; const r=$('tapBtn').getBoundingClientRect(); const d=document.createElement('div'); d.className='fl'; d.textContent='+'+fmt(gn); d.style.left=(r.left+r.width/2-10)+'px'; d.style.top=(r.top)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),700); tapSay(); updateNums(); renderNav(); if(!S.tut.research) coachUpdate(); return; }
+  if(g('#tapBtn')){ const gn=tapGain(); S.kp+=gn; S.kpTotal+=gn; S.tapCount++; const r=$('tapBtn').getBoundingClientRect(); const d=document.createElement('div'); d.className='fl'; d.textContent='+'+fmt(gn); d.style.left=(r.left+r.width/2-10)+'px'; d.style.top=(r.top)+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),700); updateNums(); renderNav(); if(!S.tut.research) coachUpdate(); return; }
   if(g('#toast')&&toastCb){ const cb=toastCb; toastCb=null; $('toast').classList.remove('show'); cb(); return; }
   let el;
   if(g('[data-close]')||(e.target===$('ov'))){ closeSheet(); return; }
