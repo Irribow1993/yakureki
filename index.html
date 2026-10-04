@@ -3,9 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="「植物を試す」からmRNAワクチンまで、薬の歴史をたどるインクリメンタルゲーム">
+<title>くすりの歴史 ― 古代から現代 ―</title>
+<meta name="description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
+<meta name="theme-color" content="#004c4c">
+
+<!-- アイコン（相対パス：サブディレクトリに置いても壊れない） -->
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="くすりの歴史">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- OGP / X：画像はSNSのクローラーが取りに来るため絶対URLが必要。【公開URL】を公開先のURL（末尾の / なし）に置き換える -->
+<meta property="og:title" content="くすりの歴史 ― 古代から現代 ―">
+<meta property="og:description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="くすりの歴史">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="【公開URL】/assets/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="くすりの歴史 ― 古代から現代 ―　薬草からmRNAワクチンまで">
+<!-- 公開URLが決まったら有効にする：<meta property="og:url" content="【公開URL】/"> -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="くすりの歴史 ― 古代から現代 ―">
+<meta name="twitter:description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
+<meta name="twitter:image" content="【公開URL】/assets/ogp.png">
 <style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>薬歴</title>
 </head>
 <body>
 
@@ -264,6 +289,7 @@ nav button.tut-hi{border-radius:12px;}
 
 <script>
 /* ======================================================================
+ くすりの歴史 v1.1（2026-10-05）：ゲーム名を「薬歴」から「くすりの歴史 ― 古代から現代 ―」へ。アイコン・PWA manifest・OGPを追加。ゲーム内容・セーブ（キー pharma-3layer-v2／SAVE_VERSION 5）は変更なし
  薬歴 v1.0.1（2026-10-05）：「探求する」の時代別の一文を廃止
  薬歴 v1.0（2026-10-04 公開。内部の改修履歴では v21 にあたる）
  薬の開発史 ― 古代から近世 ― （3層構造：研究 → 施設 → 歴史）
@@ -3230,7 +3256,7 @@ function viewRecord(){
   if(S.era>=10) h+='<button class="big" id="kdBtn">🏅「近代薬学の成り立ち」を見る</button>';
   if(S.cleared) h+='<button class="big" id="recapBtn">🏅「薬学の歩み」を見る</button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
-   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">薬歴 v1.0.1</div>';
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">くすりの歴史 ― 古代から現代 ―<br>v1.1</div>';
   return h; }
 
 /* 購入可否の見た目だけ更新（タップ中に再描画しない） */

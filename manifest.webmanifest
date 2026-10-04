@@ -1,0 +1,33 @@
+{
+  "name": "くすりの歴史 ― 古代から現代 ―",
+  "short_name": "くすりの歴史",
+  "description": "薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。",
+  "lang": "ja",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#004c4c",
+  "theme_color": "#004c4c",
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
