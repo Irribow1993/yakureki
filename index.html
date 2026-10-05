@@ -316,6 +316,211 @@ textarea{width:100%;height:70px;background:rgba(0,0,0,.25);color:var(--tx);borde
 @keyframes tutHi{50%{box-shadow:0 0 0 3px #ffb238,0 0 18px rgba(255,178,56,.7);}}
 nav button.tut-hi{border-radius:12px;}
 .app{transition:opacity .2s;}
+/* ===== 専門史「薬害から医薬品安全へ」：エンディングと同じ黒地・白文字・金のアクセント。資料館の端末のように静かに ===== */
+.sf{--e-bg:#050505;--e-tx:#e6e4df;--e-mute:#8c8a84;--e-faint:#4a4945;--e-gold:#c9a45c;--e-line:#262523;
+ --e-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;--sf-pan:#121211;--sf-pan2:#1a1918;
+ --sf-dis:#c49a86;--sf-sig:#c9a45c;--sf-sys:#8fbcae;
+ position:fixed;inset:0;z-index:85;background:var(--e-bg);color:var(--e-tx);display:flex;flex-direction:column;
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;}
+.sf[hidden]{display:none!important;}
+html.sf-open,html.sf-open body{overflow:hidden;}
+.sf-top{flex:none;display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 12px 8px;border-bottom:1px solid var(--e-line);max-width:560px;width:100%;margin:0 auto;}
+.sf-back{flex:none;background:none;border:1px solid var(--e-line);border-radius:6px;color:var(--e-mute);font:inherit;font-size:.66rem;padding:6px 9px;min-height:34px;}
+.sf-ttl{flex:1;min-width:0;font-size:.72rem;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sf-ttl small{display:block;font-family:var(--e-mono);font-size:.56rem;letter-spacing:.24em;color:var(--e-gold);}
+.sf-kp{flex:0 1 auto;max-width:38%;min-width:0;text-align:right;line-height:1.1;overflow:hidden;}
+.sf-kp b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sf-kp b{font-family:var(--e-mono);font-weight:400;font-size:.9rem;font-variant-numeric:tabular-nums;}
+.sf-kp small{display:block;font-size:.56rem;color:var(--e-mute);}
+.sf-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+.sf-in{max-width:560px;margin:0 auto;padding:12px 16px calc(28px + env(safe-area-inset-bottom,0px));overflow-wrap:anywhere;}
+.sf-nav{flex:none;border-top:1px solid var(--e-line);background:#0a0a0a;padding-bottom:env(safe-area-inset-bottom,0px);}
+.sf-nav .in{max-width:560px;margin:0 auto;display:flex;}
+.sf-nav button{flex:1;min-width:0;background:none;border:0;color:var(--e-mute);font:inherit;font-size:.6rem;padding:8px 2px 7px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:48px;}
+.sf-nav button b{font-family:var(--e-mono);font-weight:400;font-size:.54rem;letter-spacing:.12em;}
+.sf-nav button.on{color:var(--e-gold);box-shadow:inset 0 2px 0 var(--e-gold);}
+.sf.sf-full .sf-nav{display:none;}
+.sf-k{font-family:var(--e-mono);font-size:.6rem;letter-spacing:.2em;color:var(--e-gold);}
+.sf-mute{color:var(--e-mute);font-size:.74rem;line-height:1.7;}
+.sf-hero{padding:14px 2px 6px;}
+.sf-hero h1{font-size:1.3rem;margin:8px 0 2px;font-weight:700;letter-spacing:.06em;}
+.sf-en{font-family:var(--e-mono);font-size:.6rem;letter-spacing:.16em;color:var(--e-mute);margin-bottom:10px;}
+.sf-hero p{font-size:.8rem;line-height:1.9;margin:6px 0;}
+.sf-hero p.sf-mute{font-size:.72rem;}
+.sf-gap{border:1px solid var(--e-line);background:var(--sf-pan);border-radius:8px;padding:10px 12px;margin:12px 0;}
+.sf-bar{display:grid;grid-template-columns:8.6em 1fr;align-items:center;gap:8px;margin:3px 0;}
+.sf-bar span{font-family:var(--e-mono);font-size:.54rem;letter-spacing:.08em;color:var(--e-mute);}
+.sf-bar div{height:8px;background:#222120;border-radius:2px;overflow:hidden;}
+.sf-bar i{display:block;height:100%;background:#8c8a84;transition:width .4s;}
+.sf-bar.sys i{background:var(--e-gold);}
+.sf-gapl{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;border-top:1px solid var(--e-line);padding-top:7px;}
+.sf-gapl span{font-family:var(--e-mono);font-size:.6rem;letter-spacing:.16em;color:var(--e-mute);}
+.sf-gapl b{font-family:var(--e-mono);font-weight:400;font-size:.78rem;letter-spacing:.1em;}
+.sf-gap-high .sf-gapl b{color:#e0a089;}
+.sf-gap-low .sf-gapl b{color:var(--sf-sys);}
+.sf-gapm{font-size:.68rem;line-height:1.7;color:var(--e-mute);margin-top:4px;}
+.sf-ch{width:100%;display:grid;grid-template-columns:2.6em 1fr auto;gap:10px;align-items:center;text-align:left;background:var(--sf-pan);border:1px solid var(--e-line);border-radius:8px;padding:11px 12px;margin:0 0 7px;color:var(--e-tx);font:inherit;min-height:56px;}
+.sf-ch b{display:block;font-size:.88rem;}
+.sf-ch small{display:block;font-size:.64rem;color:var(--e-mute);line-height:1.6;}
+.sf-ch em{font-style:normal;font-family:var(--e-mono);font-size:.58rem;letter-spacing:.08em;color:var(--e-mute);white-space:nowrap;}
+.sf-ch.cur{border-color:rgba(201,164,92,.55);}
+.sf-ch.cur em{color:var(--e-gold);}
+.sf-ch.off{opacity:.45;}
+.sf-no{display:flex;align-items:center;justify-content:center;height:2.4em;border:1px solid var(--e-gold);color:var(--e-gold);border-radius:4px;font-family:Georgia,"Times New Roman",serif;font-size:.8rem;}
+.sf-nob{width:2.8em;height:2.8em;flex:none;font-size:1rem;}
+.sf-chh{display:flex;gap:12px;align-items:center;margin:6px 0 10px;}
+.sf-chh h2{margin:4px 0 0;font-size:1.15rem;}
+.sf-chh small{color:var(--e-mute);font-size:.66rem;}
+.sf-note{border:1px dashed var(--e-faint);border-radius:6px;padding:7px 10px;font-size:.72rem;color:var(--e-tx);margin:6px 0 10px;}
+.sf-intro{border-left:2px solid var(--e-gold);padding:2px 0 2px 12px;margin:8px 0 6px;}
+.sf-intro p{font-size:.8rem;line-height:1.95;margin:0 0 8px;}
+.sf-dev{font-family:var(--e-mono);font-size:.58rem;letter-spacing:.06em;color:var(--e-mute);}
+.sf-sec{font-family:var(--e-mono);font-size:.66rem;letter-spacing:.16em;color:var(--e-gold);margin:20px 2px 8px;}
+.sf-sec small{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;letter-spacing:0;color:var(--e-mute);margin-left:6px;}
+.sf-erah{font-size:.72rem;font-weight:700;margin:16px 2px 6px;}
+.sf-erah small{font-weight:400;color:var(--e-mute);margin-left:6px;}
+.sf-card{background:var(--sf-pan);border:1px solid var(--e-line);border-radius:8px;padding:11px 12px;font-size:.8rem;line-height:1.7;}
+.sf-card>b{display:block;font-size:.92rem;}
+.sf-fict{display:inline-block;font-family:var(--e-mono);font-size:.58rem;letter-spacing:.08em;color:var(--e-tx);border:1px solid var(--e-faint);border-radius:4px;padding:2px 7px;margin-bottom:6px;}
+.sf-ok,.sf-okt{color:var(--sf-sys);font-size:.74rem;}
+.sf-btn{display:block;width:100%;border:0;border-radius:6px;padding:13px 12px;min-height:48px;font:inherit;font-weight:700;font-size:.86rem;background:var(--e-tx);color:#0a0a0a;margin-top:10px;letter-spacing:.04em;}
+.sf-btn small{display:block;font-weight:400;font-size:.64rem;opacity:.8;margin-top:2px;}
+.sf-btn.sub{background:none;color:var(--e-tx);border:1px solid var(--e-faint);}
+.sf-btn.off{background:#2a2928;color:#7a7873;}
+.sf-link{background:none;border:0;color:var(--e-mute);font:inherit;font-size:.7rem;padding:10px 0;min-height:40px;}
+.sf-row{width:100%;display:grid;grid-template-columns:5em 1fr auto;gap:8px;align-items:center;text-align:left;background:var(--sf-pan);border:1px solid var(--e-line);border-radius:6px;padding:9px 10px;margin:0 0 6px;color:var(--e-tx);font:inherit;min-height:52px;}
+.sf-row b{display:block;font-size:.82rem;line-height:1.45;}
+.sf-row small{display:block;font-size:.62rem;color:var(--e-mute);}
+.sf-row i{font-style:normal;color:var(--e-mute);font-size:.66rem;white-space:nowrap;}
+.sf-row.new{border-color:rgba(201,164,92,.5);}
+.sf-row.new i{color:var(--e-gold);}
+.sf-row.off{opacity:.45;}
+.sf-yr{font-family:var(--e-mono);font-size:.56rem;color:var(--e-mute);line-height:1.35;}
+.sf-type{display:inline-flex;gap:5px;align-items:baseline;font-size:.58rem;border:1px solid;border-radius:3px;padding:1px 6px;margin:3px 5px 0 0;line-height:1.5;}
+.sf-type b{font-family:var(--e-mono);font-weight:400;font-size:.52rem;letter-spacing:.08em;display:inline;}
+.sf-type-disaster{color:var(--sf-dis);border-color:rgba(196,154,134,.55);}
+.sf-type-signal{color:var(--sf-sig);border-color:rgba(201,164,92,.55);}
+.sf-type-system{color:var(--sf-sys);border-color:rgba(143,188,174,.55);}
+.sf-bio{color:var(--e-tx);border-color:var(--e-faint);}
+.sf-legend{margin:0 2px 6px;}
+.sf-tech{background:var(--sf-pan);border:1px solid var(--e-line);border-radius:8px;padding:11px 12px;margin:0 0 8px;}
+.sf-tech b{display:block;font-size:.9rem;margin:3px 0 1px;}
+.sf-tech.own{border-color:rgba(143,188,174,.45);}
+.sf-tech.off{opacity:.5;}
+.sf-eff{font-size:.74rem;line-height:1.7;margin-top:6px;}
+.sf-exam{font-size:.66rem;color:var(--e-mute);margin-top:3px;}
+.sf-tri{border:1px solid rgba(201,164,92,.45);border-radius:8px;padding:10px 12px;margin:0 0 12px;}
+.sf-tri-in{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:8px 0 6px;text-align:center;}
+.sf-tri-in div{flex:1;border:1px solid var(--e-faint);border-radius:6px;padding:7px 2px;}
+.sf-tri-in b{display:block;font-size:.82rem;}
+.sf-tri-in small{font-family:var(--e-mono);font-size:.56rem;color:var(--e-mute);}
+.sf-tri-in i{font-style:normal;color:var(--e-gold);}
+.sf-tl{border-left:1px solid var(--e-faint);margin-left:8px;padding-left:10px;}
+.sf-tli{position:relative;width:100%;display:grid;grid-template-columns:6.2em 1fr;gap:8px;text-align:left;background:none;border:0;border-bottom:1px solid var(--e-line);padding:9px 0;color:var(--e-tx);font:inherit;min-height:48px;}
+.sf-tli::before{content:"";position:absolute;left:-14px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--e-faint);}
+.sf-tli.t-disaster::before{background:var(--sf-dis);}
+.sf-tli.t-signal::before{background:var(--sf-sig);}
+.sf-tli.t-system::before{background:var(--sf-sys);}
+.sf-tli b{display:block;font-size:.8rem;}
+.sf-tli small{display:block;font-size:.58rem;color:var(--e-mute);}
+.sf-tli.off{opacity:.4;}
+.sf-tli.oath{opacity:.75;}
+.sf-doc{display:grid;grid-template-columns:3.2em 1fr;gap:10px;background:var(--sf-pan);border:1px solid var(--e-line);border-radius:8px;padding:11px 12px;margin:0 0 8px;}
+.sf-doc b{display:block;font-size:.92rem;margin:2px 0;}
+.sf-docmk{height:3.6em;border:1px solid var(--e-faint);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--e-tx);}
+.d-yellow .sf-docmk{background:#d9c14a;color:#1a1600;border-color:#d9c14a;}
+.d-blue .sf-docmk{background:#4a74c4;color:#fff;border-color:#4a74c4;}
+.sf-doc dl{margin:8px 0 0;font-size:.74rem;line-height:1.7;}
+.sf-doc dt{font-family:var(--e-mono);font-size:.56rem;letter-spacing:.08em;color:var(--e-gold);margin-top:6px;}
+.sf-doc dd{margin:0;}
+.sf-doc.off{opacity:.45;}
+/* シート（記録を読む） */
+.sf-ov{position:absolute;inset:0;z-index:3;background:rgba(0,0,0,.72);display:none;align-items:flex-end;justify-content:center;}
+.sf-ov.show{display:flex;}
+.sf-sheet{position:relative;width:100%;max-width:560px;max-height:88dvh;overflow:auto;overscroll-behavior:contain;background:#0d0d0c;border:1px solid var(--e-line);border-radius:12px 12px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom,0px));overflow-wrap:anywhere;}
+.sf-x{position:absolute;top:8px;right:8px;background:none;border:0;color:var(--e-mute);font-size:1.05rem;min-width:44px;min-height:44px;}
+.sf-sheet p,.sf-case p{font-size:.84rem;line-height:1.95;margin:0 0 10px;}
+.sf-rh{margin:0 32px 10px 0;}
+.sf-rh h3{margin:6px 0 2px;font-size:1.1rem;}
+.sf-head{font-size:.72rem;color:var(--e-mute);}
+.sf-box{background:var(--sf-pan2);border-radius:6px;padding:9px 11px;margin:9px 0;font-size:.76rem;line-height:1.75;}
+.sf-box>b{display:block;font-family:var(--e-mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;color:var(--e-gold);margin-bottom:3px;}
+.sf-box.sm{font-size:.7rem;}
+.sf-caution{border:1px dashed var(--e-faint);border-radius:6px;padding:8px 11px;font-size:.7rem;line-height:1.7;color:var(--e-mute);margin:9px 0;}
+.sf-tlist{list-style:none;margin:0;padding:0;}
+.sf-tlist li{display:grid;grid-template-columns:6.4em 1fr;gap:6px;border-bottom:1px solid var(--e-line);padding:4px 0;}
+.sf-tlist span{font-family:var(--e-mono);font-size:.62rem;color:var(--e-mute);}
+.sf-chain{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:4px;}
+.sf-chain span{border:1px solid var(--e-faint);border-radius:4px;padding:3px 10px;font-size:.74rem;}
+.sf-chain i{font-style:normal;color:var(--e-gold);font-size:.7rem;}
+.sf-cmp{display:grid;grid-template-columns:7.4em 1fr;gap:8px;border-top:1px solid var(--e-line);padding:6px 0;}
+.sf-cmp b{font-size:.76rem;display:block;}
+.sf-cmp small{font-family:var(--e-mono);font-size:.54rem;color:var(--e-mute);}
+.sf-recopen{font-family:var(--e-mono);font-size:.62rem;letter-spacing:.3em;color:var(--e-mute);text-align:center;border-top:1px solid var(--e-line);border-bottom:1px solid var(--e-line);padding:8px 0;margin:4px 0 14px;}
+.sf-chip{font:inherit;font-size:.68rem;color:var(--e-tx);background:none;border:1px solid var(--e-faint);border-radius:99px;padding:5px 10px;margin:2px;min-height:32px;}
+/* CASE */
+.sf-case{padding-top:4px;}
+.sf-case h2{font-size:1.15rem;margin:6px 0 2px;}
+.sf-sit{border:1px solid var(--e-line);background:var(--sf-pan);border-radius:8px;padding:11px 12px;font-size:.84rem;line-height:1.9;margin:12px 0 10px;}
+.sf-sit small,.sf-tool{display:block;font-size:.66rem;color:var(--sf-sys);margin-top:6px;}
+.sf-info{border-left:2px solid var(--e-faint);background:var(--sf-pan);border-radius:0 6px 6px 0;padding:9px 12px;margin:0 0 8px;font-size:.8rem;line-height:1.8;}
+.sf-info small{display:block;font-family:var(--e-mono);font-size:.56rem;letter-spacing:.08em;color:var(--e-mute);}
+.sf-info b{display:block;font-size:.82rem;}
+.sf-info.tool{border-left-color:var(--sf-sys);}
+.sf-info.tool small{color:var(--sf-sys);}
+.sf-plus{border-top:1px solid var(--e-line);margin-top:6px;padding-top:5px;font-size:.76rem;}
+.sf-plus small{color:var(--sf-sys);}
+.sf-q{font-family:var(--e-mono);font-size:.66rem;letter-spacing:.06em;color:var(--e-gold);margin:14px 0 8px;line-height:1.7;}
+.sf-q small{color:var(--e-mute);}
+.sf-qq{font-size:.9rem;line-height:1.85;margin:10px 0 12px;}
+.sf-opt{display:block;width:100%;text-align:left;background:var(--sf-pan);border:1px solid var(--e-faint);border-radius:6px;padding:13px 12px;margin:0 0 8px;color:var(--e-tx);font:inherit;font-size:.82rem;line-height:1.6;min-height:52px;}
+.sf-opt small{display:block;font-size:.66rem;color:var(--e-mute);margin-top:2px;}
+.sf-opt.sel{border-color:var(--e-gold);box-shadow:inset 3px 0 0 var(--e-gold);}
+.sf-opt.done{opacity:.6;}
+.sf-opt.done.ans{opacity:1;border-color:var(--sf-sys);}
+.sf-opt.done.miss{opacity:1;border-color:#8a6a5a;}
+.sf-opt em{float:right;font-style:normal;font-family:var(--e-mono);font-size:.56rem;color:var(--e-mute);margin-left:6px;}
+.sf-opt.ans em{color:var(--sf-sys);}
+.sf-n{display:inline-block;width:1.5em;font-family:var(--e-mono);color:var(--e-mute);}
+.sf-res{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--e-line);border-bottom:1px solid var(--e-line);padding:10px 2px;margin:14px 0 8px;}
+.sf-res .sf-k{flex:none;}
+.sf-res b{font-family:var(--e-mono);font-weight:400;font-size:.92rem;letter-spacing:.12em;}
+.sf-res span{font-size:.74rem;color:var(--e-mute);}
+.sf-res.g-ok b{color:var(--sf-sys);}
+.sf-res.g-insufficient b,.sf-res.g-review b{color:var(--e-gold);}
+.sf-res.g-excessive b{color:var(--sf-dis);}
+.sf-chosen{font-size:.74rem;color:var(--e-mute);margin-bottom:8px;}
+.sf-fb{font-size:.8rem;line-height:1.85;background:var(--sf-pan);border-radius:6px;padding:10px 12px;margin:8px 0;}
+.sf-fb b{display:block;font-family:var(--e-mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;color:var(--e-gold);margin-bottom:2px;}
+.sf-lesson{text-align:center;font-size:.84rem;line-height:1.9;border-top:1px solid var(--e-gold);border-bottom:1px solid var(--e-gold);padding:12px 6px;margin:14px 0 6px;}
+.sf-sortseq{display:flex;flex-direction:column;gap:4px;margin:6px 0 12px;}
+.sf-sortseq span{font-family:var(--e-mono);font-size:.7rem;color:var(--e-faint);border-bottom:1px solid var(--e-line);padding:5px 2px;}
+.sf-sortseq span.on{color:var(--e-tx);}
+.sf-pair{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;border-top:1px solid var(--e-line);padding:5px 0;}
+.sf-pair i{font-style:normal;color:var(--e-gold);}
+.sf-signal{border:1px solid var(--e-gold);border-radius:8px;padding:11px 12px;margin:12px 0 10px;}
+.sf-signal p{margin:6px 0 0;}
+.sf-cycle{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px;margin:14px 0 4px;}
+.sf-cycle div{border:1px solid var(--e-faint);border-radius:4px;padding:5px 7px;text-align:center;}
+.sf-cycle b{display:block;font-family:var(--e-mono);font-weight:400;font-size:.56rem;letter-spacing:.08em;}
+.sf-cycle small{font-size:.6rem;color:var(--e-mute);}
+.sf-cycle i{font-style:normal;color:var(--e-gold);font-size:.7rem;}
+.sf-cycle .back{flex-basis:100%;border:0;font-family:var(--e-mono);font-size:.6rem;color:var(--e-gold);padding:2px;}
+.sf-flow{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px;font-size:.7rem;margin:10px 0;}
+.sf-flow span{border-bottom:1px solid var(--e-faint);padding:2px 4px;}
+.sf-flow i{font-style:normal;color:var(--e-gold);}
+/* 誓いの碑：演出なし */
+.sf-oath{min-height:72dvh;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:24px 4px;}
+.sf-oy{font-family:var(--e-mono);font-size:1.4rem;letter-spacing:.3em;color:var(--e-mute);margin:18px 0 6px;}
+.sf-oath h2{font-size:1.25rem;font-weight:400;letter-spacing:.3em;margin:0 0 22px;}
+.sf-oath p{font-size:.84rem;line-height:2.1;margin:0 0 12px;}
+/* エンディング：1行ずつ静かに表示 */
+.sf-end .end-sec{padding-left:4px;padding-right:4px;}
+.sf-line{display:inline-block;opacity:0;animation:sfIn 1.4s ease forwards;animation-delay:var(--d,0s);}
+@keyframes sfIn{to{opacity:1;}}
+.sf-end .end-go{width:auto;}
+@media (prefers-reduced-motion: reduce){ .sf-line{animation:none;opacity:1;} .sf-bar i{transition:none;} }
+@media (max-width:380px){ .sf-bar{grid-template-columns:7.6em 1fr;} .sf-row{grid-template-columns:4.6em 1fr auto;} .sf-tli{grid-template-columns:5.2em 1fr;} }
 </style>
 
 <div class="app">
@@ -343,6 +548,18 @@ nav button.tut-hi{border-radius:12px;}
 <div class="toast" id="toast"></div>
 <div class="coach" id="coach" hidden><div id="coachT"></div><button class="cx" data-coach-x aria-label="閉じる">✕</button></div>
 <div class="ending" id="ending" hidden role="dialog" aria-label="エンディング"><button class="end-x" data-end-close aria-label="エンディングを閉じる">閉じる ✕</button><div class="end-in" id="endIn"></div></div>
+<div class="sf" id="sfRoot" hidden role="dialog" aria-label="専門史 薬害から医薬品安全へ">
+  <div class="sf-top" id="sfTop"></div>
+  <div class="sf-scroll" id="sfScroll"><div class="sf-in" id="sfBody"></div></div>
+  <div class="sf-nav" id="sfNav"><div class="in">
+    <button data-sf="tab" data-arg="progress" data-sf-tab="progress"><b>CHAPTER</b>進行</button>
+    <button data-sf="tab" data-arg="records" data-sf-tab="records"><b>RECORD</b>記録</button>
+    <button data-sf="tab" data-arg="techs" data-sf-tab="techs"><b>TECH</b>技術</button>
+    <button data-sf="tab" data-arg="timeline" data-sf-tab="timeline"><b>TIMELINE</b>年表</button>
+    <button data-sf="tab" data-arg="archive" data-sf-tab="archive"><b>ARCHIVE</b>資料館</button>
+  </div></div>
+  <div class="sf-ov" id="sfOv"><div class="sf-sheet" id="sfSheet"></div></div>
+</div>
 <div class="pro" id="pro" hidden><div class="pro-in">
   <div class="pro-tag">PROLOGUE</div>
   <h1>経験のはじまり</h1>
@@ -361,6 +578,7 @@ nav button.tut-hi{border-radius:12px;}
 
 <script>
 /* ======================================================================
+ くすりの歴史 v1.3.0（2026-10-05）：Added: Special History「薬害から医薬品安全へ」（クリア後の専門史。架空薬のSAFETY CASE→実際の歴史、20記録・14技術・SAFETY GAP・SAFETY REVIEW 15問・年表・資料館・誓いの碑・2026 COMMUNITY PHARMACY）。進行は別キー yakureki-safety-v1 に保存し、本編のセーブ（pharma-3layer-v2／SAVE_VERSION 5）は変更なし。本編の数値データも変更なし（専門史がLOWのときだけ生産+5%の信頼ボーナス）
  くすりの歴史 v1.2.1（2026-10-05）：クリア後のエンディング画面を追加（COMPLETE／YOUR RECORD／CREDITS／空白／COMING SOON／THANK YOU FOR PLAYING。黒地・文字のみ）。クリア判定・セーブは変更なし。
  同上：人物本文を GPT改稿版 people_data_v1.2.1（定型文を除いた人物固有の本文）に差し替え、Claudeが日本語の仕上げ（表記・文の切れ目・主語と述語の対応など60件）を加えた。ゲーム本編・セーブは変更なし
  くすりの歴史 v1.2（2026-10-05）：GPT確定人物データ（people_data_v1.2_rebuilt.js、137件）を原文のまま統合。人物図鑑を「人物から読む薬学史」へ拡張（人物データ PEOPLE_NET、章立て、検索・絞り込み、関連人物・薬物・出来事の相互リンク、図鑑内の戻る）。人物本文・関係はGPT作成データを受け入れる器のみで、Claudeは本文を書かない。ゲーム本編・セーブは変更なし
@@ -6529,17 +6747,17 @@ function load(){
 }
 function pick(src,dict){const r={}; if(src&&typeof src==='object') for(const k in src) if(dict[k]) r[k]=src[k]; return r;}
 function pickNum(src,dict){const r={}; if(src&&typeof src==='object') for(const k in src) if(dict[k]) r[k]=Math.max(0,Math.floor(+src[k]||0)); return r;}
-function save(){ S.lastSeen=document.hidden?activeAt:Date.now(); const o=Object.assign({},S); o.saveVersion=SAVE_VERSION; safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); setSavedLabel(); }
+function save(){ S.lastSeen=document.hidden?activeAt:Date.now(); const o=Object.assign({},S); o.saveVersion=SAVE_VERSION; safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); try{ sfSave(); }catch(e){} setSavedLabel(); }
 function setSavedLabel(){const e=$('savedAt'); if(e){const d=new Date(); e.textContent='💾 '+d.toTimeString().slice(0,8)+' 保存';}}
-function exportCode(){ return btoa(unescape(encodeURIComponent(JSON.stringify(S)))); }
-function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s.trim())))); safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); S=newState(); load(); recalc(); progress(true); renderAll(); save(); if(!S.prologueDone) showPrologue(); return true;}catch(e){return false;} }
+function exportCode(){ const o=Object.assign({},S); try{ if(sf) o._safety=sf; }catch(e){} return btoa(unescape(encodeURIComponent(JSON.stringify(o)))); }
+function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s.trim())))); const sfo=o._safety; delete o._safety; safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); if(sfo&&typeof sfo==='object') safe(()=>localStorage.setItem(SF_KEY,JSON.stringify(sfo))); sfLoad(); S=newState(); load(); recalc(); progress(true); renderAll(); save(); if(!S.prologueDone) showPrologue(); return true;}catch(e){return false;} }
 
 /* ---------- 計算 ---------- */
 const own=id=>S.own[id]||0;
 let PROD=0, MULT={};
 function recalc(){
   MULT={};
-  FACS.forEach(f=>{let m=1; EVENTS.forEach(e=>{ if(S.ev[e.id]&&(e.fx.fac==='all'||e.fx.fac.includes(f.id))) m+=e.fx.pct/100; }); if(S.up[f.id]) m*=UP_MULT; MULT[f.id]=m;});
+  FACS.forEach(f=>{let m=1; EVENTS.forEach(e=>{ if(S.ev[e.id]&&(e.fx.fac==='all'||e.fx.fac.includes(f.id))) m+=e.fx.pct/100; }); if(S.up[f.id]) m*=UP_MULT; MULT[f.id]=m*sfTrust();});
   PROD=FACS.reduce((a,f)=>a+own(f.id)*f.prod*MULT[f.id],0);
 }
 const costOf=(f,n)=>f.cost*Math.pow(RATE,own(f.id)+n);
@@ -6628,7 +6846,7 @@ function progress(silent){
   if(newEv.length||eraUp.length) renderAll();
   runQueue();
 }
-function runQueue(){ if($('ovm').classList.contains('show')||!$('ending').hidden||!queue.length) return; const q=queue.shift(); if(q.k==='era') showEra(q.era); else if(q.k==='med') showMed(); else if(q.k==='kin') showKinsei(); else if(q.k==='kd') showKindai(); else if(q.k==='clear') showClear(); }
+function runQueue(){ if($('ovm').classList.contains('show')||!$('ending').hidden||sfOpen()||!queue.length) return; const q=queue.shift(); if(q.k==='era') showEra(q.era); else if(q.k==='med') showMed(); else if(q.k==='kin') showKinsei(); else if(q.k==='kd') showKindai(); else if(q.k==='clear') showClear(); }
 
 /* ---------- 研究 / 建設 / 改良 ---------- */
 function research(id){ const t=TECH[id]; if(!t||techState(t)!=='avail'||S.kp<techCost(t)) return false;
@@ -6700,7 +6918,7 @@ function proSheet(){ const e=PRO_EVENT;
 /* ---------- 段階チュートリアル：初めてその仕組みに触れた瞬間だけ、短く案内する ---------- */
 function coachUpdate(){
   document.querySelectorAll('.tut-hi').forEach(el=>el.classList.remove('tut-hi'));
-  const box=$('coach'); if(!S.prologueDone||!$('pro').hidden||!$('ending').hidden||$('ovm').classList.contains('show')){ box.hidden=true; return; }
+  const box=$('coach'); if(!S.prologueDone||!$('pro').hidden||!$('ending').hidden||sfOpen()||$('ovm').classList.contains('show')){ box.hidden=true; return; }
   let cur=null;
   for(let i=0;i<TUT.length;i++){ const t=TUT[i]; if(S.tut[t.id]) continue;
     if(t.done&&t.done()){ S.tut[t.id]=1; continue; }
@@ -6866,7 +7084,7 @@ function personSheet(id){ const x=PER[id], d=P(id), ch=CHAP[chapterOf(id)];
   openSheet(h); }
 function drugSheet(id){ const c=CONTENT.drugs[id];
   const ps=PEOPLE.map(x=>x.id).filter(pid=>P(pid).relatedDrugs.some(r=>resolveDrug(r)===id));
-  openSheet('<div class="tag">薬物図鑑・'+c.era+'</div><h3>'+c.name+'</h3><div class="meta">分類：'+c.cat+'</div><p>'+c.note+'</p><div class="box"><b>用途</b>　'+c.use+'</div><div class="box"><b>関連する人物・文献</b>　'+c.rel+'</div>'+personLinks(ps,'人物図鑑でたどる')+backBtn()); }
+  openSheet('<div class="tag">薬物図鑑・'+c.era+'</div><h3>'+c.name+'</h3><div class="meta">分類：'+c.cat+'</div><p>'+c.note+'</p><div class="box"><b>用途</b>　'+c.use+'</div><div class="box"><b>関連する人物・文献</b>　'+c.rel+'</div>'+personLinks(ps,'人物図鑑でたどる')+sfMainLink('drug',id)+backBtn()); }
 function viewRecord(){
   const t=TECHS.filter(x=>S.tech[x.id]).length, f=FACS.filter(x=>own(x.id)>0).length, e=EVENTS.filter(x=>S.ev[x.id]).length;
   const mm=Math.floor(S.playSec/60), ss=Math.floor(S.playSec%60);
@@ -6877,8 +7095,9 @@ function viewRecord(){
   if(S.era>=8) h+='<button class="big" id="kinBtn">🏅「近世薬学の歩み」を見る</button>';
   if(S.era>=10) h+='<button class="big" id="kdBtn">🏅「近代薬学の成り立ち」を見る</button>';
   if(S.cleared) h+='<button class="big" id="recapBtn">🏅 エンディングを見る</button>';
+  if(S.cleared) h+='<div class="sec">専門史 <small>SPECIAL HISTORY</small></div><button class="big" data-sf="enter" style="background:#0a0a0a;color:#e6e4df;border:1px solid #c9a45c">📖 '+SPECIAL_HISTORIES.safety.title+'<br><small style="font-size:.62rem;font-weight:400;letter-spacing:.12em">FROM DRUG DISASTERS TO DRUG SAFETY</small></button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
-   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">くすりの歴史 ― 古代から現代 ―<br>v1.2.1</div>';
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">くすりの歴史 ― 古代から現代 ―<br>v'+GAME_VER+'</div>';
   return h; }
 
 /* 購入可否の見た目だけ更新（タップ中に再描画しない） */
@@ -6916,7 +7135,7 @@ function techSheet(id){ const t=TECH[id], st=techState(t);
     (bon.length?'<div class="box"><b>合流先（必須ではない）</b>：'+bon.join('、')+'の研究コストが軽くなる</div>':'')+btn); }
 function evSheet(id){ const e=EV[id], c=CONTENT.events[id];
   openSheet('<div class="tag">歴史イベント・'+ERAS[e.era-1].name+'・'+c.when+'</div><h3>'+c.title+'</h3><div class="meta">'+e.rg.map(r=>REGION_NAME[r]).join('・')+'　'+c.who+'</div><p>'+refText(c.text)+'</p><div class="box"><b>その後への影響</b><div>'+c.why+'</div>'+evUnlock(id)+'</div><div class="box"><b>ゲーム上の効果</b>　'+effText(e)+'</div>'+
-    personLinks(PEOPLE.map(x=>x.id).filter(pid=>personEventIds(pid).includes(id)||PER[pid].cond.includes('ev:'+id)),'この出来事に関わる人物')+backBtn()); }
+    personLinks(PEOPLE.map(x=>x.id).filter(pid=>personEventIds(pid).includes(id)||PER[pid].cond.includes('ev:'+id)),'この出来事に関わる人物')+sfMainLink('ev',id)+backBtn()); }
 function evUnlock(id){ const ts=TECHS.filter(t=>refs(t).includes('ev:'+id)); if(!ts.length) return '';
   const known=ts.filter(techKnown), unk=ts.filter(t=>techVis(t)==='next').length, later=ts.filter(t=>techVis(t)==='hidden').length;
   return '<ul>'+known.map(t=>'<li class="'+(S.tech[t.id]?'ok':'')+'">→ ゲーム上の解禁：研究「'+t.name+'」'+(S.tech[t.id]?'（研究済み）':'')+'</li>').join('')+
@@ -6950,9 +7169,9 @@ const SPECIALTY=[
  {id:'diabetes',title:'糖尿病治療薬史',status:'soon'},
  {id:'antibacterial',title:'抗菌薬史',status:'soon'},
  {id:'anticancer',title:'抗がん剤史',status:'soon'},
- {id:'safety',title:'薬害と規制の歴史',status:'soon'},
+ {id:'safety',title:'薬害から医薬品安全へ',status:'open'},
  {id:'companies',title:'製薬会社史',status:'soon'}];
-const GAME_NAME='yakureki', GAME_VER='1.2.1', DEVELOPER='こんにゃくお爺さん';
+const GAME_NAME='yakureki', GAME_VER='1.3.0', DEVELOPER='こんにゃくお爺さん';
 function endingHtml(){
   const evs=EVENTS.filter(e=>S.ev[e.id]), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0).length, nb=FACS.reduce((a,f)=>a+own(f.id),0);
@@ -6976,7 +7195,8 @@ function endingHtml(){
         ?'<h2 class="end-h end-gold">NEW CONTENT UNLOCKED</h2><p class="end-p">新しいコンテンツが解放されました。</p>'
         :'<h2 class="end-h end-gold">COMING SOON</h2>')+
       '<p class="end-p mute">本編とは異なる視点から、<br>薬と医療の歴史をたどる「専門史」を準備しています。</p>'+
-      '<ul class="end-list">'+SPECIALTY.map(x=>'<li class="'+(x.status==='open'?'open':'')+'">'+x.title+'</li>').join('')+'<li class="more">ほか、順次追加予定</li></ul></div></section>'+
+      '<ul class="end-list">'+SPECIALTY.map(x=>'<li class="'+(x.status==='open'?'open':'')+'">'+x.title+'</li>').join('')+'<li class="more">ほか、順次追加予定</li></ul>'+
+      (open.some(x=>x.id==='safety')?'<div style="margin-top:30px;text-align:center"><p class="end-k end-gold">SPECIAL HISTORY</p><p class="end-p" style="font-size:1rem;margin:0 0 4px">'+SPECIAL_HISTORIES.safety.title+'</p><p class="end-p mute" style="font-family:var(--e-mono);font-size:.64rem;letter-spacing:.14em">FROM DRUG DISASTERS<br>TO DRUG SAFETY</p><button class="end-go" data-sf="enter">ENTER</button></div>':'')+'</div></section>'+
     '<section class="end-sec"><p class="end-k">THANK YOU FOR PLAYING</p><h2 class="end-title" style="font-size:1.5rem">'+GAME_NAME+'</h2>'+
       '<p class="end-p mute" style="font-family:var(--e-mono);margin-top:14px">ver.'+GAME_VER+'</p>'+
       '<div class="end-cr" style="margin-top:26px"><small>DEVELOPED BY</small><div>'+DEVELOPER+'</div></div>'+
@@ -6993,7 +7213,7 @@ function toast(msg,cb){ toastRaw(String(msg).replace(/[&<>]/g,c=>({'&':'&amp;','
 /* 通知キュー：歴史・人物・理解段階・おかえりなさい。モーダル（時代開始・クリア等）やプロローグの表示中は保留し、
    閉じてから「理解段階（1件ずつ）→ 歴史（集約）→ 人物（集約）→ おかえりなさい」の順に出す */
 const NQ_GAP=600; let nq=[];
-const nHeld=()=>$('ovm').classList.contains('show')||!$('pro').hidden||!$('ending').hidden;
+const nHeld=()=>$('ovm').classList.contains('show')||!$('pro').hidden||!$('ending').hidden||sfOpen();
 function notify(item){ nq.push(item); setTimeout(pumpN,0); } // 同じ処理の中で開くモーダルを待ってから判定する
 function pumpN(){ if(!nq.length||nHeld()||$('toast').classList.contains('show')) return;
   // 後ろに通知が控えているときは表示を少し短くして、待ち時間を減らす
@@ -7045,7 +7265,7 @@ document.addEventListener('click',e=>{
   if(g('#expBtn')){ $('code').value=exportCode(); $('code').select(); return; }
   if(g('#impBtn')){ if(!importCode($('code').value)) toast('コードを読み込めませんでした'); else toast('読み込みました'); return; }
   if(g('#resetBtn')){ openMid('<h3>セーブデータをリセット</h3><p>進行状況をすべて消して最初からやり直します。よろしいですか？</p><div style="display:flex;gap:8px"><button class="big off" data-close-mid>やめる</button><button class="big" id="resetYes" style="background:#ff6b8a">リセットする</button></div>'); return; }
-  if(g('#resetYes')){ safe(()=>localStorage.removeItem(SAVE_KEY)); S=newState(); queue.length=0; recalc(); closeMid(); renderAll(); showPrologue(); return; }
+  if(g('#resetYes')){ safe(()=>localStorage.removeItem(SAVE_KEY)); try{ sfReset(); }catch(e){} S=newState(); queue.length=0; recalc(); closeMid(); renderAll(); showPrologue(); return; }
 });
 
 /* ---------- ループ ---------- */
@@ -7074,6 +7294,675 @@ document.addEventListener('change',e=>{ const id=e.target.id; if(!['pp','pt','pr
   if(id==='pp') peopleP=e.target.value; else if(id==='pt') peopleT=e.target.value; else peopleF=e.target.value; const l=$('plist'); if(l) l.innerHTML=peopleList(); });
 { const w=checkPeopleNet(); if(w.length) console.warn('[人物データの確認] '+w.length+'件\n'+w.join('\n')); }
 
+/* ====================================================================== */
+/* ======================================================================
+ 専門史「薬害から医薬品安全へ ― FROM DRUG DISASTERS TO DRUG SAFETY」 データ
+ ・文章はすべてこのデータに集約する（描画関数の中に文章を書かない）
+ ・将来の専門史（抗がん剤史・糖尿病治療史など）も、同じ形のデータを足せば追加できるようにしている
+ ・CASE と最終薬局CASEの医薬品・症例はすべて架空。史実の判断をプレイヤーにさせない
+ ====================================================================== */
+const SAFETY_TYPES={
+ disaster:{en:'DRUG DISASTER',ja:'薬害'},
+ signal:{en:'SAFETY SIGNAL',ja:'安全性シグナル／事件・問題'},
+ system:{en:'SAFETY SYSTEM',ja:'制度'}};
+const SAFETY_CHAPTERS=[
+ {no:1,roman:'I',title:'安全性という概念',en:'THE IDEA OF SAFETY',span:'1937–1965',theme:'すぐに現れる害',
+  intro:['1930年代、化学で合成された薬が次々に登場した。効く薬は、多くの人に、速く届くようになった。','だが、薬が人を害するかどうかを、売る前に確かめる仕組みは、まだほとんどなかった。'],dev:'合成医薬品が普及した'},
+ {no:2,roman:'II',title:'見えなかった被害',en:'HARM UNSEEN',span:'1957–1980',theme:'遅れて、見えにくく現れる害',
+  intro:['1950〜60年代、新しい薬が大量に作られ、広く使われるようになった。','害は、すぐには見えなかった。胎児に、長い服用の先に、そして原因の分からない病気として現れた。'],dev:'新しい薬が大量に使われるようになった'},
+ {no:3,roman:'III',title:'薬と薬の出会い',en:'DRUG INTERACTION',span:'1993–2001',theme:'組み合わせで現れる害',
+  intro:['1990年代。一人の患者が何種類もの薬を同時に使うことが、珍しくなくなった。','ひとつひとつは安全でも、組み合わせたときにどうなるかは、別の問題だった。'],dev:'多剤併用が広がった'},
+ {no:4,roman:'IV',title:'血液と生物の危険',en:'BLOOD AND BIOLOGICS',span:'1980年代–2010',theme:'原料から入り込む害',
+  intro:['血液や生物から作る薬は、化学合成では作れない治療を可能にした。','しかし、原料そのものが、思いもよらない危険を運ぶことがある。'],
+  note:'この章は年代順ではなく、テーマ別の章です。',dev:'血液製剤・生物由来の薬が広がった'},
+ {no:5,roman:'V',title:'監視する時代',en:'PHARMACOVIGILANCE',span:'2002–現在',theme:'発売後に見つけ、伝え、管理する',
+  intro:['21世紀。新しい薬は、作用の仕組みから設計されるようになった。','それでも、発売の時点で分かっていることには限りがある。この時代の安全は、発売した後も見続けることで守られる。'],dev:'分子標的薬など新しい薬が登場した'}];
+
+/* HISTORY RECORD（20件）
+   prerequisite：'case:cN' は CASE の妥当な判断のあとに開く。ほかは直前の記録を読むと開く
+   year は年表の並べ替え用、yl は表示用 */
+const SAFETY_EVENTS=[
+ {id:'N01',year:1937,yl:'1937',chapter:1,type:'disaster',titleJa:'スルファニルアミド・エリキシル事件',head:'薬そのものではなく',titleEn:'ELIXIR SULFANILAMIDE',
+  body:['1937年、米国で抗菌薬スルファニルアミドの液剤が発売された。','飲みやすくするための溶媒には、ジエチレングリコールが使われていた。有効成分はすでに使われていた薬だったが、溶媒の毒性は調べられていなかった。','服用した人々に腎障害が相次ぎ、子どもを含む100人を超える死者が出た。'],
+  meaning:'有効成分ではなく、製剤（溶媒）が害の原因になった。「製剤全体の安全性を評価する」という考え方の出発点になった。',
+  examPoints:['ジエチレングリコール','添加剤の安全性','製剤設計'],prerequisite:'case:c1',technologyUnlock:[],
+  relief:'当時の米国には、医薬品の健康被害を救済する公的な制度はなかった。'},
+ {id:'N02',year:1938,yl:'1938',chapter:1,type:'system',titleJa:'米国 連邦食品・医薬品・化粧品法（FD&C法）',head:'売る前に、示す',titleEn:'FD&C ACT 1938',
+  body:['エリキシル事件の翌年、米国で連邦食品・医薬品・化粧品法が成立した。','新しい医薬品は、販売の前に安全性を示す資料を当局に提出しなければならなくなった。','効くかどうかの前に、まず害がないかを問う。市販前審査という仕組みが、ここから始まった。'],
+  meaning:'「市販前の安全性立証」が法律上の義務になった。',
+  examPoints:['承認審査の起源','安全性の立証'],prerequisite:'N01',technologyUnlock:['T1']},
+ {id:'N03',year:1955,yl:'1950年代',chapter:1,type:'signal',titleJa:'ペニシリンショック問題',head:'奇跡の薬の影',titleEn:'PENICILLIN SHOCK',
+  body:['戦後、ペニシリンが急速に普及する一方、注射の直後に起こるアナフィラキシーショックによる死亡例が社会問題となった。','感染症を劇的に治す薬だったからこそ、多くの人に使われた。まれな副作用も、そのぶん多くの人に起きた。'],
+  meaning:'アナフィラキシーという即時型のリスクが広く認識され、投与前の問診や、ショックへの備えの必要性が意識されるようになった。',
+  examPoints:['アナフィラキシー','I型アレルギー','アドレナリン','βラクタム系','アレルギー歴の確認'],prerequisite:'N02',technologyUnlock:[]},
+ {id:'N04',year:1965,yl:'1965',chapter:1,type:'signal',titleJa:'アンプル入りかぜ薬事件',head:'小瓶の中の危険',titleEn:'AMPOULE COLD REMEDIES',
+  body:['1965年、アンプル入りのかぜ薬を服用した後にショック死する例が相次いだ。','ピリン系解熱鎮痛成分などを含む製品が問題となり、製造販売の中止・回収へとつながった。','薬局の店頭で、誰でも手に取れる薬で起きた事件だった。'],
+  meaning:'一般用医薬品にも、重大なリスクがありうることが示された。',
+  examPoints:['ピリン系（ピラゾロン系）','ピリンアレルギー','一般用医薬品の安全性'],prerequisite:'N03',technologyUnlock:[]},
+
+ {id:'N05',year:1957,yl:'1957–1962',chapter:2,type:'disaster',titleJa:'サリドマイド薬害',head:'母体の外の被害',titleEn:'THALIDOMIDE',
+  body:['1957年、西ドイツで睡眠・鎮静薬サリドマイドが発売された。日本でも1958年から販売された。','成人には副作用が少ないと考えられ、妊娠中にも使われた。やがて、手足の形成異常などをもつ子どもの誕生が各地で相次いだ。','1961年、ドイツの医師レンツが胎児の障害との関係を指摘し、西ドイツでは回収が始まった。日本で出荷停止・回収が行われたのは1962年で、対応の遅れが問われた。','米国では、審査官が安全性のデータが不十分だとして承認を保留し続け、大規模な被害を免れた。'],
+  meaning:'成人への安全性が、胎児への安全性を保証しないことが示された。',
+  examPoints:['催奇形性','器官形成期','妊婦への投薬','現在の適応（多発性骨髄腫など）と厳格な管理手順'],prerequisite:'case:c2',technologyUnlock:[],
+  relief:'サリドマイドやスモンの被害は、1979年の医薬品副作用被害救済制度の成立へとつながる背景になった。'},
+ {id:'N06',year:1962,yl:'1962',chapter:2,type:'system',titleJa:'キーフォーバー・ハリス修正法',head:'効くことも、証明する',titleEn:'KEFAUVER–HARRIS AMENDMENTS',
+  body:['サリドマイドの被害が世界に知られた1962年、米国で医薬品法が改正された。','新薬の承認には、安全性に加えて、有効性を適切に計画された試験で示すことが求められるようになった。','「効くかどうか」と「安全かどうか」を、両方とも承認の前に証明する。現代の承認審査の基本形である。'],
+  meaning:'「安全性と有効性の両方を立証する」ことが、承認の条件になった。',
+  examPoints:['有効性と安全性の立証','承認審査'],prerequisite:'N05',technologyUnlock:['T2']},
+ {id:'N07',year:1959,yl:'1950年代後半–1970年代',chapter:2,type:'disaster',titleJa:'クロロキン網膜症',head:'ゆっくり進む害',titleEn:'CHLOROQUINE RETINOPATHY',
+  body:['クロロキンは抗マラリア薬として開発され、日本では腎疾患などにも使われるようになった。','長い期間にわたって飲み続けた患者の中に、視野が欠けたり、視力が落ちたりする人が現れた。網膜の障害は、服用をやめた後も回復しにくかった。','一度の服用では見えない害が、長期使用の中で現れた。'],
+  meaning:'長期投与で現れる副作用と、定期的な検査による監視の必要性が示された。',
+  examPoints:['クロロキン → 網膜症','長期投与時の眼科検査'],prerequisite:'N06',technologyUnlock:[]},
+ {id:'N08',year:1964,yl:'1960年代–1972',chapter:2,type:'disaster',titleJa:'スモン（SMON）／キノホルム',head:'原因の見えない病',titleEn:'SMON',
+  body:['1960年代、腹部の症状に続いて、足のしびれや歩行障害、視力障害が起こる病気が、日本各地で多発した。','1964年ごろから、この病気は亜急性脊髄視神経症、SMON（スモン）と呼ばれるようになった。当初は感染症が疑われ、患者は差別にも苦しんだ。','1970年8月、整腸剤キノホルムが原因であるという説が示された。翌9月、キノホルム剤の販売と使用が停止された。','1972年、国の研究班は、キノホルムがスモンの原因であると総括した。'],
+  timeline:[['1960年代','各地で多発'],['1964年ごろ','SMONの病名が使われ始める'],['1970年8月','キノホルム原因説'],['1970年9月','販売・使用の停止'],['1972年','研究班の総括']],
+  meaning:'国内で多くの患者を出した薬害。原因究明、訴訟、そして被害を救済する制度の議論へとつながった。',
+  examPoints:['キノホルム → スモン（亜急性脊髄視神経症）','医薬品副作用被害救済制度の背景'],prerequisite:'N07',technologyUnlock:[],
+  relief:'スモンの被害は、サリドマイドなどとともに、医薬品副作用被害救済制度の成立へとつながる背景になった。'},
+ {id:'N09',year:1967,yl:'1967–1972',chapter:2,type:'system',titleJa:'副作用情報を集める',head:'報告が集まる場所',titleEn:'ADVERSE REACTION MONITORING',
+  body:['1967年、日本で副作用モニター制度が始まった。指定された病院から、医薬品の副作用の情報を国が集める仕組みである。','1968年、WHOは国際医薬品モニタリング制度を始め、各国の副作用情報を国境を越えて共有するようになった。日本は1972年にこれに参加した。','一つの病院では見えない、まれな副作用も、集めれば見えてくる。'],
+  meaning:'医療現場の情報が、安全対策の「入口」として制度になった。',
+  examPoints:['副作用報告制度の起源','自発報告','医薬品・医療機器等安全性情報報告制度の前身'],prerequisite:'N08',technologyUnlock:['T3']},
+ {id:'N10',year:1979,yl:'1979–1980',chapter:2,type:'system',titleJa:'薬事法改正と医薬品副作用被害救済制度',head:'安全網を張る',titleEn:'THE SAFETY NET',
+  body:['サリドマイドやスモンなどの経験を背景に、1979年、薬事法が大きく改正された。承認後に改めて有効性と安全性を確かめる再審査と再評価が、法律に定められた。','同じ年、医薬品副作用被害救済基金法が成立し、1980年に救済業務が始まった。','医薬品を適正に使っても、副作用による健康被害は起こりうる。その被害を、裁判によらずに救済するための仕組みである。','ただし、厚生労働大臣が指定する抗悪性腫瘍剤など、一部の医薬品は救済制度の対象から除外されている。'],
+  meaning:'「承認後も見直す」「起きた被害を救済する」という、二つの安全網ができた。',
+  examPoints:['再審査制度','再評価制度','医薬品副作用被害救済制度（適正使用が前提・対象除外医薬品あり・現在の窓口はPMDA）'],prerequisite:'N09',technologyUnlock:['T4']},
+
+ {id:'N11',year:1993,yl:'1993',chapter:3,type:'signal',titleJa:'ソリブジン事件',head:'二つの薬が出会うとき',titleEn:'SORIVUDINE 1993',
+  body:['1993年、帯状疱疹の治療薬ソリブジンが発売された。','発売から間もなく、フルオロウラシル（5-FU）系の抗がん薬を服用していた患者に、重い骨髄抑制などが起こり、死亡例が相次いだ。','ソリブジンは、腸内細菌によって代謝物BVU（ブロモビニルウラシル）に変わる。BVUは、5-FUを分解する酵素DPDを阻害する。分解されなくなった5-FUが体内にたまり、強い毒性が現れた。','どちらの薬も、単独では想定どおりに使われていた。'],
+  chain:['ソリブジン','腸内細菌','BVU','DPD阻害','5-FUの分解低下','5-FU曝露の増大','重篤な毒性'],
+  meaning:'代謝酵素を介した相互作用が、致死的な害になりうることを示した。治験段階の情報の扱いも問題になった。',
+  examPoints:['ソリブジン → BVU → DPD阻害 → 5-FU蓄積','テガフールなどのフッ化ピリミジン系','併用禁忌','DPDとギメラシル'],prerequisite:'case:c3',technologyUnlock:['T5']},
+ {id:'N12',year:1997,yl:'1996–2001',chapter:3,type:'system',titleJa:'市販後を見張る（GCP・GPMSP・市販直後調査）',head:'発売は終わりではない',titleEn:'POST-MARKETING SURVEILLANCE',
+  body:['1990年代、ソリブジン事件や薬害エイズ事件などを経て、医薬品の安全対策が見直された。','1996年の薬事法改正を受け、1997年には治験の基準（GCP）と市販後調査の基準（GPMSP）が省令として整えられた。','2001年10月には市販直後調査が始まった。新薬の販売開始から6か月間、医療機関に適正使用を繰り返し呼びかけ、重い副作用の情報をいち早く集める。','治験に参加できる患者の数には限りがある。発売直後こそ、まだ知られていないリスクが現れやすい。'],
+  meaning:'「発売後の早い時期を重点的に監視する」という考え方が、制度になった。',
+  examPoints:['GCP','市販直後調査（販売開始後6か月）','治験の限界（症例数・対象患者の制限）'],prerequisite:'N11',technologyUnlock:['T6']},
+
+ {id:'N13',year:1983,yl:'1980年代–1996',chapter:4,type:'disaster',titleJa:'薬害エイズ',head:'血液から来たもの',titleEn:'HIV AND BLOOD PRODUCTS',
+  body:['1980年代、血友病の治療に使われた非加熱の血液凝固因子製剤に、HIVが混入していた。','多くの供血者の血漿を集めて作る製剤は、一人の感染が多くの患者に広がりうる。','ウイルスを不活化した加熱製剤が登場した後も、非加熱製剤の使用は続いた。その結果、多くの患者がHIVに感染した。','訴訟は1996年に和解に至った。'],
+  meaning:'生物由来の原料そのものが、感染症のリスクになりうることを示した。行政と企業の対応の遅れが問われた。',
+  examPoints:['非加熱血液凝固因子製剤','血液製剤のウイルス不活化','生物由来製品'],prerequisite:'case:c4',technologyUnlock:[],
+  codexNote:'薬害ヤコブ病：ヒト乾燥硬膜の移植によって、クロイツフェルト・ヤコブ病に感染した被害。訴訟は2002年に和解した。生物由来の材料が感染を運んだ例として、薬害エイズと並べて語られる。',
+  relief:'和解ののち、1999年に「誓いの碑」が建てられた。'},
+ {id:'N14',year:1988,yl:'1980年代–2010',chapter:4,type:'disaster',titleJa:'薬害肝炎',head:'何年も後に知る',titleEn:'HEPATITIS C AND BLOOD PRODUCTS',
+  body:['出産時の出血などに使われたフィブリノゲン製剤などの血液製剤によって、C型肝炎ウイルスに感染した人々がいた。','感染は自覚症状のないまま進み、何年も経ってから知ることも多かった。','2008年1月、被害者を救済する特別措置法が成立した。2010年4月には、事件の検証と再発防止を検討した委員会が、最終提言をまとめた。'],
+  meaning:'長い潜伏を経て明らかになる被害がある。被害の「検証」そのものが、再発防止の仕組みに組み込まれた。',
+  examPoints:['フィブリノゲン製剤','HCV','薬害再発防止の最終提言'],prerequisite:'N13',technologyUnlock:[],
+  relief:'2008年の特別措置法により、給付金の支給による救済が行われるようになった。'},
+ {id:'N15',year:2004,yl:'2002–2004',chapter:4,type:'system',titleJa:'生物由来製品とPMDA',head:'審査・安全対策・救済',titleEn:'SAFETY TRIANGLE',
+  body:['2002年の薬事法改正で、生物由来製品という区分が設けられた。原料の採取から使用後の記録まで、特別な管理が求められるようになった。','2004年、医薬品医療機器総合機構（PMDA）が設立された。同じ年、生物由来製品を介した感染等による健康被害を救済する制度も始まった。','PMDAは、承認の審査、市販後の安全対策、健康被害の救済を、一つの機関で担う。この三つの連携は、セイフティ・トライアングルと呼ばれる。'],
+  meaning:'「入口（審査）」「監視（安全対策）」「出口（救済）」が、一つの組織でつながった。',
+  examPoints:['PMDAの3業務','生物由来製品・特定生物由来製品','生物由来製品感染等被害救済制度'],prerequisite:'N14',technologyUnlock:['T7','T8']},
+
+ {id:'N16',year:2002,yl:'2002–2004',chapter:5,type:'signal',titleJa:'ゲフィチニブ',head:'発売直後のシグナル',titleEn:'GEFITINIB 2002',
+  body:['2002年7月、肺がんの分子標的薬ゲフィチニブが、世界に先駆けて日本で承認され、発売された。','発売後、市販直後調査の期間中に、急性肺障害・間質性肺炎の報告が相次いだ。死亡例も含まれていた。','同年10月、緊急安全性情報が出され、警告や使用上の注意が強化された。','2004年、がん細胞のEGFR遺伝子の活性化変異が、この薬がよく効くことと関係していると報告された。安全性の問いは、「誰に使えば利益が大きいのか」という問いにつながっていった。'],
+  timeline:[['2002年7月','日本で承認・発売'],['発売後','急性肺障害・間質性肺炎の報告'],['2002年10月','緊急安全性情報'],['その後','使用上の注意の強化'],['2004年','EGFR活性化変異と感受性の関係']],
+  meaning:'市販後の安全性シグナルの検出と、医療現場へのリスクコミュニケーションの代表例。分子標的薬における患者選択（個別化医療）の転換点でもある。',
+  examPoints:['EGFRチロシンキナーゼ阻害薬','間質性肺炎','緊急安全性情報','EGFR遺伝子変異検査'],prerequisite:'case:c5',technologyUnlock:['T9'],
+  note:'この出来事をめぐる訴訟では、最終的に製薬企業と国の賠償責任は認められなかった（2013年、最高裁）。このゲームでは「薬害」とは表記せず、市販後の安全性シグナルとリスクコミュニケーションの事例として扱っている。'},
+ {id:'N17',year:2005,yl:'2005',chapter:5,type:'system',titleJa:'GVP・GPSP',head:'監視を仕事にする',titleEn:'GVP / GPSP',
+  body:['2005年、製造販売業者の市販後の責任を定める二つの基準が施行された。','GVPは、安全性に関する情報を集め、検討し、必要な安全確保措置をとるための体制と手順を定める。','GPSPは、製造販売後の調査と試験を、信頼できる方法で行うための基準である。市販直後調査も、GVPのもとで行われる。','副作用を「見つけたら対応する」から、「見つけるための体制を常に持つ」へ。'],
+  meaning:'市販後の安全管理が、企業の日常業務として基準になった。',
+  examPoints:['GVP（製造販売後安全管理の基準）','GPSP（製造販売後の調査及び試験の実施の基準）','GQP・GMP・GCP・GLPとの区別'],prerequisite:'N16',technologyUnlock:['T10','T11']},
+ {id:'N18',year:2011,yl:'2011',chapter:5,type:'system',titleJa:'安全性情報の段階化',head:'黄色と青',titleEn:'YELLOW LETTER / BLUE LETTER',
+  body:['見つけたリスクは、医療現場に届かなければ患者を守れない。','2011年、安全性情報の伝達方法が整理され、安全性速報（ブルーレター）の枠組みが設けられた。','リスクの緊急度に応じて、伝え方の強さを変える。'],
+  compare:[['緊急安全性情報','YELLOW LETTER','緊急かつ重大な注意喚起や、使用制限に関わる対策が必要なとき'],['安全性速報','BLUE LETTER','一般的な使用上の注意の改訂よりも、迅速な注意喚起や適正使用のための対応が必要なとき'],['使用上の注意の改訂','REVISION','添付文書の改訂として伝える。改訂の情報はDSUなどでまとめて周知される']],
+  meaning:'情報伝達の「強さ」を段階に分けた。ブルーレターの枠組みは、ここで設けられた。',
+  examPoints:['緊急安全性情報（黄）','安全性速報（青）','使用上の注意の改訂','DSU（医薬品安全対策情報）'],prerequisite:'N17',technologyUnlock:['T12']},
+ {id:'N19',year:2013,yl:'2012–2013',chapter:5,type:'system',titleJa:'医薬品リスク管理計画（RMP）',head:'分かっていることと、分かっていないこと',titleEn:'RISK MANAGEMENT PLAN',
+  body:['2012年に指針が示され、2013年4月以降に承認申請される新薬から、医薬品リスク管理計画（RMP）が作られるようになった。','RMPでは、まず安全性検討事項として、重要な特定されたリスク、重要な潜在的リスク、重要な不足情報を整理する。','そのうえで、それぞれをどう監視するか（医薬品安全性監視活動）と、どう減らすか（リスク最小化活動）を計画する。','かつて薬害を起こしたサリドマイドも、2008年に多発性骨髄腫の治療薬として再び承認された。いまは厳格な管理手順のもとで使われている。'],
+  meaning:'リスク管理が、発売後の個別の対応から、「発売の時点からの計画」になった。',
+  examPoints:['RMPの構成（安全性検討事項・医薬品安全性監視計画・リスク最小化計画）','追加のリスク最小化活動','サリドマイド製剤の安全管理手順'],prerequisite:'N18',technologyUnlock:['T13']},
+ {id:'N20',year:2019,yl:'2019–2023',chapter:5,type:'system',titleJa:'情報を届ける時代',head:'患者と現場へ',titleEn:'SAFETY INFORMATION FOR ALL',
+  body:['2019年3月、患者や家族からの副作用報告の正式な受付が始まった（2012年からの試行を経て）。','2021年8月、医療用医薬品などの添付文書を電子的に提供する制度が施行された。紙の添付文書を製品に同梱できる経過措置は、2023年7月末まで続いた。','箱のバーコードを読み取れば、最新の情報にたどり着ける。','安全性情報は、作る側から使う側へ、より速く、より直接に届くようになった。'],
+  meaning:'報告の担い手が患者に広がり、情報の受け取り方が「いつでも最新版を見る」形に変わった。',
+  examPoints:['患者副作用報告','電子化された添付文書（電子添文）','GS1コード','新記載要領'],prerequisite:'N19',technologyUnlock:['T14']}];
+
+/* 終章の記録（能力・ポイント・演出なし） */
+const SAFETY_OATH={year:'1999',title:'誓いの碑',
+ body:['1999年、薬害エイズ事件への反省から、当時の厚生省の庁舎前に一つの碑が建てられた。','命の尊さを心に刻み、医薬品による悲惨な被害を二度と起こさないよう努める。その誓いを刻んだ碑である。','碑は、いまも同じ場所にある。']};
+
+/* SAFETY CASE（すべて架空）
+   grade：ok＝妥当／insufficient＝不十分／excessive＝過剰・的外れ
+   tools：整備した技術があると現れる追加の情報カード */
+const SAFETY_CASES=[
+ {id:'c1',chapter:1,era:'1930年代風',drug:'セプタール液',kind:'架空の抗菌薬',title:'新しい液剤',
+  situation:'錠剤として使用実績のある抗菌薬セプタールを、飲みやすい液剤にした。発売後、複数の地域から急性腎障害と死亡の報告が届いている。',
+  cards:[['製剤の比較','錠剤のセプタールでは、同様の報告はない。'],['報告の共通点','報告された患者は、全員が液剤を服用していた。'],['液剤の設計','液剤化には新しい溶媒Xを使った。溶媒Xの体内での毒性は試験されていない。']],
+  tools:[],
+  options:[
+   {t:'錠剤で安全だったので、販売を続ける',g:'insufficient',fb:'有効成分の安全性は、製剤の安全性を保証しません。錠剤と液剤の違いを見てください。'},
+   {t:'用量を減らすよう指示する',g:'excessive',fb:'用量を減らしても、溶媒の毒性は残ります。原因に届いていません。'},
+   {t:'液剤の出荷を止め、溶媒を含む製剤全体の毒性を調べる',g:'ok'},
+   {t:'使うかどうかは医師の判断に任せる',g:'insufficient',fb:'医師には溶媒の毒性を知る手段がありません。情報を持つ側が動く必要があります。'}],
+  reason:'錠剤では問題がなく、液剤だけで起きている。有効成分ではなく、製剤の違い（溶媒）が疑われる。死亡例があるため、調査の間も出荷を止める。',
+  lesson:'有効成分だけでなく、製剤全体の安全性を評価する必要がある。',records:['N01'],exam:['ジエチレングリコール','添加剤','製剤設計']},
+ {id:'c2',chapter:2,era:'1950年代風',drug:'ソムニール',kind:'架空の睡眠・鎮静薬',title:'妊娠中にも使われる鎮静薬',
+  situation:'成人では大きな副作用が見られず、「安全な睡眠薬」として妊婦にも使われている。妊娠初期に服用した女性から生まれた子どもに、特定の先天異常が複数報告され始めた。',
+  cards:[['成人での安全性','成人での副作用は軽く、過量に服用しても重篤になりにくい。'],['報告の時期','先天異常の報告は、妊娠初期に服用した例に集中している。'],['報告の広がり','報告は複数の地域から、ほぼ同じ時期に届き始めている。']],
+  tools:[{tech:'T1',title:'承認時の審査資料',text:'提出されたのは、成人を想定した毒性試験と使用経験だけだった。妊娠中の使用や胎児への影響を調べたデータは含まれていない。'}],
+  options:[
+   {t:'成人で安全なので、そのまま使い続ける',g:'insufficient',fb:'成人への安全性と、胎児への安全性は別の問題です。'},
+   {t:'偶然の可能性があるので、報告がさらに集まるまで様子を見る',g:'insufficient',fb:'待っている間にも、妊娠中の服用は続きます。被害は取り返しがつきません。'},
+   {t:'妊婦への使用を直ちに止める措置をとり（出荷停止を含む）、妊娠との関連を重点的に調べる',g:'ok'},
+   {t:'先天異常の治療法の開発を急ぐ',g:'excessive',fb:'まず、新たな曝露を止めることが先です。'}],
+  reason:'被害は胎児に起き、取り返しがつかない。一方で、睡眠薬には代わりの薬がある。因果関係が確定するのを待たずに、まず曝露を止める。',
+  lesson:'成人への安全性と、胎児への安全性は同じではない。',records:['N05'],exam:['催奇形性','器官形成期','妊婦への投薬の原則']},
+ {id:'c3',chapter:3,era:'1990年代風',drug:'ビロセリン',kind:'架空の抗ウイルス薬',title:'単独では安全な抗ウイルス薬',
+  situation:'発売後まもなく、ビロセリンの服用者の一部に、重い骨髄抑制が集中して報告された。ビロセリンだけを服用した患者からの報告は、ほとんどない。',
+  cards:[['報告の共通点','報告された患者は、全員が経口の抗がん薬フルオラン（架空）を服用していた。'],['フルオランの性質','フルオランは、体内で分解される量によって、血中濃度が大きく変わる薬である。'],['ビロセリンの代謝','ビロセリンは、腸内で別の物質に変わることが分かっている。その物質の作用は、十分に調べられていない。']],
+  tools:[{tech:'T3',title:'副作用報告の集計',text:'重篤な報告は、発売後の数週間に集中している。同じ時期に、フルオランの単独使用での報告は増えていない。'}],
+  options:[
+   {t:'ビロセリンの毒性と考え、全患者で用量を減らす',g:'excessive',fb:'ビロセリンだけを服用している患者には、問題が起きていません。原因に届いていません。'},
+   {t:'フルオランの毒性と考え、フルオランの使用を止める',g:'excessive',fb:'フルオランを必要とするがん患者の治療が止まってしまいます。問題は組み合わせです。'},
+   {t:'併用による相互作用を疑い、併用を避けるよう直ちに伝え、代謝経路を調べる',g:'ok'},
+   {t:'偶発的な報告として、経過を観察する',g:'insufficient',fb:'重篤な報告が、特定の併用に集中しています。偶然とは考えにくい状況です。'}],
+  reason:'単独では起きず、併用のときだけに集中している。どちらか一方の毒性ではなく、組み合わせ（代謝を介した相互作用）が疑われる。',
+  lesson:'単独で安全な薬も、組み合わせによって危険になりうる。',records:['N11'],sort:true,exam:['DPD','5-FU','フッ化ピリミジン系','併用禁忌','ギメラシル']},
+ {id:'c4',chapter:4,era:'1980年代風',drug:'ヘモファクター',kind:'架空の血漿由来製剤',title:'血漿由来製剤',
+  situation:'出血が止まりにくい病気の治療に欠かせない製剤である。投与を受けた患者から、ある感染症の報告が相次いでいる。',
+  cards:[['報告の共通点','感染が分かった患者は、全員がヘモファクターの投与を受けていた。'],['製造の方法','ヘモファクターは、多数の供血者の血漿を混ぜて作られる。'],['製造工程','製造工程に、ウイルスを不活化する処理は入っていない。海外では、加熱処理をした製品が使われ始めている。']],
+  tools:[{tech:'T2',title:'有効性と代わりの治療',text:'ヘモファクターは出血を止める効果が高く、患者にとって同等の代わりとなる治療は限られている。'}],
+  options:[
+   {t:'治療に欠かせない薬なので、そのまま使い続ける',g:'insufficient',fb:'有効性が高いことは、感染のリスクを消しません。'},
+   {t:'原料・供血者・製造工程を追跡する。不活化処理をした製品への切り替えを急ぎ、未処理の製品の使用を止める',g:'ok'},
+   {t:'使うかどうかは医師の判断に任せる',g:'insufficient',fb:'医師には、製造工程の情報がありません。情報を持つ側が動く必要があります。'},
+   {t:'血漿から作るすべての製剤を、永久に禁止する',g:'excessive',fb:'治療の選択肢そのものを失わせます。リスクを下げる方法があるかを先に考えてください。'}],
+  reason:'患者にとって欠かせない製剤なので、治療を止めずにリスクを下げる道を探す。原料からの感染が疑われるため、原料と工程を追い、安全な製品へ切り替える。',
+  lesson:'化学的な副作用だけが、医薬品のリスクではない。',records:['N13'],exam:['生物由来製品','特定生物由来製品','ウイルス不活化','感染等被害救済']},
+ {id:'c5',chapter:5,era:'2000年代風',drug:'ネオキナーゼ',kind:'架空の分子標的薬',title:'発売直後の分子標的薬',
+  situation:'進行がんの治療薬として、治験で良好な効果を示した。発売から3か月で、重い間質性肺疾患が複数報告され、一部は死亡している。因果関係は解析中である。',
+  cards:[['使われている患者','他に有効な治療の選択肢が少ない患者に使われている。'],['治験の限界','治験に参加した患者の数は限られ、肺に持病のある患者は少なかった。'],['報告の特徴','報告された症例には、投与開始から短い期間で症状が現れた例が多い。']],
+  tools:[{tech:'T6',title:'発売直後の重点調査',text:'報告は、発売直後の重点的な調査の期間中に集まった。医療機関から、早い段階で情報が届いている。'}],
+  options:[
+   {t:'次回の定期的な添付文書の改訂で対応する',g:'insufficient',fb:'定期的な改訂を待つ間にも、新しい患者への投与が続きます。'},
+   {t:'医療現場へ迅速に安全性情報を伝え、警告と使用上の注意を強化する',g:'ok'},
+   {t:'因果関係が確定するまで、何もしない',g:'insufficient',fb:'「まだ分からない」ことも、伝えるべき情報です。'},
+   {t:'販売を永久に禁止する',g:'excessive',fb:'利益を受けている患者の治療の機会まで失われます。'}],
+  reason:'重い副作用で死亡例もあり、因果関係の確定を待つ余裕はない。一方で、他に治療法の少ない患者にとっては大きな利益もある。使い続ける患者を守るために、迅速な情報伝達が必要である。',
+  lesson:'発売の時点で、安全性は完成していない。見つけたら、速く伝える。',records:['N16'],exam:['間質性肺炎','EGFR-TKI','緊急安全性情報','市販直後調査']}];
+const SAFETY_GRADES={ok:{en:'APPROPRIATE',ja:'妥当'},insufficient:{en:'INSUFFICIENT',ja:'不十分'},excessive:{en:'EXCESSIVE / MISDIRECTED',ja:'過剰・的外れ'}};
+/* ソリブジンの機序の並べ替え（タップして順に選ぶ） */
+const SAFETY_SORT={title:'機序を順に並べる',items:['SORIVUDINE','BVU','DPD INHIBITION','5-FU ACCUMULATION','SEVERE TOXICITY'],
+ ja:['ソリブジン','BVU（腸内細菌による代謝物）','DPDの阻害','5-FUの蓄積','重篤な毒性'],
+ done:'ソリブジンは腸内細菌によってBVUに変わり、BVUが5-FUを分解する酵素DPDを阻害する。分解されない5-FUがたまり、重篤な毒性が現れた。'};
+
+/* SAFETY TECHNOLOGY（14）
+   sec：毎秒生産量の何秒分を価格とするか（解禁した時点の生産量で固定）
+   w：SAFETY SYSTEM への寄与 */
+const SAFETY_TECHS=[
+ {id:'T1',en:'PRE-MARKET SAFETY',ja:'市販前の安全性評価',from:'N02',basis:'1938年 FD&C法',sec:120,w:1,group:'review',
+  effect:'以後のCASEで「承認時の審査資料」の情報カードが現れる。',exam:'承認審査'},
+ {id:'T2',en:'EFFICACY & SAFETY',ja:'有効性と安全性の立証',from:'N06',basis:'1962年 キーフォーバー・ハリス修正法',sec:150,w:1,group:'review',
+  effect:'以後のCASEで「有効性と代わりの治療」の情報カードが現れ、利益と危険を比べられる。',exam:'リスク・ベネフィット'},
+ {id:'T3',en:'SIGNAL SOURCE',ja:'副作用情報の収集',from:'N09',basis:'1967年 副作用モニター制度／1968年 WHO国際医薬品モニタリング',sec:150,w:1,group:'safety',
+  effect:'以後のCASEで「副作用報告の集計」が読める。最終薬局CASEでは、副作用を報告する行動が選べる。',exam:'医薬品・医療機器等安全性情報報告制度'},
+ {id:'T4',en:'SAFETY NET',ja:'安全網（再審査・再評価・救済）',from:'N10',basis:'1979年 薬事法改正／1980年 救済業務開始',sec:180,w:2,group:'relief',
+  effect:'薬害の記録に「救済」の欄が現れる。SAFETY SYSTEMへの寄与が大きい。',exam:'再審査・再評価・医薬品副作用被害救済制度'},
+ {id:'T5',en:'INTERACTION CHECK',ja:'相互作用の確認',from:'N11',basis:'1993年 ソリブジン事件',sec:180,w:1,group:'safety',
+  effect:'最終薬局CASEで、お薬手帳の併用薬と安全性情報を照らし合わせられる。',exam:'併用禁忌・CYP・DPD'},
+ {id:'T6',en:'EARLY SURVEILLANCE',ja:'発売直後の重点監視',from:'N12',basis:'2001年 市販直後調査',sec:180,w:1,group:'safety',
+  effect:'CASE 5で「発売直後の重点調査」の情報カードが現れる。',exam:'市販直後調査'},
+ {id:'T7',en:'BIOLOGICAL SAFETY',ja:'生物由来製品の安全確保',from:'N15',basis:'2002年 薬事法改正／2004年 感染等被害救済制度',sec:180,w:1,group:'relief',
+  effect:'記録に「生物由来製品」の区分が表示される。',exam:'生物由来製品・感染等被害救済'},
+ {id:'T8',en:'SAFETY TRIANGLE',ja:'セイフティ・トライアングル',from:'N15',basis:'2004年 PMDA設立',sec:210,w:1,group:'triangle',
+  effect:'技術一覧で、審査・安全対策・救済の三つが一つにつながって表示される。',exam:'PMDAの3業務'},
+ {id:'T9',en:'PRECISION',ja:'患者を選ぶ',from:'N16',basis:'2004年 EGFR活性化変異の報告',sec:210,w:1,group:'safety',
+  effect:'最終薬局CASEで、検査値のカードを詳しく読める。',exam:'バイオマーカー・コンパニオン診断'},
+ {id:'T10',en:'SAFETY MANAGEMENT',ja:'安全管理体制（GVP）',from:'N17',basis:'2005年 GVP',sec:240,w:1,group:'safety',
+  effect:'最終薬局CASEで、安全性情報が受信箱に届く。',exam:'GVP'},
+ {id:'T11',en:'POST-MARKETING EVIDENCE',ja:'製造販売後の調査・試験（GPSP）',from:'N17',basis:'2005年 GPSP',sec:240,w:1,group:'safety',
+  effect:'最終薬局CASEで、製造販売後調査の情報カードが読める。',exam:'GPSP（調査・試験の実施基準）'},
+ {id:'T12',en:'RISK COMMUNICATION',ja:'リスクコミュニケーション',from:'N18',basis:'2011年 安全性情報の段階化',sec:240,w:1,group:'safety',
+  effect:'最終薬局CASEで、届いた情報の種類（緊急安全性情報・安全性速報・改訂）が表示される。',exam:'イエローレター・ブルーレター・改訂・DSU'},
+ {id:'T13',en:'RISK MANAGEMENT',ja:'リスク管理計画（RMP）',from:'N19',basis:'2012〜2013年 RMP',sec:270,w:1,group:'safety',
+  effect:'最終薬局CASEで、医薬品リスク管理計画の概要カードが読める。',exam:'RMPの構成'},
+ {id:'T14',en:'DIRECT ACCESS',ja:'情報に直接届く',from:'N20',basis:'2019〜2023年 患者副作用報告・電子添文',sec:300,w:1,group:'safety',
+  effect:'最終薬局CASEで、電子添文を参照できる。',exam:'電子添文・患者副作用報告'}];
+const SAFETY_TRIANGLE=[['review','審査','T1・T2'],['safety','安全対策','T3・T5・T6・T9〜T14'],['relief','救済','T4・T7']];
+
+/* SAFETY REVIEW（5章×3問） */
+const SAFETY_QUESTIONS=[
+ {id:'q1',chapter:1,q:'1937年の米国のエリキシル事件で、多数の死者が出た主な原因はどれか。',o:['有効成分の過量','溶媒のジエチレングリコール','細菌の混入','光による分解物','他の薬との相互作用'],a:[1],
+  ex:'有効成分のスルファニルアミドではなく、溶媒が腎障害の原因だった。製剤全体の安全性を評価する必要性を示した事件である。',rel:['N01','N02']},
+ {id:'q2',chapter:1,q:'アナフィラキシーショックの初期治療で、第一選択となる薬物はどれか。',o:['ジフェンヒドラミン','プレドニゾロン','アドレナリン','アトロピン','フロセミド'],a:[2],
+  ex:'アドレナリンの筋肉内注射が第一選択である。抗ヒスタミン薬や副腎皮質ステロイドは、補助的に用いる。',rel:['N03']},
+ {id:'q3',chapter:1,q:'1965年に日本でショック死が相次ぎ、製造販売の中止・回収につながったかぜ薬の形態はどれか。',o:['坐剤','アンプル入りの内服液','貼付剤','点眼剤','吸入剤'],a:[1],
+  ex:'アンプル入りのかぜ薬を服用した後のショック死が相次ぎ、ピリン系解熱鎮痛成分などを含む製品が問題となった。製造販売の中止・回収へとつながった。',rel:['N04']},
+ {id:'q4',chapter:2,q:'長期の使用によって網膜症を生じた薬物はどれか。',o:['サリドマイド','クロロキン','キノホルム','ソリブジン','ペニシリン'],a:[1],
+  ex:'クロロキンは長期投与で網膜症を起こし、服用をやめた後も回復しにくかった。',
+  table:[['クロロキン','網膜症'],['キノホルム','スモン（SMON）'],['サリドマイド','胎児の形成異常'],['ソリブジン','5-FU系との相互作用'],['ペニシリン','アナフィラキシー']],rel:['N07']},
+ {id:'q5',chapter:2,q:'キノホルムによる薬害として知られる疾患はどれか。',o:['スティーブンス・ジョンソン症候群','亜急性脊髄視神経症（SMON）','横紋筋融解症','間質性肺炎','再生不良性貧血'],a:[1],
+  ex:'キノホルムは整腸剤として使われ、スモン（亜急性脊髄視神経症）の原因となった。1970年9月に販売・使用が停止された。',rel:['N08']},
+ {id:'q6',chapter:2,multi:2,q:'医薬品副作用被害救済制度について、正しいものを2つ選べ。',o:['医薬品を適正に使用したにもかかわらず生じた、副作用による健康被害が対象である。','医薬品を不適正に使用した場合の被害も対象となる。','給付の財源は、全額が国の予算でまかなわれる。','救済給付の請求は、PMDAに対して行う。','すべての医薬品が対象であり、除外される医薬品はない。'],a:[0,3],
+  ex:'2：不適正な使用による被害は対象外である。　3：給付の財源の中心は、製造販売業者などの拠出金である。　5：厚生労働大臣が指定する抗悪性腫瘍剤など、一部の医薬品等は救済制度の対象から除外される。',rel:['N10']},
+ {id:'q7',chapter:3,q:'ソリブジンの代謝物（BVU）が阻害し、フルオロウラシル（5-FU）の毒性を増強させた酵素はどれか。',o:['CYP3A4','ジヒドロピリミジン脱水素酵素（DPD）','モノアミン酸化酵素（MAO）','チオプリンメチルトランスフェラーゼ（TPMT）','UDP-グルクロン酸転移酵素（UGT1A1）'],a:[1],
+  ex:'BVUはDPDを阻害し、5-FUが分解されずに体内にたまった。',rel:['N11']},
+ {id:'q8',chapter:3,q:'テガフール・ギメラシル・オテラシルカリウム配合剤で、ギメラシルの主な役割はどれか。',o:['テガフールを5-FUに変換する','DPDを阻害して5-FUの分解を抑える','消化管で5-FUのリン酸化を抑え、消化器毒性を軽減する','葉酸を補って骨髄抑制を防ぐ','腎臓からの排泄を促す'],a:[1],
+  ex:'3はオテラシルカリウムの役割である。ソリブジン事件で害となったDPDの阻害を、治療のうえで意図して利用した例として理解するとよい。',rel:['N11']},
+ {id:'q9',chapter:3,q:'市販直後調査が行われる期間はどれか。',o:['承認から3か月間','販売開始から6か月間','販売開始から1年間','再審査期間の全期間','販売開始から3年間'],a:[1],
+  ex:'市販直後調査は、新医薬品の販売開始から6か月間行われる。',rel:['N12']},
+ {id:'q10',chapter:4,q:'薬害エイズの原因となった製剤はどれか。',o:['アルブミン製剤','非加熱の血液凝固因子製剤','免疫グロブリン製剤','赤血球製剤','遺伝子組換えインスリン'],a:[1],
+  ex:'血友病の治療に使われた非加熱の血液凝固因子製剤に、HIVが混入していた。',rel:['N13']},
+ {id:'q11',chapter:4,q:'生物由来製品を適正に使用したにもかかわらず、その製品を介して感染症にかかった場合に救済を行う制度はどれか。',o:['医薬品副作用被害救済制度','生物由来製品感染等被害救済制度','予防接種健康被害救済制度','労働者災害補償保険','産科医療補償制度'],a:[1],
+  ex:'生物由来製品感染等被害救済制度は2004年に始まり、PMDAが窓口となっている。',rel:['N15']},
+ {id:'q12',chapter:4,q:'PMDAが担う3つの業務の組み合わせとして、正しいものはどれか。',o:['審査・安全対策・救済','審査・薬価算定・救済','製造・安全対策・流通','審査・保険償還・研究','承認・監視指導・処分'],a:[0],
+  ex:'審査・安全対策・救済の三つの連携は、セイフティ・トライアングルと呼ばれる。',rel:['N15']},
+ {id:'q13',chapter:5,q:'安全性情報の伝達手段とその色の組み合わせとして、正しいものはどれか。',o:['緊急安全性情報―青、安全性速報―黄','緊急安全性情報―黄、安全性速報―青','緊急安全性情報―赤、安全性速報―黄','緊急安全性情報―黄、安全性速報―赤','緊急安全性情報―青、安全性速報―赤'],a:[1],
+  ex:'緊急安全性情報はイエローレター、安全性速報はブルーレターと呼ばれる。',rel:['N18']},
+ {id:'q14',chapter:5,q:'医薬品リスク管理計画（RMP）の「安全性検討事項」に含まれないものはどれか。',o:['重要な特定されたリスク','重要な潜在的リスク','重要な不足情報','薬価の算定根拠'],a:[3],
+  ex:'安全性検討事項は、重要な特定されたリスク・重要な潜在的リスク・重要な不足情報で構成される。',rel:['N19']},
+ {id:'q15',chapter:5,q:'製造販売後の調査及び試験の実施の基準を示す略称はどれか。',o:['GVP','GPSP','GQP','GCP','GLP'],a:[1],
+  ex:'それぞれの基準の対象を区別して覚えるとよい。',
+  table:[['GVP','製造販売後安全管理'],['GPSP','製造販売後の調査・試験'],['GQP','品質管理'],['GCP','臨床試験（治験）'],['GLP','非臨床試験（安全性試験）']],rel:['N17']}];
+
+/* SAFETY DOCUMENT ARCHIVE（安全性情報資料館）：実物の特徴を抽象化した資料カード。外部から取得しない */
+const SAFETY_DOCUMENTS=[
+ {id:'yellow',ja:'緊急安全性情報',en:'YELLOW LETTER',mark:'黄',from:'N18',
+  what:'製造販売業者が、医療関係者などに向けて出す、最も緊急度の高い安全性情報。黄色の用紙で作られる。',
+  when:'緊急かつ重大な注意喚起や、使用制限に関わる対策が必要なとき。',
+  why:'重大なリスクが見つかったとき、通常の改訂を待たずに、確実に現場へ届けるため。'},
+ {id:'blue',ja:'安全性速報',en:'BLUE LETTER',mark:'青',from:'N18',
+  what:'緊急安全性情報に準じて、迅速な注意喚起のために出される安全性情報。青色の用紙で作られる。2011年に枠組みが設けられた。',
+  when:'一般的な使用上の注意の改訂よりも、迅速な注意喚起や適正使用のための対応が必要なとき。',
+  why:'リスクの緊急度に応じて、伝え方の強さを使い分けるため。'},
+ {id:'dsu',ja:'医薬品安全対策情報',en:'DSU',mark:'DSU',from:'N18',
+  what:'添付文書の「使用上の注意」の改訂内容を、まとめて医療関係者に知らせる情報。製薬業界の団体が編集して発行する。',
+  when:'使用上の注意が改訂されたとき。改訂の内容が、定期的にまとめて届く。',
+  why:'一件ずつの改訂を、現場が見落とさずに把握できるようにするため。'},
+ {id:'rmp',ja:'医薬品リスク管理計画',en:'RMP',mark:'RMP',from:'N19',
+  what:'医薬品ごとに、安全性検討事項（重要な特定されたリスク・潜在的リスク・不足情報）と、監視とリスク最小化の計画をまとめた文書。',
+  when:'新薬の承認時から作られ、新しい知見に応じて更新される。薬局でも、患者への説明や副作用の確認に使える。',
+  why:'「何が分かっていて、何が分かっていないか」を整理し、発売後の監視とリスク低減を計画的に行うため。'},
+ {id:'epi',ja:'電子添文',en:'ELECTRONIC PACKAGE INSERT',mark:'GS1',from:'N20',
+  what:'医療用医薬品などの添付文書を、紙ではなく電子的に提供するもの。箱のGS1コードを読み取ると、最新版にたどり着ける。',
+  when:'調剤・監査・服薬指導など、最新の注意事項を確かめたいとき。',
+  why:'改訂された情報を、紙の差し替えを待たずに、いつでも最新の状態で確認できるようにするため。'},
+ {id:'guide',ja:'患者向医薬品ガイド',en:'PATIENT MEDICATION GUIDE',mark:'患者',from:'N20',
+  what:'患者や家族が、重篤な副作用の早期発見などに役立てられるように、添付文書をもとに分かりやすく作られた説明文書。',
+  when:'特に患者に注意してほしい副作用がある医薬品で、服薬指導や自宅での確認に使う。',
+  why:'副作用に最初に気づくのは、患者自身であることが多いから。患者も、安全の担い手の一人である。'}];
+
+/* 最終薬局CASE（グリセタン錠はゲーム内の架空医薬品） */
+const SAFETY_FINAL={
+ drug:'グリセタン錠',kind:'架空の経口血糖降下薬',
+ setting:'発売から5か月の新薬（ゲーム内の設定）。主に腎臓から排泄され、一部はCYP3Aで代謝されるという設定にしている。',
+ info:'グリセタン錠：腎機能が低下した患者で、重い低血糖の報告が集まっています。腎機能に応じた用量の確認と、CYP3A阻害薬との併用への注意をお願いします。',
+ infoType:'安全性速報（ゲーム内の架空の情報）',
+ patients:[
+  {id:'A',label:'患者A',age:'72歳・女性',renal:'eGFR 38',other:'他院の処方あり（お薬手帳）',target:true},
+  {id:'B',label:'患者B',age:'58歳・男性',renal:'eGFR 82',other:'問題となる併用薬なし',target:false}],
+ pickWrong:'患者Bは腎機能が保たれ、問題となる併用薬もありません。安全性情報が示す条件（腎機能の低下・CYP3A阻害薬の併用）に当てはまるのは、どちらでしょうか。患者Bには、低血糖の症状と対処を改めて説明しておきます。',
+ pickRight:'患者Aは、腎機能の低下と、他院からの処方の両方を確認する必要があります。患者Bには、低血糖の症状と対処を改めて説明しておきます。',
+ cards:[
+  {k:'rx',title:'処方薬',text:'グリセタン錠、アムロジピン錠（前回と変更なし）'},
+  {k:'otc',title:'併用薬（お薬手帳）',text:'3日前から、他院の耳鼻科でクラリスロマイシンが処方されている。',tech:'T5',plus:'相互作用の確認：クラリスロマイシンはCYP3Aを阻害する薬。安全性情報の「CYP3A阻害薬との併用」に当たる。'},
+  {k:'sym',title:'体調の聞き取り',text:'この2日、夕方に冷や汗とふらつきがあったという。'},
+  {k:'lab',title:'検査値',text:'eGFR 38　HbA1c 7.0%',tech:'T9',plus:'詳しく読む：eGFR 38は、安全性情報が示す「腎機能の低下」に当たる。血糖の管理は落ち着いており、急いで薬を強める状況ではない。'},
+  {k:'hx',title:'アレルギー歴・副作用歴',text:'なし'},
+  {k:'epi',title:'電子添文',text:'',tech:'T14',plus:'腎機能が低下した患者では用量の調節が必要な旨と、低血糖への注意が記載されている（ゲーム内の架空の記載）。'},
+  {k:'rmp',title:'医薬品リスク管理計画（概要）',text:'',tech:'T13',plus:'重要な特定されたリスク：低血糖。重要な不足情報：腎機能が低下した患者での使用経験（ゲーム内の架空の記載）。'},
+  {k:'pms',title:'製造販売後調査',text:'',tech:'T11',plus:'市販直後調査の期間中で、腎機能別の使用状況のデータが集められている（ゲーム内の架空の設定）。'}],
+ options:[
+  {t:'そのまま薬を渡し、次の受診時に医師へ伝えるよう患者に話す',g:'insufficient',fb:'症状がすでに出ています。今日、処方医に伝える必要があります。'},
+  {t:'薬剤師の判断で半量にして渡す',g:'excessive',fb:'処方の内容を変えるには、処方医への疑義照会が必要です（薬剤師法第24条）。'},
+  {t:'処方医に、安全性情報・腎機能・併用薬・症状を伝えて疑義照会する',g:'ok'},
+  {t:'患者に、グリセタンを飲むのをやめるよう伝える',g:'excessive',fb:'自己判断での中止は、血糖の悪化を招くおそれがあります。処方医の判断を仰ぎます。'}],
+ inquiry:'処方医は、グリセタンの減量を指示した。あわせて、クラリスロマイシンを処方した耳鼻科とも連絡を取り、治療を調整することになった。',
+ counsel:'患者Aに、低血糖の症状（冷や汗・ふらつき・手のふるえなど）と、そのときの対処（ブドウ糖をとるなど）を説明した。気になる症状があれば、すぐに連絡するよう伝えた。',
+ report:[
+  {t:'薬歴に記録する（それ以上はしない）',g:'insufficient',fb:'記録はとても大切です。ただ、この症例は、新しい安全性情報と同じ症状が、腎機能の低下と併用薬が重なる状況で現れたものです。報告の必要性を検討すべき状況です。'},
+  {t:'薬歴に記録し、保健衛生上の危害の防止に必要かを判断したうえで、副作用として報告する',g:'ok'},
+  {t:'報告は製薬企業がするものなので、何もしない',g:'insufficient',fb:'医薬関係者にも、副作用を報告する役割があります（薬機法第68条の10第2項）。'}],
+ reportOk:'医薬関係者は、保健衛生上の危害の発生または拡大を防止するため必要があると認めるとき、副作用等を厚生労働大臣に報告する（薬機法第68条の10第2項。報告はPMDAが受け付ける）。疑えば必ず報告する、というものではない。この症例では、新しい安全性情報と同じ症状が、同じ条件の重なる患者に現れた。その情報を共有する意味は大きい、と判断できる。',
+ noSignal:'（SIGNAL SOURCE を整備していないため、報告の手順が分からない。記録だけを残した。）',
+ cycle:[['REPORT','報告'],['SIGNAL','シグナル'],['ASSESS','評価'],['COMMUNICATE','伝達'],['MINIMIZE','リスク低減']],
+ cycleText:'あなたの報告は、ほかの報告と集められ、次の安全性情報の一部になる。',
+ cycleAlt:'報告の仕組みがあれば、この記録は、ほかの報告と集められて次の安全性情報の一部になりえた。'};
+
+const SAFETY_ENDING={
+ lines:[['薬の歴史は、','新しい薬を作る歴史だけではありません。'],['薬による被害を知り、','原因を調べ、','情報を共有し、','同じことを繰り返さない仕組みを作る。'],['そして、その知識を','次の患者のために使う。'],['それもまた、','薬学の歴史です。']],
+ link:['薬草を摘んだ人から、','薬局で情報を確かめる人まで。','歴史は、いまも続いています。']};
+
+/* 専門史の登録（将来の専門史も、ここに同じ形で足す） */
+const SPECIAL_HISTORIES={safety:{title:'薬害から医薬品安全へ',en:'FROM DRUG DISASTERS TO DRUG SAFETY',saveKey:'yakureki-safety-v1'}};
+
+/* ======================================================================
+ 専門史「薬害から医薬品安全へ」 ロジックとUI
+ ・本編の S / PROD / fmt / save / recalc / notify / safe を使う（同じ機能を重複して作らない）
+ ・進行状況は本編とは別のキー（yakureki-safety-v1）に保存する。本編のセーブ形式は変えない
+ ・ここで例外が起きても本編が止まらないよう、入口はすべて try/catch で囲む
+ ====================================================================== */
+var sf=null; // 専門史の状態（var：本編の recalc から先に参照されても TDZ にならないように）
+const SF_KEY=SPECIAL_HISTORIES.safety.saveKey, SF_VER=1;
+const SF_EV=Object.fromEntries(SAFETY_EVENTS.map(x=>[x.id,x]));
+const SF_CASE=Object.fromEntries(SAFETY_CASES.map(x=>[x.id,x]));
+const SF_TECH=Object.fromEntries(SAFETY_TECHS.map(x=>[x.id,x]));
+const SF_Q=Object.fromEntries(SAFETY_QUESTIONS.map(x=>[x.id,x]));
+const SF_CH=Object.fromEntries(SAFETY_CHAPTERS.map(x=>[x.no,x]));
+const SF_REC_W=0.5, SF_GAP_HIGH=1.5, SF_TRUST=1.05; // 記録1件の寄与／「高」の境目／LOWのときの本編生産ボーナス（+5%）
+function sfNew(){ return {v:SF_VER,unlockSeen:false,chapter:1,cases:{},sort:{},records:{},techs:{},cost:{},reviews:{},oath:false,final:{},endingSeen:false}; }
+function sfLoad(){
+  sf=sfNew();
+  try{ const raw=safe(()=>localStorage.getItem(SF_KEY),null); if(!raw) return; const o=JSON.parse(raw); if(!o||typeof o!=='object') return;
+    const keep=(src,dict)=>{ const r={}; if(src&&typeof src==='object') for(const k in src) if(dict[k]) r[k]=src[k]; return r; };
+    sf.unlockSeen=!!o.unlockSeen; sf.chapter=Math.min(6,Math.max(1,Math.floor(+o.chapter||1)));
+    sf.cases=keep(o.cases,SF_CASE); sf.sort=keep(o.sort,SF_CASE); sf.records=keep(o.records,SF_EV); sf.techs=keep(o.techs,SF_TECH);
+    sf.cost={}; if(o.cost&&typeof o.cost==='object') for(const k in o.cost) if(SF_TECH[k]&&isFinite(+o.cost[k])&&+o.cost[k]>0) sf.cost[k]=+o.cost[k];
+    sf.reviews=keep(o.reviews,SF_Q); sf.oath=!!o.oath; sf.final=(o.final&&typeof o.final==='object')?o.final:{}; sf.endingSeen=!!o.endingSeen;
+  }catch(e){ sf=sfNew(); }
+}
+function sfSave(){ if(!sf) return; safe(()=>localStorage.setItem(SF_KEY,JSON.stringify(sf))); }
+function sfReset(){ safe(()=>localStorage.removeItem(SF_KEY)); sf=sfNew(); }
+const sfUnlocked=()=>!!(S&&S.cleared);
+
+/* ---------- 進行の判定 ---------- */
+const sfCaseOf=ch=>SAFETY_CASES.find(c=>c.chapter===ch);
+const sfSolved=id=>!!(sf.cases[id]&&sf.cases[id].solved);
+function sfRecAvail(r){ if(r.chapter>sf.chapter) return false; const p=r.prerequisite; return p.indexOf('case:')===0?sfSolved(p.slice(5)):!!sf.records[p]; }
+const sfTechAvail=t=>!!sf.records[t.from];
+function sfTechCost(t){ if(!sf.cost[t.id]) sf.cost[t.id]=Math.max(100,Math.ceil((PROD||0)*t.sec)); return sf.cost[t.id]; } // 解禁した時点の生産量で価格を固定する
+const sfChMax=ch=>SAFETY_EVENTS.filter(r=>r.chapter===ch).length*SF_REC_W+SAFETY_TECHS.filter(t=>SF_EV[t.from].chapter===ch).reduce((a,t)=>a+t.w,0);
+const SF_TOTAL=SAFETY_CHAPTERS.reduce((a,c)=>a+sfChMax(c.no),0);
+function sfDev(){ let d=0; for(let c=1;c<=Math.min(5,sf.chapter);c++) d+=sfChMax(c); return d; } // DRUG DEVELOPMENT：章を開いたときにだけ増える（時間では増えない）
+function sfSys(){ return Object.keys(sf.records).length*SF_REC_W+SAFETY_TECHS.filter(t=>sf.techs[t.id]).reduce((a,t)=>a+t.w,0); }
+function sfGap(){ const g=sfDev()-sfSys(); return g<=0.001?'low':g<=SF_GAP_HIGH?'mid':'high'; }
+// 本編の recalc から呼ばれる：専門史が LOW のときだけ、本編の生産に小さな信頼ボーナス
+function sfTrust(){ try{ return (sf&&sfUnlocked()&&sf.chapter>=1&&Object.keys(sf.records).length&&sfGap()==='low')?SF_TRUST:1; }catch(e){ return 1; } }
+const sfCanAdvance=()=>sf.chapter<=5&&sfSolved(sfCaseOf(sf.chapter).id)&&sfGap()!=='high';
+
+/* ---------- 画面の状態（保存しない） ---------- */
+let sfUI={tab:'progress',view:'home',ch:1,caseId:null,step:'intro',pick:null,sortSeq:[],sortMsg:'',rq:0,rch:1,rpick:[],ranswered:false,fstep:0,fpick:null};
+const $sf=id=>document.getElementById(id);
+const sfOpen=()=>{ const r=$sf('sfRoot'); return !!(r&&!r.hidden); };
+const typeTag=t=>'<span class="sf-type sf-type-'+t+'"><b>'+SAFETY_TYPES[t].en+'</b>'+SAFETY_TYPES[t].ja+'</span>';
+const P_=a=>a.map(x=>'<p>'+x+'</p>').join('');
+
+function openSafety(view){ try{
+  if(!sfUnlocked()) return;
+  if(!sf) sfLoad();
+  if(!$sf('ending').hidden){ $sf('ending').hidden=true; }
+  closeSheet&&closeSheet();
+  sf.unlockSeen=true; sfSave();
+  sfUI.tab='progress'; sfUI.view=view||'home'; sfUI.ch=Math.min(5,sf.chapter);
+  $sf('sfRoot').hidden=false; document.documentElement.classList.add('sf-open'); $sf('coach').hidden=true; holdToast();
+  sfRender(); $sf('sfScroll').scrollTop=0;
+ }catch(e){ console.error(e); toast('専門史を開けませんでした'); } }
+function closeSafety(){ $sf('sfRoot').hidden=true; document.documentElement.classList.remove('sf-open'); sfCloseSheet(); sfSave(); recalc(); renderAll(); setTimeout(()=>{ runQueue(); coachUpdate(); pumpN(); },50); }
+
+/* ---------- 描画 ---------- */
+function sfRender(){
+  const full=['case','final','oath','end'].includes(sfUI.view);
+  $sf('sfRoot').classList.toggle('sf-full',full);
+  $sf('sfTop').innerHTML=sfTopHtml(full);
+  let h='';
+  if(sfUI.view==='case') h=sfCaseHtml(); else if(sfUI.view==='final') h=sfFinalHtml(); else if(sfUI.view==='oath') h=sfOathHtml(); else if(sfUI.view==='end') h=sfEndHtml();
+  else if(sfUI.view==='review') h=sfReviewHtml(); else if(sfUI.view==='chapter') h=sfChapterHtml(sfUI.ch);
+  else if(sfUI.tab==='records') h=sfRecordsHtml(); else if(sfUI.tab==='techs') h=sfTechsHtml(); else if(sfUI.tab==='timeline') h=sfTimelineHtml(); else if(sfUI.tab==='archive') h=sfArchiveHtml(); else h=sfHomeHtml();
+  $sf('sfBody').innerHTML=h;
+  const act=full?'':['chapter','review'].includes(sfUI.view)?'progress':sfUI.tab;
+  document.querySelectorAll('#sfNav button').forEach(b=>b.classList.toggle('on',b.dataset.sfTab===act));
+  sfAfford();
+}
+function sfTopHtml(full){
+  return '<button class="sf-back" data-sf="exit">← 本編へ戻る</button>'+
+   '<div class="sf-ttl"><small>SPECIAL HISTORY</small>'+SPECIAL_HISTORIES.safety.title+'</div>'+
+   (full?'':'<div class="sf-kp"><b id="sfKp">'+fmt(S.kp)+'</b><small>💊 知識P</small></div>');
+}
+function sfGapHtml(){
+  const d=sfDev(), s=sfSys(), g=sfGap(), L={high:['HIGH','高'],mid:['MEDIUM','中'],low:['LOW','低']}[g];
+  const w=x=>Math.max(0,Math.min(100,100*x/SF_TOTAL)).toFixed(1)+'%';
+  return '<div class="sf-gap sf-gap-'+g+'"><div class="sf-bar"><span>DRUG DEVELOPMENT</span><div><i style="width:'+w(d)+'"></i></div></div>'+
+   '<div class="sf-bar sys"><span>SAFETY SYSTEM</span><div><i style="width:'+w(Math.min(s,d))+'"></i></div></div>'+
+   '<div class="sf-gapl"><span>SAFETY GAP</span><b>'+(g==='high'?'▲ ':g==='mid'?'■ ':'▽ ')+L[0]+'　'+L[1]+'</b></div>'+
+   (g==='high'?'<div class="sf-gapm">安全の仕組みが、薬の進歩に追いついていません。<br>HISTORY RECORD を読み、SAFETY TECHNOLOGY を整備してください。</div>':
+    g==='low'?'<div class="sf-gapm">TRUST BONUS：安全の仕組みが追いついています。本編の生産 +'+Math.round((SF_TRUST-1)*100)+'%</div>':'<div class="sf-gapm">次の章へ進めます。</div>')+'</div>';
+}
+function sfHomeHtml(){
+  let h='<div class="sf-hero"><div class="sf-k">SPECIAL HISTORY</div><h1>'+SPECIAL_HISTORIES.safety.title+'</h1><div class="sf-en">'+SPECIAL_HISTORIES.safety.en+'</div>'+
+   '<p>本編は、薬を作る歴史でした。ここでは、薬を安全に使う仕組みが、どのように作られてきたかをたどります。</p>'+
+   '<p class="sf-mute">各章では、まず架空の医薬品で安全性の問題を判断します。そのあとで、実際に起きた歴史が開示されます。</p></div>'+sfGapHtml();
+  SAFETY_CHAPTERS.forEach(c=>{ const open=c.no<=sf.chapter, cur=c.no===sf.chapter, cs=sfCaseOf(c.no), rs=SAFETY_EVENTS.filter(r=>r.chapter===c.no);
+    const st=!open?'LOCKED':cur&&sf.chapter<=5?'進行中':'✓ 完了';
+    h+='<button class="sf-ch'+(open?'':' off')+(cur?' cur':'')+'" '+(open?'data-sf="chapter" data-arg="'+c.no+'"':'disabled')+'><span class="sf-no">'+c.roman+'</span><span><b>'+c.title+'</b><small>'+c.span+'　'+c.theme+'</small>'+
+      (open?'<small>CASE '+(sfSolved(cs.id)?'✓':'—')+'　RECORD '+rs.filter(r=>sf.records[r.id]).length+'/'+rs.length+'</small>':'')+'</span><em>'+st+'</em></button>'; });
+  const ep=sf.chapter>=6;
+  h+='<button class="sf-ch'+(ep?' cur':' off')+'" '+(ep?'data-sf="epilogue"':'disabled')+'><span class="sf-no">E</span><span><b>終章</b><small>1999 誓いの碑 → 2026 COMMUNITY PHARMACY</small></span><em>'+(sf.final.done?'✓ 完了':ep?'進む':'LOCKED')+'</em></button>';
+  if(sf.final.done) h+='<button class="sf-btn sub" data-sf="end">エンディングを見る</button>';
+  return h;
+}
+function sfChapterHtml(no){
+  const c=SF_CH[no], cs=sfCaseOf(no), rs=SAFETY_EVENTS.filter(r=>r.chapter===no), ts=SAFETY_TECHS.filter(t=>SF_EV[t.from].chapter===no), qs=SAFETY_QUESTIONS.filter(q=>q.chapter===no);
+  let h='<button class="sf-link" data-sf="home">← 章の一覧</button><div class="sf-chh"><span class="sf-no sf-nob">'+c.roman+'</span><div><div class="sf-k">CHAPTER '+c.roman+'　'+c.en+'</div><h2>'+c.title+'</h2><small>'+c.span+'　'+c.theme+'</small></div></div>';
+  if(c.note) h+='<div class="sf-note">'+c.note+'</div>';
+  h+='<div class="sf-intro">'+P_(c.intro)+'<div class="sf-dev">DRUG DEVELOPMENT ＋　'+c.dev+'</div></div>';
+  // 1. CASE
+  const cr=sf.cases[cs.id];
+  h+='<div class="sf-sec">1　SAFETY CASE</div><div class="sf-card"><div class="sf-fict">FICTIONAL CASE　この症例と医薬品は架空です</div><b>'+cs.title+'</b><div class="sf-mute">'+cs.drug+'（'+cs.kind+'）・'+cs.era+'</div>'+
+   (cr&&cr.solved?'<div class="sf-ok">判断済み　初回の判断：'+SAFETY_GRADES[cr.first].ja+'</div><button class="sf-btn sub" data-sf="case" data-arg="'+cs.id+'">もう一度見る</button>':'<button class="sf-btn" data-sf="case" data-arg="'+cs.id+'">CASE を始める</button>')+'</div>';
+  // 2. RECORDS
+  h+='<div class="sf-sec">2　HISTORY RECORD</div>'+rs.map(sfRecRow).join('');
+  // 3. TECHNOLOGY
+  h+='<div class="sf-sec">3　SAFETY TECHNOLOGY</div>'+ts.map(sfTechCard).join('');
+  // 4. REVIEW（任意）
+  const nr=qs.filter(q=>sf.reviews[q.id]).length;
+  h+='<div class="sf-sec">4　SAFETY REVIEW <small>任意・'+qs.length+'問</small></div><div class="sf-card">'+(sfSolved(cs.id)?'<div class="sf-mute">この章の知識を、国家試験の観点で確かめます。次の章へ進む条件ではありません。</div><button class="sf-btn sub" data-sf="review" data-arg="'+no+'">'+(nr?'もう一度解く（解答済み '+nr+'/'+qs.length+'）':'解いてみる')+'</button>':'<div class="sf-mute">CASE の判断のあとに解けます。</div>')+'</div>';
+  // 5. 次の章
+  if(no===sf.chapter&&no<=5){ h+='<div class="sf-sec">5　NEXT</div>'+sfGapHtml();
+    h+=sfCanAdvance()?'<button class="sf-btn" data-sf="advance">'+(no<5?'CHAPTER '+SF_CH[no+1].roman+' へ進む':'終章へ進む')+'</button>':
+      '<button class="sf-btn off" disabled>'+(!sfSolved(cs.id)?'CASE の判断が必要です':'安全の仕組みが追いついていません')+'</button>'; }
+  return h;
+}
+function sfRecRow(r){
+  if(sf.records[r.id]) return '<button class="sf-row" data-sf="rec" data-arg="'+r.id+'"><span class="sf-yr">'+r.yl+'</span><span><b>'+r.titleJa+'</b>'+typeTag(r.type)+(sf.techs.T7&&r.chapter===4?'<span class="sf-type sf-bio"><b>BIOLOGICS</b>生物由来製品</span>':'')+'</span><i>›</i></button>';
+  if(sfRecAvail(r)) return '<button class="sf-row new" data-sf="rec" data-arg="'+r.id+'"><span class="sf-yr">'+r.yl+'</span><span><b>'+r.titleJa+'</b>'+typeTag(r.type)+'</span><i>未読 ›</i></button>';
+  return '<div class="sf-row off"><span class="sf-yr">？</span><span><b>？？？</b><small>'+(r.prerequisite.indexOf('case:')===0?'CASE の判断のあとに開く':'前の記録を読むと開く')+'</small></span><i></i></div>';
+}
+function sfTechCard(t){
+  const own=!!sf.techs[t.id], av=sfTechAvail(t);
+  if(!own&&!av) return '<div class="sf-tech off"><div class="sf-k">'+t.id+'</div><b>？？？</b><div class="sf-mute">関連する記録を読むと解禁</div></div>';
+  const c=own?0:sfTechCost(t);
+  return '<div class="sf-tech'+(own?' own':'')+'"><div class="sf-k">'+t.id+'　'+t.en+'</div><b>'+t.ja+'</b><div class="sf-mute">'+t.basis+'</div><div class="sf-eff">'+t.effect+'</div><div class="sf-exam">国試の観点：'+t.exam+'</div>'+
+   (own?'<div class="sf-ok">✓ 整備済み</div>':'<button class="sf-btn" data-sf="buy" data-arg="'+t.id+'" data-sfcost="'+c+'">整備する<small>'+fmt(c)+' 知識P（現在の生産で約'+Math.round(t.sec/60)+'分）</small></button>')+'</div>';
+}
+function sfRecordsHtml(){
+  let h='<div class="sf-sec">HISTORY RECORD <small>'+Object.keys(sf.records).length+' / '+SAFETY_EVENTS.length+'</small></div><div class="sf-legend">'+Object.keys(SAFETY_TYPES).map(typeTag).join('')+'</div>';
+  SAFETY_CHAPTERS.forEach(c=>{ h+='<div class="sf-erah">CHAPTER '+c.roman+'　'+c.title+' <small>'+c.span+'</small></div>'+(c.note&&c.no<=sf.chapter?'<div class="sf-note">'+c.note+'</div>':'');
+    h+=c.no<=sf.chapter?SAFETY_EVENTS.filter(r=>r.chapter===c.no).map(sfRecRow).join(''):'<div class="sf-row off"><span class="sf-yr">？</span><span><b>？？？</b><small>この章はまだ開いていません</small></span><i></i></div>'; });
+  return h;
+}
+function sfTechsHtml(){
+  const n=SAFETY_TECHS.filter(t=>sf.techs[t.id]).length;
+  let h='<div class="sf-sec">SAFETY TECHNOLOGY <small>'+n+' / '+SAFETY_TECHS.length+'</small></div><div class="sf-mute" style="margin:0 2px 8px">制度は、名前を覚えるものではなく、安全を守るための「能力」です。整備すると、以後のCASEや最終薬局CASEで使えるようになります。</div>';
+  if(sf.techs.T8) h+='<div class="sf-tri"><div class="sf-k">SAFETY TRIANGLE　PMDA</div><div class="sf-tri-in">'+SAFETY_TRIANGLE.map(([g,ja,ids])=>{ const ts=SAFETY_TECHS.filter(t=>t.group===g); return '<div><b>'+ja+'</b><small>'+ts.filter(t=>sf.techs[t.id]).length+' / '+ts.length+'</small></div>'; }).join('<i>⇄</i>')+'</div><div class="sf-mute">審査・安全対策・救済は、一つの機関のもとでつながっている。</div></div>';
+  SAFETY_CHAPTERS.forEach(c=>{ if(c.no>sf.chapter) return; h+='<div class="sf-erah">CHAPTER '+c.roman+'　'+c.title+'</div>'+SAFETY_TECHS.filter(t=>SF_EV[t.from].chapter===c.no).map(sfTechCard).join(''); });
+  h+='<div class="sf-tech off"><div class="sf-k">FINAL</div><b>PHARMACOVIGILANCE</b><div class="sf-mute">整備するものではありません。終章の最後に到達すると記録されます。'+(sf.final.done?'　<span class="sf-okt">✓ COMPLETE</span>':'')+'</div></div>';
+  return h;
+}
+function sfTimelineHtml(){
+  const xs=SAFETY_EVENTS.slice().sort((a,b)=>a.year-b.year);
+  let h='<div class="sf-sec">SAFETY TIMELINE <small>年代順</small></div><div class="sf-mute" style="margin:0 2px 10px">章はテーマ別に分けているため、年代が前後します。ここでは、すべての記録を年代順に並べ、事件と制度のつながりを見渡します。</div><div class="sf-tl">';
+  xs.forEach(r=>{ const o=!!sf.records[r.id];
+    h+=o?'<button class="sf-tli t-'+r.type+'" data-sf="rec" data-arg="'+r.id+'"><span class="sf-yr">'+r.yl+'</span><span><b>'+r.titleJa+'</b><small>'+SAFETY_TYPES[r.type].en+'・'+SAFETY_TYPES[r.type].ja+'　CHAPTER '+SF_CH[r.chapter].roman+'</small></span></button>':
+      '<div class="sf-tli off"><span class="sf-yr">？</span><span><b>？？？</b><small>CHAPTER '+SF_CH[r.chapter].roman+'</small></span></div>'; });
+  if(sf.oath) h+='<div class="sf-tli oath"><span class="sf-yr">1999</span><span><b>誓いの碑</b><small>終章</small></span></div>';
+  return h+'</div>';
+}
+function sfArchiveHtml(){
+  let h='<div class="sf-sec">SAFETY DOCUMENT ARCHIVE <small>安全性情報資料館</small></div><div class="sf-mute" style="margin:0 2px 10px">いまの薬局で目にする安全性情報が、歴史のどこに位置するのかを収めた資料館です。資料は実物の特徴を抽象化したカードで、外部の資料は取得していません。</div>';
+  SAFETY_DOCUMENTS.forEach(d=>{ const o=!!sf.records[d.from];
+    h+=o?'<div class="sf-doc d-'+d.id+'"><div class="sf-docmk" aria-hidden="true">'+d.mark+'</div><div><div class="sf-k">'+d.en+'</div><b>'+d.ja+'</b><small class="sf-mute">関連：'+SF_EV[d.from].titleJa+'（'+SF_EV[d.from].yl+'）</small>'+
+      '<dl><dt>WHAT IS THIS?　何か</dt><dd>'+d.what+'</dd><dt>WHEN IS IT USED?　いつ使うか</dt><dd>'+d.when+'</dd><dt>WHY DOES IT EXIST?　なぜ必要か</dt><dd>'+d.why+'</dd></dl></div></div>':
+     '<div class="sf-doc off"><div class="sf-docmk">？</div><div><div class="sf-k">LOCKED</div><b>？？？</b><small class="sf-mute">関連する記録を読むと収蔵されます</small></div></div>'; });
+  return h;
+}
+/* 記録のシート（静かに開く。祝う言葉や演出は使わない） */
+function sfRecHtml(r,opening){
+  let h=(opening?'<div class="sf-recopen">HISTORY RECORD OPEN</div>':'')+'<div class="sf-rh">'+typeTag(r.type)+'<div class="sf-k">'+r.yl+'　CHAPTER '+SF_CH[r.chapter].roman+'　'+r.titleEn+'</div><h3>'+r.titleJa+'</h3><div class="sf-head">'+r.head+'</div></div>'+P_(r.body);
+  if(r.timeline) h+='<div class="sf-box"><b>時系列</b><ul class="sf-tlist">'+r.timeline.map(([a,b])=>'<li><span>'+a+'</span>'+b+'</li>').join('')+'</ul></div>';
+  if(r.chain) h+='<div class="sf-box"><b>機序</b><div class="sf-chain">'+r.chain.map(x=>'<span>'+x+'</span>').join('<i>↓</i>')+'</div></div>';
+  if(r.compare) h+='<div class="sf-box"><b>伝え方の比較</b>'+r.compare.map(([ja,en,when])=>'<div class="sf-cmp"><div><b>'+ja+'</b><small>'+en+'</small></div><div>'+when+'</div></div>').join('')+'</div>';
+  h+='<div class="sf-box"><b>歴史的意味</b><div>'+r.meaning+'</div></div><div class="sf-box"><b>国試の観点</b><div>'+r.examPoints.join('／')+'</div></div>';
+  if(r.relief&&sf.techs.T4) h+='<div class="sf-box"><b>救済（SAFETY NET）</b><div>'+r.relief+'</div></div>';
+  if(r.codexNote) h+='<div class="sf-box sm"><b>図鑑</b><div>'+r.codexNote+'</div></div>';
+  if(r.note) h+='<div class="sf-caution">'+r.note+'</div>';
+  if(r.technologyUnlock.length) h+='<div class="sf-box"><b>解禁される SAFETY TECHNOLOGY</b><div>'+r.technologyUnlock.map(id=>SF_TECH[id].en+'（'+SF_TECH[id].ja+'）').join('、')+'</div></div>';
+  const nx=SAFETY_EVENTS.find(x=>x.prerequisite===r.id);
+  if(nx&&!sf.records[nx.id]) h+='<button class="sf-btn sub" data-sf="rec" data-arg="'+nx.id+'">次の記録を読む</button>';
+  return h;
+}
+function sfReadRec(id){ const r=SF_EV[id]; if(!r||!(sf.records[id]||sfRecAvail(r))) return;
+  if(!sf.records[id]){ sf.records[id]=1; sfSave(); recalc(); }
+  sfSheet(sfRecHtml(r)); sfRender(); }
+function sfSheet(html){ $sf('sfSheet').innerHTML='<button class="sf-x" data-sf="sheetx" aria-label="閉じる">✕</button>'+html; $sf('sfOv').classList.add('show'); $sf('sfSheet').scrollTop=0; }
+function sfCloseSheet(){ const o=$sf('sfOv'); if(o) o.classList.remove('show'); }
+function sfAfford(){ document.querySelectorAll('[data-sfcost]').forEach(el=>el.classList.toggle('off',S.kp<+el.dataset.sfcost)); const k=$sf('sfKp'); if(k) k.textContent=fmt(S.kp); }
+
+/* ---------- SAFETY CASE ---------- */
+function sfCaseHtml(){
+  const c=SF_CASE[sfUI.caseId], st=sfUI.step;
+  let h='<div class="sf-case"><div class="sf-fict">FICTIONAL CASE　この症例と医薬品は架空です</div><div class="sf-k">CASE '+c.id.slice(1)+'　CHAPTER '+SF_CH[c.chapter].roman+'　'+c.era+'</div><h2>'+c.title+'</h2><div class="sf-mute">'+c.drug+'（'+c.kind+'）</div>';
+  if(st==='intro') return h+'<div class="sf-sit">'+c.situation+'</div><button class="sf-btn" data-sf="cstep" data-arg="cards">情報を確認する</button><button class="sf-link" data-sf="chapter" data-arg="'+c.chapter+'">← 章に戻る</button></div>';
+  const cards='<div class="sf-sit">'+c.situation+'</div>'+c.cards.map(([t,x],i)=>'<div class="sf-info"><small>情報 '+(i+1)+'</small><b>'+t+'</b><div>'+x+'</div></div>').join('')+
+    c.tools.filter(x=>sf.techs[x.tech]).map(x=>'<div class="sf-info tool"><small>追加情報　'+SF_TECH[x.tech].en+'（'+SF_TECH[x.tech].ja+'）</small><b>'+x.title+'</b><div>'+x.text+'</div></div>').join('');
+  if(st==='cards') return h+cards+'<button class="sf-btn" data-sf="cstep" data-arg="decide">対応を判断する</button></div>';
+  if(st==='decide') return h+'<div class="sf-q">DECISION　どう対応しますか。</div>'+c.options.map((o,i)=>'<button class="sf-opt" data-sf="cpick" data-arg="'+i+'">'+o.t+'</button>').join('')+'<button class="sf-link" data-sf="cstep" data-arg="cards">← 情報を見直す</button></div>';
+  if(st==='result'){ const o=c.options[sfUI.pick], G=SAFETY_GRADES[o.g];
+    h+='<div class="sf-res g-'+o.g+'"><div class="sf-k">RESULT</div><b>'+G.en+'</b><span>'+G.ja+'</span></div><div class="sf-chosen">あなたの判断：'+o.t+'</div>';
+    if(o.g!=='ok') return h+'<div class="sf-fb">'+o.fb+'</div><button class="sf-btn" data-sf="cstep" data-arg="decide">もう一度選ぶ</button><button class="sf-link" data-sf="cstep" data-arg="cards">← 情報を見直す</button></div>';
+    return h+'<div class="sf-fb"><b>判断の理由</b>'+c.reason+'</div><div class="sf-lesson">'+c.lesson+'</div><button class="sf-btn" data-sf="cstep" data-arg="'+(c.sort?'sort':'record')+'">'+(c.sort?'機序を確かめる':'実際の歴史を見る')+'</button></div>'; }
+  if(st==='sort'){ const seq=sfUI.sortSeq, order=sfSortOrder();
+    h+='<div class="sf-q">'+SAFETY_SORT.title+'　<small>はじめから順にタップ</small></div><div class="sf-sortseq">'+SAFETY_SORT.items.map((x,i)=>'<span class="'+(i<seq.length?'on':'')+'">'+(i<seq.length?(i+1)+'. '+SAFETY_SORT.items[seq[i]]:(i+1)+'. ……')+'</span>').join('')+'</div>';
+    if(seq.length===SAFETY_SORT.items.length) return h+'<div class="sf-fb">'+SAFETY_SORT.done+'</div><button class="sf-btn" data-sf="cstep" data-arg="record">実際の歴史を見る</button></div>';
+    return h+'<div class="sf-sortpool">'+order.filter(i=>!seq.includes(i)).map(i=>'<button class="sf-opt" data-sf="spick" data-arg="'+i+'">'+SAFETY_SORT.items[i]+'<small>'+SAFETY_SORT.ja[i]+'</small></button>').join('')+'</div>'+(sfUI.sortMsg?'<div class="sf-fb">'+sfUI.sortMsg+'</div>':'')+'</div>'; }
+  if(st==='record'){ const r=SF_EV[c.records[0]];
+    return '<div class="sf-case">'+sfRecHtml(r,true)+'<div class="sf-lesson">教訓　'+c.lesson+'</div><button class="sf-btn" data-sf="chapter" data-arg="'+c.chapter+'">章に戻る</button></div>'; }
+  return h+'</div>';
+}
+let sfSortShuffle=null;
+function sfSortOrder(){ if(!sfSortShuffle){ sfSortShuffle=[2,4,0,3,1]; } return sfSortShuffle; }
+function sfCasePick(i){ const c=SF_CASE[sfUI.caseId], o=c.options[i]; sfUI.pick=i;
+  const r=sf.cases[c.id]||{}; if(!r.first) r.first=o.g; // 初回の判断だけを記録（firstAttemptCorrect）
+  if(o.g==='ok'){ r.solved=true; }
+  sf.cases[c.id]=r; sfSave(); sfUI.step='result'; sfRender(); $sf('sfScroll').scrollTop=0; }
+function sfCaseRecordOpen(){ const c=SF_CASE[sfUI.caseId]; c.records.forEach(id=>{ sf.records[id]=1; }); sfSave(); recalc(); }
+
+/* ---------- SAFETY REVIEW ---------- */
+function sfReviewHtml(){
+  const qs=SAFETY_QUESTIONS.filter(q=>q.chapter===sfUI.rch), q=qs[sfUI.rq];
+  let h='<button class="sf-link" data-sf="chapter" data-arg="'+sfUI.rch+'">← 章に戻る</button><div class="sf-k">SAFETY REVIEW　CHAPTER '+SF_CH[sfUI.rch].roman+'　'+(sfUI.rq+1)+' / '+qs.length+'</div><div class="sf-qq">'+q.q+'</div>';
+  if(!sfUI.ranswered){
+    h+=q.o.map((o,i)=>'<button class="sf-opt'+(sfUI.rpick.includes(i)?' sel':'')+'" data-sf="rpick" data-arg="'+i+'"><span class="sf-n">'+(i+1)+'</span>'+o+'</button>').join('');
+    if(q.multi) h+='<button class="sf-btn'+(sfUI.rpick.length===q.multi?'':' off')+'" data-sf="ranswer">解答する（'+sfUI.rpick.length+' / '+q.multi+'）</button>';
+    return h; }
+  const ok=sfSame(sfUI.rpick,q.a);
+  h+=q.o.map((o,i)=>'<div class="sf-opt done'+(q.a.includes(i)?' ans':'')+(sfUI.rpick.includes(i)&&!q.a.includes(i)?' miss':'')+'"><span class="sf-n">'+(i+1)+'</span>'+o+(q.a.includes(i)?'<em>正解</em>':sfUI.rpick.includes(i)?'<em>選択</em>':'')+'</div>').join('');
+  h+='<div class="sf-res '+(ok?'g-ok':'g-review')+'"><b>'+(ok?'CORRECT':'REVIEW')+'</b><span>'+(ok?'正解':'もう一度確認しよう')+'</span></div><div class="sf-fb">'+q.ex+'</div>';
+  if(q.table) h+='<div class="sf-box"><b>まとめて復習</b>'+q.table.map(([a,b])=>'<div class="sf-pair"><span>'+a+'</span><i>→</i><span>'+b+'</span></div>').join('')+'</div>';
+  h+='<div class="sf-mute">関連する記録：'+q.rel.map(id=>sf.records[id]?'<button class="sf-chip" data-sf="rec" data-arg="'+id+'">'+SF_EV[id].titleJa+'</button>':'？？？').join(' ')+'</div>';
+  return h+(sfUI.rq<qs.length-1?'<button class="sf-btn" data-sf="rnext">次の問題へ</button>':'<button class="sf-btn" data-sf="chapter" data-arg="'+sfUI.rch+'">章に戻る</button>');
+}
+const sfSame=(a,b)=>a.length===b.length&&a.every(x=>b.includes(x));
+function sfAnswer(){ const q=SAFETY_QUESTIONS.filter(x=>x.chapter===sfUI.rch)[sfUI.rq]; sfUI.ranswered=true;
+  if(!sf.reviews[q.id]) sf.reviews[q.id]={first:sfSame(sfUI.rpick,q.a)}; sfSave(); sfRender(); $sf('sfScroll').scrollTop=0; }
+
+/* ---------- 終章：誓いの碑（報酬・バッジ・演出なし） ---------- */
+function sfOathHtml(){
+  return '<div class="sf-oath"><div class="sf-k">EPILOGUE　HISTORY RECORD</div><div class="sf-oy">'+SAFETY_OATH.year+'</div><h2>'+SAFETY_OATH.title+'</h2>'+P_(SAFETY_OATH.body)+
+   '<button class="sf-btn sub" data-sf="oathnext">2026 へ</button></div>';
+}
+/* ---------- 終章：2026 COMMUNITY PHARMACY ---------- */
+function sfFinalHtml(){
+  const F=SAFETY_FINAL, s=sfUI.fstep, T=id=>!!sf.techs[id];
+  let h='<div class="sf-case"><div class="sf-k">2026　COMMUNITY PHARMACY</div><div class="sf-fict">FICTIONAL DRUG　'+F.drug+'はゲーム内の架空医薬品です</div>';
+  if(s===0) return h+'<h2>朝の薬局</h2><div class="sf-sit">開局前。今日の処方を確認していると、'+(T('T10')?'受信箱に新しい安全性情報が1件届いている。<small class="sf-tool">SAFETY MANAGEMENT（安全管理体制）により、安全性情報が届く。</small>':'取引先から、ある医薬品の安全性情報が届いたと連絡があった。')+'</div><button class="sf-btn" data-sf="fstep" data-arg="1">情報を開く</button></div>';
+  if(s===1) return h+'<div class="sf-signal"><div class="sf-k">SAFETY INFORMATION RECEIVED</div>'+(T('T12')?'<div class="sf-tool">情報の種類：'+F.infoType+'</div>':'')+'<p>'+F.info+'</p></div><div class="sf-mute">'+F.drug+'：'+F.kind+'。'+F.setting+'</div><button class="sf-btn" data-sf="fstep" data-arg="2">自薬局の患者を確認する</button></div>';
+  if(s===2){ h+='<h2>対象となる患者を探す</h2><div class="sf-mute">自薬局で'+F.drug+'を服用している患者は2人。まず確認すべき患者を選ぶ。</div>'+F.patients.map(p=>'<button class="sf-opt" data-sf="fpat" data-arg="'+p.id+'"><b>'+p.label+'</b>　'+p.age+'<small>'+p.renal+'　'+p.other+'</small></button>').join('');
+    if(sfUI.fpick==='B') h+='<div class="sf-fb">'+F.pickWrong+'</div>'; return h+'</div>'; }
+  if(s===3){ h+='<h2>患者A　72歳・女性</h2><div class="sf-fb">'+F.pickRight+'</div>';
+    F.cards.forEach(c=>{ const has=c.tech?T(c.tech):true; if(!c.text&&!has) return;
+      h+='<div class="sf-info'+(c.tech&&has?' tool':'')+'"><b>'+c.title+'</b>'+(c.text?'<div>'+c.text+'</div>':'')+(c.tech&&has?'<div class="sf-plus"><small>'+SF_TECH[c.tech].en+'</small>'+c.plus+'</div>':'')+'</div>'; });
+    return h+'<button class="sf-btn" data-sf="fstep" data-arg="4">対応を判断する</button></div>'; }
+  if(s===4){ h+='<div class="sf-q">DECISION　どう対応しますか。</div>'+F.options.map((o,i)=>'<button class="sf-opt" data-sf="fdec" data-arg="'+i+'">'+o.t+'</button>').join('');
+    if(sfUI.pick!=null&&F.options[sfUI.pick]&&F.options[sfUI.pick].g!=='ok'){ const o=F.options[sfUI.pick]; h+='<div class="sf-res g-'+o.g+'"><b>'+SAFETY_GRADES[o.g].en+'</b><span>'+SAFETY_GRADES[o.g].ja+'</span></div><div class="sf-fb">'+o.fb+'</div>'; }
+    return h+'<button class="sf-link" data-sf="fstep" data-arg="3">← 患者の情報を見直す</button></div>'; }
+  if(s===5) return h+'<div class="sf-res g-ok"><b>APPROPRIATE</b><span>妥当</span></div><div class="sf-box"><b>疑義照会の結果</b><div>'+F.inquiry+'</div></div><div class="sf-box"><b>服薬指導</b><div>'+F.counsel+'</div></div><button class="sf-btn" data-sf="fstep" data-arg="6">記録と報告へ</button></div>';
+  if(s===6){ h+='<div class="sf-q">冷や汗とふらつきは、グリセタンによる低血糖の可能性がある。この情報を、どうするか。</div>';
+    if(T('T3')){ h+=F.report.map((o,i)=>'<button class="sf-opt" data-sf="frep" data-arg="'+i+'">'+o.t+'</button>').join('');
+      if(sfUI.pick!=null&&F.report[sfUI.pick]&&F.report[sfUI.pick].g!=='ok') h+='<div class="sf-res g-'+F.report[sfUI.pick].g+'"><b>'+SAFETY_GRADES[F.report[sfUI.pick].g].en+'</b><span>'+SAFETY_GRADES[F.report[sfUI.pick].g].ja+'</span></div><div class="sf-fb">'+F.report[sfUI.pick].fb+'</div>'; }
+    else h+='<div class="sf-fb">'+F.noSignal+'</div><button class="sf-btn sub" data-sf="frep" data-arg="0">記録して次へ</button>';
+    return h+'</div>'; }
+  if(s===7){ const rp=!!sf.final.reported;
+    return h+'<div class="sf-res g-ok"><b>'+(rp?'REPORTED':'RECORDED')+'</b><span>'+(rp?'報告':'記録')+'</span></div><div class="sf-fb">'+(rp?F.reportOk:'薬歴に記録を残した。')+'</div>'+
+    '<div class="sf-cycle">'+F.cycle.map(([en,ja])=>'<div><b>'+en+'</b><small>'+ja+'</small></div>').join('<i>→</i>')+'<div class="back">↺ REPORT</div></div><div class="sf-lesson">'+(rp?F.cycleText:F.cycleAlt)+'</div>'+
+    '<div class="sf-flow"><span>患者</span><i>→</i><span>薬剤師が副作用を疑う</span><i>→</i><span>報告</span><i>→</i><span>次の安全性情報へ</span></div><button class="sf-btn" data-sf="fdone">終える</button></div>'; }
+  return h+'</div>';
+}
+/* ---------- エンディング（黒地・文字だけ。本編のエンディングと同じ部品を使う） ---------- */
+function sfEndHtml(){
+  const cs=SAFETY_CASES.filter(c=>sf.cases[c.id]&&sf.cases[c.id].first==='ok').length, rv=SAFETY_QUESTIONS.filter(q=>sf.reviews[q.id]&&sf.reviews[q.id].first).length;
+  const rec=[['SAFETY CASE　初回判断',cs+' / '+SAFETY_CASES.length],['SAFETY REVIEW　正答',rv+' / '+SAFETY_QUESTIONS.length],['SAFETY TECHNOLOGY',SAFETY_TECHS.filter(t=>sf.techs[t.id]).length+' / '+SAFETY_TECHS.length],['HISTORY RECORD',Object.keys(sf.records).length+' / '+SAFETY_EVENTS.length]];
+  let d=0; const L=s=>'<span class="sf-line" style="--d:'+(d+=0.55).toFixed(2)+'s">'+s+'</span>';
+  return '<div class="sf-end"><section class="end-sec"><p class="end-k">SPECIAL HISTORY　'+SPECIAL_HISTORIES.safety.title+'</p><h1 class="end-big end-gold" style="letter-spacing:.18em;font-size:1.25rem">PHARMACOVIGILANCE<br>COMPLETE</h1>'+
+     SAFETY_ENDING.lines.map(g=>'<p class="end-p">'+g.map(L).join('<br>')+'</p>').join('')+'<p class="end-scroll">SCROLL ↓</p></section>'+
+   '<section class="end-sec short"><p class="end-p mute" style="font-size:.76rem">'+SAFETY_ENDING.link.join('<br>')+'</p></section>'+
+   '<section class="end-sec"><h2 class="end-h">YOUR SAFETY RECORD</h2><hr class="end-rule">'+rec.map(r=>'<div class="end-rec"><span>'+r[0]+'</span><i></i><b>'+r[1]+'</b></div>').join('')+'</section>'+
+   '<section class="end-sec"><h2 class="end-h">CREDITS</h2><div class="end-cr"><small>DEVELOPED BY</small><div>'+DEVELOPER+'</div></div><div class="end-cr"><small>DEVELOPMENT SUPPORT</small><div>Claude<br>ChatGPT</div></div><div class="end-cr"><small>SPECIAL THANKS</small><div>このゲームを遊んでくださった皆さま</div></div></section>'+
+   '<section class="end-sec"><p class="end-k">THANK YOU FOR PLAYING</p><h2 class="end-title" style="font-size:1.5rem">'+GAME_NAME+'</h2><p class="end-p mute" style="font-family:var(--e-mono);margin-top:14px">ver.'+GAME_VER+'</p>'+
+     '<button class="end-go" data-sf="home">専門史の記録へ</button><button class="end-go" style="margin-top:12px;background:none;color:var(--e-mute);border:1px solid var(--e-line)" data-sf="exit">本編へ戻る</button></section></div>';
+}
+
+/* ---------- 操作 ---------- */
+function sfAction(a,arg){
+  if(a==='exit'){ closeSafety(); return; }
+  if(a==='sheetx'){ sfCloseSheet(); return; }
+  if(a==='tab'){ sfUI.tab=arg; sfUI.view='home'; sfCloseSheet(); sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='home'){ sfUI.tab='progress'; sfUI.view='home'; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='chapter'){ sfUI.view='chapter'; sfUI.ch=+arg; sfCloseSheet(); sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='rec'){ sfReadRec(arg); return; }
+  if(a==='buy'){ const t=SF_TECH[arg]; if(!t||sf.techs[t.id]||!sfTechAvail(t)) return; const c=sfTechCost(t); if(S.kp<c){ toast('知識Pが足りません'); return; }
+    S.kp-=c; sf.techs[t.id]=1; sfSave(); recalc(); save(); sfRender(); return; }
+  if(a==='case'){ sfUI.caseId=arg; sfUI.step='intro'; sfUI.pick=null; sfUI.sortSeq=[]; sfUI.sortMsg=''; sfUI.view='case'; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='cstep'){ if(arg==='record') sfCaseRecordOpen(); sfUI.step=arg; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='cpick'){ sfCasePick(+arg); return; }
+  if(a==='spick'){ const i=+arg, need=sfUI.sortSeq.length; if(i===need){ sfUI.sortSeq.push(i); sfUI.sortMsg=''; if(sfUI.sortSeq.length===SAFETY_SORT.items.length){ sf.sort[sfUI.caseId]=1; sfSave(); } }
+    else sfUI.sortMsg='その前に起こることがあります。'+(need?'「'+SAFETY_SORT.ja[need-1]+'」の次は何か、考えてみよう。':'出発点は、患者が飲んだ薬です。'); sfRender(); return; }
+  if(a==='review'){ sfUI.view='review'; sfUI.rch=+arg; sfUI.rq=0; sfUI.rpick=[]; sfUI.ranswered=false; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='rpick'){ const q=SAFETY_QUESTIONS.filter(x=>x.chapter===sfUI.rch)[sfUI.rq], i=+arg;
+    if(q.multi){ sfUI.rpick=sfUI.rpick.includes(i)?sfUI.rpick.filter(x=>x!==i):sfUI.rpick.length<q.multi?sfUI.rpick.concat(i):sfUI.rpick; sfRender(); return; }
+    sfUI.rpick=[i]; sfAnswer(); return; }
+  if(a==='ranswer'){ const q=SAFETY_QUESTIONS.filter(x=>x.chapter===sfUI.rch)[sfUI.rq]; if(sfUI.rpick.length!==q.multi) return; sfAnswer(); return; }
+  if(a==='rnext'){ sfUI.rq++; sfUI.rpick=[]; sfUI.ranswered=false; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='advance'){ if(!sfCanAdvance()) return; sf.chapter++; sfSave(); recalc();
+    if(sf.chapter<=5){ sfUI.view='chapter'; sfUI.ch=sf.chapter; } else { sfUI.view='home'; sfUI.tab='progress'; }
+    sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='epilogue'){ if(sf.chapter<6) return; sfUI.view='oath'; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='oathnext'){ sf.oath=true; sfSave(); sfUI.view='final'; sfUI.fstep=0; sfUI.fpick=null; sfUI.pick=null; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='fstep'){ sfUI.fstep=+arg; sfUI.pick=null; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='fpat'){ sfUI.fpick=arg; if(!sf.final.firstPick) sf.final.firstPick=arg; sfSave(); if(arg==='A'){ sfUI.fstep=3; $sf('sfScroll').scrollTop=0; } sfRender(); return; }
+  if(a==='fdec'){ const o=SAFETY_FINAL.options[+arg]; sfUI.pick=+arg; if(!sf.final.firstDecision) sf.final.firstDecision=o.g; sfSave(); if(o.g==='ok'){ sfUI.fstep=5; sfUI.pick=null; $sf('sfScroll').scrollTop=0; } sfRender(); return; }
+  if(a==='frep'){ const i=+arg, o=SAFETY_FINAL.report[i]; sfUI.pick=i;
+    if(!sf.techs.T3||o.g==='ok'){ sf.final.reported=o.g==='ok'; sfSave(); sfUI.fstep=7; sfUI.pick=null; $sf('sfScroll').scrollTop=0; } sfRender(); return; }
+  if(a==='fdone'){ sf.final.done=true; sf.endingSeen=true; sfSave(); sfUI.view='end'; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='end'){ sfUI.view='end'; sfRender(); $sf('sfScroll').scrollTop=0; return; }
+  if(a==='enter'){ openSafety(); return; }
+  if(a==='openrec'){ openSafety(); sfReadRec(arg); return; }
+}
+document.addEventListener('click',e=>{ const el=e.target.closest('[data-sf]'); if(!el) { if(e.target===$sf('sfOv')) sfCloseSheet(); return; }
+  if(el.disabled) return; e.stopPropagation();
+  try{ sfAction(el.dataset.sf,el.dataset.arg); }catch(err){ console.error(err); toast('専門史でエラーが起きました（本編は続けて遊べます）'); } },true);
+document.addEventListener('keydown',e=>{ if(e.key!=='Escape'||!sfOpen()) return; if($sf('sfOv').classList.contains('show')) sfCloseSheet(); else closeSafety(); });
+setInterval(()=>{ try{ if(sfOpen()) sfAfford(); }catch(e){} },500);
+
+/* 本編の図鑑・歴史から、専門史の関連記録へ（記録を読んだあとだけ記録へ直接移動。未読なら入口だけを示す） */
+const SF_MAIN_LINK={ev:{elixir_sulfanilamide:'N01',thalidomide:'N05',smon:'N08'},drug:{prontosil:'N01',penicillin:'N03',thalidomide:'N05',chinoform:'N08'}};
+function sfMainLink(kind,id){ try{
+  if(!sfUnlocked()) return ''; if(!sf) sfLoad(); const rid=(SF_MAIN_LINK[kind]||{})[id]; if(!rid) return ''; const r=SF_EV[rid];
+  return '<div class="box"><b>専門史「'+SPECIAL_HISTORIES.safety.title+'」</b><div style="margin-top:6px">'+(sf.records[rid]?'<button class="lk th" data-sf="openrec" data-arg="'+rid+'">'+r.titleJa+' を読む ›</button>':'<button class="lk" data-sf="enter">この出来事は専門史で扱っています ›</button>')+'</div></div>';
+ }catch(e){ return ''; } }
+
+
+try{ sfLoad(); }catch(e){ sf=sfNew(); }
 load(); recalc(); progress(true);
 if(S.lastSeen){ activeAt=S.lastSeen; claimAway(); }
 if(S.era>=6&&!S.medShown) queue.push({k:'med'});
@@ -7081,9 +7970,11 @@ if(S.era>=8&&!S.kinShown) queue.push({k:'kin'});
 if(S.era>=10&&!S.kdShown) queue.push({k:'kd'});
 if(S.eraShown<S.era) queue.push({k:'era',era:S.era});
 if(S.cleared&&!S.clearShown) queue.push({k:'clear'});
+// すでにクリア済みのプレイヤーには、専門史が開いたことを一度だけ知らせる
+try{ if(S.cleared&&S.clearShown&&sf&&!sf.unlockSeen){ notify({k:'w',msg:'📖 専門史「'+SPECIAL_HISTORIES.safety.title+'」が解放されました。記録タブから入れます。'}); sf.unlockSeen=true; sfSave(); } }catch(e){}
 renderAll(); runQueue();
 if(!S.prologueDone) showPrologue();
-window.__game={DRUGS,PEOPLE,techCost,S:()=>S,research,buy,buyUp,progress,recalc,renderAll,tick,setTab,TECHS,FACS,EVENTS,setQty:q=>{qty=q;},giveKp:n=>{S.kp+=n;},checkPeopleNet,P,get PROD(){return PROD;},reset:()=>{safe(()=>localStorage.removeItem(SAVE_KEY));}};
+window.__game={DRUGS,PEOPLE,techCost,S:()=>S,research,buy,buyUp,progress,recalc,renderAll,tick,setTab,TECHS,FACS,EVENTS,setQty:q=>{qty=q;},giveKp:n=>{S.kp+=n;},checkPeopleNet,P,get PROD(){return PROD;},reset:()=>{safe(()=>localStorage.removeItem(SAVE_KEY));},safety:{state:()=>sf,open:openSafety,close:closeSafety,act:(a,x)=>sfAction(a,x),gap:sfGap,dev:sfDev,sys:sfSys,trust:sfTrust,questions:SAFETY_QUESTIONS}};
 })();
 </script>
 </body>
