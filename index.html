@@ -272,6 +272,41 @@ textarea{width:100%;height:70px;background:rgba(0,0,0,.25);color:var(--tx);borde
 .flowband span.now{background:var(--acc);color:#00302a;border-color:var(--acc);font-weight:900;}
 .flowband i{font-style:normal;color:var(--acc);opacity:.6;}
 /* ===== 段階チュートリアル（コーチ） ===== */
+/* ===== エンディング：黒地に文字だけ。演出は文字・余白・スクロール距離で行う ===== */
+.ending{--e-bg:#050505;--e-tx:#e6e4df;--e-mute:#8c8a84;--e-faint:#4a4945;--e-gold:#c9a45c;--e-line:#262523;
+ --e-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
+ position:fixed;inset:0;z-index:90;background:var(--e-bg);color:var(--e-tx);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;}
+.end-x{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:2;background:none;border:1px solid var(--e-line);border-radius:6px;color:var(--e-faint);font:inherit;font-size:.64rem;padding:5px 9px;}
+.end-x:focus-visible{outline:1px solid var(--e-gold);color:var(--e-mute);}
+.end-in{max-width:440px;margin:0 auto;padding:0 24px calc(40px + env(safe-area-inset-bottom,0px));}
+.end-sec{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:72px 0 40px;box-sizing:border-box;}
+.end-sec.short{min-height:auto;padding:96px 0;}
+.end-k{font-family:var(--e-mono);font-size:.68rem;letter-spacing:.32em;color:var(--e-mute);text-align:center;margin:0 0 14px;}
+.end-title{font-family:var(--e-mono);font-size:2rem;letter-spacing:.18em;text-align:center;margin:0;font-weight:400;}
+.end-gold{color:var(--e-gold);}
+.end-big{font-family:var(--e-mono);font-size:1.6rem;font-weight:400;letter-spacing:.4em;text-align:center;margin:6px 0 38px;padding-left:.4em;}
+.end-p{font-size:.84rem;line-height:2.05;margin:0 0 14px;text-align:center;}
+.end-p.mute{color:var(--e-mute);}
+.end-p .ph{display:inline-block;} /* 読点の位置で改行し、語の途中で折り返さない */
+.end-scroll{font-family:var(--e-mono);font-size:.62rem;letter-spacing:.3em;color:var(--e-faint);text-align:center;margin-top:44px;}
+.end-h{font-family:var(--e-mono);font-size:.8rem;letter-spacing:.34em;text-align:center;margin:0 0 26px;font-weight:400;}
+.end-rule{border:0;border-top:1px solid var(--e-line);margin:0 0 6px;}
+.end-rec{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:0 10px;font-size:.8rem;padding:9px 0;border-bottom:1px solid var(--e-line);}
+.end-rec span:first-child{color:var(--e-mute);}
+.end-rec i{border-bottom:1px dotted var(--e-faint);transform:translateY(-4px);}
+.end-rec b{font-family:var(--e-mono);font-weight:400;font-variant-numeric:tabular-nums;text-align:right;}
+.end-cr{text-align:center;margin:0 0 34px;}
+.end-cr small{display:block;font-family:var(--e-mono);font-size:.6rem;letter-spacing:.3em;color:var(--e-mute);margin-bottom:8px;}
+.end-cr div{font-size:.9rem;line-height:1.9;}
+.end-blank{height:230dvh;display:flex;align-items:center;justify-content:center;color:var(--e-faint);font-family:var(--e-mono);letter-spacing:.4em;}
+.end-soon{border-top:1px solid var(--e-gold);border-bottom:1px solid var(--e-gold);padding:30px 0 26px;}
+.end-list{list-style:none;margin:22px 0 0;padding:0;text-align:center;}
+.end-list li{font-size:.86rem;line-height:2.3;color:var(--e-faint);letter-spacing:.12em;}
+.end-list li.open{color:var(--e-tx);}
+.end-list li.more{font-size:.7rem;letter-spacing:.06em;margin-top:6px;}
+.end-go{display:block;margin:34px auto 0;font:inherit;font-size:.86rem;color:var(--e-bg);background:var(--e-tx);border:0;border-radius:4px;padding:12px 30px;letter-spacing:.1em;}
+.end-go:focus-visible{outline:2px solid var(--e-gold);outline-offset:3px;}
 .coach{position:fixed;left:12px;right:12px;margin:0 auto;bottom:calc(var(--nav-h) + 10px);z-index:35;max-width:496px;
  background:#0b7a5c;border:1px solid #4be8ac;border-radius:14px;padding:10px 36px 10px 12px;font-size:.74rem;line-height:1.6;box-shadow:0 6px 20px rgba(0,0,0,.4);animation:proIn .4s ease;}
 .coach b{color:#c8ffe9;}
@@ -307,6 +342,7 @@ nav button.tut-hi{border-radius:12px;}
 <div class="ov mid" id="ovm"><div class="sheet" id="sheetm"></div></div>
 <div class="toast" id="toast"></div>
 <div class="coach" id="coach" hidden><div id="coachT"></div><button class="cx" data-coach-x aria-label="閉じる">✕</button></div>
+<div class="ending" id="ending" hidden role="dialog" aria-label="エンディング"><button class="end-x" data-end-close aria-label="エンディングを閉じる">閉じる ✕</button><div class="end-in" id="endIn"></div></div>
 <div class="pro" id="pro" hidden><div class="pro-in">
   <div class="pro-tag">PROLOGUE</div>
   <h1>経験のはじまり</h1>
@@ -325,7 +361,8 @@ nav button.tut-hi{border-radius:12px;}
 
 <script>
 /* ======================================================================
- くすりの歴史 v1.2.1（2026-10-05）：人物本文を GPT改稿版 people_data_v1.2.1（定型文を除いた人物固有の本文）に差し替え、Claudeが日本語の仕上げ（表記・文の切れ目・主語と述語の対応など60件）を加えた。ゲーム本編・セーブは変更なし
+ くすりの歴史 v1.2.1（2026-10-05）：クリア後のエンディング画面を追加（COMPLETE／YOUR RECORD／CREDITS／空白／COMING SOON／THANK YOU FOR PLAYING。黒地・文字のみ）。クリア判定・セーブは変更なし。
+ 同上：人物本文を GPT改稿版 people_data_v1.2.1（定型文を除いた人物固有の本文）に差し替え、Claudeが日本語の仕上げ（表記・文の切れ目・主語と述語の対応など60件）を加えた。ゲーム本編・セーブは変更なし
  くすりの歴史 v1.2（2026-10-05）：GPT確定人物データ（people_data_v1.2_rebuilt.js、137件）を原文のまま統合。人物図鑑を「人物から読む薬学史」へ拡張（人物データ PEOPLE_NET、章立て、検索・絞り込み、関連人物・薬物・出来事の相互リンク、図鑑内の戻る）。人物本文・関係はGPT作成データを受け入れる器のみで、Claudeは本文を書かない。ゲーム本編・セーブは変更なし
  くすりの歴史 v1.1（2026-10-05）：ゲーム名を「薬歴」から「くすりの歴史 ― 古代から現代 ―」へ。アイコン・PWA manifest・OGPを追加。ゲーム内容・セーブ（キー pharma-3layer-v2／SAVE_VERSION 5）は変更なし
  薬歴 v1.0.1（2026-10-05）：「探求する」の時代別の一文を廃止
@@ -6591,7 +6628,7 @@ function progress(silent){
   if(newEv.length||eraUp.length) renderAll();
   runQueue();
 }
-function runQueue(){ if($('ovm').classList.contains('show')||!queue.length) return; const q=queue.shift(); if(q.k==='era') showEra(q.era); else if(q.k==='med') showMed(); else if(q.k==='kin') showKinsei(); else if(q.k==='kd') showKindai(); else if(q.k==='clear') showClear(); }
+function runQueue(){ if($('ovm').classList.contains('show')||!$('ending').hidden||!queue.length) return; const q=queue.shift(); if(q.k==='era') showEra(q.era); else if(q.k==='med') showMed(); else if(q.k==='kin') showKinsei(); else if(q.k==='kd') showKindai(); else if(q.k==='clear') showClear(); }
 
 /* ---------- 研究 / 建設 / 改良 ---------- */
 function research(id){ const t=TECH[id]; if(!t||techState(t)!=='avail'||S.kp<techCost(t)) return false;
@@ -6663,7 +6700,7 @@ function proSheet(){ const e=PRO_EVENT;
 /* ---------- 段階チュートリアル：初めてその仕組みに触れた瞬間だけ、短く案内する ---------- */
 function coachUpdate(){
   document.querySelectorAll('.tut-hi').forEach(el=>el.classList.remove('tut-hi'));
-  const box=$('coach'); if(!S.prologueDone||!$('pro').hidden||$('ovm').classList.contains('show')){ box.hidden=true; return; }
+  const box=$('coach'); if(!S.prologueDone||!$('pro').hidden||!$('ending').hidden||$('ovm').classList.contains('show')){ box.hidden=true; return; }
   let cur=null;
   for(let i=0;i<TUT.length;i++){ const t=TUT[i]; if(S.tut[t.id]) continue;
     if(t.done&&t.done()){ S.tut[t.id]=1; continue; }
@@ -6815,7 +6852,7 @@ function personSheet(id){ const x=PER[id], d=P(id), ch=CHAP[chapterOf(id)];
   if(d.relatedDrugs.length) h+='<div class="box"><b>関連薬物</b><div class="lks">'+d.relatedDrugs.map(r=>{ const k=resolveDrug(r);
       return k?(drugOn(DRG[k])?'<button class="lk" data-dnav="'+k+'">💊 '+esc(drugName(k))+'</button>':unkLink('未発見の薬物')):'<span class="lk plain">'+esc(labelOf(r))+'</span>'; }).join('')+'</div></div>';
   const own=d.relatedEvents&&d.relatedEvents.length, evs=own?d.relatedEvents:x.cond.filter(r=>r.indexOf('ev:')===0).map(r=>r.slice(3));
-  if(evs.length) h+='<div class="box"><b>関連する出来事</b><div class="lks">'+evs.map(r=>{ const ks=resolveEvents(r), lb=own?labelOf(r):null;
+  if(evs.length) h+='<div class="box"><b>関連する出来事</b><div class="lks">'+evs.map(r=>{ const ks=resolveEvents(r), lb=own&&!EV[labelOf(r)]?labelOf(r):null; // IDで書かれた出来事は題名を表示し、文字列で書かれたものだけその文字列を使う
       if(!ks.length) return '<span class="lk plain">'+esc(labelOf(r))+'</span>';
       return ks.map(k=>S.ev[k]?'<button class="lk" data-enav="'+k+'">📜 '+esc(lb&&ks.length===1?lb:CONTENT.events[k].title)+'</button>':unkLink('まだ起きていない歴史')).join(''); }).join('')+'</div></div>';
   // 逆向きのつながり：他の人物のデータに、この人物が関連人物として書かれている場合（関係の文言は相手側のデータのまま）
@@ -6839,7 +6876,7 @@ function viewRecord(){
   if(S.era>=6) h+='<button class="big" id="medBtn">🏅「中世薬学の成立」を見る</button>';
   if(S.era>=8) h+='<button class="big" id="kinBtn">🏅「近世薬学の歩み」を見る</button>';
   if(S.era>=10) h+='<button class="big" id="kdBtn">🏅「近代薬学の成り立ち」を見る</button>';
-  if(S.cleared) h+='<button class="big" id="recapBtn">🏅「薬学の歩み」を見る</button>';
+  if(S.cleared) h+='<button class="big" id="recapBtn">🏅 エンディングを見る</button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
    '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">くすりの歴史 ― 古代から現代 ―<br>v1.2.1</div>';
   return h; }
@@ -6907,13 +6944,46 @@ function showKindai(){ const done=r=>r.every(met1);
   openMid('<div class="era-banner"><div class="t">近代編 CLEAR</div><div class="n">近代薬学の成り立ち</div><div class="meta">あなたの薬学史</div></div>'+flowBand()+'<div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
    '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.filter(e=>e.era<=9).length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]&&t.era<=9).length+' / '+TECHS.filter(t=>t.era<=9).length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.filter(f=>f.era<=9).length+' 種（計'+nb+'基）</div></div>'+
    '<p style="font-size:.76rem">19世紀、植物から取り出された「成分」が量って使われるようになり、実験によって薬の作用が調べられるようになりました。化学工業は、天然に見られる物質も新しい物質も合成し、薬として製造し始めます。微生物の研究は、衛生や消毒、ワクチン、血清療法など、さまざまな分野の発展と結びついていきました。ここから先は、化学療法と抗生物質の20世紀、現代薬学の時代です。</p><div class="note">※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。単離・合成・微生物学・制度といった流れは、互いに影響し合いながら並行して進みました。</div><button class="big" data-close-mid>現代へ進む</button>'); S.kdShown=true; }
-function showClear(){ const done=r=>r.every(met1);
-  const steps=[['経験（植物を試す）',[]],['化学療法と抗生物質',['chemotherapy','antibiotics']],['比較臨床試験と審査',['clinical_trial','regulation']],['薬害と安全対策',['pharmacovigilance','ev:thalidomide']],['分子生物学と創薬',['molecular_biology','rational_design']],['遺伝子組換えと抗体医薬',['recombinant','monoclonal']],['分子標的と免疫',['targeted_therapy','checkpoint']],['mRNAワクチン',['mrna_vaccine','ev:mrna_modified']]];
+/* 専門史：本編とは別の視点で薬と医療の歴史をたどる追加コンテンツ。
+   status:'soon' は題名だけを薄く表示（押せない）。中身ができたら status:'open' と open() を書けば、エンディングと入口に並ぶ */
+const SPECIALTY=[
+ {id:'diabetes',title:'糖尿病治療薬史',status:'soon'},
+ {id:'antibacterial',title:'抗菌薬史',status:'soon'},
+ {id:'anticancer',title:'抗がん剤史',status:'soon'},
+ {id:'safety',title:'薬害と規制の歴史',status:'soon'},
+ {id:'companies',title:'製薬会社史',status:'soon'}];
+const GAME_NAME='yakureki', GAME_VER='1.2.1', DEVELOPER='こんにゃくお爺さん';
+function endingHtml(){
   const evs=EVENTS.filter(e=>S.ev[e.id]), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0).length, nb=FACS.reduce((a,f)=>a+own(f.id),0);
-  openMid('<div class="era-banner"><div class="t">現代編 CLEAR　全時代クリア</div><div class="n">薬学の歩み</div><div class="meta">あなたの薬学史</div></div>'+flowBand()+'<div class="recap">'+steps.map(s=>'<div><span class="c">'+(done(s[1])?'✓':'・')+'</span>'+s[0]+'</div>').join('')+'</div>'+
-   '<div class="stat" style="margin:8px 0"><div>到達年代</div><div>'+fmtYear(reach)+'</div><div>発見した歴史</div><div>'+evs.length+' / '+EVENTS.length+'</div><div>研究した技術</div><div>'+TECHS.filter(t=>S.tech[t.id]).length+' / '+TECHS.length+'</div><div>建設した施設</div><div>'+nf+' / '+FACS.length+' 種（計'+nb+'基）</div><div>発見した薬物</div><div>'+DRUGS.filter(drugOn).length+' / '+DRUGS.length+'</div><div>人物図鑑</div><div>'+PEOPLE.filter(x=>S.met[x.id]).length+' / '+PEOPLE.length+'</div><div>総研究ポイント</div><div>'+fmt(S.techSpent)+'</div><div>総生産量</div><div>'+fmt(S.kpTotal)+'</div></div>'+
-   '<p style="font-size:.76rem">20世紀、化学療法と抗生物質は感染症の治療を大きく変え、薬は比較臨床試験と審査の仕組みの中で評価されるようになりました。その一方で、薬害の経験は、安全性を確かめ、被害を救済する制度づくりを促す重要な契機の一つとなりました。分子生物学と生命工学は、抗体医薬や分子標的薬、mRNAワクチンといった新しい薬をもたらしています。文字すらなかった時代の小さな経験から始まった薬の歴史は、分子を理解し、設計し、生命の仕組みそのものを利用する時代へ到達しました。そして、その歩みはいまも続いています。</p><div class="note">取り残した研究や歴史、薬物は、続けて遊んでコンプリートできます。<br>※ ゲーム上の整理であり、実際の歴史が一本道だったわけではありません。薬の歴史は一本道ではなく、多くの人々と地域の、いくつもの流れが重なり合って進んできました。</div><button class="big" data-close-mid>続けて遊ぶ</button>'); S.clearShown=true; }
+  const h=Math.floor(S.playSec/3600), mi=Math.floor(S.playSec%3600/60);
+  const rec=[['到達年代',fmtYear(reach)],['発見した歴史',evs.length+' / '+EVENTS.length],['研究した技術',TECHS.filter(t=>S.tech[t.id]).length+' / '+TECHS.length],
+    ['建設した施設',nf+' / '+FACS.length+' 種'],['施設の総数',nb+' 基'],['発見した薬物',DRUGS.filter(drugOn).length+' / '+DRUGS.length],['人物図鑑',PEOPLE.filter(x=>S.met[x.id]).length+' / '+PEOPLE.length],
+    ['薬の理解の歩み',flowLevel()+' / '+FLOW.length+' 段階'],['総研究ポイント',fmt(S.techSpent)],['総生産量',fmt(S.kpTotal)],['プレイ時間',(h?h+'時間':'')+mi+'分']];
+  const open=SPECIALTY.filter(x=>x.status==='open');
+  return '<section class="end-sec"><p class="end-k">全時代踏破</p><h1 class="end-big end-gold">COMPLETE</h1>'+
+      '<p class="end-p"><span class="ph">古代から現代まで、</span><span class="ph">すべての時代に到達しました。</span></p>'+
+      '<p class="end-p mute"><span class="ph">文字すらなかった時代の小さな経験から</span><span class="ph">始まった薬の歴史は、</span><span class="ph">分子と生命の仕組みを利用する時代に至った。</span></p>'+
+      '<p class="end-p"><span class="ph">ここまでプレイしていただき、</span><span class="ph">ありがとうございました。</span></p><p class="end-scroll">SCROLL ↓</p></section>'+
+    '<section class="end-sec"><h2 class="end-h">YOUR RECORD</h2><hr class="end-rule">'+rec.map(r=>'<div class="end-rec"><span>'+r[0]+'</span><i></i><b>'+r[1]+'</b></div>').join('')+'<p class="end-scroll">SCROLL ↓</p></section>'+
+    '<section class="end-sec"><h2 class="end-h">CREDITS</h2>'+
+      '<div class="end-cr"><small>DEVELOPED BY</small><div>'+DEVELOPER+'</div></div>'+
+      '<div class="end-cr"><small>DEVELOPMENT SUPPORT</small><div>Claude<br>ChatGPT</div></div>'+
+      '<div class="end-cr"><small>SPECIAL THANKS</small><div>このゲームを遊んでくださった皆さま</div></div>'+
+      '<div class="end-cr" style="margin-top:20px"><div style="font-family:var(--e-mono);letter-spacing:.2em">'+GAME_NAME+'</div><div style="color:var(--e-mute);font-size:.76rem">2026</div></div></section>'+
+    '<div class="end-blank" aria-hidden="true">…</div>'+
+    '<section class="end-sec short"><div class="end-soon">'+(open.length
+        ?'<h2 class="end-h end-gold">NEW CONTENT UNLOCKED</h2><p class="end-p">新しいコンテンツが解放されました。</p>'
+        :'<h2 class="end-h end-gold">COMING SOON</h2>')+
+      '<p class="end-p mute">本編とは異なる視点から、<br>薬と医療の歴史をたどる「専門史」を準備しています。</p>'+
+      '<ul class="end-list">'+SPECIALTY.map(x=>'<li class="'+(x.status==='open'?'open':'')+'">'+x.title+'</li>').join('')+'<li class="more">ほか、順次追加予定</li></ul></div></section>'+
+    '<section class="end-sec"><p class="end-k">THANK YOU FOR PLAYING</p><h2 class="end-title" style="font-size:1.5rem">'+GAME_NAME+'</h2>'+
+      '<p class="end-p mute" style="font-family:var(--e-mono);margin-top:14px">ver.'+GAME_VER+'</p>'+
+      '<div class="end-cr" style="margin-top:26px"><small>DEVELOPED BY</small><div>'+DEVELOPER+'</div></div>'+
+      '<button class="end-go" data-end-close>続けて遊ぶ</button></section>'; }
+// クリア画面：既存のクリア判定（S.cleared）から呼ばれる。全画面のエンディング層を開く
+function showClear(){ const el=$('ending'); $('endIn').innerHTML=endingHtml(); el.hidden=false; el.scrollTop=0; $('coach').hidden=true; holdToast(); S.clearShown=true; save(); }
+function closeEnding(){ $('ending').hidden=true; setTimeout(()=>{ runQueue(); coachUpdate(); pumpN(); },50); }
 let toastT=0, toastCb=null;
 let toastCur=null; // 表示中のキュー由来の通知（モーダルが開いたら、閉じたあとに出し直す）
 function toastRaw(html,cb,dur,item){ const t=$('toast'); t.innerHTML=html; toastCb=cb||null; toastCur=item||null; t.classList.add('show'); clearTimeout(toastT);
@@ -6923,7 +6993,7 @@ function toast(msg,cb){ toastRaw(String(msg).replace(/[&<>]/g,c=>({'&':'&amp;','
 /* 通知キュー：歴史・人物・理解段階・おかえりなさい。モーダル（時代開始・クリア等）やプロローグの表示中は保留し、
    閉じてから「理解段階（1件ずつ）→ 歴史（集約）→ 人物（集約）→ おかえりなさい」の順に出す */
 const NQ_GAP=600; let nq=[];
-const nHeld=()=>$('ovm').classList.contains('show')||!$('pro').hidden;
+const nHeld=()=>$('ovm').classList.contains('show')||!$('pro').hidden||!$('ending').hidden;
 function notify(item){ nq.push(item); setTimeout(pumpN,0); } // 同じ処理の中で開くモーダルを待ってから判定する
 function pumpN(){ if(!nq.length||nHeld()||$('toast').classList.contains('show')) return;
   // 後ろに通知が控えているときは表示を少し短くして、待ち時間を減らす
@@ -6949,6 +7019,7 @@ document.addEventListener('click',e=>{
   if(g('#toast')&&toastCb){ const cb=toastCb; toastCb=null; $('toast').classList.remove('show'); cb(); return; }
   let el;
   if(g('[data-close]')||(e.target===$('ov'))){ closeSheet(); return; }
+  if(g('[data-end-close]')){ closeEnding(); return; }
   if(g('[data-close-mid]')){ closeMid(); return; }
   if((el=g('nav button'))){ setTab(el.dataset.tab); return; }
   if((el=g('[data-tech]'))){ techSheet(el.dataset.tech); return; }
@@ -6996,6 +7067,7 @@ setInterval(save,5000);
 document.addEventListener('visibilitychange',()=>{ if(document.hidden) save(); else { claimAway(); last=performance.now(); } });
 window.addEventListener('pagehide',save);
 document.addEventListener('dblclick',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('ending').hidden) closeEnding(); });
 // 人物図鑑の検索・絞り込み：一覧部分だけ描き直す（入力欄のフォーカスを保つ）
 document.addEventListener('input',e=>{ if(e.target.id==='pq'){ peopleQ=e.target.value; const l=$('plist'); if(l) l.innerHTML=peopleList(); } });
 document.addEventListener('change',e=>{ const id=e.target.id; if(!['pp','pt','pr'].includes(id)) return;
