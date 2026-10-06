@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>くすりの歴史 ― 古代から現代 ―</title>
+<title>薬歴 ― くすりの歴史 ―</title>
 <meta name="description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
 <meta name="theme-color" content="#004c4c">
 
@@ -11,23 +11,23 @@
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="apple-mobile-web-app-title" content="くすりの歴史">
+<meta name="apple-mobile-web-app-title" content="薬歴">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 
 <!-- OGP / X：画像はSNSのクローラーが取りに来るため絶対URL（公開URL https://yakureki.pages.dev/） -->
-<meta property="og:title" content="くすりの歴史 ― 古代から現代 ―">
+<meta property="og:title" content="薬歴 ― くすりの歴史 ―">
 <meta property="og:description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="くすりの歴史">
+<meta property="og:site_name" content="薬歴">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://yakureki.pages.dev/assets/ogp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="くすりの歴史 ― 古代から現代 ―　薬草からmRNAワクチンまで">
+<meta property="og:image:alt" content="薬歴 ― くすりの歴史 ―　薬草からmRNAワクチンまで">
 <meta property="og:url" content="https://yakureki.pages.dev/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="くすりの歴史 ― 古代から現代 ―">
+<meta name="twitter:title" content="薬歴 ― くすりの歴史 ―">
 <meta name="twitter:description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
 <meta name="twitter:image" content="https://yakureki.pages.dev/assets/ogp.png">
 <style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.exbox{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:12px 0;background:rgba(0,0,0,.14);}
@@ -595,6 +595,7 @@ html.sf-open,html.sf-open body{overflow:hidden;}
 
 <script>
 /* ======================================================================
+ 薬歴 v1.5.0（2026-10-06）：ゲーム名を「くすりの歴史 ― 古代から現代 ―」から「薬歴 ― くすりの歴史 ―」へ。title・OGP・manifest・ホーム画面名（薬歴）とOGP画像（新デザイン）を差し替え。アイコン一式（1024/512/192/180/32）を「薬歴」の新デザインに差し替え。データ・セーブキーは変更なし。
  くすりの歴史 v1.4.1（2026-10-06）：NATIONAL EXAM の表示名を「人物が出題」「業績が出題」「つながり未確認（10年分）」に変更。出題の回数表記を厚生労働省の各回「問題及び解答」ページへのリンクに。データ・セーブは変更なし
  くすりの歴史 v1.4.0（2026-10-06）：Added: 人物図鑑「NATIONAL EXAM LINK」（第102〜111回 薬剤師国家試験の監査にもとづき、137人を DIRECT HISTORY 1／VERIFIED LINK 50／HISTORY 86 に分類。人物詳細に NATIONAL EXAM 欄、一覧に国試フィルター、長井長義に EXAM CHECK（第108回 問72、選択肢から人物へたどる解説つき）。張仲景は HOLD で非表示。セーブ・数値データは変更なし。人物本文はシャルパンティエの合成年を「1951年前後」に改めた1か所のみ）
  くすりの歴史 v1.3.0（2026-10-05）：Added: Special History「薬害から医薬品安全へ」（クリア後の専門史。架空薬のSAFETY CASE→実際の歴史、20記録・14技術・SAFETY GAP・SAFETY REVIEW 15問・年表・資料館・誓いの碑・2026 COMMUNITY PHARMACY）。進行は別キー yakureki-safety-v1 に保存し、本編のセーブ（pharma-3layer-v2／SAVE_VERSION 5）は変更なし。本編の数値データも変更なし（専門史がLOWのときだけ生産+5%の信頼ボーナス）
@@ -7163,7 +7164,7 @@ function viewRecord(){
   if(S.cleared) h+='<button class="big" id="recapBtn">🏅 エンディングを見る</button>';
   if(S.cleared) h+='<div class="sec">専門史 <small>SPECIAL HISTORY</small></div><button class="big" data-sf="enter" style="background:#0a0a0a;color:#e6e4df;border:1px solid #c9a45c">📖 '+SPECIAL_HISTORIES.safety.title+'<br><small style="font-size:.62rem;font-weight:400;letter-spacing:.12em">FROM DRUG DISASTERS TO DRUG SAFETY</small></button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
-   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">くすりの歴史 ― 古代から現代 ―<br>v'+GAME_VER+'</div>';
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">薬歴 ― くすりの歴史 ―<br>v'+GAME_VER+'</div>';
   return h; }
 
 /* 購入可否の見た目だけ更新（タップ中に再描画しない） */
@@ -7237,7 +7238,7 @@ const SPECIALTY=[
  {id:'anticancer',title:'抗がん剤史',status:'soon'},
  {id:'safety',title:'薬害から医薬品安全へ',status:'open'},
  {id:'companies',title:'製薬会社史',status:'soon'}];
-const GAME_NAME='yakureki', GAME_VER='1.4.1', DEVELOPER='こんにゃくお爺さん';
+const GAME_NAME='yakureki', GAME_VER='1.5.0', DEVELOPER='こんにゃくお爺さん';
 function endingHtml(){
   const evs=EVENTS.filter(e=>S.ev[e.id]), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0).length, nb=FACS.reduce((a,f)=>a+own(f.id),0);
