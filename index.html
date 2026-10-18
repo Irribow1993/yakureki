@@ -47,6 +47,23 @@
 .excard{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;}.excard b{font-size:.64rem;letter-spacing:.08em;color:var(--acc);margin-right:6px;}.excard span{font-size:.76rem;}
 .excard p{font-size:.72rem;line-height:1.7;margin:4px 0;}.exrel{font-size:.68rem;color:var(--mute);line-height:1.6;margin-top:6px;}
 .lk.off{opacity:.6;}.exa{color:var(--acc);text-decoration:underline;}.exhint{font-size:.62rem;color:var(--mute);margin-top:2px;}.lk small{color:var(--mute);}
+.verband{display:flex;align-items:center;gap:8px;margin:0 0 8px;padding:6px 8px 6px 10px;border:1px solid rgba(194,164,106,.55);border-radius:10px;background:rgba(194,164,106,.1);font-size:.7rem;}
+.verband b{color:var(--acc2);font-weight:900;letter-spacing:.04em;}
+.verband span{flex:1;min-width:0;}
+.verband button{font:inherit;font-size:.68rem;background:none;border:0;color:var(--acc);font-weight:800;padding:4px 6px;}
+.verband .vx{color:var(--mute);font-weight:400;}
+.clv{border-top:1px solid var(--line);padding:10px 0 4px;}
+.clv h4{margin:0;font-size:.9rem;display:flex;align-items:baseline;gap:8px;}
+.clv h4 small{font-size:.62rem;color:var(--mute);font-weight:400;}
+.clv .ttl{font-size:.7rem;color:var(--acc2);margin:2px 0 4px;}
+.clk{display:inline-block;flex:none;white-space:nowrap;min-width:3.2em;text-align:center;font-size:.58rem;font-weight:900;border-radius:5px;padding:1px 5px;margin-right:6px;border:1px solid var(--line);}
+.clk.add{color:var(--acc2);border-color:rgba(194,164,106,.55);}
+.clk.imp{color:var(--acc);border-color:rgba(143,166,191,.55);}
+.clk.fix{color:#e0a7a1;border-color:rgba(192,86,79,.5);}
+.clv ul{list-style:none;margin:4px 0;padding:0;font-size:.74rem;line-height:1.65;}
+.clv li{display:flex;align-items:baseline;margin:3px 0;}
+.verlink{display:block;margin:18px auto 0;background:none;border:0;font:inherit;font-size:.64rem;color:var(--mute);text-align:center;line-height:1.6;}
+.verlink u{color:var(--acc);}
 </style>
 </head>
 <body>
@@ -569,6 +586,7 @@ html.sf-open,html.sf-open body{overflow:hidden;}
 .mv-sub{display:block;width:100%;margin-top:8px;background:none;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.78rem;color:var(--tx);}
 </style>
 <header>
+  <div class="verband" id="verBand" hidden></div>
   <div class="era-row" id="eraRow"></div>
   <div class="res">
     <div class="r"><b id="kpD">0</b><small>💊 知識P</small></div>
@@ -622,6 +640,7 @@ html.sf-open,html.sf-open body{overflow:hidden;}
 
 <script>
 /* ======================================================================
+ YAKUREKI v1.7.0（2026-10-19）：更新履歴を追加。記録タブに「更新履歴」（版ごとに 追加／改善／修正）、ヘッダー下に更新後の初回だけ出る小さな帯（閉じたら出さない）。文章は CHANGELOG データに集約。見た版は別キー yakureki-ver-seen に保存し、本編のセーブ形式は変更なし。ゲーム本体・数値は無変更。
  薬歴 v1.6.1（2026-10-19）：URL引っ越し（新URL版 https://konnyaku-yakureki.pages.dev/）。OGPのURLを新URLへ。ゲームの表示名を「薬歴 ― くすりの歴史 ―」から「YAKUREKI」へ（ホーム画面・クレジットは YAKUREKI）。アイコン・OGP画像を新デザイン（Yと金の点）に差し替え。旧URLの「セーブを持って引っ越す」から #import=セーブコード で開かれたらセーブを受け取る（このURLに進み具合がなければそのまま読み込み、あれば上書きするか確認）。受け取った後はURLからコードを消す。ゲーム本体・数値は無変更。
  薬歴 v1.6.0（2026-10-06）：「文章を読んでもらう仕組み」（GPT仕様書 v1.6）。歴史の通知を要約つき（HISTORY RECORD、くわしく読む／あとで読む）に。歴史イベント114件に summary（1行要約、GPT作成・確定）を追加。本文の末尾まで表示すると読了（READ）として保存（readEv）。歴史タブに HISTORY ARCHIVE（READ n / m）と ALL／UNREAD の切り替え、行ごとの READ／UNREAD 表示。その後への影響の見出しを WHY THIS MATTERS に。記録タブとエンディングに「歴史の読了」。数値・解放条件・既存データは変更なし。
  薬歴 v1.5.0（2026-10-06）：ゲーム名を「くすりの歴史 ― 古代から現代 ―」から「薬歴 ― くすりの歴史 ―」へ。title・OGP・manifest・ホーム画面名（薬歴）とOGP画像（新デザイン）を差し替え。アイコン一式（1024/512/192/180/32）を「薬歴」の新デザインに差し替え。ゲーム内の配色を、ティール＋ミントからチャコール＋青灰・金の落ち着いた配色へ（スペシャルヒストリーとエンディングは元から無彩色のため据え置き）。データ・セーブキーは変更なし。
@@ -7306,6 +7325,7 @@ function viewRecord(){
   const t=TECHS.filter(x=>S.tech[x.id]).length, f=FACS.filter(x=>own(x.id)>0).length, e=EVENTS.filter(x=>S.ev[x.id]).length;
   const mm=Math.floor(S.playSec/60), ss=Math.floor(S.playSec%60);
   let h='<div class="sec">遊び方</div><div class="howto"><ol><li>知識Pを貯める（「探求する」をタップ、施設の生産）</li><li>知識Pで<b>研究</b>する → 新しい<b>施設</b>が建てられる</li><li>研究を済ませ、関連する施設を一定数建てると<b>歴史</b>が動く（生産アップ）</li><li>歴史の出来事をきっかけに、次の研究が開く</li><li>条件をそろえると次の<b>時代</b>へ</li></ol><div class="note">留守にしている間も、生産量の'+Math.round(OFF_EFF*100)+'%の知識Pが貯まります（最大'+(OFF_MAX/3600)+'時間分）。</div></div>';
+  h+='<div class="sec">更新履歴 <small>v'+GAME_VER+'</small></div>'+clEntry(CHANGELOG[0])+'<button class="btn sub" data-cl-open style="width:100%;margin-top:4px">これまでの更新をすべて見る</button>';
   h+='<div class="sec">薬の理解の歩み</div>'+flowBand();
   h+='<div class="sec">コンプリート状況</div><div class="stat"><div>研究</div><div>'+t+' / '+TECHS.length+'</div><div>施設（1基以上）</div><div>'+f+' / '+FACS.length+'</div><div>歴史</div><div>'+e+' / '+EVENTS.length+'</div><div>歴史の読了</div><div>'+readTotal()+' / '+(S.cleared?EVENTS.length:e)+'</div><div>薬物図鑑</div><div>'+DRUGS.filter(drugOn).length+' / '+DRUGS.length+'</div><div>人物図鑑</div><div>'+PEOPLE.filter(x=>S.met[x.id]).length+' / '+PEOPLE.length+'</div><div>総研究ポイント</div><div>'+fmt(S.techSpent)+'</div><div>総生産量</div><div>'+fmt(S.kpTotal)+'</div><div>時代</div><div>'+S.era+' / '+ERAS.length+'</div><div>プレイ時間</div><div>'+mm+'分'+ss+'秒</div></div>';
   if(S.era>=6) h+='<button class="big" id="medBtn">🏅「中世薬学の成立」を見る</button>';
@@ -7314,7 +7334,7 @@ function viewRecord(){
   if(S.cleared) h+='<button class="big" id="recapBtn">🏅 エンディングを見る</button>';
   if(S.cleared) h+='<div class="sec">専門史 <small>SPECIAL HISTORY</small></div><button class="big" data-sf="enter" style="background:#0a0a0a;color:#e6e4df;border:1px solid #c9a45c">📖 '+SPECIAL_HISTORIES.safety.title+'<br><small style="font-size:.62rem;font-weight:400;letter-spacing:.12em">FROM DRUG DISASTERS TO DRUG SAFETY</small></button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
-   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">YAKUREKI<br>v'+GAME_VER+'</div>';
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><button class="verlink" data-cl-open>YAKUREKI<br>v'+GAME_VER+'　<u>更新履歴を見る</u></button>';
   return h; }
 
 /* 購入可否の見た目だけ更新（タップ中に再描画しない） */
@@ -7399,7 +7419,61 @@ const SPECIALTY=[
  {id:'anticancer',title:'抗がん剤史',status:'soon'},
  {id:'safety',title:'薬害から医薬品安全へ',status:'open'},
  {id:'companies',title:'製薬会社史',status:'soon'}];
-const GAME_NAME='YAKUREKI', GAME_VER='1.6.1', DEVELOPER='こんにゃくお爺さん';
+const GAME_NAME='YAKUREKI', GAME_VER='1.7.0', DEVELOPER='こんにゃくお爺さん';
+/* ===== 更新履歴（プレイヤー向け）：新しい版を先頭に足す。k は add（追加）／imp（改善）／fix（修正） ===== */
+const CHANGELOG=[
+ {v:'1.7.0',date:'2026-10-19',title:'更新履歴',items:[
+  ['add','記録タブに「更新履歴」を追加しました。これまでの追加・改善・修正を、版ごとに見られます。'],
+  ['add','新しい版に更新されたとき、最初に開いた一度だけ、画面の上に小さなお知らせが出るようになりました。']]},
+ {v:'1.6.1',date:'2026-10-19',title:'新しいURLへ引っ越し',items:[
+  ['imp','公開URLを https://konnyaku-yakureki.pages.dev/ に移しました。'],
+  ['imp','ゲームの名前を「YAKUREKI」に変え、アイコンとSNS用の画像を新しいデザインにしました。'],
+  ['add','前のURLの「セーブを持って引っ越す」から、進み具合をそのまま引き継げるようにしました。']]},
+ {v:'1.6.0',date:'2026-10-06',title:'歴史を読む仕組み',items:[
+  ['add','歴史が動いたときの通知に、1行の要約と「くわしく読む」「あとで読む」を加えました。'],
+  ['add','歴史の本文を最後まで表示すると「読了（READ）」として記録されるようになりました。'],
+  ['add','歴史タブに HISTORY ARCHIVE（読了数）と、未読だけを表示する切り替えを加えました。'],
+  ['add','記録タブとエンディングに「歴史の読了」を加えました。']]},
+ {v:'1.5.0',date:'2026-10-06',title:'新しい名前と配色',items:[
+  ['imp','ゲームの名前を「薬歴 ― くすりの歴史 ―」に変え、アイコンを新しいデザインにしました。'],
+  ['imp','ゲーム内の配色を、落ち着いた展示ケース風（チャコール・青灰・金）に変えました。']]},
+ {v:'1.4.1',date:'2026-10-06',title:'国試表示の整理',items:[
+  ['imp','NATIONAL EXAM の表示名を「人物が出題」「業績が出題」「つながり未確認（10年分）」に変えました。'],
+  ['imp','出題回の表記から、厚生労働省の各回「問題及び解答」のページへ移れるようにしました。']]},
+ {v:'1.4.0',date:'2026-10-06',title:'NATIONAL EXAM LINK',items:[
+  ['add','人物図鑑に、薬剤師国家試験（第102〜111回）とのつながりを示す NATIONAL EXAM 欄を加えました。'],
+  ['add','人物図鑑の一覧に、国家試験とのつながりで絞り込む機能を加えました。'],
+  ['add','長井長義に EXAM CHECK（第108回 問72）を加えました。選択肢から、関係する人物へたどれます。'],
+  ['fix','シャルパンティエのクロルプロマジン合成年を「1951年前後」に改めました。']]},
+ {v:'1.3.0',date:'2026-10-05',title:'専門史「薬害から医薬品安全へ」',items:[
+  ['add','クリア後に遊べる専門史「薬害から医薬品安全へ」を加えました（記録タブから入れます）。'],
+  ['add','架空の医薬品で判断する SAFETY CASE、HISTORY RECORD、SAFETY REVIEW、年表、資料館などを収めています。']]},
+ {v:'1.2.1',date:'2026-10-05',title:'エンディング',items:[
+  ['add','全時代クリア後のエンディング画面を加えました。'],
+  ['imp','人物図鑑の紹介文を、読みやすい文章に書き直しました。']]},
+ {v:'1.2',date:'2026-10-05',title:'人物から読む薬学史',items:[
+  ['add','人物図鑑を広げ、章立て・検索・絞り込みを加えました。'],
+  ['add','人物どうし、人物と薬物・歴史の出来事を、リンクでたどれるようにしました。']]},
+ {v:'1.1',date:'2026-10-05',title:'名前とアイコン',items:[
+  ['imp','ゲームの名前を「くすりの歴史 ― 古代から現代 ―」にしました。'],
+  ['add','ホーム画面に追加できるアイコンと、SNSで共有したときの画像を加えました。']]},
+ {v:'1.0.1',date:'2026-10-05',title:'小さな調整',items:[
+  ['imp','「探求する」をタップしたときに出ていた、時代ごとの一文をなくしました。']]},
+ {v:'1.0',date:'2026-10-04',title:'公開',items:[
+  ['add','古代から現代までの13の時代をたどる「薬歴」を公開しました。']]}];
+const CL_KIND={add:'追加',imp:'改善',fix:'修正'};
+const VER_KEY='yakureki-ver-seen'; // 見た版。本編のセーブとは別に持つ
+function clEntry(e){ return '<div class="clv"><h4>v'+e.v+' <small>'+e.date+'</small></h4><div class="ttl">'+esc(e.title)+'</div><ul>'+
+  e.items.map(([k,t])=>'<li><span class="clk '+k+'">'+CL_KIND[k]+'</span><span>'+esc(t)+'</span></li>').join('')+'</ul></div>'; }
+function changelogSheet(){ markVerSeen(); navStack=[];
+  openSheet('<div class="tag">UPDATE HISTORY</div><h3>更新履歴</h3><div class="meta">いま遊んでいるのは v'+GAME_VER+' です。</div>'+CHANGELOG.map(clEntry).join('')); }
+function markVerSeen(){ safe(()=>localStorage.setItem(VER_KEY,GAME_VER)); const b=$('verBand'); if(b) b.hidden=true; }
+function checkVer(){ const seen=safe(()=>localStorage.getItem(VER_KEY),null);
+  if(seen===GAME_VER) return;
+  if(!S.prologueDone&&!(S.kpTotal>0)){ markVerSeen(); return; } // 初めて遊ぶ人には出さない
+  const e=CHANGELOG[0], b=$('verBand');
+  b.innerHTML='<span><b>v'+e.v+'</b> に更新しました</span><button data-cl-open>内容を見る</button><button class="vx" data-cl-close aria-label="お知らせを閉じる">✕</button>';
+  b.hidden=false; }
 function endingHtml(){
   const evs=EVENTS.filter(e=>S.ev[e.id]), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0).length, nb=FACS.reduce((a,f)=>a+own(f.id),0);
@@ -7505,6 +7579,8 @@ document.addEventListener('click',e=>{
   if(g('#expBtn')){ $('code').value=exportCode(); $('code').select(); return; }
   if(g('#impBtn')){ if(!importCode($('code').value)) toast('コードを読み込めませんでした'); else toast('読み込みました'); return; }
   if(g('#resetBtn')){ openMid('<h3>セーブデータをリセット</h3><p>進行状況をすべて消して最初からやり直します。よろしいですか？</p><div style="display:flex;gap:8px"><button class="big off" data-close-mid>やめる</button><button class="big" id="resetYes" style="background:#c0564f">リセットする</button></div>'); return; }
+  if(g('[data-cl-open]')){ changelogSheet(); return; }
+  if(g('[data-cl-close]')){ markVerSeen(); return; }
   if(g('#resetYes')){ safe(()=>localStorage.removeItem(SAVE_KEY)); try{ sfReset(); }catch(e){} S=newState(); queue.length=0; recalc(); closeMid(); renderAll(); showPrologue(); return; }
 });
 
@@ -8214,6 +8290,7 @@ if(S.cleared&&!S.clearShown) queue.push({k:'clear'});
 try{ if(S.cleared&&S.clearShown&&sf&&!sf.unlockSeen){ notify({k:'w',msg:'📖 専門史「'+SPECIAL_HISTORIES.safety.title+'」が解放されました。記録タブから入れます。'}); sf.unlockSeen=true; sfSave(); } }catch(e){}
 renderAll(); runQueue();
 if(!S.prologueDone) showPrologue();
+try{ checkVer(); }catch(e){}
 /* ---- v1.6.1 URL引っ越し（新URL版）：旧URLから #import=セーブコード で渡されたセーブを受け取る ---- */
 (function(){
   const h=location.hash||''; if(h.indexOf('#import=')!==0) return;
