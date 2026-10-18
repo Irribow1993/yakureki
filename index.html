@@ -629,7 +629,7 @@ html.sf-open,html.sf-open body{overflow:hidden;}
 
 <script>
 /* ======================================================================
- 薬歴 v1.6.1（2026-10-19）：URL引っ越し（旧URL版）。起動時に一度だけ「引っ越しのお知らせ」を表示し、閉じた後は画面上部の小さな帯で再表示。「セーブを持って引っ越す」で新URL（https://konnyaku-yakureki.pages.dev/）へセーブコード（専門史を含む）を渡して開く。予備としてコードのコピーも可能。ゲーム本体・数値は無変更。
+ 薬歴 v1.6.1（2026-10-19）：URL引っ越し（旧URL版）。※修正：起動時のお知らせがセーブ読み込み前に開き、セーブがある人にも引っ越しボタンが出なかった不具合を修正。起動時に一度だけ「引っ越しのお知らせ」を表示し、閉じた後は画面上部の小さな帯で再表示。「セーブを持って引っ越す」で新URL（https://konnyaku-yakureki.pages.dev/）へセーブコード（専門史を含む）を渡して開く。予備としてコードのコピーも可能。ゲーム本体・数値は無変更。
  薬歴 v1.6.0（2026-10-06）：「文章を読んでもらう仕組み」（GPT仕様書 v1.6）。歴史の通知を要約つき（HISTORY RECORD、くわしく読む／あとで読む）に。歴史イベント114件に summary（1行要約、GPT作成・確定）を追加。本文の末尾まで表示すると読了（READ）として保存（readEv）。歴史タブに HISTORY ARCHIVE（READ n / m）と ALL／UNREAD の切り替え、行ごとの READ／UNREAD 表示。その後への影響の見出しを WHY THIS MATTERS に。記録タブとエンディングに「歴史の読了」。数値・解放条件・既存データは変更なし。
  薬歴 v1.5.0（2026-10-06）：ゲーム名を「くすりの歴史 ― 古代から現代 ―」から「薬歴 ― くすりの歴史 ―」へ。title・OGP・manifest・ホーム画面名（薬歴）とOGP画像（新デザイン）を差し替え。アイコン一式（1024/512/192/180/32）を「薬歴」の新デザインに差し替え。ゲーム内の配色を、ティール＋ミントからチャコール＋青灰・金の落ち着いた配色へ（スペシャルヒストリーとエンディングは元から無彩色のため据え置き）。データ・セーブキーは変更なし。
  くすりの歴史 v1.4.1（2026-10-06）：NATIONAL EXAM の表示名を「人物が出題」「業績が出題」「つながり未確認（10年分）」に変更。出題の回数表記を厚生労働省の各回「問題及び解答」ページへのリンクに。データ・セーブは変更なし
@@ -6928,7 +6928,10 @@ function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s
   const NEW_URL='https://konnyaku-yakureki.pages.dev/';
   const SEEN_KEY='yakureki-move-notice-v1';
   const band=document.getElementById('mvBand');
-  const hasSave=()=>{ try{ return !!(S&&(S.prologueDone||S.kp>0)); }catch(e){ return !!safe(()=>localStorage.getItem(SAVE_KEY),null); } };
+  const hasSave=()=>{ // 起動直後でも判定できるよう、保存済みデータを直接見る
+    const raw=safe(()=>localStorage.getItem(SAVE_KEY),null);
+    if(raw){ try{ const o=JSON.parse(raw); if(o&&(o.prologueDone||o.kp>0||o.kpTotal>0)) return true; }catch(e){ return true; } }
+    try{ return !!(S&&(S.prologueDone||S.kp>0)); }catch(e){ return false; } };
   function code(){ try{ save(); }catch(e){} return exportCode(); }
   function go(){
     if(!hasSave()){ location.href=NEW_URL; return; }
@@ -6967,7 +6970,7 @@ function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s
       if(t.id==='mvCopy'){ copy(); return; } });
   }
   band.addEventListener('click',open);
-  if(safe(()=>localStorage.getItem(SEEN_KEY),null)) band.hidden=false; else open();
+  if(safe(()=>localStorage.getItem(SEEN_KEY),null)) band.hidden=false; else setTimeout(open,0); // セーブの読み込み後に開く
 })();
 
 /* ---------- 計算 ---------- */
