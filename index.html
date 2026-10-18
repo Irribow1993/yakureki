@@ -3,33 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>YAKUREKI</title>
-<meta name="description" content="くすりの発展の歴史をたどるシミュレーションゲーム">
+<title>薬歴 ― くすりの歴史 ―</title>
+<meta name="description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
 <meta name="theme-color" content="#23262b">
 
 <!-- アイコン（相対パス：サブディレクトリに置いても壊れない） -->
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
 <link rel="manifest" href="./manifest.webmanifest">
-<meta name="apple-mobile-web-app-title" content="YAKUREKI">
+<meta name="apple-mobile-web-app-title" content="薬歴">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 
-<!-- OGP / X：画像はSNSのクローラーが取りに来るため絶対URL（公開URL https://konnyaku-yakureki.pages.dev/ ／ 旧URL yakureki.pages.dev から引っ越し） -->
-<meta property="og:title" content="YAKUREKI">
-<meta property="og:description" content="くすりの発展の歴史をたどるシミュレーションゲーム">
+<!-- OGP / X：画像はSNSのクローラーが取りに来るため絶対URL（公開URL https://yakureki.pages.dev/） -->
+<meta property="og:title" content="薬歴 ― くすりの歴史 ―">
+<meta property="og:description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="YAKUREKI">
+<meta property="og:site_name" content="薬歴">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://konnyaku-yakureki.pages.dev/assets/ogp.png?v=1.6.1">
+<meta property="og:image" content="https://yakureki.pages.dev/assets/ogp.png?v=1.6.0">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="YAKUREKI">
-<meta property="og:url" content="https://konnyaku-yakureki.pages.dev/">
+<meta property="og:image:alt" content="薬歴 ― くすりの歴史 ―　薬草からmRNAワクチンまで">
+<meta property="og:url" content="https://yakureki.pages.dev/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="YAKUREKI">
-<meta name="twitter:description" content="くすりの発展の歴史をたどるシミュレーションゲーム">
-<meta name="twitter:image" content="https://konnyaku-yakureki.pages.dev/assets/ogp.png?v=1.6.1">
+<meta name="twitter:title" content="薬歴 ― くすりの歴史 ―">
+<meta name="twitter:description" content="薬草からmRNAワクチンまで。くすりの発展の歴史をたどるシミュレーションゲーム。">
+<meta name="twitter:image" content="https://yakureki.pages.dev/assets/ogp.png?v=1.6.0">
 <style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.exbox{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:12px 0;background:rgba(0,0,0,.14);}
 .exhd{display:flex;align-items:center;justify-content:space-between;gap:8px;}.exhd b{font-size:.72rem;letter-spacing:.08em;color:var(--acc);}
 .exlb{font-size:.62rem;letter-spacing:.06em;border:1px solid var(--line);border-radius:99px;padding:2px 8px;color:var(--tx);}.exlb.d{border-color:var(--acc2);color:var(--acc2);}
@@ -561,13 +561,20 @@ html.sf-open,html.sf-open body{overflow:hidden;}
 
 <div class="app">
 <style>
+.mv-band{display:block;width:100%;border:0;border-bottom:1px solid var(--line);background:#3a3326;color:#e6cf9c;font:inherit;font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:7px 12px;text-align:center;}
+.mv-band small{font-weight:400;color:#c9b88f;margin-left:6px;}
 .mv-ov{position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.66);display:flex;align-items:center;justify-content:center;padding:16px;}
-.mv-sh{width:100%;max-width:440px;max-height:90dvh;overflow:auto;background:#2b2f35;border:1px solid var(--line);border-top:3px solid var(--acc2);border-radius:16px;padding:20px 18px 18px;}
+.mv-sh{width:100%;max-width:440px;max-height:90dvh;overflow:auto;background:#2b2f35;border:1px solid var(--line);border-top:3px solid var(--acc2);border-radius:16px;padding:20px 18px 18px;position:relative;}
 .mv-sh .k{font-size:.64rem;letter-spacing:.12em;color:var(--acc2);font-weight:900;}
 .mv-sh h3{margin:4px 0 10px;font-size:1.1rem;}
 .mv-sh p{font-size:.8rem;line-height:1.75;margin:8px 0;}
+.mv-url{display:block;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:.78rem;color:var(--acc);word-break:break-all;-webkit-user-select:text;user-select:text;margin:8px 0;}
+.mv-note{font-size:.68rem!important;color:var(--mute);}
 .mv-sub{display:block;width:100%;margin-top:8px;background:none;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.78rem;color:var(--tx);}
+.mv-x{position:absolute;top:8px;right:10px;background:none;border:0;font-size:1.1rem;color:var(--mute);padding:4px 6px;}
+.mv-msg{font-size:.72rem;color:var(--acc);text-align:center;min-height:1.2em;margin-top:6px;}
 </style>
+<button class="mv-band" id="mvBand" hidden>📦 薬歴は「YAKUREKI」として引っ越しました<small>くわしく ›</small></button>
 <header>
   <div class="era-row" id="eraRow"></div>
   <div class="res">
@@ -622,7 +629,7 @@ html.sf-open,html.sf-open body{overflow:hidden;}
 
 <script>
 /* ======================================================================
- 薬歴 v1.6.1（2026-10-19）：URL引っ越し（新URL版 https://konnyaku-yakureki.pages.dev/）。OGPのURLを新URLへ。ゲームの表示名を「薬歴 ― くすりの歴史 ―」から「YAKUREKI」へ（ホーム画面・クレジットは YAKUREKI）。アイコン・OGP画像を新デザイン（Yと金の点）に差し替え。旧URLの「セーブを持って引っ越す」から #import=セーブコード で開かれたらセーブを受け取る（このURLに進み具合がなければそのまま読み込み、あれば上書きするか確認）。受け取った後はURLからコードを消す。ゲーム本体・数値は無変更。
+ 薬歴 v1.6.1（2026-10-19）：URL引っ越し（旧URL版）。起動時に一度だけ「引っ越しのお知らせ」を表示し、閉じた後は画面上部の小さな帯で再表示。「セーブを持って引っ越す」で新URL（https://konnyaku-yakureki.pages.dev/）へセーブコード（専門史を含む）を渡して開く。予備としてコードのコピーも可能。ゲーム本体・数値は無変更。
  薬歴 v1.6.0（2026-10-06）：「文章を読んでもらう仕組み」（GPT仕様書 v1.6）。歴史の通知を要約つき（HISTORY RECORD、くわしく読む／あとで読む）に。歴史イベント114件に summary（1行要約、GPT作成・確定）を追加。本文の末尾まで表示すると読了（READ）として保存（readEv）。歴史タブに HISTORY ARCHIVE（READ n / m）と ALL／UNREAD の切り替え、行ごとの READ／UNREAD 表示。その後への影響の見出しを WHY THIS MATTERS に。記録タブとエンディングに「歴史の読了」。数値・解放条件・既存データは変更なし。
  薬歴 v1.5.0（2026-10-06）：ゲーム名を「くすりの歴史 ― 古代から現代 ―」から「薬歴 ― くすりの歴史 ―」へ。title・OGP・manifest・ホーム画面名（薬歴）とOGP画像（新デザイン）を差し替え。アイコン一式（1024/512/192/180/32）を「薬歴」の新デザインに差し替え。ゲーム内の配色を、ティール＋ミントからチャコール＋青灰・金の落ち着いた配色へ（スペシャルヒストリーとエンディングは元から無彩色のため据え置き）。データ・セーブキーは変更なし。
  くすりの歴史 v1.4.1（2026-10-06）：NATIONAL EXAM の表示名を「人物が出題」「業績が出題」「つながり未確認（10年分）」に変更。出題の回数表記を厚生労働省の各回「問題及び解答」ページへのリンクに。データ・セーブは変更なし
@@ -6916,6 +6923,52 @@ function save(){ S.lastSeen=document.hidden?activeAt:Date.now(); const o=Object.
 function setSavedLabel(){const e=$('savedAt'); if(e){const d=new Date(); e.textContent='💾 '+d.toTimeString().slice(0,8)+' 保存';}}
 function exportCode(){ const o=Object.assign({},S); try{ if(sf) o._safety=sf; }catch(e){} return btoa(unescape(encodeURIComponent(JSON.stringify(o)))); }
 function importCode(s){ try{ const o=JSON.parse(decodeURIComponent(escape(atob(s.trim())))); const sfo=o._safety; delete o._safety; safe(()=>localStorage.setItem(SAVE_KEY,JSON.stringify(o))); if(sfo&&typeof sfo==='object') safe(()=>localStorage.setItem(SF_KEY,JSON.stringify(sfo))); sfLoad(); S=newState(); load(); recalc(); progress(true); renderAll(); save(); if(!S.prologueDone) showPrologue(); return true;}catch(e){return false;} }
+/* ---- v1.6.1 URL引っ越し（旧URL版）：起動処理より前に置き、本体の起動で何かあってもお知らせは出るようにする ---- */
+(function(){
+  const NEW_URL='https://konnyaku-yakureki.pages.dev/';
+  const SEEN_KEY='yakureki-move-notice-v1';
+  const band=document.getElementById('mvBand');
+  const hasSave=()=>{ try{ return !!(S&&(S.prologueDone||S.kp>0)); }catch(e){ return !!safe(()=>localStorage.getItem(SAVE_KEY),null); } };
+  function code(){ try{ save(); }catch(e){} return exportCode(); }
+  function go(){
+    if(!hasSave()){ location.href=NEW_URL; return; }
+    let c; try{ c=code(); }catch(e){ msg('セーブの書き出しに失敗しました。「コードをコピー」をお試しください。'); return; }
+    location.href=NEW_URL+'#import='+encodeURIComponent(c);
+  }
+  function msg(t){ const m=document.getElementById('mvMsg'); if(m) m.textContent=t; }
+  function copy(){
+    let c; try{ c=code(); }catch(e){ msg('コードを作れませんでした。'); return; }
+    const done=()=>msg('コピーしました。新しいURLの「記録」タブ →「コードを読み込む」で貼り付けてください。');
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(c).then(done,()=>fallback(c)); } else fallback(c);
+  }
+  function fallback(c){ const t=document.createElement('textarea'); t.value=c; t.style.cssText='position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(t); t.select(); let ok=false; try{ ok=document.execCommand('copy'); }catch(e){} t.remove(); msg(ok?'コピーしました。新しいURLの「記録」タブ →「コードを読み込む」で貼り付けてください。':'コピーできませんでした。「記録」タブの「コードを書き出す」からコピーしてください。'); }
+  function close(){ const o=document.getElementById('mvOv'); if(o) o.remove(); safe(()=>localStorage.setItem(SEEN_KEY,'1')); band.hidden=false; }
+  function open(){
+    if(document.getElementById('mvOv')) return;
+    const saved=hasSave();
+    const o=document.createElement('div'); o.className='mv-ov'; o.id='mvOv';
+    o.innerHTML='<div class="mv-sh" role="dialog" aria-modal="true" aria-labelledby="mvT">'+
+      '<button class="mv-x" id="mvX" aria-label="閉じる">✕</button>'+
+      '<div class="k">NOTICE</div><h3 id="mvT">引っ越しのお知らせ</h3>'+
+      '<p>いつも遊んでいただきありがとうございます。薬歴は名前を「YAKUREKI」に改め、新しいURLに引っ越しました。</p>'+
+      '<span class="mv-url">'+NEW_URL+'</span>'+
+      (saved
+        ?'<p>下のボタンを押すと、<b>いまの進み具合（専門史を含む）を持ったまま</b>新しいURLで続きを遊べます。</p>'+
+         '<button class="big" id="mvGo">セーブを持って引っ越す</button>'+
+         '<button class="mv-sub" id="mvCopy">うまくいかない時：セーブコードをコピー</button>'
+        :'<p>これから遊ぶ方は、新しいURLからどうぞ。</p><button class="big" id="mvGo">新しいURLで遊ぶ</button>')+
+      '<div class="mv-msg" id="mvMsg"></div>'+
+      '<p class="mv-note">このURLは、しばらくすると新しいURLへ自動で転送されるようになります。その後はこちらのセーブを持ち出せなくなるため、お早めの引っ越しをおすすめします。ホーム画面に追加している方は、新しいURLで追加し直してください。</p>'+
+      '<button class="mv-sub" id="mvLater">あとで</button></div>';
+    document.body.appendChild(o);
+    o.addEventListener('click',e=>{ const t=e.target;
+      if(t===o||t.id==='mvX'||t.id==='mvLater'){ close(); return; }
+      if(t.id==='mvGo'){ go(); return; }
+      if(t.id==='mvCopy'){ copy(); return; } });
+  }
+  band.addEventListener('click',open);
+  if(safe(()=>localStorage.getItem(SEEN_KEY),null)) band.hidden=false; else open();
+})();
 
 /* ---------- 計算 ---------- */
 const own=id=>S.own[id]||0;
@@ -7314,7 +7367,7 @@ function viewRecord(){
   if(S.cleared) h+='<button class="big" id="recapBtn">🏅 エンディングを見る</button>';
   if(S.cleared) h+='<div class="sec">専門史 <small>SPECIAL HISTORY</small></div><button class="big" data-sf="enter" style="background:#0a0a0a;color:#e6e4df;border:1px solid #c9a45c">📖 '+SPECIAL_HISTORIES.safety.title+'<br><small style="font-size:.62rem;font-weight:400;letter-spacing:.12em">FROM DRUG DISASTERS TO DRUG SAFETY</small></button>';
   h+='<div class="sec">セーブ</div><div class="note" id="savedAt">💾 自動保存（5秒ごと）</div><div class="btns" style="display:flex;gap:6px"><button class="btn sub" id="expBtn">コードを書き出す</button><button class="btn sub" id="impBtn">コードを読み込む</button></div><textarea id="code" placeholder="書き出したコードをここに貼り付けて読み込めます"></textarea>'+
-   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">YAKUREKI<br>v'+GAME_VER+'</div>';
+   '<div class="sec">リセット</div><button class="btn sub" id="resetBtn" style="width:100%">セーブデータをリセット</button><div class="note">セーブデータは以前の版から引き継がれます。</div><div class="note" style="text-align:center;margin-top:18px">薬歴 ― くすりの歴史 ―<br>v'+GAME_VER+'</div>';
   return h; }
 
 /* 購入可否の見た目だけ更新（タップ中に再描画しない） */
@@ -7399,7 +7452,7 @@ const SPECIALTY=[
  {id:'anticancer',title:'抗がん剤史',status:'soon'},
  {id:'safety',title:'薬害から医薬品安全へ',status:'open'},
  {id:'companies',title:'製薬会社史',status:'soon'}];
-const GAME_NAME='YAKUREKI', GAME_VER='1.6.1', DEVELOPER='こんにゃくお爺さん';
+const GAME_NAME='yakureki', GAME_VER='1.6.1', DEVELOPER='こんにゃくお爺さん';
 function endingHtml(){
   const evs=EVENTS.filter(e=>S.ev[e.id]), reach=evs.length?Math.max.apply(null,evs.map(e=>e.year)):0;
   const nf=FACS.filter(f=>own(f.id)>0).length, nb=FACS.reduce((a,f)=>a+own(f.id),0);
@@ -8214,30 +8267,6 @@ if(S.cleared&&!S.clearShown) queue.push({k:'clear'});
 try{ if(S.cleared&&S.clearShown&&sf&&!sf.unlockSeen){ notify({k:'w',msg:'📖 専門史「'+SPECIAL_HISTORIES.safety.title+'」が解放されました。記録タブから入れます。'}); sf.unlockSeen=true; sfSave(); } }catch(e){}
 renderAll(); runQueue();
 if(!S.prologueDone) showPrologue();
-/* ---- v1.6.1 URL引っ越し（新URL版）：旧URLから #import=セーブコード で渡されたセーブを受け取る ---- */
-(function(){
-  const h=location.hash||''; if(h.indexOf('#import=')!==0) return;
-  let code=''; try{ code=decodeURIComponent(h.slice(8)); }catch(e){}
-  try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} // コードをURLに残さない（ブックマーク・共有で再読み込みされないように）
-  if(!code) return;
-  const FAIL='セーブを受け取れませんでした。前のURLの「記録」タブで「コードを書き出す」→ このURLの「記録」タブで「コードを読み込む」をお試しください。';
-  function doImport(){
-    if(!importCode(code)){ toast(FAIL); return; }
-    if(S.prologueDone){ const p=$('pro'); if(p&&!p.hidden){ p.hidden=true; try{ pumpN(); }catch(e){} } }
-    try{ renderAll(); }catch(e){}
-    toast('📦 引っ越しが完了しました。前のURLの続きから遊べます。');
-  }
-  const had=!!(S.prologueDone||S.kp>0||S.kpTotal>0);
-  if(!had){ doImport(); return; }
-  const o=document.createElement('div'); o.className='mv-ov';
-  o.innerHTML='<div class="mv-sh" role="dialog" aria-modal="true"><div class="k">MOVE</div><h3>セーブの引っ越し</h3>'+
-    '<p>このURLには、すでに遊んだ記録があります。前のURLから持ってきたセーブで上書きしますか？</p>'+
-    '<p style="font-size:.7rem;color:var(--mute)">上書きすると、このURLでの進み具合は消えます。</p>'+
-    '<button class="big" data-mv="yes">前のURLのセーブで上書きする</button>'+
-    '<button class="mv-sub" data-mv="no">このURLの記録を続ける</button></div>';
-  document.body.appendChild(o);
-  o.addEventListener('click',e=>{ const a=e.target.getAttribute&&e.target.getAttribute('data-mv'); if(!a) return; o.remove(); if(a==='yes') doImport(); });
-})();
 window.__game={DRUGS,PEOPLE,techCost,S:()=>S,research,buy,buyUp,progress,recalc,renderAll,tick,setTab,TECHS,FACS,EVENTS,setQty:q=>{qty=q;},giveKp:n=>{S.kp+=n;},checkPeopleNet,P,get PROD(){return PROD;},reset:()=>{safe(()=>localStorage.removeItem(SAVE_KEY));},safety:{state:()=>sf,open:openSafety,close:closeSafety,act:(a,x)=>sfAction(a,x),gap:sfGap,dev:sfDev,sys:sfSys,trust:sfTrust,questions:SAFETY_QUESTIONS}};
 })();
 </script>
