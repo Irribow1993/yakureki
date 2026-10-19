@@ -1,0 +1,12 @@
+# Cloudflare Pages 用のセキュリティヘッダー（YAKUREKI v1.7.1）
+# 外部通信を行わない静的ゲームなので、読み込み元を自サイトに限定する。
+# METABOLISM と同じ方針。ただし YAKUREKI は1枚の HTML にスクリプトとスタイルを
+# 直接書いているため、script-src・style-src に 'unsafe-inline' を許可している。
+# 旧URLからの引っ越しは「#import=コード」でのページ移動なので、下の設定の影響を受けない（検証済み）。
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; manifest-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
